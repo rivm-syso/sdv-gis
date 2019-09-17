@@ -25,7 +25,7 @@ function sdv_gis_help($route_name, RouteMatchInterface $route_match) {
 
 function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
 	file_put_contents('/var/www/html/drupal/published/rob','$form_id='.$form_id);
-    if ($form_id == 'entity_sdv_gis_edit_form') {
+    if ($form_id == 'sdv_gis_entity_edit_form') {
 		$form['#attached']['js'][] = array(
 		  'data' => drupal_get_path('module', 'module_name') . '/js/gis_ia_edit.js',
 		  'type' => 'file', 
