@@ -1,0 +1,123 @@
+sdv_gis:
+  version: 1.0
+  css:
+    layout:
+      https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.css: {}
+      css/gis_ia.min.css: {}
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.js: {}
+    js/gis_ia.js: {}
+    js/proj4.js: {}
+    js/jquery.autocomplete.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.ui.effects.slide
+    - core/drupal.ajax
+sdv_gis_edit:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_edit.css: {}
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.js: {}
+    js/gis_ia.js: {}
+    js/gis_ia_edit.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.dialog.ajax
+    - core/drupal.dropbutton
+gis_ia_automatisch:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_donkergroen.min.css: {}
+gis_ia_bruin:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_bruin.min.css: {}
+gis_ia_donkerblauw:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_donkerblauw.min.css: {}
+gis_ia_donkerbruin:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_donkerbruin.min.css: {}
+gis_ia_donkergeel:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_donkergeel.min.css: {}
+gis_ia_donkergroen:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_donkergroen.min.css: {}
+gis_ia_geel:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_geel.min.css: {}
+gis_ia_groen:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_groen.min.css: {}
+gis_ia_hemelblauw:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_hemelblauw.min.css: {}
+gis_ia_lichtblauw:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_lichtblauw.min.css: {}
+gis_ia_mintgroen:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_mintgroen.min.css: {}
+gis_ia_mosgroen:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_mosgroen.min.css: {}
+gis_ia_oranje:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_oranje.min.css: {}
+gis_ia_paars:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_paars.min.css: {}
+gis_ia_robijnrood:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_robijnrood.min.css: {}
+gis_ia_rood:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_rood.min.css: {}
+gis_ia_roze:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_roze.min.css: {}
+gis_ia_violet:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_violet.min.css: {}
+gis_ia_wit:
+  version: 1.0
+  css:
+    layout:
+      css/gis_ia_wit.min.css: {}
