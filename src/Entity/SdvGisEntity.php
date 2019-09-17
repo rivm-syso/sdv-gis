@@ -243,7 +243,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
         'label' => 'above',
-        'type' => 'string',
+        'type' => 'string_textarea',
         'weight' => -6,
       ])
       ->setDisplayOptions('form', [
@@ -264,7 +264,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
         'label' => 'above',
-        'type' => 'string',
+        'type' => 'string_textarea',
         'weight' => -5,
       ])
       ->setDisplayOptions('form', [
