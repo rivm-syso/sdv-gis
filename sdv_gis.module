@@ -30,6 +30,7 @@ function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_s
 		  'data' => drupal_get_path('module', 'module_name') . '/js/gis_ia_edit.js',
 		  'type' => 'file', 
 		);
+/*
         $xml=simplexml_load_file('https://geodata.rivm.nl/geoserver/wms?VERSION=1.1.1&REQUEST=GetCapabilities');
         $wms='';
         if ($xml->Capability->Layer) foreach ($xml->Capability->Layer->children() as $layer) {
@@ -79,6 +80,6 @@ function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_s
 			$wms=file_get_contents($fname);
 		}
         $form['#attached']['drupalSettings']['gis_ia']['datarivmnl'] = $wms;
-		
+*/	
     }
 }
