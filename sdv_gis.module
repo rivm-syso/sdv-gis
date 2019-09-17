@@ -86,7 +86,6 @@ function sdv_gis_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         $build['_map']=[
             '#markup' => $kaart,
         ];
-file_put_contents('/var/www/html/drupal/published/rob','$kaart='.$kaart);	
 		
 		//$dwnld=__DIR__;
 		//$loader = new Twig_Loader_Array(array('gis_ia.html.twig' => file_get_contents($dwnld.'/templates/gis-ol.html.twig')));

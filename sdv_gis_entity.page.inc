@@ -20,6 +20,7 @@ use Drupal\Core\Render\Element;
  *   - attributes: HTML attributes for the containing element.
  */
 function template_preprocess_sdv_gis_entity(array &$variables) {
+file_put_contents('/var/www/html/drupal/published/rob','Hallo wereld');	
   // Fetch SdvGisEntity Entity Object.
   $sdv_gis_entity = $variables['elements']['#sdv_gis_entity'];
 
