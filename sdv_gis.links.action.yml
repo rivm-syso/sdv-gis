@@ -1,0 +1,5 @@
+entity.sdv_gis_entity.add_form:
+  route_name: entity.sdv_gis_entity.add_form
+  title: 'Add Sdv gis entity'
+  appears_on:
+    - entity.sdv_gis_entity.collection

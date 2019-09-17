@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains sdv_gis.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function sdv_gis_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the sdv_gis module.
+    case 'help.page.sdv_gis':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('TODO Module description here ...') . '</p>';
+      return $output;
+
+    default:
+  }
+}

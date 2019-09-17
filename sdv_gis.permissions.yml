@@ -1,0 +1,30 @@
+add sdv gis entity entities:
+  title: 'Create new Sdv gis entity entities'
+
+administer sdv gis entity entities:
+  title: 'Administer Sdv gis entity entities'
+  description: 'Allow to access the administration form to configure Sdv gis entity entities.'
+  restrict access: true
+
+delete sdv gis entity entities:
+  title: 'Delete Sdv gis entity entities'
+
+edit sdv gis entity entities:
+  title: 'Edit Sdv gis entity entities'
+
+view published sdv gis entity entities:
+  title: 'View published Sdv gis entity entities'
+
+view unpublished sdv gis entity entities:
+  title: 'View unpublished Sdv gis entity entities'
+
+view all sdv gis entity revisions:
+  title: 'View all Sdv gis entity revisions'
+
+revert all sdv gis entity revisions:
+  title: 'Revert all Sdv gis entity revisions'
+  description: 'Role requires permission <em>view Sdv gis entity revisions</em> and <em>edit rights</em> for sdv gis entity entities in question or <em>administer sdv gis entity entities</em>.'
+
+delete all sdv gis entity revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Sdv gis entity revisions</em> and <em>delete rights</em> for sdv gis entity entities in question or <em>administer sdv gis entity entities</em>.'

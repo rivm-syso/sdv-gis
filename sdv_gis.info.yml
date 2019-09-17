@@ -1,0 +1,5 @@
+name: 'sdv_gis'
+type: module
+description: 'TODO Module description here ...'
+core: 8.x
+package: 'Custom'
