@@ -417,8 +417,8 @@ function gis_ia_set_filterItem(e,i,parm) {
 // Deze functie verbergt de textareas waarin de data is opgeslagen en toont in plaats daarvan een interactieve tabel en voert alle benodigde initialisatie uit.
 function gis_ia_init() {
 	// Verbergen Drupal velden
-	jQuery('.form-item-gis-ia-body-0-value').hide();
-	jQuery('.form-item-gis-ia-layer-definities-0-value').hide();
+//	jQuery('.form-item-gis-ia-params-0-value').hide();
+//	jQuery('.form-item-gis-ia-layers-0-value').hide();
 	
 	// Maak dialog-box voor WMS
 	var wms = drupalSettings.gis_ia.wms.split('|'), t1,s1;
@@ -549,7 +549,7 @@ function gis_ia_init() {
 	// body bevat nu alle ooit ingevoerde waarden, evt. uitgebreid met nieuwe parameters
 	
 	// Maak de HTML waarmee de redacteur parameters en layers kan definiëren
-	var start_el=jQuery('.layout-region.layout-region-node-main'),d='',href=window.location.href;
+	var start_el=jQuery('.js-form-item-name-0-value.form-item-name-0-value'),d='',href=window.location.href;
 	
 	href=href.substr(0,href.indexOf('/node'))+'/gis_ia?help';
 //	start_el.prepend('<div class="button" style="float: right;margin: 12px 60px 12px 20px;" onclick="window.open(\''+href+'\',\'gis_ia_help\');">Help</div>');
