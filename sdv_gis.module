@@ -27,7 +27,7 @@ function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_s
 	file_put_contents('/var/www/html/drupal/published/rob','$form_id='.$form_id);
     if ($form_id == 'sdv_gis_entity_edit_form') {
         $form['#attached']['library'][] = 'sdv_gis/sdv_gis_edit';
-/*
+
         $xml=simplexml_load_file('https://geodata.rivm.nl/geoserver/wms?VERSION=1.1.1&REQUEST=GetCapabilities');
         $wms='';
         if ($xml->Capability->Layer) foreach ($xml->Capability->Layer->children() as $layer) {
@@ -77,6 +77,5 @@ function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_s
 			$wms=file_get_contents($fname);
 		}
         $form['#attached']['drupalSettings']['gis_ia']['datarivmnl'] = $wms;
-*/	
     }
 }
