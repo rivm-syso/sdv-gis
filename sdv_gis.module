@@ -23,6 +23,18 @@ function sdv_gis_help($route_name, RouteMatchInterface $route_match) {
   }
 }
 
+function sdv_gis_theme($existing, $type, $theme, $path) {
+  $theme = [
+     'sdv_gis' => [                            // the entity id
+      'path' => $path . '/templates',          // template directory in module or theme
+      'template'  => 'sdv_gis',                // defines base template as /artwork.html.twig
+      'render element' => 'elements',          // Theme API call to define the container of the entity in the render array
+                                               // The entity will be prefixed with a hash sign as ['elements']['#artwork']
+    ],
+  ];
+  return $theme;
+}
+
 /**
  * Function to find specific field and return the value.
  *
