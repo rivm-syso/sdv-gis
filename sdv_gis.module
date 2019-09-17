@@ -52,6 +52,7 @@ function sdv_gis__get_value(&$entity,$field,$default_value='') {
  * Sets the right libraries and pass data to twig-file.
  */
 function sdv_gis_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+file_put_contents('/var/www/html/drupal/published/rob','$entity->bundle()='.$entity->bundle());	
     if ($entity->bundle()=='sdv_gis') {
         
         $sdv_gis_entity_id=$entity->id();
