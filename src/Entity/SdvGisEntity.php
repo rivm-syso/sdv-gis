@@ -236,7 +236,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-      $fields['gis_ia_params'] = BaseFieldDefinition::create('string')
+      $fields['gis_ia_params'] = BaseFieldDefinition::create('string_long')
       ->setLabel(t('GIS IA Params'))
       ->setDescription(t('TODO Description here ...'))
       ->setRevisionable(TRUE)
@@ -257,7 +257,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(FALSE);
 
-      $fields['gis_ia_layers'] = BaseFieldDefinition::create('string')
+      $fields['gis_ia_layers'] = BaseFieldDefinition::create('string_long')
       ->setLabel(t('GIS IA Layers'))
       ->setDescription(t('TODO Description here ...'))
       ->setRevisionable(TRUE)
