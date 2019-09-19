@@ -24,6 +24,8 @@ function sdv_gis_help($route_name, RouteMatchInterface $route_match) {
 }
 
 function sdv_gis_theme($existing, $type, $theme, $path) {
+if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
+file_put_contents('/var/www/html/drupal/published/rob','sdv_gis_theme',char(13).$deb);	
   $theme = [
      'sdv_gis' => [                            // the entity id
       'path' => $path . '/templates',          // template directory in module or theme
@@ -33,6 +35,21 @@ function sdv_gis_theme($existing, $type, $theme, $path) {
     ],
   ];
   return $theme;
+}
+function template_preprocess_sdv_gis(&$variables) {
+if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
+file_put_contents('/var/www/html/drupal/published/rob','template_preprocess_sdv_gis',char(13).$deb);	
+  // Helpful $content variable for templates.
+  $variables['content'] = [];
+  foreach (\Drupal\Core\Render\Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+  /** @var ArtworkInterface $entity */
+  $entity = $variables['elements']['#sdv_gis'];
+  //provide the label
+  $variables['label'] = $entity->label();
+  //provide the alias
+  $variables['url'] = $entity->toUrl()->toString();
 }
 
 /**
