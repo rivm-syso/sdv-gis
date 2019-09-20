@@ -37,7 +37,7 @@ function sdv_gis_theme($existing, $type, $theme, $path) {
   return $theme;
 }
 function template_preprocess_sdv_gis(&$variables) {
-//if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
+if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
 //file_put_contents('/var/www/html/drupal/published/rob','template_preprocess_sdv_gis'.char(13).$deb);	
   // Helpful $content variable for templates.
   $variables['content'] = [];
