@@ -20,8 +20,8 @@ use Drupal\Core\Render\Element;
  *   - attributes: HTML attributes for the containing element.
  */
 function template_preprocess_sdv_gis_entity(array &$variables) {
-//if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
-//file_put_contents('/var/www/html/drupal/published/rob','template_preprocess_sdv_gis_entity',char(13).$deb);	
+if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
+file_put_contents('/var/www/html/drupal/published/rob','template_preprocess_sdv_gis_entity',chr(13).$deb);	
   // Fetch SdvGisEntity Entity Object.
   $sdv_gis_entity = $variables['elements']['#sdv_gis_entity'];
 
