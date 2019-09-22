@@ -100,7 +100,10 @@ function getParmValue(parm) {
 
 // Functies die informatie tonen/verbergen o.b.v. de waarde van een parameter
 // Deze functies worden bij initialisatie aangeroepen en bij de onchange-event van een parameter; Zie de functie gis_ia_change()
-function regel_p() {if (getParmValue('p')==1) {jQuery('#gis_ia_pz_div').show();} else {jQuery('#gis_ia_pz_div').hide();}}
+function regel_p() {
+	if (getParmValue('p')==1) {jQuery('#gis_ia_pz_div').show();} else {jQuery('#gis_ia_pz_div').hide();}
+	if (getParmValue('l').substr(0,1)==='1') {jQuery('#gis_ia_pz_div').show();} else {jQuery('#gis_ia_pz_div').hide();}
+}
 
 // Deze functie zorgt er voor dat bij elke wijziging door de redacteur, het gis_ia_params-veld meteen een update krijgt.
 // Elke aanpassing in de gegenereerde HTML wordt zo direct doorgevoerd in het verborgen veld, zodat als de redacteur op 'Opslaan' drukt, de juiste informatie
@@ -589,12 +592,14 @@ function gis_ia_init() {
 	d+='<div class="form-item"><b>Laag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
 	d+='<div><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></div>';
 	d += '<table class="gis_ia_edit_table" style="font-style: normal;">';
-	d += '<tr><td>Toon lagen in panel:</td><td><select gis_ia="l-0"><option value="0">Nee</option><option value="1">Ja</option></select></td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
+//	d += '<tr><td>Toon lagen in panel:</td><td><select gis_ia="l-0"><option value="0">Nee</option><option value="1">Ja</option></select></td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
+	d += '<tr><td>Toon lagen in panel:</td><td>'+gis_ia_getRadio(map_id,'show_layer','l',array('0=Nee','1=Ja'),getParmValue('l0'))+'</td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
 	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-2"><option value="0">Zonder transparantie-knoppen slider</option><option value="1">Met transparantie-knoppen</option></select</td></tr>';
 	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-3"><option value="0">Zonder download mogelijkheid</option><option value="1">Download geheel Nederland</option><option value="2">Download, vraag NL of Bounding Box</option></select</td></tr>';
 	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-4"><option value="0">Zonder data.rivm.nl knop</option><option value="1">Met data.rivm.nl knop</option></select</td></tr>';
 	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-5"><option value="0">Zonder legenda knop</option><option value="1">Met legenda knop</option></select></td></tr>';
 	d += '</table>';
+	
 	d+='<div id="gis_ia_layer_defs">'+getLayerDefs()+'</div>';
 
 	d+='<div class="form-item"><b>Data weergave</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#data\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
