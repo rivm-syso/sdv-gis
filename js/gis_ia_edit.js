@@ -45,11 +45,7 @@ var default_parameters={
 	'u': 'automatisch',	// Uiterlijk CSS
 	'fl': 0,			// Floating, 0=geen, 1=links, 2=rechts
 	// Basiskaarten
-	'b': 1, 			// basiskaarten:
-						// 0 = Geen
-						// 1 = Openbasiskaart
-						// 2 = Luchtfoto
-						// 3 = Topografisch
+	'b': '10000', 			// basiskaarten: Openbasiskaart, Openbasiskaart grijs, Openbasiskaart pastel, Luchtfoto, Topografisch
 	// Overlaykaarten
 	'o': '000', 		// Overlaykaarten: Voor elke overlay een positie met 0=Nee, 1=Ja
 						// positie 0: NL schaduw
