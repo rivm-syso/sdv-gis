@@ -102,7 +102,7 @@ function getParmValue(parm) {
 // Deze functies worden bij initialisatie aangeroepen en bij de onchange-event van een parameter; Zie de functie gis_ia_change()
 function regel_p() {
 	if (getParmValue('p')==1) {jQuery('#gis_ia_pz_div').show();} else {jQuery('#gis_ia_pz_div').hide();}
-	if (getParmValue('l-0')==1) {jQuery('.gis_ia_l_1').show();} else {jQuery('.gis_ia_l_1').hide();}
+	if (getParmValue('l-0')!=0) {jQuery('.gis_ia_l_1').show();} else {jQuery('.gis_ia_l_1').hide();}
 }
 
 // Deze functie zorgt er voor dat bij elke wijziging door de redacteur, het gis_ia_params-veld meteen een update krijgt.
@@ -558,23 +558,24 @@ function gis_ia_init() {
 	
 	d+='<div class="form-item"><b>Formaat en uiterlijk</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#form\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<table class="gis_ia_edit_table">';
-	d+='<tr><td>Basiskaart:</td><td>';
+	d+='<tr>';
+	d+='<td>Basiskaart:</td><td>';
 	d+='<div><input type="checkbox" id="gis_ia_bk1" class="form-checkbox" gis_ia="b-0"><label for="gis_ia_bk1" class="option"> Openbasiskaart</label></div>';
 	d+='<div><input type="checkbox" id="gis_ia_bk2" class="form-checkbox" gis_ia="b-1"><label for="gis_ia_bk2" class="option"> Openbasiskaart grijs</label></div>';
 	d+='<div><input type="checkbox" id="gis_ia_bk3" class="form-checkbox" gis_ia="b-2"><label for="gis_ia_bk3" class="option"> Openbasiskaart pastel</label></div>';
 	d+='<div><input type="checkbox" id="gis_ia_bk4" class="form-checkbox" gis_ia="b-3"><label for="gis_ia_bk4" class="option"> Luchtfoto</label></div>';
 	d+='<div><input type="checkbox" id="gis_ia_bk5" class="form-checkbox" gis_ia="b-4"><label for="gis_ia_bk5" class="option"> Topografisch</label></div>';
-	d+='</td></tr>';  		
-	d+='<tr><td>Overlaykaart:</td><td>';
+	d+='</td>';  		
+	d+='<td>Overlaykaart:</td><td>';
 	d+='<div><input type="checkbox" id="gis_ia_ok1" class="form-checkbox" gis_ia="o-0"><label for="gis_ia_ok1" class="option"> NL schaduw</label></div>';
 	d+='<div><input type="checkbox" id="gis_ia_ok2" class="form-checkbox" gis_ia="o-1"><label for="gis_ia_ok2" class="option"> Provinciegrenzen</label></div>';
 	d+='<div><input type="checkbox" id="gis_ia_ok3" class="form-checkbox" gis_ia="o-2"><label for="gis_ia_ok3" class="option"> Gemeentegrenzen</label></div>';
-	d+='</td></tr>';
-	d+='<tr><td>Aspect ratio:</td><td><input type="number" min="0.8" max="2" step="0.1" class="form-number" gis_ia="a"></td></tr><tr><td>Kleurstelling:</td><td><select gis_ia="u">';
+	d+='</td>';
+	d+='<td><table><tr>Aspect ratio:</td><td><input type="number" min="0.8" max="2" step="0.1" class="form-number" gis_ia="a"></td></tr><tr><td>Kleurstelling:</td><td><select gis_ia="u">';
 	for (t1=0;t1<kleuren.length;t1++) {
 		d+='<option value="'+kleuren[t1].toLowerCase()+'">'+kleuren[t1]+'</option>';
 	}
-	d+='</select></td></tr>';
+	d+='</select></td></tr></table></td></tr>';
 	d+='</table>';
 	d+='</div>';
 
