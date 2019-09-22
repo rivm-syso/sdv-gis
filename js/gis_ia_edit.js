@@ -593,10 +593,10 @@ function gis_ia_init() {
 	d+='<div><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></div>';
 	d += '<table class="gis_ia_edit_table" style="font-style: normal;">';
 	d += '<tr><td>Toon lagen in panel:</td><td>'+gis_ia_getRadio('show_layer','l-0',['0=Nee','1=Ja'])+'</td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1">';
-	d += gis_ia_getRadio('show_layer','l-1',['0=Zonder &hellip;','1=Met transparantie knoppen']);
-	d += gis_ia_getRadio('show_layer','l-2',['0=Zonder &hellip;','1=Met download mogelijkheid']);
-	d += gis_ia_getRadio('show_layer','l-3',['0=Zonder &hellip;','1=Met data.rivm.nl knop']);
-	d += gis_ia_getRadio('show_layer','l-4',['0=Zonder &hellip;','1=Met legenda knop']);
+	d += gis_ia_getRadio('show_layer1','l-1',['0=Zonder &hellip;','1=Met transparantie knoppen']);
+	d += gis_ia_getRadio('show_layer2','l-2',['0=Zonder &hellip;','1=Met download mogelijkheid']);
+	d += gis_ia_getRadio('show_layer3','l-3',['0=Zonder &hellip;','1=Met data.rivm.nl knop']);
+	d += gis_ia_getRadio('show_layer4','l-4',['0=Zonder &hellip;','1=Met legenda knop']);
 	d += '</td></tr>';
 	d += '</table>';
 	
