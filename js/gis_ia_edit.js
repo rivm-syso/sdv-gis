@@ -590,8 +590,8 @@ function gis_ia_init() {
 	d+='</div>';
 	
 	d+='<div class="form-item"><b>Laag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
-	d+='<div><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></div>';
 	d += '<table class="gis_ia_edit_table" style="font-style: normal;">';
+	d += '<tr><td><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></td><td>&nbsp;</td></tr>';
 	d += '<tr><td>Toon lagen in panel:</td><td>'+gis_ia_getRadio('show_layer','l-0',['0=Nee','1=Ja'])+'</td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1">';
 	d += gis_ia_getRadio('show_layer1','l-1',['0=Zonder &hellip;','1=Met transparantie knoppen']);
 	d += gis_ia_getRadio('show_layer2','l-2',['0=Zonder &hellip;','1=Met download mogelijkheid']);
