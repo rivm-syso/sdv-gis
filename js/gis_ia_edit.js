@@ -102,7 +102,7 @@ function getParmValue(parm) {
 // Deze functies worden bij initialisatie aangeroepen en bij de onchange-event van een parameter; Zie de functie gis_ia_change()
 function regel_p() {
 	if (getParmValue('p')==1) {jQuery('#gis_ia_pz_div').show();} else {jQuery('#gis_ia_pz_div').hide();}
-	if (getParmValue('l').substr(0,1)==='1') {jQuery('#gis_ia_pz_div').show();} else {jQuery('#gis_ia_pz_div').hide();}
+	if (getParmValue('l-0')==1) {jQuery('.gis_ia_l_1').show();} else {jQuery('.gis_ia_l_1').hide();}
 }
 
 // Deze functie zorgt er voor dat bij elke wijziging door de redacteur, het gis_ia_params-veld meteen een update krijgt.
@@ -138,7 +138,7 @@ function gis_ia_change_regel(parameter,v) {
 		regels[regel]=parameter+'='+v;
 	}
 	body.val(regels.join("\r"));
-	if (parm=='p') {regel_p();}
+	if (parm=='p' || parm=='l-0') {regel_p();}
 }
 
 // Functie die alle benodigde HTML genereert om layers te defini"eren (muteren/toevoegen/verwijderen/volgorde)
@@ -593,7 +593,7 @@ function gis_ia_init() {
 	d+='<div><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></div>';
 	d += '<table class="gis_ia_edit_table" style="font-style: normal;">';
 //	d += '<tr><td>Toon lagen in panel:</td><td><select gis_ia="l-0"><option value="0">Nee</option><option value="1">Ja</option></select></td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
-	d += '<tr><td>Toon lagen in panel:</td><td>'+gis_ia_getRadio('show_layer','l-0',['0=Nee','1=Ja'],getParmValue('l-0'))+'</td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
+	d += '<tr><td>Toon lagen in panel:</td><td>'+gis_ia_getRadio('show_layer','l-0',['0=Nee','1=Ja'])+'</td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
 	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-2"><option value="0">Zonder transparantie-knoppen slider</option><option value="1">Met transparantie-knoppen</option></select</td></tr>';
 	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-3"><option value="0">Zonder download mogelijkheid</option><option value="1">Download geheel Nederland</option><option value="2">Download, vraag NL of Bounding Box</option></select</td></tr>';
 	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-4"><option value="0">Zonder data.rivm.nl knop</option><option value="1">Met data.rivm.nl knop</option></select</td></tr>';
@@ -689,8 +689,9 @@ function gis_ia_getSelect(values,value,onchange,atts) {
 // Parameters:		labels:		Array van strings met het formaat [id=]Waarde.
 //					value:		String/Number met initiele waarde.
 //					onchange:	String met aan te roepen functie.
-function gis_ia_getRadio(name,parameter,labels,value,atts) {
-    var s='<div'+(typeof(atts)!='undefined'?' '+atts:'')+'>',t,s1,pos;
+function gis_ia_getRadio(name,parameter,labels,horizontal,atts) {
+	if (typeof(horizontal)=='undefined') {horizontal=true;}
+    var s='<div'+(typeof(atts)!='undefined'?' '+atts:'')+'>',t,s1,pos,value=,getParmValue(parameter);
     for (t=0;t<labels.length;t++) {
 		pos=labels[t].indexOf('=');
 		if (pos>=0) {
@@ -698,7 +699,7 @@ function gis_ia_getRadio(name,parameter,labels,value,atts) {
 		} else {
 			s1=[labels[t],labels[t]];
 		}
-        s+='<div><input type="radio" id="'+name+'_'+t+'" name="'+name+'" value="'+s1[0]+'"'+(s1[0]==''+value?' checked="checked"':'')+' onchange="gis_ia_setRadioParm(this,\''+parameter+'\');"><label for="'+name+'_'+t+'" style="display: inline-block;font-weight: normal; margin-left: 12px;">'+s1[1]+'</label></div>';
+        s+='<div'+(horizontal?' style="display: inline-block;'+(t==0?'':'margin-left: 12px;')+'"':'')+'><input type="radio" id="'+name+'_'+t+'" name="'+name+'" value="'+s1[0]+'"'+(s1[0]==''+value?' checked="checked"':'')+' onchange="gis_ia_setRadioParm(this,\''+parameter+'\');"><label for="'+name+'_'+t+'" style="display: inline-block;font-weight: normal; margin-left: 12px;">'+s1[1]+'</label></div>';
     }
     return s+'</div>';
 }
