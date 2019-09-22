@@ -586,7 +586,7 @@ function gis_ia_init() {
 	d+='</table>';
 	d+='</div>';
 	
-	d+='<div class="form-item"><b>HalloLaag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
+	d+='<div class="form-item"><b>Laag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
 	d+='<div><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></div>';
 	d += '<table class="gis_ia_edit_table" style="font-style: normal;">';
 	d += '<tr><td>Toon lagen in panel:</td><td><select gis_ia="l-0"><option value="0">Nee</option><option value="1">Ja</option></select></td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
@@ -678,6 +678,28 @@ function gis_ia_getSelect(values,value,onchange,atts) {
         s+='<option value="'+s1[0]+'"'+(s1[0]==''+value?' selected="selected"':'')+'>'+s1[1]+'</option>';
     }
     return s+'</select>';
+}
+
+// Deze functie creeert een DIV element met (vertikaal uitgelijnde) radio's.
+// Parameters:		labels:		Array van strings met het formaat [id=]Waarde.
+//					value:		String/Number met initiele waarde.
+//					onchange:	String met aan te roepen functie.
+function gis_ia_getRadio(map_id,name,parameter,labels,value,atts) {
+    var s='<div'+(typeof(atts)!=undefined?' '+atts:'')+'>',t,s1,pos;
+    for (t=0;t<labels.length;t++) {
+		pos=labels[t].indexOf('=');
+		if (pos>=0) {
+			s1=[labels[t].substr(0,pos),labels[t].substr(pos+1)];
+		} else {
+			s1=[labels[t],labels[t]];
+		}
+        s+='<div><input type="radio" id="'+name+'_'+map_id+'_'+t+'" name="'+name+'" value="'+s1[0]+'"'+(s1[0]==''+value?' checked="checked"':'')+' onchange="gis_ia_setRadioParm(this,'+parameter+');"><label for="'+name+'_'+map_id+'_'+t+'"> '+s1[1]+'</label></div>';
+    }
+    return s+'</div>';
+}
+function gis_ia_setRadioParm(el,parm) {
+	el=jQuery(el);
+	if (el.prop('checked')) {gis_ia_change_regel(parm,el.attr('value'));}
 }
 
 // Deze functie wijzigt de positie van een bepaalde layer en update de layer-HTML
