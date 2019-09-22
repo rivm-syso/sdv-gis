@@ -138,7 +138,7 @@ function gis_ia_change_regel(parameter,v) {
 		regels[regel]=parameter+'='+v;
 	}
 	body.val(regels.join("\r"));
-	if (parm=='p' || parm=='l-0') {regel_p();}
+	if (parameter=='p' || parameter=='l-0') {regel_p();}
 }
 
 // Functie die alle benodigde HTML genereert om layers te defini"eren (muteren/toevoegen/verwijderen/volgorde)
