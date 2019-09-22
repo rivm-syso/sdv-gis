@@ -592,12 +592,12 @@ function gis_ia_init() {
 	d+='<div class="form-item"><b>Laag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
 	d+='<div><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></div>';
 	d += '<table class="gis_ia_edit_table" style="font-style: normal;">';
-//	d += '<tr><td>Toon lagen in panel:</td><td><select gis_ia="l-0"><option value="0">Nee</option><option value="1">Ja</option></select></td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
-	d += '<tr><td>Toon lagen in panel:</td><td>'+gis_ia_getRadio('show_layer','l-0',['0=Nee','1=Ja'])+'</td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
-	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-2"><option value="0">Zonder transparantie-knoppen slider</option><option value="1">Met transparantie-knoppen</option></select</td></tr>';
-	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-3"><option value="0">Zonder download mogelijkheid</option><option value="1">Download geheel Nederland</option><option value="2">Download, vraag NL of Bounding Box</option></select</td></tr>';
-	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-4"><option value="0">Zonder data.rivm.nl knop</option><option value="1">Met data.rivm.nl knop</option></select</td></tr>';
-	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-5"><option value="0">Zonder legenda knop</option><option value="1">Met legenda knop</option></select></td></tr>';
+	d += '<tr><td>Toon lagen in panel:</td><td>'+gis_ia_getRadio('show_layer','l-0',['0=Nee','1=Ja'])+'</td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1">';
+	d += gis_ia_getRadio('show_layer','l-1',['0=Zonder &hellip;','1=Met transparantie knoppen']);
+	d += gis_ia_getRadio('show_layer','l-2',['0=Zonder &hellip;','1=Met download mogelijkheid']);
+	d += gis_ia_getRadio('show_layer','l-3',['0=Zonder &hellip;','1=Met data.rivm.nl knop']);
+	d += gis_ia_getRadio('show_layer','l-4',['0=Zonder &hellip;','1=Met legenda knop']);
+	d += '</td></tr>';
 	d += '</table>';
 	
 	d+='<div id="gis_ia_layer_defs">'+getLayerDefs()+'</div>';
