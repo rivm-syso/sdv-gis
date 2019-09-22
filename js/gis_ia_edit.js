@@ -698,7 +698,7 @@ function gis_ia_getRadio(name,parameter,labels,value,atts) {
 		} else {
 			s1=[labels[t],labels[t]];
 		}
-        s+='<div><input type="radio" id="'+name+'_'+t+'" name="'+name+'" value="'+s1[0]+'"'+(s1[0]==''+value?' checked="checked"':'')+' onchange="gis_ia_setRadioParm(this,'+parameter+');"><label for="'+name+'_'+map_id+'_'+t+'"> '+s1[1]+'</label></div>';
+        s+='<div><input type="radio" id="'+name+'_'+t+'" name="'+name+'" value="'+s1[0]+'"'+(s1[0]==''+value?' checked="checked"':'')+' onchange="gis_ia_setRadioParm(this,'+parameter+');"><label for="'+name+'_'+t+'"> '+s1[1]+'</label></div>';
     }
     return s+'</div>';
 }
