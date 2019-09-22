@@ -593,7 +593,7 @@ function gis_ia_init() {
 	d+='<div><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></div>';
 	d += '<table class="gis_ia_edit_table" style="font-style: normal;">';
 //	d += '<tr><td>Toon lagen in panel:</td><td><select gis_ia="l-0"><option value="0">Nee</option><option value="1">Ja</option></select></td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
-	d += '<tr><td>Toon lagen in panel:</td><td>'+gis_ia_getRadio('show_layer','l',['0=Nee','1=Ja'],getParmValue('l0'))+'</td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
+	d += '<tr><td>Toon lagen in panel:</td><td>'+gis_ia_getRadio('show_layer','l',['0=Nee','1=Ja'],getParmValue('l-0'))+'</td><td class="gis_ia_l_1">Opties:</td><td class="gis_ia_l_1"><select gis_ol="l-1"><option value="0">Slechts 1 laag selecteerbaar</option><option value="1">Elke laag selecteerbaar</option></select></td></tr>';
 	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-2"><option value="0">Zonder transparantie-knoppen slider</option><option value="1">Met transparantie-knoppen</option></select</td></tr>';
 	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-3"><option value="0">Zonder download mogelijkheid</option><option value="1">Download geheel Nederland</option><option value="2">Download, vraag NL of Bounding Box</option></select</td></tr>';
 	d += '<tr class="gis_ia_l_1"><td></td><td></td><td></td><td><select gis_ia="l-4"><option value="0">Zonder data.rivm.nl knop</option><option value="1">Met data.rivm.nl knop</option></select</td></tr>';
@@ -672,7 +672,7 @@ function gis_ia_zoek(typ) {
 //					value:		String/Number met initiele waarde.
 //					onchange:	String met aan te roepen functie.
 function gis_ia_getSelect(values,value,onchange,atts) {
-    var s='<select onchange="'+onchange+'"'+(typeof(atts)!=undefined?' '+atts:'')+'>',t,s1,pos;
+    var s='<select onchange="'+onchange+'"'+(typeof(atts)!='undefined'?' '+atts:'')+'>',t,s1,pos;
     for (t=0;t<values.length;t++) {
 		pos=values[t].indexOf('=');
 		if (pos>=0) {
@@ -690,7 +690,7 @@ function gis_ia_getSelect(values,value,onchange,atts) {
 //					value:		String/Number met initiele waarde.
 //					onchange:	String met aan te roepen functie.
 function gis_ia_getRadio(name,parameter,labels,value,atts) {
-    var s='<div'+(typeof(atts)!=undefined?' '+atts:'')+'>',t,s1,pos;
+    var s='<div'+(typeof(atts)!='undefined'?' '+atts:'')+'>',t,s1,pos;
     for (t=0;t<labels.length;t++) {
 		pos=labels[t].indexOf('=');
 		if (pos>=0) {
@@ -698,7 +698,7 @@ function gis_ia_getRadio(name,parameter,labels,value,atts) {
 		} else {
 			s1=[labels[t],labels[t]];
 		}
-        s+='<div><input type="radio" id="'+name+'_'+t+'" name="'+name+'" value="'+s1[0]+'"'+(s1[0]==''+value?' checked="checked"':'')+' onchange="gis_ia_setRadioParm(this,'+parameter+');"><label for="'+name+'_'+t+'"> '+s1[1]+'</label></div>';
+        s+='<div><input type="radio" id="'+name+'_'+t+'" name="'+name+'" value="'+s1[0]+'"'+(s1[0]==''+value?' checked="checked"':'')+' onchange="gis_ia_setRadioParm(this,'+parameter+');"><label for="'+name+'_'+t+'" style="display: inline-block;font-weight: normal; margin-left: 12px;">'+s1[1]+'</label></div>';
     }
     return s+'</div>';
 }
