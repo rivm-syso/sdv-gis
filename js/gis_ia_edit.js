@@ -691,7 +691,7 @@ function gis_ia_getSelect(values,value,onchange,atts) {
 //					onchange:	String met aan te roepen functie.
 function gis_ia_getRadio(name,parameter,labels,horizontal,atts) {
 	if (typeof(horizontal)=='undefined') {horizontal=true;}
-    var s='<div'+(typeof(atts)!='undefined'?' '+atts:'')+'>',t,s1,pos,value=,getParmValue(parameter);
+    var s='<div'+(typeof(atts)!='undefined'?' '+atts:'')+'>',t,s1,pos,value=getParmValue(parameter);
     for (t=0;t<labels.length;t++) {
 		pos=labels[t].indexOf('=');
 		if (pos>=0) {
