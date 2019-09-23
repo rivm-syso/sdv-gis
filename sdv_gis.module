@@ -44,10 +44,35 @@ function template_preprocess_sdv_gis_entity(&$variables) {
   foreach (\Drupal\Core\Render\Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
-  $variables['content']['node_id']='content-12345';
-  $variables['content']['dwnld']=__DIR__;
-  $variables['node_id']='12345';
-  $variables['dwnld']=__DIR__;
+  
+	$sdv_gis_entity_id='1';
+	$uiterlijk='groen';
+
+	$parms='';
+	// gewone parameters klaar zetten
+	/*
+	$body=sdv_gis__get_value($entity,'gis_ia_params');
+	$body=preg_replace("/\r\n/","\r",$body);
+	$body=preg_replace("/\n/","\r",$body);
+	$body=explode("\r",$body);
+	foreach ($body as $b) {
+		if (substr($b,0,2)=='m=') {$b='m='.base64_encode(htmlspecialchars(trim(substr($b,2))));}
+		$parms.=($parms==''?'':',').$b;
+		if (substr($b,0,2)=='u=') {$uiterlijk=substr($b,2);}
+	}*/
+	// layer_definities er achter plakken
+	/*
+	$ldefs=str_replace("\r\n","\r",sdv_gis__get_value($entity,'gis_ia_layers'));
+	$ldefs=str_replace("\n","\r",$ldefs);
+	$ldefs=explode("\r",$ldefs);
+	$parms.=',ld=';
+	foreach ($ldefs as $ldef) {
+		if ($ldef!='') {$parms.=base64_encode($ldef).'|';}
+	}*/
+  
+	$variables['node_id']='12345';
+	$variables['dwnld']=__DIR__;
+	$variables['parms']=print_r($variables);
 }
 
 /**
@@ -116,13 +141,14 @@ file_put_contents('/var/www/html/drupal/published/rob','$entity->bundle()='.$ent
             '#markup' => $kaart,
         ];
 		*/
-		
+		/*
 		$dwnld=__DIR__;
 		$loader = new Twig_Loader_Array(array('sdv_gis_entity.html.twig' => file_get_contents($dwnld.'/templates/sdv_gis_entity.html.twig')));
 		$twig = new Twig_Environment($loader);
         $build['_map']=[
             '#markup' => $twig->render('sdv_gis_entity.html.twig', array('node_id'=>$sdv_gis_entity_id,'parms'=>$parms,'dwnld'=>$dwnld)),
 		];
+		*/
         
 		// basis library
         $build['#attached']['library'][] = 'sdv_gis/sdv_gis';
