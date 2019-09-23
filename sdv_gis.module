@@ -72,7 +72,7 @@ function template_preprocess_sdv_gis_entity(&$variables) {
   
 	$variables['node_id']='12345';
 	$variables['dwnld']=__DIR__;
-	$variables['parms']=print_r($variables);
+	$variables['parms']=print_r($variables,true);
 }
 
 /**
