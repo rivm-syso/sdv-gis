@@ -40,7 +40,7 @@ function sdv_gis_theme($existing, $type, $theme, $path) {
  */
 function template_preprocess_sdv_gis_entity(&$variables) {
   // Helpful $content variable for templates.
-  $variables['content'] = [];
+  $variables['content'] = ['node_id':'12345'];
   foreach (\Drupal\Core\Render\Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
