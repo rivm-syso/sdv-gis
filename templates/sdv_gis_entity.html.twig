@@ -16,6 +16,6 @@
  */
 #}
 <div class="map-holder gis_ia">
-    <div id="gis_ia_map_'.$sdv_gis_entity_id.'" class="map" parms="'.$parms.'" dwnld="'.__DIR__.'"></div>
-    <div id="popup'.$sdv_gis_entity_id.'" class="ol-popup"><a href="#" id="popup-closer'.$sdv_gis_entity_id.'" class="ol-popup-closer"></a><div id="popup-content'.$sdv_gis_entity_id.'"></div></div>
+    <div id="gis_ia_map_{{ entity.node_id }}" class="map" parms="'.$parms.'" dwnld="'.__DIR__.'"></div>
+    <div id="popup{{ entity.node_id }}" class="ol-popup"><a href="#" id="popup-closer{{ entity.node_id }}" class="ol-popup-closer"></a><div id="popup-content{{ entity.node_id }}"></div></div>
 </div>
