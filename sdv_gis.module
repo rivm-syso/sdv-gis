@@ -69,10 +69,28 @@ function template_preprocess_sdv_gis_entity(&$variables) {
 	foreach ($ldefs as $ldef) {
 		if ($ldef!='') {$parms.=base64_encode($ldef).'|';}
 	}*/
-  
-	$variables['node_id']='12345';
+
+	$body=$variables['elements']['gis_ia_params'][0]['#context']['value'];
+	$body=preg_replace("/\r\n/","\r",$body);
+	$body=preg_replace("/\n/","\r",$body);
+	$body=explode("\r",$body);
+	foreach ($body as $b) {
+		if (substr($b,0,2)=='m=') {$b='m='.base64_encode(htmlspecialchars(trim(substr($b,2))));}
+		$parms.=($parms==''?'':',').$b;
+		if (substr($b,0,2)=='u=') {$uiterlijk=substr($b,2);}
+	}
+	// layer_definities er achter plakken
+	$ldefs=str_replace("\r\n","\r",$variables['elements']['gis_ia_layers'][0]['#context']['value']);
+	$ldefs=str_replace("\n","\r",$ldefs);
+	$ldefs=explode("\r",$ldefs);
+	$parms.=',ld=';
+	foreach ($ldefs as $ldef) {
+		if ($ldef!='') {$parms.=base64_encode($ldef).'|';}
+	}
+	
+	$variables['node_id']=$variables['elements']['#contextual_links']['sdv_gis_entity']['route_parameters']['sdv_gis_entity'];
 	$variables['dwnld']=__DIR__;
-	$variables['parms']=$variables['elements']['gis_ia_params'][0]['#context']['value'];
+	$variables['parms']=$parms;
 /*	
 {'elements':{
 	'#sdv_gis_entity':{},
@@ -83,7 +101,13 @@ function template_preprocess_sdv_gis_entity(&$variables) {
 	'#pre_render':[[{},'build'],[{},'buildTitle']],
 	'#entity_type':'sdv_gis_entity',
 	'#attached':{'library':['sdv_gis\/sdv_gis','sdv_gis\/sdv_gisdonkerblauw']},
-	'#contextual_links':{'sdv_gis_entity':{'route_parameters':{'sdv_gis_entity':'1'},'metadata':{'changed':'1569248371'}}},
+	'#contextual_links':{
+		'sdv_gis_entity':{
+			'route_parameters':{
+				'sdv_gis_entity':'1'
+			},
+			'metadata':{
+				'changed':'1569248371'}}},
 	'#attributes':{'data-quickedit-entity-id':'sdv_gis_entity\/1'},
 	'#title':'\n  <div data-quickedit-field-id=\'sdv_gis_entity\/1\/name\/en\/full\' class=\'field field--name-name field--type-string field--label-above\'>\n    <div class=\'field__label\'>Name<\/div>\n              <div class=\'field__item\'>1<\/div>\n          <\/div>\n',
 	'name':{'#theme':'field','#title':'Name','#label_display':'above','#view_mode':'full','#language':'en','#field_name':'name','#field_type':'string','#field_translatable':false,'#entity_type':'sdv_gis_entity','#bundle':'sdv_gis_entity','#object':{},'#items':{},'#formatter':'string','#is_multiple':false,'#third_party_settings':[],'0':{'#type':'inline_template','#template':'{{ value|nl2br }}','#context':{'value':'1'}},'#cache':{'contexts':['user.permissions','user.permissions'],'tags':[],'max-age':-1},'#weight':-6,'#attached':[],'#children':'\n  <div data-quickedit-field-id=\'sdv_gis_entity\/1\/name\/en\/full\' class=\'field field--name-name field--type-string field--label-above\'>\n    <div class=\'field__label\'>Name<\/div>\n              <div class=\'field__item\'>1<\/div>\n          <\/div>\n','#markup':'\n  <div data-quickedit-field-id=\'sdv_gis_entity\/1\/name\/en\/full\' class=\'field field--name-name field--type-string field--label-above\'>\n    <div class=\'field__label\'>Name<\/div>\n              <div class=\'field__item\'>1<\/div>\n          <\/div>\n','#printed':true},
