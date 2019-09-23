@@ -113,14 +113,12 @@ file_put_contents('/var/www/html/drupal/published/rob','$entity->bundle()='.$ent
         ];
 		*/
 		
-		/*
 		$dwnld=__DIR__;
 		$loader = new Twig_Loader_Array(array('sdv_gis_entity.html.twig' => file_get_contents($dwnld.'/templates/sdv_gis_entity.html.twig')));
 		$twig = new Twig_Environment($loader);
         $build['_map']=[
             '#markup' => $twig->render('sdv_gis_entity.html.twig', array('node_id'=>$sdv_gis_entity_id,'parms'=>$parms,'dwnld'=>$dwnld)),
 		];
-		*/
         
 		// basis library
         $build['#attached']['library'][] = 'sdv_gis/sdv_gis';
