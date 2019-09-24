@@ -78,12 +78,18 @@ function template_preprocess_sdv_gis_entity(&$variables) {
  * Sets the right libraries and pass data to twig-file.
  */
 function sdv_gis_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
-if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
-file_put_contents('/var/www/html/drupal/published/rob','$entity='.json_encode($entity->get('gis_ia_params')->first()->getValue()['value']).chr(13).$deb);	
+//if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
+//file_put_contents('/var/www/html/drupal/published/rob','$entity='.json_encode($entity->get('gis_ia_params')->first()->getValue()['value']).chr(13).$deb);	
     if ($entity->bundle()=='sdv_gis_entity') {
         
-        $sdv_gis_entity_id=$entity->id();
 		$uiterlijk='groen';
+		$body=$entity->get('gis_ia_params')->first()->getValue()['value'];
+		$body=preg_replace("/\r\n/","\r",$body);
+		$body=preg_replace("/\n/","\r",$body);
+		$body=explode("\r",$body);
+		foreach ($body as $b) {
+			if (substr($b,0,2)=='u=') {$uiterlijk=substr($b,2);}
+		}
 		// basis library
         $build['#attached']['library'][] = 'sdv_gis/sdv_gis';
 		
