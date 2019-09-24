@@ -528,25 +528,30 @@ var gis_ia_filters={
 		var id, html, aantal=0;
 		jQuery('[id^=gis_ia_f_'+map_id+'_]').each(function(t,el) {
 			el=jQuery(el);
-			if (el.prop('tagName')=='INPUT') {
-				switch (el.attr('type')) {
-					case 'checkbox':
-						if (el.prop('checked')) {aantal++;}
-						break;
-					case 'radio':
-						if (el.prop('checked')) {aantal++;}
-						break;
-					default:
-						if (el.val()!='') {
-							aantal++;
-						} else { // misschien is er een range-filter waarvan de min niet is ingevuld, maar de max wel.
-							id=el.prop('id').split('_');
-							id[2]='f2';
-							id=jQuery('#'+id.join('_'));
-							if (id.length==1 && id.val()!='') {aantal++;}
-						}
-						break;
-				}
+			switch (el.prop('tagName')) {
+				case 'INPUT':
+					switch (el.attr('type')) {
+						case 'checkbox':
+							if (el.prop('checked')) {aantal++;}
+							break;
+						case 'radio':
+							if (el.prop('checked')) {aantal++;}
+							break;
+						default:
+							if (el.val()!='') {
+								aantal++;
+							} else { // misschien is er een range-filter waarvan de min niet is ingevuld, maar de max wel.
+								id=el.prop('id').split('_');
+								id[2]='f2';
+								id=jQuery('#'+id.join('_'));
+								if (id.length==1 && id.val()!='') {aantal++;}
+							}
+							break;
+					}
+					break;
+				case 'SELECT':
+					var a=1;
+					break;
 			}
 		});
 		html=aantal+' Filter'+(aantal==1?'':'s');
