@@ -12,6 +12,7 @@ sdv_gis:
   dependencies:
     - core/jquery
     - core/jquery.ui.effects.slide
+    - core/jquery.ui.position
     - core/drupal.ajax
 sdv_gis_edit:
   version: 1.0
