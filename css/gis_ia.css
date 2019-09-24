@@ -184,7 +184,7 @@
 .gis_ia .timeSlider input[type=range]::-webkit-slider-thumb {height: 35px; width: 45px; margin-top: -17px; border-radius: 17px; background-repeat: no-repeat;background-position: center;}
 .gis_ia .timeSlider input[type=range]::-moz-range-thumb {height: 31px; width: 41px; margin-top: -15px; border-radius: 16px; background-repeat: no-repeat;background-position: center;}
 .gis_ia .timeSlider input[type=range]::-ms-thumb { height: 31px; width: 41px; margin-top: 0px; border-radius: 16px; background-repeat: no-repeat;background-position: center;}
-.timeSlider input[type=range] { background-color: yellow;}
+.gis_ia .timeSlider input[type=range] { background-color: yellow;}
 .ol-control button.playpauze {height: 33px; width: 33px; border-radius: 16px; background-position: center; background-repeat: no-repeat;}
 
 .wait-cursor {background-image: url(wait.gif); width: 32px; height: 32px;}
