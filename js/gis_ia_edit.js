@@ -65,6 +65,8 @@ var default_parameters={
 	'p': 0,				// Links boven: Position search
 	'pz': 10,			// Zoom after position search 
 	'f': 1,				// Rechts boven: Full-screen
+	'ts': 0,			// Rechts onder: Timeslider
+	'i': 2000,			// Rechts onder: Timeslider interval
 	// Data weergave
 	'm': '',			// Melding indien er geen data is gevonden
 	'w1': 0,			// Toon data window, 0=Rechts boven klik binnen de kaart, 1=Indien mogelijk onder de klik en 'over' de pagina
@@ -593,6 +595,7 @@ function gis_ia_init() {
 	d+='<tr><td>Kaartopties:</td><td><input type="checkbox" id="gis_ia_z" gis_ia="z"><label for="gis_ia_z" class="option"> In- en uitzoomen</label></td></tr>';
 	d+='<tr><td></td><td><input type="checkbox" id="gis_ia_e" gis_ia="e"><label for="gis_ia_e" class="option"> Zoom extend</label></td></tr>';
 	d+='<tr><td></td><td><input type="checkbox" id="gis_ia_f" gis_ia="f"><label for="gis_ia_f" class="option"> Full screen</label></td></tr>';
+	d+='<tr><td>Timeslider:</td><td><select gis_ol="ts"><option value="0">Nee</option><option value="1">Ja</option><option value="2">Ja, incl. play-knop</option></select></td><td class="gis_ol_ts_1">Interval:</td><td class="gis_ol_ts_1"><input type="number" min="500" max="5000" step="500" class="form-number" gis_ol="i"></td></tr>';
 	d+='<tr><td>Filtervelden gedrag:</td><td><select gis_ia="fg"><option value="0" selected="selected">Toon alle filters</option><option value="1">1 filter bij gelijke veldnamen</option><option value="2">1 filter bij gelijke labels</option></select></td></tr>';
 	d+='</table>';
 	d+='</div>';
