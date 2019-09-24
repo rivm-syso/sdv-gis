@@ -1132,52 +1132,6 @@ function GIS_paragraaf_start(map_id) {
 		});
 	}
 	
-	// knoppen rechtsonder
-	if (GIS_ia_maps[map_id].ts) {
-		window.app = {};
-		var app = window.app;
-		app.timeSlider = function(opt_options) {
-			var options = opt_options || {};
-			var handleTimeSlider = function() {hidePanels(map_id);togglePlay(map_id);};
-			var button='';
-                        
-			if (GIS_ia_maps[map_id].ts==2) {
-				button=document.createElement('button'); button.setAttribute('id','playpauze'+map_id); button.setAttribute('class','playpauze play'); button.setAttribute('title','Play slider'); button.innerHTML = '&nbsp;';
-				button.addEventListener('click', handleTimeSlider, false);
-				button.addEventListener('touchstart', handleTimeSlider, false);
-			}
-
-			var range = document.createElement('input'); range.setAttribute("id", "timeslider"+map_id); range.setAttribute("type", "range"); range.setAttribute("min", "0");  range.setAttribute("max", GIS_ia_maps[map_id].layers.length-1); range.setAttribute("type", "range"); range.setAttribute("title", "Slider"); if (GIS_ia_maps[map_id].ts==2) {range.setAttribute('class','play-left');}
-			range.setAttribute('onchange','if (!jQuery(\'#playpauze'+map_id+'\').hasClass(\'play\')) {togglePlay('+map_id+');} gotoLayer('+map_id+',parseInt(this.value,10));');
-			range.setAttribute('oninput','gotoLayer('+map_id+',parseInt(this.value,10));');
-			range.setAttribute('onfocus','hidePanels('+map_id+');');
-			var t,t1=false;
-			for (t=0;t<GIS_ia_maps[map_id].layers_def.length;t++) if (GIS_ia_maps[map_id].layers_def[t].visible_) {
-				range.setAttribute('value',t);
-				t=GIS_ia_maps[map_id].layers_def.length;
-				t1=true;
-			}
-			if (!t1) {range.setAttribute("value", "0"); }
-
-			var element = document.createElement('div');
-			var element2 = document.createElement('div');
-			element.className = 'ol-unselectable ol-control timeSlider';
-			element2.className = 'panel timeSliderLayer';
-			element2.id = 'timeSliderLayer'+map_id;
-			element.appendChild(element2);
-			if (button!='') {element.appendChild(button);}
-			element.appendChild(range);
-
-			ol.control.Control.call(this, {
-			  element: element,
-			  target: options.target
-			});
-
-		};
-		ol.inherits(app.timeSlider, ol.control.Control);
-		GIS_ia_maps[map_id].map.addControl(new app.timeSlider);
-	}
-
 	// Layer-data verwerken
 	if (GIS_ia_maps[map_id].ld) {
 		var lds=GIS_ia_maps[map_id].ld.split('|'), ld, ldt, dataVelden, inputVelden, dobj, dobj1, dobj_t, dobj_p, dobj_v, dobj_w, dobj_all, ldt1;
@@ -1300,6 +1254,52 @@ function GIS_paragraaf_start(map_id) {
 	if (GIS_ia_maps[map_id].fg==1) {
 		var filter = new ol.control.Filter({'map_id':map_id,className:'gis_ia_filter'+(GIS_ia_maps[map_id].p==0?'':' gis_ia_filter1')});
 		GIS_ia_maps[map_id].map.addControl(filter);
+	}
+
+	// knoppen rechtsonder
+	if (GIS_ia_maps[map_id].ts) {
+		window.app = {};
+		var app = window.app;
+		app.timeSlider = function(opt_options) {
+			var options = opt_options || {};
+			var handleTimeSlider = function() {hidePanels(map_id);togglePlay(map_id);};
+			var button='';
+                        
+			if (GIS_ia_maps[map_id].ts==2) {
+				button=document.createElement('button'); button.setAttribute('id','playpauze'+map_id); button.setAttribute('class','playpauze play'); button.setAttribute('title','Play slider'); button.innerHTML = '&nbsp;';
+				button.addEventListener('click', handleTimeSlider, false);
+				button.addEventListener('touchstart', handleTimeSlider, false);
+			}
+
+			var range = document.createElement('input'); range.setAttribute("id", "timeslider"+map_id); range.setAttribute("type", "range"); range.setAttribute("min", "0");  range.setAttribute("max", GIS_ia_maps[map_id].layers.length-1); range.setAttribute("type", "range"); range.setAttribute("title", "Slider"); if (GIS_ia_maps[map_id].ts==2) {range.setAttribute('class','play-left');}
+			range.setAttribute('onchange','if (!jQuery(\'#playpauze'+map_id+'\').hasClass(\'play\')) {togglePlay('+map_id+');} gotoLayer('+map_id+',parseInt(this.value,10));');
+			range.setAttribute('oninput','gotoLayer('+map_id+',parseInt(this.value,10));');
+			range.setAttribute('onfocus','hidePanels('+map_id+');');
+			var t,t1=false;
+			for (t=0;t<GIS_ia_maps[map_id].layers_def.length;t++) if (GIS_ia_maps[map_id].layers_def[t].visible_) {
+				range.setAttribute('value',t);
+				t=GIS_ia_maps[map_id].layers_def.length;
+				t1=true;
+			}
+			if (!t1) {range.setAttribute("value", "0"); }
+
+			var element = document.createElement('div');
+			var element2 = document.createElement('div');
+			element.className = 'ol-unselectable ol-control timeSlider';
+			element2.className = 'panel timeSliderLayer';
+			element2.id = 'timeSliderLayer'+map_id;
+			element.appendChild(element2);
+			if (button!='') {element.appendChild(button);}
+			element.appendChild(range);
+
+			ol.control.Control.call(this, {
+			  element: element,
+			  target: options.target
+			});
+
+		};
+		ol.inherits(app.timeSlider, ol.control.Control);
+		GIS_ia_maps[map_id].map.addControl(new app.timeSlider);
 	}
 	
 	// popup; Het window dat wordt getoond als de websitebezoeker op de kaart klikt
