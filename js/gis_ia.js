@@ -1525,6 +1525,7 @@ function GIS_paragraaf_start(map_id) {
 				break;
 			default:
 				//jQuery('#popup-content'+map_id).html('<div style="max-height: '+(jQuery('#gis_ia_map_'+map_id).height()-120)+'px; overflow-y: auto;">'+txt+'</div>');
+				jQuery('#popup'+map_id).show();
 				jQuery('#popup-content'+map_id).css({'max-height':(jQuery('#gis_ia_map_'+map_id).height()-40)+'px', 'max-width': '100%','overflow': 'auto'});
 				jQuery('#popup-content'+map_id).html('<div>'+txt+'</div>');
 				if (GIS_ia_maps[map_id].popupCenter===false) {
