@@ -534,7 +534,7 @@ function gis_ia_init() {
 		}
 		// voeg elke parameter uit default_parameters toe aan body als deze niet in body bestaat, of verleng deze indien nodig
 		for (key in default_parameters) {
-			if (key=='u' || key=='ld' || (key!='tmp' && !default_parameters.hasOwnProperty(key))) continue;
+			if (key=='ld' || (key!='tmp' && !default_parameters.hasOwnProperty(key))) continue;
 			for (t=0,regel=-1;t<regels.length;t++) {
 				pos=regels[t].indexOf('='); parm=regels[t].substr(0,pos);
 				if (key==parm) {regel=t; t=regels.length;}
