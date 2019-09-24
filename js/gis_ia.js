@@ -891,10 +891,8 @@ function gis_ia_get_layer_div(map_id) {
 		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');">';
 		r+='<label for="gis_ia_l_'+map_id+'_'+t+'" style="width: 100%;">'+l.title+'</label>';
 		if (extra_info) {
-//			r+='<span onclick="jQuery(\'#gis_ia_l_i_'+map_id+'_'+t+'\').toggle();" class="gis_ia_filters_button gis_ia_info_button" style="position: absolute !important;">&nbsp;</span>';
-			r+='<span id="gis_ia_l_i_'+map_id+'_'+t+'_i" onclick="jQuery(\'#gis_ia_l_i_'+map_id+'_'+t+'\').position({my: \'left top\',at: \'right top\',of: \'#gis_ia_l_i_'+map_id+'_'+t+'_i\'}).show();" class="gis_ia_filters_button gis_ia_info_button" style="position: absolute !important;">&nbsp;</span>';
-			
-			r+='<div id="gis_ia_l_i_'+map_id+'_'+t+'" style="display: none;" class="panel">';
+			r+='<span onclick="jQuery(\'#gis_ia_l_i_'+map_id+'_'+t+'\').toggle();" class="gis_ia_filters_button gis_ia_info_button" style="position: absolute !important;">&nbsp;</span>';
+			r+='<div id="gis_ia_l_i_'+map_id+'_'+t+'" style="display: none; position: absolute; margin: -22px 0 0 285px;" class="panel">';
 			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div>Transparantie - +</div>';}
 			if (GIS_ia_maps[map_id].l.substr(3,1)==='1') {r+='<div>Download</div>';}
 			if (GIS_ia_maps[map_id].l.substr(4,1)==='1') {r+='<div>Data.rivm.nl Open</div>';}
