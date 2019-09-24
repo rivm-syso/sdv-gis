@@ -36,3 +36,11 @@
 .gis_ia input[type=range]::-webkit-slider-runnable-track {background: #e17000; border: solid 1px #e17000;}
 .gis_ia input[type=range]::-moz-range-track {background: #e17000; border: solid 1px #e17000;}
 .gis_ia input[type=range]::-ms-track {background: #e17000;}
+
+/* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
+#timeslider {width: calc(100% - 37px); margin-left: 4px;}
+.gis_ol .timeSlider input[type=range]::-webkit-slider-thumb {background-image: url(gis-ol-timeslider.png); background-color: #e17000;}
+.gis_ol .timeSlider input[type=range]::-moz-range-thumb {background-image: url(gis-ol-timeslider.png); background-color: #e17000;}
+.gis_ol .timeSlider input[type=range]::-ms-thumb {background-image: url(gis-ol-timeslider.png); background-color: #e17000;}
+.ol-control button.playpauze {background-image: url(gis-ol-play.png);}
+.ol-control button.playpauze.pauze {background-image: url(gis-ol-pauze.png);}
