@@ -656,10 +656,10 @@ function filterwindowCheck(map_id, force) {
 			jQuery('#f1b-'+map_id).hide();
 			jQuery('#f3b-'+map_id).hide();
 			jQuery('#f2-'+map_id).show();
-			jQuery('#gis_ia_filters_'+map_id).removeClass('as-overlay');
+			jQuery('#gis_ia_filters_'+map_id).removeClass('gis_ia_as_overlay');
 		} else { // switch naar 'hidden/shown' filterblock
 			filterwindowCheckHide(map_id);
-			jQuery('#gis_ia_filters_'+map_id).addClass('as-overlay');
+			jQuery('#gis_ia_filters_'+map_id).addClass('gis_ia_as_overlay');
 		}
 		jQuery('#gis_ia_filters_'+map_id).css('max-height',jQuery('#gis_ia_map_'+map_id).css('max-height')+'px');
 	}
