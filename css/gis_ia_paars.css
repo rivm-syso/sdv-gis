@@ -39,8 +39,8 @@
 
 /* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
 #timeslider {width: calc(100% - 37px); margin-left: 4px;}
-.gis_ol .timeSlider input[type=range]::-webkit-slider-thumb {background-image: url(gis-ol-timeslider-white.png); background-color: #42145f;}
-.gis_ol .timeSlider input[type=range]::-moz-range-thumb {background-image: url(gis-ol-timeslider-white.png); background-color: #42145f;}
-.gis_ol .timeSlider input[type=range]::-ms-thumb {background-image: url(gis-ol-timeslider-white.png); background-color: #42145f;}
+.gis_ia .timeSlider input[type=range]::-webkit-slider-thumb {background-image: url(gis-ol-timeslider-white.png); background-color: #42145f;}
+.gis_ia .timeSlider input[type=range]::-moz-range-thumb {background-image: url(gis-ol-timeslider-white.png); background-color: #42145f;}
+.gis_ia .timeSlider input[type=range]::-ms-thumb {background-image: url(gis-ol-timeslider-white.png); background-color: #42145f;}
 .ol-control button.playpauze {background-image: url(gis-ol-play-white.png);}
 .ol-control button.playpauze.pauze {background-image: url(gis-ol-pauze-white.png);}
