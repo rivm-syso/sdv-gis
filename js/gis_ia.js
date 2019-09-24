@@ -442,7 +442,7 @@ var gis_ia_filters={
 		for (t=0;t<t1;t++) {r+=GIS_ia_maps[map_id].fs[t].x_button(0);}
 		r+='</div>';
 		for (t=0;t<t1;t++) {r+=GIS_ia_maps[map_id].fs[t].html(0);}
-		r='<div><div class="gis_ia_f_def">Filters></div><div class="gis_ia_no_filters" id="gis_ia_no_filters_'+map_id+'">0 Filters</div><button style="float: right;" class="gis_ia_filters_button" onclick="gis_ia_filters.reset('+map_id+');">Verwijder filters</button></div>'+r;
+		r='<div><div class="gis_ia_f_def">Filters</div><div class="gis_ia_no_filters" id="gis_ia_no_filters_'+map_id+'">0 Filters</div><button style="float: right;" class="gis_ia_filters_button" onclick="gis_ia_filters.reset('+map_id+');">Verwijder filters</button></div>'+r;
 		return r;
 	},
 	// deze functie geeft change signaal aan het juiste element (zodat beeld kan worden bijgewerkt) en handelt 
@@ -861,8 +861,8 @@ function gis_ia_get_layer_div(map_id) {
 	var t, l, r,radio,extra_info;
 	r='<div class="gis_ia_filters_def">';
 	if (GIS_ia_maps[map_id].base_layers.length>=2) {
-		r+='<div id="gis_ia_bl_'+map_id+'_def" class="gis_ia_bl_def">Basiskaart</div>';
-		for (t=0;t<GIS_ia_maps[map_id].base_layers.length;t++) {
+		r+='<div id="gis_ia_bl_'+map_id+'_def" class="gis_ia_bl_def">Basiskaarten</div>';
+		for (t=0;t<GIS_ia_maps[map_id].base_layers.length;t++) if (GIS_ia_maps[map_id].base_layers[t].typ=='base') {
 			r+='<div id="gis_ia_bl_'+map_id+'_'+t+'_parent">';
 			r+='<input type="radio" name="gis_ia_bl_'+map_id+'" id="gis_ia_bl_'+map_id+'_'+t+'" '+(t==0?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',0,'+t+');">';
 			r+='<label for="gis_ia_bl_'+map_id+'_'+t+'">'+GIS_ia_maps[map_id].base_layers[t].get('title')+'</label>';

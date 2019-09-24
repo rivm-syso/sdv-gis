@@ -18,7 +18,7 @@
 .gis_ia_filters .f2 {padding: 8px 12px 8px 8px;}
 .gis_ia_filters.as-overlay .f2 {padding-left: 8px;}
 // berekening max-width:	flex-breedte van .map-holder.gis_ia en .gis_ia_filters plus 1 (dus 700 + 300 + 1 = 1001)
-@media all and (max-width: 1001px) {
+@media (max-width: 1001px) {
 	.gis_ia_base {display: block;}
 	.gis_ia_filters {display: block; width: initial; z-index: 20; position: absolute;}
 	.map-holder.gis_ia {display: block; width: 100%;}
@@ -29,7 +29,7 @@
 
 /* filters styling */
 .gis_ia_filters_def {margin-top: -20px;}
-.gis_ia_f_def,.gis_ia_bl_def,.gis_ia_l_def {font-size: 1.1em; font-weight: bold;margin-top: 20px;}
+.gis_ia_f_def,.gis_ia_bl_def,.gis_ia_l_def {font-size: 1.1em; font-weight: bold;margin: 20px 0 8px 0;}
 .gis_ia_filters input[type="checkbox"], .gis_ia_filters input[type="radio"] {margin-right: 20px; vertical-align: top;}
 .gis_ia_filters input.gis_ia_input, .gis_ia_filters select.gis_ia_input {outline: none;-webkit-appearance: none;-moz-appearance: none; appearance: none;width: 100%; height: 36px; border: 1px solid black; padding: 4px;}
 .gis_ia_filters label {font-weight: normal; display: inline-block; max-width: calc(100% - 34px);}
