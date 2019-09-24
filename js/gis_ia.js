@@ -870,9 +870,10 @@ function performMelding(map_id,layerNo,coordinate) {
 }
 
 function gis_ia_get_layer_div(map_id) {
-	var t, l, r,radio,extra_info;
+	var t, t1, l, r,radio,extra_info;
 	r='<div class="gis_ia_filters_def">';
-	if (GIS_ia_maps[map_id].base_layers.length>=2) {
+	for (t=0,t1=0;t<GIS_ia_maps[map_id].base_layers.length;t++) if (GIS_ia_maps[map_id].base_layers[t].typ=='base') {t1++;}
+	if (t1>=2) {
 		r+='<div id="gis_ia_bl_'+map_id+'_def" class="gis_ia_bl_def">Basiskaarten</div>';
 		for (t=0;t<GIS_ia_maps[map_id].base_layers.length;t++) if (GIS_ia_maps[map_id].base_layers[t].typ=='base') {
 			r+='<div id="gis_ia_bl_'+map_id+'_'+t+'_parent">';
