@@ -551,7 +551,7 @@ var gis_ia_filters={
 		});
 		html=aantal+' Filter'+(aantal==1?'':'s');
 		jQuery('#gis_ia_no_filters_'+map_id).html(html);
-		jQuery('#gis_ia_filter_button_'+map_id).html(html);
+		//jQuery('#gis_ia_filter_button_'+map_id).html(html);
 	}
 };
 
@@ -581,7 +581,9 @@ var gis_ia_filters={
         this.shownClassName = 'shown';
 
         var element = document.createElement('div'); element.className = this.hiddenClassName;
-        var button = document.createElement('button'); button.setAttribute('title', 'Filtering'); button.setAttribute('id', 'gis_ia_filter_button_'+map_id); button.innerHTML='0 Filters'; button.className='gis_ia_filter_button'; element.appendChild(button);
+        var button = document.createElement('button'); button.setAttribute('title', 'Filtering'); button.setAttribute('id', 'gis_ia_filter_button_'+map_id); 
+		button.innerHTML='Opties'; // was ooit '0 Filters'; 
+		button.className='gis_ia_filter_button'; element.appendChild(button);
         button.onclick = function(e) {
             e = e || window.event; e.preventDefault();
 			hidePanels(map_id);
