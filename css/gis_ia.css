@@ -16,8 +16,8 @@
 .map-holder.gis_ia {flex: 1 0 700px; vertical-align: top;}
 .gis_ia_filters {flex: 0 1 300px; vertical-align: top; overflow: auto;}
 .gis_ia_filters .f2 {padding: 8px 12px 8px 8px;}
-.gis_ia_filters.gis_ia_as_overlay .f2 {padding-left: 8px;}
-/* berekening max-width:	flex-breedte van .map-holder.gis_ia en .gis_ia_filters plus 1 (dus 700 + 300 + 1 = 1001) */
+.gis_ia_filters.as-overlay .f2 {padding-left: 8px;}
+// berekening max-width:	flex-breedte van .map-holder.gis_ia en .gis_ia_filters plus 1 (dus 700 + 300 + 1 = 1001)
 @media all and (max-width: 1001px) {
 	.gis_ia_base {display: block;}
 	.gis_ia_filters {display: block; width: initial; z-index: 20; position: absolute;}
@@ -69,6 +69,7 @@
 .gis_ia_zoom_extent {z-index: 1;}
 .gis_ia_fullscreen {z-index: 2;}
 .gis_ia_position2 {z-index: 3;}
+.timeSlider {z-index: 5;}
 
 /* Edit pagina beter leesbaar maken */
 .gis_ia_edit_table {width: initial;}
@@ -83,6 +84,13 @@
 .autocomplete-suggestion { padding: 5px; overflow: hidden;line-height: 125%;}
 .autocomplete-selected {cursor: pointer;}
 .autocomplete-suggestions strong {text-decoration: underline;}
+
+/* Timeslider CSS */
+.playpauze {position: relative !important; display: inline-block !important;}
+.playpauze.play {}
+.playpauze.pauze {}
+.timeSliderLayer {margin: 0 0 12px 0 !important; display: none;}
+.timeSlider {max-width: calc(100% - 200px); width: 200px;}
 
 
 /* Popup & Panel */
@@ -134,6 +142,9 @@
 .ol-control.gis_ia_filter {left: 8px; top: 8px;}
 .ol-control.gis_ia_filter1 {top: 68px;}
 
+/* posities knoppen rechtsonder */
+.ol-control.timeSlider {right: 8px; bottom: 8px;}
+
 /* uiterlijk knoppen */
 .ol-control button.gis_ia_zoom-in {font-size: 0 !important; border-bottom-left-radius: 0; border-bottom-right-radius: 0; height: 27px; border-bottom-width: 0;background-repeat: no-repeat;}
 .ol-control button.gis_ia_zoom-out {font-size: 0 !important; border-top-left-radius: 0; border-top-right-radius: 0; height: 27px;background-repeat: no-repeat;}
@@ -143,6 +154,7 @@
 .gis_ia_zoekveld {margin: 0; border-top-width: 0; border-left-width: 0; border-bottom-width: 0; width: calc(100% - 76px); height:33px; padding: 0 4px;}
 .gis_ia_zoekknop {border-width: 0 !important; border-radius: 0 !important; background-repeat: no-repeat;}
 .gis_ia_gotopos {border-width: 0 !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;background-repeat: no-repeat;}
+.timeSlider input[type=range].play-left {width: calc(100% - 38px); margin: 0 4px 0 0 !important; float: left; height: 33px;}
 .opaMelder {position: absolute; z-index: 1000; padding: 0 3px; border: solid 1px black;}
 .gis_ia_filter_button {display: none; width: auto !important; white-space: nowrap; padding: 0 12px 0 4px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;}
 
@@ -159,5 +171,17 @@
 .gis_ia input[type=range]:focus::-webkit-slider-runnable-track {}
 .gis_ia input[type=range]::-moz-range-track {cursor: pointer;}
 .gis_ia input[type=range]::-ms-track {cursor: pointer; background: transparent; border-color: transparent; border-width: 0; color: transparent;}
+
+/* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
+#timeslider {width: calc(100% - 37px); margin-left: 4px;}
+
+.gis_ia input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px;}
+.gis_ia input[type=range]::-moz-range-track {width: 100%; height: 4px;}
+.gis_ia input[type=range]::-ms-track { width: 100%; height: 4px;}
+
+.gis_ia .timeSlider input[type=range]::-webkit-slider-thumb {height: 35px; width: 45px; margin-top: -17px; border-radius: 17px; background-repeat: no-repeat;background-position: center;}
+.gis_ia .timeSlider input[type=range]::-moz-range-thumb {height: 31px; width: 41px; margin-top: -15px; border-radius: 16px; background-repeat: no-repeat;background-position: center;}
+.gis_ia .timeSlider input[type=range]::-ms-thumb { height: 31px; width: 41px; margin-top: 0px; border-radius: 16px; background-repeat: no-repeat;background-position: center;}
+.ol-control button.playpauze {height: 33px; width: 33px; border-radius: 16px; background-position: center; background-repeat: no-repeat;}
 
 .wait-cursor {background-image: url(wait.gif); width: 32px; height: 32px;}
