@@ -31,7 +31,7 @@
 .gis_ia_filters_def {margin-top: -20px;}
 .gis_ia_f_def,.gis_ia_bl_def,.gis_ia_l_def {font-size: 1.1em; font-weight: bold;margin: 20px 0 8px 0;}
 .gis_ia_filters input[type="checkbox"], .gis_ia_filters input[type="radio"] {margin-right: 20px; vertical-align: top;}
-.gis_ia_filters input.gis_ia_input, .gis_ia_filters select.gis_ia_input {outline: none;-webkit-appearance: none;-moz-appearance: none; appearance: none;width: 100%; height: 36px; border: 1px solid black; padding: 4px;}
+.gis_ia_filters input.gis_ia_input, .gis_ia_filters select.gis_ia_input {background: white; outline: none;-webkit-appearance: none;-moz-appearance: none; appearance: none;width: 100%; height: 36px; border: 1px solid black; padding: 4px;}
 .gis_ia_filters label {font-weight: normal; display: inline-block; max-width: calc(100% - 34px);}
 .gis_ia_filters div.gis_ia_input {display: inline-block; position: relative;}
 .gis_ia_filters div.gis_ia_input50 {width: 50%;}
