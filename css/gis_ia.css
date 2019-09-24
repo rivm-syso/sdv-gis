@@ -13,7 +13,7 @@
 /* Filters naast of op de kaart */
 /* berekening:   width van .map-holder.gis_ia = 260px    =>     width van .gis_ia_filters = 260 - 4 - 2*8 = 240px, de 4 vanwege drupal css en de 2*8 vanwege de padding */
 .gis_ia_base {display: flex;}
-.map-holder.gis_ia {flex: 1 0 700px; vertical-align: top;}
+.map-holder.gis_ia {flex: 1 0 700px; vertical-align: top; background-color: white;}
 .gis_ia_filters {flex: 0 1 300px; vertical-align: top; overflow: auto;}
 .gis_ia_filters .f2 {padding: 8px 12px 8px 8px;}
 .gis_ia_filters.as-overlay .f2 {padding-left: 8px;}
@@ -62,7 +62,7 @@
 .panel .button, .ol-popup-2 .button {cursor: pointer; border-radius: 0 !important; background-image: none !important;}
 .gis_ia .gis_ia_filters_close button, .gis_ia .gis_ia_filters_toon button {position: initial !important;}
 .gis_ia_filters_button {cursor: pointer; outline: none; display: inline-block; border-radius: 16px; margin: 0; padding: 4px 12px; width: auto !important; position: relative !important;}
-.gis_ia_info_button {background-repeat: no-repeat;}
+.gis_ia_info_button {background-repeat: no-repeat; background-position: 4px 3px;}
 /* zorgen dat breedte popup gemaximaliseerd wordt */
 .ol-overlay-container.ol-selectable {width: 100%;}
 .ol-popup {max-width: calc(100% - 70px);}
