@@ -1317,6 +1317,7 @@ function GIS_paragraaf_start(map_id) {
 		GIS_ia_maps[map_id].map.addControl(new app.timeSlider);
 	}
 	
+	map.append('<div id="popup'+map_id+'" class="ol-popup" style="display: none;"><a href="#" id="popup-closer'+map_id+'" class="ol-popup-closer"></a><div id="popup-content'+map_id+'"></div></div>');
 	// popup; Het window dat wordt getoond als de websitebezoeker op de kaart klikt
 	var container = document.getElementById('popup'+map_id);
 	var content = document.getElementById('popup-content'+map_id);
@@ -1590,7 +1591,6 @@ function GIS_paragraaf_start(map_id) {
 				}
 			}
 		});*/
-		map.append('<div id="popup'+map_id+'" class="ol-popup" style="display: none;"><a href="#" id="popup-closer'+map_id+'" class="ol-popup-closer"></a><div id="popup-content'+map_id+'"></div></div>');
 		GIS_ia_maps[map_id].map.on('singleclick', function(evt) {
 			filterwindowCheckHide(map_id);
 			if (GIS_ia_maps[map_id].layerDataToDo>=1) {return;}
