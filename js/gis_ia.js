@@ -1714,6 +1714,64 @@ function fullscreenChange(map_id) {
 		filterwindowCheck(map_id,force);
 	}
 }
+/*  Functies voor de timeslider:
+	- laagControlText		toon de laagnaam boven de timeslider
+	- gotoLayer(newLayer) 	zet een nieuwe laag aan (en de oude uit)
+	- togglePlay() 			(start/stop) zet alle lagen uit en start met tonen van de eerste laag
+	- playing				schakelt naar de volgende laag (en stopt bij de laatste laag)
+	Gebruikte globale variabelen:
+	- playAt				houdt bij hoe evr het afslepen is (laagnummer)
+	- playN					variable met de timeout
+	- playCT				variable met de timeout voor de laagnaam
+*/
+function laagControlText(map_id,lno) {
+	var el=jQuery('#timeSliderLayer'+map_id);
+	if (el.length==1) {
+		if (playCT>0) {clearTimeout(playCT);}
+		var t=GIS_ol_maps[map_id].layers_def[lno].title;
+		el.html(t).show();
+		playCT=setTimeout('jQuery(\'#timeSliderLayer'+map_id+'\').hide().html(\'\');',GIS_ol_maps[map_id].i);
+	}
+}
+
+function gotoLayer(map_id,newLayer) {
+    if (newLayer!=GIS_ol_maps[map_id].currentLayer) {
+        if (GIS_ol_maps[map_id].currentLayer>=0) {GIS_ol_maps[map_id].layers[GIS_ol_maps[map_id].currentLayer].setVisible(false);}
+        GIS_ol_maps[map_id].currentLayer=newLayer;
+        if (GIS_ol_maps[map_id].currentLayer>=0) {GIS_ol_maps[map_id].layers[GIS_ol_maps[map_id].currentLayer].setVisible(true);}
+        laagControlText(map_id,newLayer);
+    }
+}
+var playAt=-1, playN=0, playCT=0;
+function togglePlay(map_id) {
+    el=jQuery('#playpauze'+map_id);
+    if (el.hasClass('play')) {
+        for (var t=1;t<GIS_ol_maps[map_id].layers.length;t++) {
+            if (GIS_ol_maps[map_id].layers[t].getVisible()) {GIS_ol_maps[map_id].layers[t].setVisible(false);}
+        }
+        if (!GIS_ol_maps[map_id].layers[0].getVisible()) {GIS_ol_maps[map_id].layers[0].setVisible(true);}
+        el.removeClass('play').addClass('pauze');
+        playAt=0; jQuery('#timeslider'+map_id).val(1); jQuery('#timeslider'+map_id).val(0);
+        gotoLayer(map_id,0);
+        laagControlText(map_id,0);
+        playing(map_id);
+    } else {
+        if (GIS_ol_maps[map_id].currentLayer>0) { // prevent clicking when just started
+            el.removeClass('pauze').addClass('play');
+            if (playN>0) {clearTimeout(playN);}
+        }
+    }
+}
+function playing(map_id) {
+    playN=setTimeout(function(){
+        if (playAt<GIS_ol_maps[map_id].layers.length-1) {
+            playAt++; jQuery('#timeslider'+map_id).val(playAt); gotoLayer(map_id,playAt); playing(map_id);
+        } else {
+            el=jQuery('#playpauze'+map_id);
+            el.removeClass('pauze').addClass('play');
+        }
+    },GIS_ol_maps[map_id].i);
+}
 
 function hidePanels(map_id) {
 	el=jQuery('#gis_ia_map_'+map_id).find('.filter');
