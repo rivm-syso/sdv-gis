@@ -17,7 +17,7 @@
 .gis_ia_filters {flex: 0 1 300px; vertical-align: top; overflow: auto;}
 .gis_ia_filters .f2 {padding: 8px 12px 8px 8px;}
 .gis_ia_filters.gis_ia_as_overlay .f2 {padding-left: 8px;}
-// berekening max-width:	flex-breedte van .map-holder.gis_ia en .gis_ia_filters plus 1 (dus 700 + 300 + 1 = 1001)
+/* berekening max-width:	flex-breedte van .map-holder.gis_ia en .gis_ia_filters plus 1 (dus 700 + 300 + 1 = 1001) */
 @media all and (max-width: 1001px) {
 	.gis_ia_base {display: block;}
 	.gis_ia_filters {display: block; width: initial; z-index: 20; position: absolute;}
