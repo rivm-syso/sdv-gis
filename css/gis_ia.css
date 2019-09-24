@@ -62,6 +62,7 @@
 .panel .button, .ol-popup-2 .button {cursor: pointer; border-radius: 0 !important; background-image: none !important;}
 .gis_ia .gis_ia_filters_close button, .gis_ia .gis_ia_filters_toon button {position: initial !important;}
 .gis_ia_filters_button {cursor: pointer; outline: none; display: inline-block; border-radius: 16px; margin: 0; padding: 4px 12px; width: auto !important; position: relative !important;}
+.gis_ia_info_button {background-repeat: no-repeat;}
 /* zorgen dat breedte popup gemaximaliseerd wordt */
 .ol-overlay-container.ol-selectable {width: 100%;}
 .ol-popup {max-width: calc(100% - 70px);}

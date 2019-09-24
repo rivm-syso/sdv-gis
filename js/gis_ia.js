@@ -497,17 +497,22 @@ var gis_ia_filters={
 		jQuery('[id^=gis_ia_f2_'+map_id+'_]').val('');
 		jQuery('[id^=gis_ia_f_'+map_id+'_]').each(function(t,el) {
 			el=jQuery(el);
-			if (el.prop('tagName')=='INPUT') {
-				switch (el.attr('type')) {
-					case 'checkbox':
-					case 'radio':
-						el.prop('checked',false);
-						jQuery(el.parent()).show();
-						break;
-					default:
-						el.val('');
-						break;
-				}
+			switch (el.prop('tagName')) {
+				case 'INPUT':
+					switch (el.attr('type')) {
+						case 'checkbox':
+						case 'radio':
+							el.prop('checked',false);
+							jQuery(el.parent()).show();
+							break;
+						default:
+							el.val('');
+							break;
+					}
+					break;
+				case 'SELECT':
+					el.val(-1);
+					break;
 			}
 			this_.change(map_id,el.prop('id'));
 		});
@@ -885,7 +890,7 @@ function gis_ia_get_layer_div(map_id) {
 		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');">';
 		r+='<label for="gis_ia_l_'+map_id+'_'+t+'" style="width: 100%;">'+l.title+'</label>';
 		if (extra_info) {
-			r+='<span onclick="jQuery(\'#gis_ia_l_i_'+map_id+'_'+t+'\').toggle();" class="gis_ia_filters_button" style="position: absolute !important;">I</span>';
+			r+='<span onclick="jQuery(\'#gis_ia_l_i_'+map_id+'_'+t+'\').toggle();" class="gis_ia_filters_button gis_ia_info_button" style="position: absolute !important;">I</span>';
 			r+='<div id="gis_ia_l_i_'+map_id+'_'+t+'" style="display: none;" class="panel">';
 			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div>Transparantie - +</div>';}
 			if (GIS_ia_maps[map_id].l.substr(3,1)==='1') {r+='<div>Download</div>';}
