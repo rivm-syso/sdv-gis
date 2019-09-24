@@ -583,7 +583,7 @@ var gis_ia_filters={
         var element = document.createElement('div'); element.className = this.hiddenClassName;
         var button = document.createElement('button'); button.setAttribute('title', 'Filtering'); button.setAttribute('id', 'gis_ia_filter_button_'+map_id); 
 		button.innerHTML='Opties'; // was ooit '0 Filters'; 
-		button.className='gis_ia_filter_button'; element.appendChild(button);
+		button.className='gis_ia_filter_button gis_ia_options_button'; element.appendChild(button);
         button.onclick = function(e) {
             e = e || window.event; e.preventDefault();
 			hidePanels(map_id);

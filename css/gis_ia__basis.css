@@ -27,6 +27,7 @@
 .gis_ia_zoekknop {border-right: solid 1px {{KLEUR-2}}  !important; background-image: url(gis-ol-zoek{{KLEUR-white-png}}.png);}
 .gis_ia_gotopos {background-image: url(gis-ol-position2{{KLEUR-white-png}}.png);}
 .legenda button {background-image: url(gis-ol-legenda{{KLEUR-white-png}}.png);}
+.gis_ia_options_button {background-image: url(gis-ol-options{{KLEUR-white-png}}.png);}
 
 /* DEFAULT: alles voor de thumb, voor verschillende browsers  */
 .gis_ia input[type=range]::-webkit-slider-thumb {background: {{KLEUR-0}}; border: solid 1px #535353;}
