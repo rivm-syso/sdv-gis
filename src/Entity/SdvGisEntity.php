@@ -255,7 +255,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE)
-      ->setRequired(TRUE);
+      ->setRequired(FALSE);
 
       $fields['gis_ia_layers'] = BaseFieldDefinition::create('string_long')
       ->setLabel(t('GIS IA Layers'))
@@ -276,7 +276,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE)
-      ->setRequired(TRUE);
+      ->setRequired(FALSE);
 
     $fields['status']->setDescription(t('A boolean indicating whether the Sdv gis entity is published.'))
       ->setDisplayOptions('form', [

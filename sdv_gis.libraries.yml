@@ -26,97 +26,97 @@ sdv_gis_edit:
     - core/jquery
     - core/drupal.dialog.ajax
     - core/drupal.dropbutton
-gis_ia_automatisch:
+sdv_gis_automatisch:
   version: 1.0
   css:
     layout:
       css/gis_ia_donkergroen.css: {}
-gis_ia_bruin:
+sdv_gis_bruin:
   version: 1.0
   css:
     layout:
       css/gis_ia_bruin.css: {}
-gis_ia_donkerblauw:
+sdv_gis_donkerblauw:
   version: 1.0
   css:
     layout:
       css/gis_ia_donkerblauw.css: {}
-gis_ia_donkerbruin:
+sdv_gis_donkerbruin:
   version: 1.0
   css:
     layout:
       css/gis_ia_donkerbruin.css: {}
-gis_ia_donkergeel:
+sdv_gis_donkergeel:
   version: 1.0
   css:
     layout:
       css/gis_ia_donkergeel.css: {}
-gis_ia_donkergroen:
+sdv_gis_donkergroen:
   version: 1.0
   css:
     layout:
       css/gis_ia_donkergroen.css: {}
-gis_ia_geel:
+sdv_gis_geel:
   version: 1.0
   css:
     layout:
       css/gis_ia_geel.css: {}
-gis_ia_groen:
+sdv_gis_groen:
   version: 1.0
   css:
     layout:
       css/gis_ia_groen.css: {}
-gis_ia_hemelblauw:
+sdv_gis_hemelblauw:
   version: 1.0
   css:
     layout:
       css/gis_ia_hemelblauw.css: {}
-gis_ia_lichtblauw:
+sdv_gis_lichtblauw:
   version: 1.0
   css:
     layout:
       css/gis_ia_lichtblauw.css: {}
-gis_ia_mintgroen:
+sdv_gis_mintgroen:
   version: 1.0
   css:
     layout:
       css/gis_ia_mintgroen.css: {}
-gis_ia_mosgroen:
+sdv_gis_mosgroen:
   version: 1.0
   css:
     layout:
       css/gis_ia_mosgroen.css: {}
-gis_ia_oranje:
+sdv_gis_oranje:
   version: 1.0
   css:
     layout:
       css/gis_ia_oranje.css: {}
-gis_ia_paars:
+sdv_gis_paars:
   version: 1.0
   css:
     layout:
       css/gis_ia_paars.css: {}
-gis_ia_robijnrood:
+sdv_gis_robijnrood:
   version: 1.0
   css:
     layout:
       css/gis_ia_robijnrood.css: {}
-gis_ia_rood:
+sdv_gis_rood:
   version: 1.0
   css:
     layout:
       css/gis_ia_rood.css: {}
-gis_ia_roze:
+sdv_gis_roze:
   version: 1.0
   css:
     layout:
       css/gis_ia_roze.css: {}
-gis_ia_violet:
+sdv_gis_violet:
   version: 1.0
   css:
     layout:
       css/gis_ia_violet.css: {}
-gis_ia_wit:
+sdv_gis_wit:
   version: 1.0
   css:
     layout:

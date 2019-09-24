@@ -39,37 +39,16 @@ function sdv_gis_theme($existing, $type, $theme, $path) {
  * implements hook_preprocess_HOOK()
  */
 function template_preprocess_sdv_gis_entity(&$variables) {
-  // Helpful $content variable for templates.
-  $variables['content'] = [];
-  foreach (\Drupal\Core\Render\Element::children($variables['elements']) as $key) {
-    $variables['content'][$key] = $variables['elements'][$key];
-  }
+	// Helpful $content variable for templates.
+	$variables['content'] = [];
+	foreach (\Drupal\Core\Render\Element::children($variables['elements']) as $key) {
+	$variables['content'][$key] = $variables['elements'][$key];
+	}
   
-	$sdv_gis_entity_id='1';
 	$uiterlijk='groen';
 
 	$parms='';
 	// gewone parameters klaar zetten
-	/*
-	$body=sdv_gis__get_value($entity,'gis_ia_params');
-	$body=preg_replace("/\r\n/","\r",$body);
-	$body=preg_replace("/\n/","\r",$body);
-	$body=explode("\r",$body);
-	foreach ($body as $b) {
-		if (substr($b,0,2)=='m=') {$b='m='.base64_encode(htmlspecialchars(trim(substr($b,2))));}
-		$parms.=($parms==''?'':',').$b;
-		if (substr($b,0,2)=='u=') {$uiterlijk=substr($b,2);}
-	}*/
-	// layer_definities er achter plakken
-	/*
-	$ldefs=str_replace("\r\n","\r",sdv_gis__get_value($entity,'gis_ia_layers'));
-	$ldefs=str_replace("\n","\r",$ldefs);
-	$ldefs=explode("\r",$ldefs);
-	$parms.=',ld=';
-	foreach ($ldefs as $ldef) {
-		if ($ldef!='') {$parms.=base64_encode($ldef).'|';}
-	}*/
-
 	$body=$variables['elements']['gis_ia_params'][0]['#context']['value'];
 	$body=preg_replace("/\r\n/","\r",$body);
 	$body=preg_replace("/\n/","\r",$body);
@@ -91,76 +70,6 @@ function template_preprocess_sdv_gis_entity(&$variables) {
 	$variables['node_id']=$variables['elements']['#contextual_links']['sdv_gis_entity']['route_parameters']['sdv_gis_entity'];
 	$variables['dwnld']=__DIR__;
 	$variables['parms']=$parms;
-/*	
-{'elements':{
-	'#sdv_gis_entity':{},
-	'#view_mode':'full',
-	'#cache':{'tags':['sdv_gis_entity:1','sdv_gis_entity_view'],'contexts':['user.permissions'],'max-age':-1},
-	'#theme':'sdv_gis_entity',
-	'#weight':0,
-	'#pre_render':[[{},'build'],[{},'buildTitle']],
-	'#entity_type':'sdv_gis_entity',
-	'#attached':{'library':['sdv_gis\/sdv_gis','sdv_gis\/sdv_gisdonkerblauw']},
-	'#contextual_links':{
-		'sdv_gis_entity':{
-			'route_parameters':{
-				'sdv_gis_entity':'1'
-			},
-			'metadata':{
-				'changed':'1569248371'}}},
-	'#attributes':{'data-quickedit-entity-id':'sdv_gis_entity\/1'},
-	'#title':'\n  <div data-quickedit-field-id=\'sdv_gis_entity\/1\/name\/en\/full\' class=\'field field--name-name field--type-string field--label-above\'>\n    <div class=\'field__label\'>Name<\/div>\n              <div class=\'field__item\'>1<\/div>\n          <\/div>\n',
-	'name':{'#theme':'field','#title':'Name','#label_display':'above','#view_mode':'full','#language':'en','#field_name':'name','#field_type':'string','#field_translatable':false,'#entity_type':'sdv_gis_entity','#bundle':'sdv_gis_entity','#object':{},'#items':{},'#formatter':'string','#is_multiple':false,'#third_party_settings':[],'0':{'#type':'inline_template','#template':'{{ value|nl2br }}','#context':{'value':'1'}},'#cache':{'contexts':['user.permissions','user.permissions'],'tags':[],'max-age':-1},'#weight':-6,'#attached':[],'#children':'\n  <div data-quickedit-field-id=\'sdv_gis_entity\/1\/name\/en\/full\' class=\'field field--name-name field--type-string field--label-above\'>\n    <div class=\'field__label\'>Name<\/div>\n              <div class=\'field__item\'>1<\/div>\n          <\/div>\n','#markup':'\n  <div data-quickedit-field-id=\'sdv_gis_entity\/1\/name\/en\/full\' class=\'field field--name-name field--type-string field--label-above\'>\n    <div class=\'field__label\'>Name<\/div>\n              <div class=\'field__item\'>1<\/div>\n          <\/div>\n','#printed':true},
-	'gis_ia_params':{
-		'#theme':'field',
-		'#title':'GIS IA Params',
-		'#label_display':'above',
-		'#view_mode':'full',
-		'#language':'en',
-		'#field_name':'gis_ia_params',
-		'#field_type':'string_long',
-		'#field_translatable':false,
-		'#entity_type':'sdv_gis_entity',
-		'#bundle':'sdv_gis_entity',
-		'#object':{},
-		'#items':{},
-		'#formatter':'basic_string',
-		'#is_multiple':false,
-		'#third_party_settings':[],
-		'0':{
-			'#type':'inline_template',
-			'#template':'{{ value|nl2br }}',
-			'#context':{
-				'value':'dataversie=0\r\na=1.2\r\nfl=0\r\nb=10000\r\nl=110001\r\no=110\r\nz=1\r\ne=1\r\np=1\r\npz=10\r\nf=1\r\nm=\r\nw1=0\r\nw2=1\r\ntl=0\r\nfg=1\r\nfs=\r\ntmp=0\r\nu=donkerblauw'
-			}
-		},'#cache':{'contexts':[],'tags':[],'max-age':-1},'#weight':-6},
-	'gis_ia_layers':{'#theme':'field','#title':'GIS IA Layers','#label_display':'above','#view_mode':'full','#language':'en','#field_name':'gis_ia_layers','#field_type':'string_long','#field_translatable':false,'#entity_type':'sdv_gis_entity','#bundle':'sdv_gis_entity','#object':{},'#items':{},'#formatter':'basic_string','#is_multiple':false,'#third_party_settings':[],'0':{'#type':'inline_template','#template':'{{ value|nl2br }}','#context':{'value':'1\r\nWMS|https:\/\/geodata.rivm.nl\/geoserver\/wms|||1|1|'}},'#cache':{'contexts':[],'tags':[],'max-age':-1},'#weight':-5},'user_id':{'#theme':'field','#title':'Authored by','#label_display':'hidden','#view_mode':'full','#language':'en','#field_name':'user_id','#field_type':'entity_reference','#field_translatable':true,'#entity_type':'sdv_gis_entity','#bundle':'sdv_gis_entity','#object':{},'#items':{},'#formatter':'author','#is_multiple':false,'#third_party_settings':[],'0':{'#theme':'username','#account':{},'#link_options':{'attributes':{'rel':'author'}},'#cache':{'tags':['user:1'],'contexts':[],'max-age':-1}},'#cache':{'contexts':[],'tags':[],'max-age':-1},'#weight':0},'#sorted':true,'#children':'','#render_children':true},'theme_hook_original':'sdv_gis_entity','attributes':{'data-quickedit-entity-id':'sdv_gis_entity\/1'},'title_attributes':[],'content_attributes':[],'title_prefix':[],'title_suffix':[],'db_is_active':true,'is_admin':true,'logged_in':true,'user':{'_serviceId':'current_user'},'directory':'core\/themes\/seven','content':{'name':{'#theme':'field','#title':'Name','#label_display':'above','#view_mode':'full','#language':'en','#field_name':'name','#field_type':'string','#field_translatable':false,'#entity_type':'sdv_gis_entity','#bundle':'sdv_gis_entity','#object':{},'#items':{},'#formatter':'string','#is_multiple':false,'#third_party_settings':[],'0':{'#type':'inline_template','#template':'{{ value|nl2br }}','#context':{'value':'1'}},'#cache':{'contexts':['user.permissions','user.permissions'],'tags':[],'max-age':-1},'#weight':-6,'#attached':[],'#children':'\n  <div data-quickedit-field-id=\'sdv_gis_entity\/1\/name\/en\/full\' class=\'field field--name-name field--type-string field--label-above\'>\n    <div class=\'field__label\'>Name<\/div>\n              <div class=\'field__item\'>1<\/div>\n          <\/div>\n','#markup':'\n  <div data-quickedit-field-id=\'sdv_gis_entity\/1\/name\/en\/full\' class=\'field field--name-name field--type-string field--label-above\'>\n    <div class=\'field__label\'>Name<\/div>\n              <div class=\'field__item\'>1<\/div>\n          <\/div>\n','#printed':true},'gis_ia_params':{'#theme':'field','#title':'GIS IA Params','#label_display':'above','#view_mode':'full','#language':'en','#field_name':'gis_ia_params','#field_type':'string_long','#field_translatable':false,'#entity_type':'sdv_gis_entity','#bundle':'sdv_gis_entity','#object':{},'#items':{},'#formatter':'basic_string','#is_multiple':false,'#third_party_settings':[],'0':{'#type':'inline_template','#template':'{{ value|nl2br }}','#context':{'value':'dataversie=0\r\na=1.2\r\nfl=0\r\nb=10000\r\nl=110001\r\no=110\r\nz=1\r\ne=1\r\np=1\r\npz=10\r\nf=1\r\nm=\r\nw1=0\r\nw2=1\r\ntl=0\r\nfg=1\r\nfs=\r\ntmp=0\r\nu=donkerblauw'}},'#cache':{'contexts':[],'tags':[],'max-age':-1},'#weight':-6},'gis_ia_layers':{'#theme':'field','#title':'GIS IA Layers','#label_display':'above','#view_mode':'full','#language':'en','#field_name':'gis_ia_layers','#field_type':'string_long','#field_translatable':false,'#entity_type':'sdv_gis_entity','#bundle':'sdv_gis_entity','#object':{},'#items':{},'#formatter':'basic_string','#is_multiple':false,'#third_party_settings':[],'0':{'#type':'inline_template','#template':'{{ value|nl2br }}','#context':{'value':'1\r\nWMS|https:\/\/geodata.rivm.nl\/geoserver\/wms|||1|1|'}},'#cache':{'contexts':[],'tags':[],'max-age':-1},'#weight':-5},'user_id':{'#theme':'field','#title':'Authored by','#label_display':'hidden','#view_mode':'full','#language':'en','#field_name':'user_id','#field_type':'entity_reference','#field_translatable':true,'#entity_type':'sdv_gis_entity','#bundle':'sdv_gis_entity','#object':{},'#items':{},'#formatter':'author','#is_multiple':false,'#third_party_settings':[],'0':{'#theme':'username','#account':{},'#link_options':{'attributes':{'rel':'author'}},'#cache':{'tags':['user:1'],'contexts':[],'max-age':-1}},'#cache':{'contexts':[],'tags':[],'max-age':-1},'#weight':0}},'node_id':'12345','dwnld':'\/var\/www\/html\/drupal\/sites\/all\/modules\/sdv-gis'}" dwnld="/var/www/html/drupal/sites/all/modules/sdv-gis
-*/	
-	
-	
-}
-
-/**
- * Function to find specific field and return the value.
- *
- * @param \Drupal\Core\Entity $entity 
- *   The entity to get the value from
- *
- * @param string $field
- *    The field name
- *
- * @return: Value found, or default value
- */
-function sdv_gis__get_value(&$entity,$field,$default_value='') {
-	try {
-		$f=$entity->get($field);
-		if ($f) {
-			$v=$f->getValue();
-			if (isset($v[0]['value'])) {return $v[0]['value'];}
-		}
-	} catch(Exception $e) {
-	}
-    return $default_value;
 }
 
 /**
@@ -175,51 +84,11 @@ file_put_contents('/var/www/html/drupal/published/rob','$entity->bundle()='.$ent
         
         $sdv_gis_entity_id=$entity->id();
 		$uiterlijk='groen';
-
-        $parms='';
-		// gewone parameters klaar zetten
-        $body=sdv_gis__get_value($entity,'gis_ia_params');
-		$body=preg_replace("/\r\n/","\r",$body);
-		$body=preg_replace("/\n/","\r",$body);
-		$body=explode("\r",$body);
-		foreach ($body as $b) {
-			if (substr($b,0,2)=='m=') {$b='m='.base64_encode(htmlspecialchars(trim(substr($b,2))));}
-			$parms.=($parms==''?'':',').$b;
-			if (substr($b,0,2)=='u=') {$uiterlijk=substr($b,2);}
-		}
-        // layer_definities er achter plakken
-        $ldefs=str_replace("\r\n","\r",sdv_gis__get_value($entity,'gis_ia_layers'));
-        $ldefs=str_replace("\n","\r",$ldefs);
-        $ldefs=explode("\r",$ldefs);
-        $parms.=',ld=';
-        foreach ($ldefs as $ldef) {
-            if ($ldef!='') {$parms.=base64_encode($ldef).'|';}
-        }
-        
-		//	Alternatief:
-		/*
-		$kaart='<div class="map-holder gis_ia">';
-        $kaart.='<div id="gis_ia_map_'.$sdv_gis_entity_id.'" class="map" parms="'.$parms.'" dwnld="'.__DIR__.'"></div>';
-        $kaart.='<div id="popup'.$sdv_gis_entity_id.'" class="ol-popup"><a href="#" id="popup-closer'.$sdv_gis_entity_id.'" class="ol-popup-closer"></a><div id="popup-content'.$sdv_gis_entity_id.'"></div></div>';
-        $kaart.='</div>';
-        $build['_map']=[
-            '#markup' => $kaart,
-        ];
-		*/
-		/*
-		$dwnld=__DIR__;
-		$loader = new Twig_Loader_Array(array('sdv_gis_entity.html.twig' => file_get_contents($dwnld.'/templates/sdv_gis_entity.html.twig')));
-		$twig = new Twig_Environment($loader);
-        $build['_map']=[
-            '#markup' => $twig->render('sdv_gis_entity.html.twig', array('node_id'=>$sdv_gis_entity_id,'parms'=>$parms,'dwnld'=>$dwnld)),
-		];
-		*/
-        
 		// basis library
         $build['#attached']['library'][] = 'sdv_gis/sdv_gis';
 		
 		// aanvullen met specifieke library
-		$build['#attached']['library'][] = 'sdv_gis/sdv_gis'.$uiterlijk;
+		$build['#attached']['library'][] = 'sdv_gis/sdv_gis_'.$uiterlijk;
     }
 }
 
