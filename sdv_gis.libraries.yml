@@ -3,7 +3,7 @@ sdv_gis:
   css:
     layout:
       https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.css: {}
-      css/gis_ia.min.css: {}
+      css/gis_ia.css: {}
   js:
     https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.js: {}
     js/gis_ia.js: {}
@@ -30,94 +30,94 @@ gis_ia_automatisch:
   version: 1.0
   css:
     layout:
-      css/gis_ia_donkergroen.min.css: {}
+      css/gis_ia_donkergroen.css: {}
 gis_ia_bruin:
   version: 1.0
   css:
     layout:
-      css/gis_ia_bruin.min.css: {}
+      css/gis_ia_bruin.css: {}
 gis_ia_donkerblauw:
   version: 1.0
   css:
     layout:
-      css/gis_ia_donkerblauw.min.css: {}
+      css/gis_ia_donkerblauw.css: {}
 gis_ia_donkerbruin:
   version: 1.0
   css:
     layout:
-      css/gis_ia_donkerbruin.min.css: {}
+      css/gis_ia_donkerbruin.css: {}
 gis_ia_donkergeel:
   version: 1.0
   css:
     layout:
-      css/gis_ia_donkergeel.min.css: {}
+      css/gis_ia_donkergeel.css: {}
 gis_ia_donkergroen:
   version: 1.0
   css:
     layout:
-      css/gis_ia_donkergroen.min.css: {}
+      css/gis_ia_donkergroen.css: {}
 gis_ia_geel:
   version: 1.0
   css:
     layout:
-      css/gis_ia_geel.min.css: {}
+      css/gis_ia_geel.css: {}
 gis_ia_groen:
   version: 1.0
   css:
     layout:
-      css/gis_ia_groen.min.css: {}
+      css/gis_ia_groen.css: {}
 gis_ia_hemelblauw:
   version: 1.0
   css:
     layout:
-      css/gis_ia_hemelblauw.min.css: {}
+      css/gis_ia_hemelblauw.css: {}
 gis_ia_lichtblauw:
   version: 1.0
   css:
     layout:
-      css/gis_ia_lichtblauw.min.css: {}
+      css/gis_ia_lichtblauw.css: {}
 gis_ia_mintgroen:
   version: 1.0
   css:
     layout:
-      css/gis_ia_mintgroen.min.css: {}
+      css/gis_ia_mintgroen.css: {}
 gis_ia_mosgroen:
   version: 1.0
   css:
     layout:
-      css/gis_ia_mosgroen.min.css: {}
+      css/gis_ia_mosgroen.css: {}
 gis_ia_oranje:
   version: 1.0
   css:
     layout:
-      css/gis_ia_oranje.min.css: {}
+      css/gis_ia_oranje.css: {}
 gis_ia_paars:
   version: 1.0
   css:
     layout:
-      css/gis_ia_paars.min.css: {}
+      css/gis_ia_paars.css: {}
 gis_ia_robijnrood:
   version: 1.0
   css:
     layout:
-      css/gis_ia_robijnrood.min.css: {}
+      css/gis_ia_robijnrood.css: {}
 gis_ia_rood:
   version: 1.0
   css:
     layout:
-      css/gis_ia_rood.min.css: {}
+      css/gis_ia_rood.css: {}
 gis_ia_roze:
   version: 1.0
   css:
     layout:
-      css/gis_ia_roze.min.css: {}
+      css/gis_ia_roze.css: {}
 gis_ia_violet:
   version: 1.0
   css:
     layout:
-      css/gis_ia_violet.min.css: {}
+      css/gis_ia_violet.css: {}
 gis_ia_wit:
   version: 1.0
   css:
     layout:
-      css/gis_ia_wit.min.css: {}
+      css/gis_ia_wit.css: {}
