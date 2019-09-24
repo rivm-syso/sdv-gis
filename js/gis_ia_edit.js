@@ -49,7 +49,7 @@ var default_parameters={
 	'dataversie': 0, 	// dataversie (altijd integer) ophogen als deze niet meer compatible is met een vorige versie. 
 	// Formaat en uiterlijk
 	'a': 1.2,			// aspect ratio van de kaart (voor berekenen hoogte)
-	'u': 'automatisch',	// Uiterlijk CSS
+	'u': 'hemelblauw',	// Uiterlijk CSS
 	'fl': 0,			// Floating, 0=geen, 1=links, 2=rechts
 	// Basiskaarten
 	'b': '10000', 		// basiskaarten: Openbasiskaart, Openbasiskaart grijs, Openbasiskaart pastel, Luchtfoto, Topografisch
@@ -519,7 +519,7 @@ function gis_ia_init() {
 		var key, v='';
 		for (key in default_parameters) {
 			if (!default_parameters.hasOwnProperty(key)) continue;
-			if (key!='u' && key!='ld') {
+			if (key!='ld') {
 				v+=(v==''?'':String.fromCharCode(13))+key+'='+default_parameters[key];
 			}
 		}
