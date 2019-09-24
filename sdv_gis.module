@@ -79,7 +79,7 @@ function template_preprocess_sdv_gis_entity(&$variables) {
  */
 function sdv_gis_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
 if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
-file_put_contents('/var/www/html/drupal/published/rob','$entity->bundle()='.$entity->bundle().chr(13).$deb);	
+file_put_contents('/var/www/html/drupal/published/rob','$entity='.print_r($entity,true).chr(13).$deb);	
     if ($entity->bundle()=='sdv_gis_entity') {
         
         $sdv_gis_entity_id=$entity->id();
