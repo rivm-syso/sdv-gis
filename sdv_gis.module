@@ -112,9 +112,9 @@ function sdv_gis_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
  */
 
 function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
-file_put_contents('/var/www/html/drupal/published/rob','$form_id='.json_encode($form_id).' $form_state='.json_encode($form_state).chr(13).$deb);	
-    if ($form_id == 'sdv_gis_entity_edit_form') {
+//if (file_exists('/var/www/html/drupal/published/rob')) {$deb=file_get_contents('/var/www/html/drupal/published/rob');} else {$deb='';}
+//file_put_contents('/var/www/html/drupal/published/rob','$form_id='.json_encode($form_id).' $form_state='.json_encode($form_state).chr(13).$deb);	
+    if ($form_id == 'sdv_gis_entity_add_form' || $form_id == 'sdv_gis_entity_edit_form') {
 		
         $form['#attached']['library'][] = 'sdv_gis/sdv_gis_edit';
 
