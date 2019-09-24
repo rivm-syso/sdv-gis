@@ -1,5 +1,3 @@
-/* Bruin	wit	148/113/0	#94710a	#dfd4b5	#efeada */
-
 /* Knoppen */
 .gis_ia button {background-color: #94710a !important; border: solid 1px #535353;}
 .panel .button, .ol-popup-2 .button {background-color: #94710a !important; color: white !important; border: solid 1px #535353;}
@@ -20,15 +18,15 @@
 .gis_ia_filter_button, .gis_ia_filters_button {background-color: #94710a; color: white !important; border: solid 1px #535353;}
 
 /* uiterlijk knoppen */
-.ol-control button.gis_ia_zoom-in {color: white; background-image: url(gis-ol-plus-white.png);}
-.ol-control button.gis_ia_zoom-out {color: white; background-image: url(gis-ol-min-white.png);}
-.gis_ia_zoom_extent button {background-image: url(gis-ol-zoom-ext-white.png);}
-.gis_ia_fullscreen button {background-image: url(gis-ol-fullscreen-white.png);}
+.ol-control button.gis_ia_zoom-in {color: white; background-image: url(gis-ol-plus-white);}
+.ol-control button.gis_ia_zoom-out {color: white; background-image: url(gis-ol-min-white);}
+.gis_ia_zoom_extent button {background-image: url(gis-ol-zoom-ext-white);}
+.gis_ia_fullscreen button {background-image: url(gis-ol-fullscreen-white);}
 .zoom-position {border: solid 1px #535353; background-color: #94710a !important;}
 .gis_ia_zoekveld {color: white; background-color: #94710a; border-right: solid 1px #efeada ;}
-.gis_ia_zoekknop {border-right: solid 1px #efeada  !important; background-image: url(gis-ol-zoek-white.png);}
-.gis_ia_gotopos {background-image: url(gis-ol-position2-white.png);}
-.legenda button {background-image: url(gis-ol-legenda-white.png);}
+.gis_ia_zoekknop {border-right: solid 1px #efeada  !important; background-image: url(gis-ol-zoek-white);}
+.gis_ia_gotopos {background-image: url(gis-ol-position2-white);}
+.legenda button {background-image: url(gis-ol-legenda-white);}
 
 /* DEFAULT: alles voor de thumb, voor verschillende browsers  */
 .gis_ia input[type=range]::-webkit-slider-thumb {background: #94710a; border: solid 1px #535353;}
