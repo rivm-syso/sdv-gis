@@ -889,7 +889,7 @@ function gis_ia_get_layer_div(map_id) {
 		l=GIS_ia_maps[map_id].layers_def[t];
 		r+='<div id="gis_ia_l_'+map_id+'_'+t+'_parent"'+(extra_info?' style="position: relative; width: calc(100% - 24px); min-height: 34px;"':'')+'>';
 		if (extra_info) {
-			r+='<div style="position: absolute;width: 100%;"><div style="text-align: right;margin: 30px -30px 0 0;"><div id="gis_ia_l_i_'+map_id+'_'+t+'" style="display: none;padding-left:32px; text-align: left;">';
+			r+='<div style="position: absolute;width: 100%;"><div class="panel" style="text-align: right;margin: 30px -30px 0 0;"><div id="gis_ia_l_i_'+map_id+'_'+t+'" style="display: none;padding-left:32px; text-align: left;display: inline-block;z-index: 1;position: relative;">';
 			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div>Transparantie - +</div>';}
 			if (GIS_ia_maps[map_id].l.substr(3,1)==='1') {r+='<div>Download</div>';}
 			if (GIS_ia_maps[map_id].l.substr(4,1)==='1') {r+='<div>Data.rivm.nl Open</div>';}
