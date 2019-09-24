@@ -1,7 +1,7 @@
 /******************** Algemene werking ******************************************************************************
 
   In drupal zijn er 2 velden (fields) die alle benodigde informatie bevatten:
-	- gis_ia_params					Bevat een reeks aan parameters (zie default_parameters voor beschrijving)
+	- gis_ia_params		Bevat een reeks aan parameters (zie default_parameters voor beschrijving)
 	- gis_ia_layers		Bevat voor elke laag een aantal setting (zie gis_ia_default_row voor beschrijving)
 
   Na het laden van de pagina wordt er javascript afgevuurd die deze velden verbergt. Vervolgens wordt er nieuwe HTML
@@ -88,7 +88,7 @@ var gis_ia_modals=[];
 //			waarde van de parameter op een bebaaplde positie, of
 //			een lege string als de waarde niet bestaat
 function getParmValue(parm) {
-	var parmsplit=parm.split('-'), r, body=jQuery('#edit-gis-ia-body-0-value'),regels=body.val(), t, pos,v;
+	var parmsplit=parm.split('-'), r, body=jQuery('#edit-gis-ia-params-0-value'),regels=body.val(), t, pos,v;
 	if (regels=='') {regels=[];} else {regels=regels.replace(/[\r\n]+/g,"\r");	regels=regels.replace(/\n+/g,"\r");	regels=regels.split("\r");}
 	for (t=0;t<regels.length;t++) {
 		pos=regels[t].indexOf('=');
@@ -128,7 +128,7 @@ function gis_ia_change() {
 }
 
 function gis_ia_change_regel(parameter,v) {
-	var parmsplit=parameter.split('-'), body=jQuery('#edit-gis-ia-body-0-value'),regels=body.val(), t, regel, pos, old_value, parm;
+	var parmsplit=parameter.split('-'), body=jQuery('#edit-gis-ia-params-0-value'),regels=body.val(), t, regel, pos, old_value, parm;
 	if (regels=='') {regels=[];} else {regels=regels.replace(/[\r\n]+/g,"\r");	regels=regels.replace(/\n+/g,"\r");	regels=regels.split("\r");}
 	for (t=0, regel=regels.length;t<regels.length;t++) {
 		pos=regels[t].indexOf('=');
@@ -151,7 +151,7 @@ function gis_ia_change_regel(parameter,v) {
 // Functie die alle benodigde HTML genereert om layers te defini"eren (muteren/toevoegen/verwijderen/volgorde)
 // De functie returnt een string.
 function getLayerDefs() {
-    var layer_defs=jQuery('#edit-gis-ia-layer-definities-0-value'),t=layer_defs.val();
+    var layer_defs=jQuery('#edit-gis-ia-layers-0-value'),t=layer_defs.val();
     t=t.replace(/[\r\n]+/g,"\r");
     t=t.replace(/\n+/g,"\r");
     t=t.split("\r");
@@ -175,7 +175,7 @@ function redrawLayerDefsTable() {
 var gis_ia_fieldsOnServer;
 function gis_ia_setFieldsOnServer() {
 	gis_ia_fieldsOnServer=[];
-	var layer_defs=jQuery('#edit-gis-ia-layer-definities-0-value'),t=layer_defs.val(),t1,t2=0;
+	var layer_defs=jQuery('#edit-gis-ia-layers-0-value'),t=layer_defs.val(),t1,t2=0;
 	t=t.replace(/[\r\n]+/g,"\r");
 	t=t.replace(/\n+/g,"\r");
 	t=t.split("\r");
@@ -424,8 +424,8 @@ function gis_ia_set_filterItem(e,i,parm) {
 // Deze functie verbergt de textareas waarin de data is opgeslagen en toont in plaats daarvan een interactieve tabel en voert alle benodigde initialisatie uit.
 function gis_ia_init() {
 	// Verbergen Drupal velden
-	jQuery('.form-item-gis-ia-body-0-value').hide();
-	jQuery('.form-item-gis-ia-layer-definities-0-value').hide();
+	jQuery('.form-item-gis-ia-params-0-value').hide();
+	jQuery('.form-item-gis-ia-layers-0-value').hide();
 	
 	// Maak dialog-box voor WMS
 	var wms = drupalSettings.gis_ia.wms.split('|'), t1,s1;
@@ -510,7 +510,7 @@ function gis_ia_init() {
 	// gis_ia_modals['WMTS']= ...
 
 	// Up to date maken van het veld gis_ia_params
-	var body=jQuery('#edit-gis-ia-body-0-value');
+	var body=jQuery('#edit-gis-ia-params-0-value');
 	// de variabele default_parameters bevat de defaults voor de laatste dataversie. Deze wordt als volgt gemerged met bestaande data:
 	// - Als een parameter niet meer bestaat dan wordt deze uit 'body' gehaald
 	// - Als een parameter wel een default heeft maar niet in 'body' bestaat, dan wordt deze aan 'body' toegevoegd
@@ -722,7 +722,7 @@ function gis_ia_setRadioParm(el,parm) {
 function gis_ia_changePos(no,aant_rows,to_no) {
     to_no=parseInt(to_no,10);
     if (no!=to_no) {
-        var el=jQuery('#edit-gis-ia-layer-definities-0-value'),t=el.val(),s;
+        var el=jQuery('#edit-gis-ia-layers-0-value'),t=el.val(),s;
         t=t.replace(/[\r\n]+/g,"\r");
         t=t.replace(/\n+/g,"\r");
         t=t.split("\r");
@@ -791,7 +791,7 @@ var gis_ia_veld_url;
 // Parameters:		no;		Integer; Velden van layer-index
 function gis_ia_veld(no,forFilter) {
 	// Haal velddefinities op
-    var el=jQuery('#edit-gis-ia-layer-definities-0-value'),t=el.val(),s;
+    var el=jQuery('#edit-gis-ia-layers-0-value'),t=el.val(),s;
     t=t.replace(/[\r\n]+/g,"\r");
     t=t.replace(/\n+/g,"\r");
     t=t.split("\r");
@@ -943,7 +943,7 @@ function gis_ia_veld_(no,s,data) {
 //					col;	Integer; index van de definitie
 //					v;		waarde
 function gis_ia_setOneValue(row,col,v) {
-    var el=jQuery('#edit-gis-ia-layer-definities-0-value'),t=el.val(),s;
+    var el=jQuery('#edit-gis-ia-layers-0-value'),t=el.val(),s;
     t=t.replace(/[\r\n]+/g,"\r");
     t=t.replace(/\n+/g,"\r");
     t=t.split("\r");
@@ -977,7 +977,7 @@ var gis_ia_setLayerRow, gis_ia_modals_close, gis_ia_modals_value;
 // Parameters:		row;	Integer; layer-index
 function gis_ia_setLayer(row) {
     gis_ia_setLayerRow=row;
-    var el=jQuery('#edit-gis-ia-layer-definities-0-value'),t=el.val(),s;
+    var el=jQuery('#edit-gis-ia-layers-0-value'),t=el.val(),s;
     t=t.replace(/[\r\n]+/g,"\r");
     t=t.replace(/\n+/g,"\r");
     t=t.split("\r");
@@ -991,7 +991,7 @@ function gis_ia_setLayer(row) {
 // Deze functie wordt aangeroepen als de redacteur op 'Nieuwe laag' klikt en voegt een nieuwe layer toe met de defaults uit gis_ia_default_row. Daarna
 // wordt de layer-tabel opnieuw opgebouwd.
 function gis_ia_add() {
-    var el=jQuery('#edit-gis-ia-layer-definities-0-value'),t=el.val();
+    var el=jQuery('#edit-gis-ia-layers-0-value'),t=el.val();
     t=t.replace(/[\r\n]+/g,"\r");
     t=t.replace(/\n+/g,"\r");
     t=t.split("\r");
@@ -1008,7 +1008,7 @@ function gis_ia_add() {
 // Deze functie wordt aangeroepen als de redacteur op 'Laag verwijderen'. Daarna wordt de layer-tabel opnieuw opgebouwd.
 // Parameters:		row;	Integer; layer-index
 function gis_ia_delete(row) {
-    var el=jQuery('#edit-gis-ia-layer-definities-0-value'),t=el.val();
+    var el=jQuery('#edit-gis-ia-layers-0-value'),t=el.val();
     t=t.replace(/[\r\n]+/g,"\r");
     t=t.replace(/\n+/g,"\r");
     t=t.split("\r");
