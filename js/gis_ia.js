@@ -1529,6 +1529,7 @@ function GIS_paragraaf_start(map_id) {
 				}
 			}
 		});*/
+		map.append('<div id="popup'+map_id+'" class="ol-popup"><a href="#" id="popup-closer'+map_id+'" class="ol-popup-closer"></a><div id="popup-content'+map_id+'"></div></div>');
 		GIS_ia_maps[map_id].map.on('singleclick', function(evt) {
 			filterwindowCheckHide(map_id);
 			if (GIS_ia_maps[map_id].layerDataToDo>=1) {return;}
