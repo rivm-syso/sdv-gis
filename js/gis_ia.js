@@ -90,34 +90,64 @@ gis_ia_filter.prototype.html=function(depth) {
 			r='';
 			var labels=this.v,tl;
 			if (labels=='') {labels=[];} else {labels=labels.replace(/[\r\n]+/g,"\r"); labels=labels.replace(/\n+/g,"\r"); labels=labels.split("\r");}
-			for (tl=0;tl<labels.length;tl++) {
-				r+=this.x_button(2,tl);
-				if (this.s=='0') {
-					r+='<div id="'+this.ID()+'-'+tl+'_parent"><input type="radio" id="'+this.ID()+'-'+tl+'" name="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\','+tl+');"><label for="'+this.ID()+'-'+tl+'">'+labels[tl]+'</label></div>';
-				} else {
-					r+='<div id="'+this.ID()+'-'+tl+'_parent"><input type="checkbox" id="'+this.ID()+'-'+tl+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\','+tl+');"><label for="'+this.ID()+'-'+tl+'">'+labels[tl]+'</label></div>';
+			if (this.s=='0') {
+				r+='<div id="'+this.ID()+'_parent"><div class="gis_ia_input gis_ia_input100"><div><span class="gis_ia_filters_arrow_down"></span><select id="'+this.ID()+'" name="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');" class="gis_ia_input"><option value="-1"></option>';
+				for (tl=0;tl<labels.length;tl++) {
+					r+='<option value="'+tl+'">'+labels[tl]+'</option>';
+				}
+				r+='</select></div></div>';
+			} else {
+				for (tl=0;tl<labels.length;tl++) {
+					r+=this.x_button(2,tl);
+					if (this.s=='1') {
+						r+='<div id="'+this.ID()+'-'+tl+'_parent"><input type="radio" id="'+this.ID()+'-'+tl+'" name="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\','+tl+');"><label for="'+this.ID()+'-'+tl+'">'+labels[tl]+'</label></div>';
+					} else {
+						r+='<div id="'+this.ID()+'-'+tl+'_parent"><input type="checkbox" id="'+this.ID()+'-'+tl+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\','+tl+');"><label for="'+this.ID()+'-'+tl+'">'+labels[tl]+'</label></div>';
+					}
 				}
 			}
 			break;
 		case 'vt': // van - tot
 			r='<div id="'+this.ID()+'_parent">';
 			if (this.l1=='') {
-				r+='<div class="gis_ia_input"><label class="gis_ia_input" id="'+this.ID()+'-van-label">'+this.v1+'</label><div class="custom-select"><input class="gis_ia_input" id="'+this.ID()+'-van" type="number" min="'+this.mi1+'" max="'+this.ma1+'" step="'+this.st1+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');"><span class="icon-arrow-down-blue custom-select-icon"></span></div></div>';
+				r+='<div class="gis_ia_input gis_ia_input50"><label class="gis_ia_input" id="'+this.ID()+'-van-label">'+this.v1+'</label><div><input class="gis_ia_input" id="'+this.ID()+'-van" type="number" min="'+this.mi1+'" max="'+this.ma1+'" step="'+this.st1+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',0);" onkeydown="gis_ia_filters.keydown('+this.map_id+',\''+this.ID()+'\',0);"><span>'+this.x_button(2)+'</span></div></div>';
 			} else {
 				var opts='<option></option>', os=this.l1, ot; os=os.replace(/\r\n/g,String.fromCharCode(13)); os=os.replace(/\n/g,String.fromCharCode(13)); os=os.split(String.fromCharCode(13)); for (ot=0;ot<os.length;ot++) {opts+='<option>'+os[ot]+'</option>';}
-				r+='<div class="gis_ia_input"><label class="gis_ia_input" id="'+this.ID()+'-van-label">'+this.v1+'</label><div class="custom-select"><select id="'+this.ID()+'-van" class="gis_ia_input" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');">'+opts+'</select><span class="gis_ia_filters_arrow_down"></span></div></div>';
+				r+='<div class="gis_ia_input gis_ia_input50"><label class="gis_ia_input" id="'+this.ID()+'-van-label">'+this.v1+'</label><div><select id="'+this.ID()+'-van" class="gis_ia_input" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',0);">'+opts+'</select><span>'+this.x_button(2)+'</span></div></div>';
 			}
 			if (this.l2=='') {
-				r+='<div class="gis_ia_input"><label class="gis_ia_input" id="'+this.ID()+'-tot-label">'+this.v2+'</label><div class="custom-select"><input class="gis_ia_input" id="'+this.ID()+'-tot" type="number" min="'+this.mi2+'" max="'+this.ma2+'" step="'+this.st2+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');"><span class="icon-arrow-down-blue custom-select-icon"></span></div></div>';
+				r+='<div class="gis_ia_input gis_ia_input50"><label class="gis_ia_input" id="'+this.ID()+'-tot-label">'+this.v2+'</label><div><input class="gis_ia_input" id="'+this.ID()+'-tot" type="number" min="'+this.mi2+'" max="'+this.ma2+'" step="'+this.st2+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',1);" onkeydown="gis_ia_filters.keydown('+this.map_id+',\''+this.ID()+'\',1);"><span>'+this.x_button(2)+'</span></div></div>';
 			} else {
 				var opts='<option></option>', os=this.l2, ot; os=os.replace(/\r\n/g,String.fromCharCode(13)); os=os.replace(/\n/g,String.fromCharCode(13)); os=os.split(String.fromCharCode(13)); for (ot=0;ot<os.length;ot++) {opts+='<option>'+os[ot]+'</option>';}
-				r+='<div class="gis_ia_input"><label class="gis_ia_input" id="'+this.ID()+'-tot-label">'+this.v2+'</label><div class="custom-select"><span class="gis_ia_filters_arrow_down"></span><select id="'+this.ID()+'-tot" class="gis_ia_input" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');">'+opts+'</select></div></div>';
+				r+='<div class="gis_ia_input gis_ia_input50"><label class="gis_ia_input" id="'+this.ID()+'-tot-label">'+this.v2+'</label><div><span class="gis_ia_filters_arrow_down"></span><select id="'+this.ID()+'-tot" class="gis_ia_input" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',1);">'+opts+'</select><span>'+this.x_button(2)+'</span></div></div>';
 			}
 			r+='</div>';
 			break;
 	}
 	return r;
 };
+
+function gis_ia_filter_next_value(v,get_next,mi,ma,st,li) {
+	if (v=='') {return '';}
+	var t,vn='';
+	if (li=='') {
+		st=(st>0?st:1);
+		if (get_next) {
+			vn=mi; while (vn<=v) {vn+=st;}
+		} else {
+			vn=ma; while (vn>=v) {vn-=st;}
+		}
+		if (vn<mi || vn>ma) {vn='';}
+	} else {
+		li=li.replace(/[\r\n]+/g,"\r");	li=li.replace(/\n+/g,"\r");	li=li.split("\r");
+		if (get_next) {
+			for(t=0;t<li.length-1;t++) {if (v==li[t]) {vn=li[t+1];t=li.length;}}
+		} else {
+			for(t=li.length-1;t>0;t--) {if (v==li[t]) {vn=li[t-1];t=0;}}
+		}
+	}
+	return vn;
+}
 
 // Deze functie handelt het wijzigen van een filter af, of geeft wijzigingen door aan element (als het een groep is)
 // De functie draagt zorg voor het tonen/verbergen van bij dit filter behorende zaken zoals x_button's en panels
@@ -148,37 +178,81 @@ gis_ia_filter.prototype.change=function(id,i) {
 					}
 					break;
 				case 'd': // list
-					var el, x_buttons,t,labels=this.v,inps;
+					var el, x_buttons,t,t1,labels=this.v,inps;
 					if (labels=='') {labels=[];} else {labels=labels.replace(/[\r\n]+/g,"\r"); labels=labels.replace(/\n+/g,"\r"); labels=labels.split("\r");}
-					for (t=0;t<labels.length;t++) {
-						el=jQuery('#'+id+'-'+t);
-						x_buttons=jQuery('[fromid='+id+'-'+t+']');
-						inps=jQuery('#'+id+'-'+t+'_parent');
-						if (el.prop('checked')) {
-							x_buttons.show();
-							if (this.x2=='1') {
-								inps.hide();
+					if (this.s=='0') {
+						el=jQuery('#'+id);
+						t1=el.val();
+						for (t=0;t<labels.length;t++) {
+							x_buttons=jQuery('[fromid='+id+'-'+t+']');
+							if (t==t1) {x_buttons.show();} else {x_buttons.hide();}
+						}
+					} else {
+						for (t=0;t<labels.length;t++) {
+							el=jQuery('#'+id+'-'+t);
+							x_buttons=jQuery('[fromid='+id+'-'+t+']');
+							inps=jQuery('#'+id+'-'+t+'_parent');
+							if (el.prop('checked')) {
+								x_buttons.show();
+								if (this.x2=='1') {
+									inps.hide();
+								} else {
+									inps.show();
+								}
 							} else {
+								x_buttons.hide();
 								inps.show();
 							}
-						} else {
-							x_buttons.hide();
-							inps.show();
 						}
 					}
 					break;
 				case 'vt': // van - tot
 					var el1=jQuery('#'+id+'-van'), el2=jQuery('#'+id+'-tot'), x_buttons=jQuery('[fromid='+id+']'),t,inps=jQuery('#'+id+'_parent');
 					var lab1=jQuery('#'+id+'-van-label'), lab2=jQuery('#'+id+'-tot-label');
-					if (el1.val()=='') {lab1.show();} else {lab1.hide();}
-					if (el2.val()=='') {lab2.show();} else {lab2.hide();}
-					if (el1.val()!='' || el2.val()!='') {
-						var s1=el1.val(),s2=el2.val();
+					var s1=el1.val(),s2=el2.val(),st,t;
+					if (s1=='') {lab1.show();} else {lab1.hide();}
+					if (s2=='') {lab2.show();} else {lab2.hide();}
+					if (s1!='' || s2!='') {
+						if (parseInt(s1,10)>=parseInt(s2,10)) {
+							if (i==0) { // de van waarde is veranderd; pas tot aan...
+								s2=gis_ia_filter_next_value(parseInt(s1,10),true,this.mi2,this.ma2,this.st2,this.l2);
+								el2.val(s2);
+							} else { // de tot waarde is verandert, pas van aan...
+								s1=gis_ia_filter_next_value(parseInt(s2,10),false,this.mi1,this.ma1,this.st1,this.l1);
+								el1.val(s1);
+							}
+						}
 						jQuery('.'+id+'_span').html((s1==''?'&hellip;':s1)+' - '+(s2==''?'&hellip;':s2));
 						x_buttons.show();
 					} else {
 						x_buttons.hide();
 					}
+					break;
+			}
+			return this.l;
+		}
+		return -1;
+	}
+};
+
+// Deze functie handelt het wijzigen van een filter af, of geeft wijzigingen door aan element (als het een groep is)
+// De functie draagt zorg voor het tonen/verbergen van bij dit filter behorende zaken zoals x_button's en panels
+// De functie return de layer waar een wijziging plaats vindt, zodat de kaart data laat zien conform met de nieuwe filter
+// ** filterdefinitie-change
+gis_ia_filter.prototype.keydown=function(id,i) {
+	if (this.t=='g') { // groep
+		var l;
+		for (var t=0;t<this.e.length;t++) {
+			l=this.e[t].keydown(id,i);
+			if (l>=0) {return l;}
+		}
+	} else {
+		if (this.ID()==id) {
+			switch (this.t) {
+				case 'vt': // van - tot
+					var el1=jQuery('#'+id+'-van'), el2=jQuery('#'+id+'-tot'), x_buttons=jQuery('[fromid='+id+']'),t,inps=jQuery('#'+id+'_parent');
+					var lab1=jQuery('#'+id+'-van-label'), lab2=jQuery('#'+id+'-tot-label');
+					var s1=el1.val(),s2=el2.val(),st,t;
 					break;
 			}
 			return this.l;
@@ -220,7 +294,7 @@ gis_ia_filter.prototype.x_button=function(xno,i) {
 				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"></a><span class="'+this.ID()+'_span"></span></div>';
 			}
 			if (this.x2=='1' && xno==2) {
-				r='<div class="gis_ia_f_f_x" id="'+this.ID()+'-xx-van" style="display: none; float: right;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xxN" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"></a></div>';
+				r='<div class="gis_ia_f_f_x" id="'+this.ID()+'-xx-van" style="display: none; position: absolute; top: -8px; right: -13px;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"></a></div>';
 			}
 			break;
 	}
@@ -241,10 +315,16 @@ gis_ia_filter.prototype.x=function(id,i) {
 					jQuery('#'+id).prop('checked',false);
 					break;
 				case 'd': // list
-					jQuery('#'+id+'-'+i).prop('checked',false);
+					if (this.s=='0') {
+						jQuery('#'+id).val('');
+					} else {
+						jQuery('#'+id+'-'+i).prop('checked',false);
+					}
 					break;
 				case 'vt': // van - tot
-					jQuery('#'+id).prop('checked',false);
+					jQuery('#'+id+'-van').val('');
+					jQuery('#'+id+'-tot').val('');
+					jQuery('[fromid='+id+']').hide();
 					break;
 			}
 		}
@@ -282,8 +362,13 @@ gis_ia_filter.prototype.cql_filter=function(changed_layer) {
 					break;
 				case 'd': // list
 					r='', aant=0;
-					var els=jQuery('input[id^='+this.ID()+'-]'), t2, waardes=this.w, wt;
-						waardes=waardes.replace(/[\r\n]+/g,"\r"); waardes=waardes.replace(/\n+/g,"\r"); waardes=waardes.split("\r");
+					var els=false, t2, waardes=this.w, wt;
+					if (this.s!='0') {
+						els=jQuery('input[id^='+this.ID()+'-]');
+					} else {
+						t3=parseInt(jQuery('#'+this.ID()).val(),10);
+					}
+					waardes=waardes.replace(/[\r\n]+/g,"\r"); waardes=waardes.replace(/\n+/g,"\r"); waardes=waardes.split("\r");
 						// waardes[t2] is het element dat bepaalt waarop wordt gefilterd.
 						// De syntax is: [ waarde0 ] [ operator ] waarde1
 						// Als waarde0 niet is gespecificeerd, dan wordt waarde1 van waardes[t2-1] gebruikt.
@@ -291,7 +376,7 @@ gis_ia_filter.prototype.cql_filter=function(changed_layer) {
 						// Als t2 == 0 en waarde0 is niet gespecificeerd, dan wordt de where clause: veld operand waarde1
 						// Als t2 >= 1 en waarde0 is gespecificeerd, dan wordt de where clause: (veld operand waarde0 AND veld operand waarde1)
 						// Als t2 >= 1 en waarde0 is niet gespecificeerd, dan wordt de where clause: (veld operand waarde1 van (t3-1) AND veld operand waarde1)
-					for (t2=0;t2<els.length;t2++) if (jQuery(els[t2]).prop('checked')) {
+					for (t2=0;t2<waardes.length;t2++) if ((els && jQuery(els[t2]).prop('checked')) || (!els && t2==t3)) {
 						if (this.o=='0') { // veld = categorie
 							r+=(r==''?'':(this.s=='1'?' AND ':' OR '))+this.f+'=\''+waardes[t2]+'\'';
 							aant++;
@@ -332,17 +417,14 @@ gis_ia_filter.prototype.cql_filter=function(changed_layer) {
 					if (aant>1) {r='('+r+')';}
 					break;
 				case 'vt': // van - tot
-					el=jQuery('#'+this.ID());
-					if (el.prop('checked')) {
-						switch (this.s) {
-							case '0': operator='='; break;
-							case '1': operator='<'; break;
-							case '2': operator='<='; break;
-							case '3': operator='>'; break;
-							case '4': operator='>='; break;
-							case '5': operator='<>'; break;
+					var el1=jQuery('#'+this.ID()+'-van'),el2=jQuery('#'+this.ID()+'-tot'), v1=el1.val(), v2=el2.val();
+					if (v1!='' || v2!='') {
+						switch (this.w) {
+							case '0': if (v1!='') {r=this.f+'>='+v1;} if (v2!='') {r=(r==''?'':'('+r+' AND ')+this.f+'<'+v2+(r==''?'':')');} break;
+							case '1': if (v1!='') {r=this.f+'>'+v1;} if (v2!='') {r=(r==''?'':'('+r+' AND ')+this.f+'<='+v2+(r==''?'':')');} break;
+							case '2': if (v1!='') {r=this.f+'>='+v1;} if (v2!='') {r=(r==''?'':'('+r+' AND ')+this.f+'<='+v2+(r==''?'':')');} break;
+							case '3': if (v1!='') {r=this.f+'>'+v1;} if (v2!='') {r=(r==''?'':'('+r+' AND ')+this.f+'<'+v2+(r==''?'':')');} break;
 						}
-						r=this.f+operator+'\''+this.w+'\'';
 					}
 					break;
 			}
@@ -360,6 +442,7 @@ var gis_ia_filters={
 		for (t=0;t<t1;t++) {r+=GIS_ia_maps[map_id].fs[t].x_button(0);}
 		r+='</div>';
 		for (t=0;t<t1;t++) {r+=GIS_ia_maps[map_id].fs[t].html(0);}
+		r='<div><div class="gis_ia_no_filters" id="gis_ia_no_filters_'+map_id+'">0 Filters</div><button style="float: right;" class="gis_ia_filters_button" onclick="gis_ia_filters.reset('+map_id+');">Verwijder filters</button></div>'+r;
 		return r;
 	},
 	// deze functie geeft change signaal aan het juiste element (zodat beeld kan worden bijgewerkt) en handelt 
@@ -387,6 +470,15 @@ var gis_ia_filters={
 			}
 		}
 		this.gis_ia_setNumber(map_id);
+	},
+	// deze functie geeft change signaal aan het juiste element (zodat beeld kan worden bijgewerkt) en handelt 
+	// het updaten van de juiste kaartlaag af.
+	keydown: function(map_id,id,i) {
+		document.getElementById('popup-closer'+map_id).onclick(); // verberg evt. popup
+		var t, t1=GIS_ia_maps[map_id].fs.length;
+		for (var t=0;t<t1;t++) {
+			GIS_ia_maps[map_id].fs[t].keydown(id,i);
+		}
 	},
 
 	// deze functie wordt aangeroepen als een 'schaduw' veld wordt aangeklikt om een filter te verwijderen
@@ -500,9 +592,14 @@ var gis_ia_filters={
         };
         ol.control.Control.call(this, {element: element,target: options.target});
 		// html opbouwen mbt de filtering
-        var html=gis_ia_filters.html(map_id), checkSameField=GIS_ia_maps[map_id].fg>=1;
-		
-		jQuery('#gis_ia_filters_'+map_id).html('<div id="f2-'+map_id+'" class="f2"><div id="f1b-'+map_id+'" class=""><div class="gis_ia_filters_close"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">X sluiten</button></div></div><div><div class="gis_ia_no_filters" id="gis_ia_no_filters_'+map_id+'">0 Filters</div><button style="float: right;" class="gis_ia_filters_button" onclick="gis_ia_filters.reset('+map_id+');">Verwijder filters</button></div>'+html+'<div id="f3b-'+map_id+'"><div class="gis_ia_filters_toon"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">Toon resultaten</button></div></div></div>');
+        var html, checkSameField=GIS_ia_maps[map_id].fg>=1;
+		switch (GIS_ia_maps[map_id].l.substr(0,1)) {
+			case '0': html=gis_ia_filters.html(map_id); break;
+			case '1': html=gis_ia_get_layer_div(map_id)+gis_ia_filters.html(map_id); break;
+			case '2': html=gis_ia_filters.html(map_id)+gis_ia_get_layer_div(map_id); break;
+		}
+		html='<div id="f2-'+map_id+'" class="f2"><div id="f1b-'+map_id+'" class=""><div class="gis_ia_filters_close"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">X sluiten</button></div></div>'+html+'<div id="f3b-'+map_id+'"><div class="gis_ia_filters_toon"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">Toon resultaten</button></div></div></div>';
+		jQuery('#gis_ia_filters_'+map_id).html(html);
 		var inputs=jQuery('#f2-'+map_id+' :input').on('keyup',function(e) {
 			if (e.keyCode==13) {
 				e.preventDefault();
@@ -760,6 +857,66 @@ function performMelding(map_id,layerNo,coordinate) {
 	}
 }
 
+function gis_ia_get_layer_div(map_id) {
+	var t, l, r,radio,extra_info;
+	r='<div>';
+	if (GIS_ia_maps[map_id].base_layers.length>=2) {
+		r+='<div id="gis_ia_bl_'+map_id+'_def">Basiskaart</div>';
+		for (t=0;t<GIS_ia_maps[map_id].base_layers.length;t++) {
+			r+='<div id="gis_ia_bl_'+map_id+'_'+t+'_parent">';
+			r+='<input type="radio" name="gis_ia_bl_'+map_id+'" id="gis_ia_bl_'+map_id+'_'+t+'" '+(t==0?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',0,'+t+');">';
+			r+='<label for="gis_ia_bl_'+map_id+'_'+t+'">'+GIS_ia_maps[map_id].base_layers[t].get('title')+'</label>';
+			r+='</div>';
+		}
+	}
+	radio=(GIS_ia_maps[map_id].l.substr(1,1)=='0');
+	extra_info=(GIS_ia_maps[map_id].l.substr(2,4)!=='0000');
+	r+='<div id="gis_ia_l_'+map_id+'_def">Kaartlagen</div>';
+	for (t=0;t<GIS_ia_maps[map_id].layers_def.length;t++) {
+		l=GIS_ia_maps[map_id].layers_def[t];
+		r+='<div id="gis_ia_l_'+map_id+'_'+t+'_parent"'+(extra_info?' style="width: calc(100% - 24px); min-height: 34px;"':'')+'>';
+		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');">';
+		r+='<label for="gis_ia_l_'+map_id+'_'+t+'" style="width: 100%;">'+l.title+'</label>';
+		if (extra_info) {
+			r+='<span onclick="jQuery(\'#gis_ia_l_i_'+map_id+'_'+t+'\').toggle();" class="gis_ia_filters_button" style="position: absolute !important;">I</span>';
+			r+='<div id="gis_ia_l_i_'+map_id+'_'+t+'" style="display: none;" class="panel">';
+			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div>Transparantie - +</div>';}
+			if (GIS_ia_maps[map_id].l.substr(3,1)==='1') {r+='<div>Download</div>';}
+			if (GIS_ia_maps[map_id].l.substr(4,1)==='1') {r+='<div>Data.rivm.nl Open</div>';}
+			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div>Legenda</div>';}
+			r+='</div>';
+		}
+		r+='</div>';
+	}
+	r+='</div>';
+	return r;
+}
+
+function gis_ia_layers_change(map_id,typ,i) {
+	var checked,l,radio,t;
+	switch(typ) {
+		case 0:
+			for (t=0;t<GIS_ia_maps[map_id].base_layers.length;t++) if (t!=i && GIS_ia_maps[map_id].base_layers[t].typ=='base') {GIS_ia_maps[map_id].base_layers[t].setVisible(false);}
+			l=GIS_ia_maps[map_id].base_layers[i];
+			checked=jQuery('#gis_ia_bl_'+map_id+'_'+i).prop('checked');
+			break;
+		case 1: 
+			radio=(GIS_ia_maps[map_id].l.substr(1,1)=='0');
+			if (radio) {
+				for (t=0;t<GIS_ia_maps[map_id].layers.length;t++) if (t!=i) {GIS_ia_maps[map_id].layers[t].setVisible(false);}
+			}
+			l=GIS_ia_maps[map_id].layers[i];
+			checked=jQuery('#gis_ia_l_'+map_id+'_'+i).prop('checked');
+			break;
+	}
+	l.setVisible(checked);
+	var el = document.getElementById('timeSliderLayer' + map_id);
+	if (el) {
+		jQuery(el).hide();
+	}		
+}
+
+
 // Deze functie initialiseerd elke kaart op een webpagina
 // Parameters:		map_id;		Integer; map ID
 function GIS_paragraaf_start(map_id) {
@@ -784,7 +941,7 @@ function GIS_paragraaf_start(map_id) {
 		t1=parms[t].indexOf('=');
 		v=parms[t].substr(t1+1);
 		w=parms[t].substr(0,t1);
-		if (w!='l' && w!='o' && v==parseInt(v,10)) {v=parseInt(v,10);}
+		if (w!='l' && w!='o' && w!='b' && v==parseInt(v,10)) {v=parseInt(v,10);}
 		if (w=='fs') {
 			var par=0;
 			GIS_ia_maps[map_id].fs=[];
@@ -1014,7 +1171,7 @@ function GIS_paragraaf_start(map_id) {
 					}
 				}
 				// voeg de layer-definitie toe
-				GIS_ia_maps[map_id].layers_def[GIS_ia_maps[map_id].layers_def.length]={'type':jQuery.trim(ld[0]),'url':jQuery.trim(ld[1]),'layer':jQuery.trim(ld[2]),'title':jQuery.trim(ld[3]),'opacity':jQuery.trim(ld[4]),'visible_':jQuery.trim(ld[5]).toLowerCase()=='on','data':jQuery.trim(ld[5]),'dataVelden':dataVelden};
+				GIS_ia_maps[map_id].layers_def[GIS_ia_maps[map_id].layers_def.length]={'type':jQuery.trim(ld[0]),'url':jQuery.trim(ld[1]),'layer':jQuery.trim(ld[2]),'title':jQuery.trim(ld[3]),'opacity':jQuery.trim(ld[4]),'visible_':ld[7]!=0,'data':jQuery.trim(ld[5]),'dataVelden':dataVelden};
 			}
 		}
 	}
@@ -1032,16 +1189,14 @@ function GIS_paragraaf_start(map_id) {
 		}
 	}
 	// Initialiseer de base-layer
-	var b=GIS_ia_maps[map_id]['b'];
-	switch (b) {
-		case 1: GIS_ia_maps[map_id].base_layers[0]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaart',true,'brt achtergrondkaart',1,true,'base'); break;
-		case 2: GIS_ia_maps[map_id].base_layers[0]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaartgrijs',true,'brt achtergrondkaart grijs',1,true,'base'); break;
-		case 3: GIS_ia_maps[map_id].base_layers[0]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaartpastel',true,'brt achtergrondkaart pastel',1,true,'base'); break;
-		case 4: GIS_ia_maps[map_id].base_layers[0]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/luchtfoto/rgb/wmts','Actueel_ortho25',false,'Luchtfoto',1,true,'base'); break;
-		case 5: GIS_ia_maps[map_id].base_layers[0]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','top25raster',true,'Topografisch',1,true,'base'); break;
-	}
+	var b=GIS_ia_maps[map_id]['b'],bt=0, vis=true;
+	if (b.substr(0,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaart',true,'Openbasiskaart',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
+	if (b.substr(1,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaartgrijs',true,'Openbasiskaart grijs',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
+	if (b.substr(2,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaartpastel',true,'Openbasiskaart pastel',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
+	if (b.substr(3,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/luchtfoto/rgb/wmts','Actueel_ortho25',false,'Luchtfoto',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
+	if (b.substr(4,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','top25raster',true,'Topografisch',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
 	b=''+GIS_ia_maps[map_id]['o'];
-	if (b.substr(0,1)=='1') {GIS_ia_maps[map_id].base_layers[1]=getLayerWMS(map_id,'https://geodata.rivm.nl/geoserver/wms','rivm:nl_landscontour_lw','',1,true,'overlaykaart');}
+	if (b.substr(0,1)=='1') {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMS(map_id,'https://geodata.rivm.nl/geoserver/wms','rivm:nl_landscontour_lw','',1,true,'overlaykaart'); GIS_ia_maps[map_id].base_layers[bt].typ='overlaykaart'; bt++;}
         
 	// Voorbereiden initialisatie van de kaart (ol.Map)
 	var wmeter=GIS_ia_maps[map_id].extNL[2]-GIS_ia_maps[map_id].extNL[0]; // breedte NL volgens rijksdriehoekmeting
@@ -1324,6 +1479,10 @@ function GIS_paragraaf_start(map_id) {
 	// acties na het complete laden van de kaart en layers
 	// NB: Op trage devices zijn de kaartlagen mogelijk nog niet helemaal geladen
 	GIS_ia_maps[map_id].map.once('postrender', function() {
+		// Verberg layers die initieel niet zichtbaar zijn (deze zijn als zichtbaar aan openlayers opgegeven zodat ze op snellere devices al vast worden geladen)
+		for (var t=0;t<GIS_ia_maps[map_id].layers.length;t++) {
+			GIS_ia_maps[map_id].layers[t].setVisible(GIS_ia_maps[map_id].layers_def[t].visible_);
+		}
 
 		// zorg dat filterwindow zich aanpast
 		filterwindowCheck(map_id);
