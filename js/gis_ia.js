@@ -13,6 +13,8 @@ Opmerkingen:
 
 /* to do tbv kleuren-css:
 1. Zoek naar gis_ia_info_button in deze file en haal deze weg. zoek hem ook in de css en vervang die door gis_ia_filters_info_button
+2. Zoek in deze file en css naar gis_ia_filter_button en vervang deze door gis_ia_options_button (knop op de kaart)
+3. Zoek in deze file en in css naar gis_ia_filters_button en vervang deze door gis_ia_filters_wissen_button
 */
 
 // globale variabelen t.b.v. de autocomplete van position2 (ophalen o.b.v. postcode, adres, etc).
@@ -878,7 +880,7 @@ function gis_ia_filters_submenuClick(map_id,no) {
 		el=jQuery('#gis_ia_l_i_'+map_id+'_'+no);
 		if (el.css('display')=='none') {
 			jQuery('#f2-'+map_id).find('.gis_ia_filters_submenu').hide();
-			el.toggle('slide',{'direction':'up'},500);
+			el.show(); //toggle('slide',{'direction':'up'},500);
 		} else {
 			el.hide();
 		}
@@ -1812,6 +1814,7 @@ function hidePanels(map_id) {
 	el=jQuery('#gis_ia_map_'+map_id).find('.legenda');
 	if (el.length>=1) {if (el.hasClass('shown')) {el.removeClass('shown');}}
 	filterwindowCheckHide(map_id);
+	gis_ia_filters_submenuClick(map_id,-1);
 }
 
 if (typeof(Drupal)!='undefined') {
