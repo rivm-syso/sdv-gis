@@ -14,7 +14,6 @@ Opmerkingen:
 /* to do tbv kleuren-css:
 1. Zoek naar gis_ia_info_button in deze file en haal deze weg. zoek hem ook in de css en vervang die door gis_ia_filters_info_button
 2. Zoek in deze file en css naar gis_ia_filter_button en vervang deze door gis_ia_options_button (knop op de kaart)
-3. Zoek in deze file en in css naar gis_ia_filters_button en vervang deze door gis_ia_filters_wissen_button
 */
 
 // globale variabelen t.b.v. de autocomplete van position2 (ophalen o.b.v. postcode, adres, etc).
@@ -447,7 +446,7 @@ var gis_ia_filters={
 		for (t=0;t<t1;t++) {r+=GIS_ia_maps[map_id].fs[t].x_button(0);}
 		r+='</div>';
 		for (t=0;t<t1;t++) {r+=GIS_ia_maps[map_id].fs[t].html(0);}
-		r='<div><div class="gis_ia_f_def">Filters</div><div class="gis_ia_no_filters" id="gis_ia_no_filters_'+map_id+'">0 Filters</div><button style="float: right;" class="gis_ia_filters_button" onclick="gis_ia_filters.reset('+map_id+');">Verwijder filters</button></div>'+r;
+		r='<div><div class="gis_ia_f_def">Filters</div><div class="gis_ia_no_filters" id="gis_ia_no_filters_'+map_id+'">0 Filters</div><button class="gis_ia_filters_button" onclick="gis_ia_filters.reset('+map_id+');">Verwijder filters</button></div>'+r;
 		return r;
 	},
 	// deze functie geeft change signaal aan het juiste element (zodat beeld kan worden bijgewerkt) en handelt 
