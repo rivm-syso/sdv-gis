@@ -654,6 +654,12 @@ var gis_ia_filters={
         this.shownClassName = 'shown';
         var element = document.createElement('div'); element.className = this.hiddenClassName; var button = document.createElement('button'); button.setAttribute('title', tipLabel); element.appendChild(button);
         this.panel = document.createElement('div'); this.panel.className = 'panel'; element.appendChild(this.panel);
+
+        var t, d;
+        for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) {
+			d=document.createElement('div'); d.innerHTML=GIS_ia_maps[map_id].layers_def[t].title;
+		}
+		
         var this_ = this;
         button.onclick = function(e) {
             e = e || window.event;
@@ -677,31 +683,16 @@ var gis_ia_filters={
     }
     ;
     ol.inherits(ol.control.Legenda, ol.control.Control);
-    ol.control.Legenda.prototype.showPanel = function(map_id) {
+    ol.control.Legenda.prototype.showPanel = function() {
         if (!this.element.classList.contains(this.shownClassName)) {
-            jQuery(this.panel).css('max-height', (jQuery('#gis_ia_map_' + map_id).height() - 68) + 'px');
+            jQuery(this.panel).css('max-height', (jQuery('#gis_ia_map_' + this.map_id).height() - 68) + 'px');
             this.element.classList.add(this.shownClassName);
-            this.renderPanel(map_id);
         }
     };
     ol.control.Legenda.prototype.hidePanel = function() {
         if (this.element.classList.contains(this.shownClassName)) {
             this.element.classList.remove(this.shownClassName);
         }
-    };
-    ol.control.Legenda.prototype.renderPanel = function(map_id) {
-        while (this.panel.firstChild) {this.panel.removeChild(this.panel.firstChild);}
-        var t, t1 = 0, t2;
-        for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) if (GIS_ia_maps[map_id].layers[t].getVisible()) {
-			t1++;
-			t2 = t;
-		}
-        var div = document.createElement('div') , id = 'legend-layer-' + map_id + '-' + t2;
-        div.setAttribute('id', id);
-        if (t1 == 1) {
-            showLegend(map_id, t2, id);
-        }
-        this.panel.appendChild(div);
     };
     var Legenda = ol.control.Legenda;
     return Legenda;
