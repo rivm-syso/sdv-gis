@@ -880,7 +880,9 @@ function gis_ia_filters_submenuClick(map_id,no) {
 		el=jQuery('#gis_ia_l_i_'+map_id+'_'+no);
 		if (el.css('display')=='none') {
 			jQuery('#f2-'+map_id).find('.gis_ia_filters_submenu').hide();
-			el.show(); //toggle('slide',{'direction':'up'},500);
+			setTimeout(function() {
+				el.show(); //toggle('slide',{'direction':'up'},500);
+			},200);
 		} else {
 			el.hide();
 		}
