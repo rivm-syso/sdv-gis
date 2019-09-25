@@ -655,6 +655,7 @@ var gis_ia_filters={
         var element = document.createElement('div'); element.className = this.hiddenClassName; var button = document.createElement('button'); button.setAttribute('title', tipLabel); element.appendChild(button);
         this.panel = document.createElement('div'); this.panel.className = 'panel'; element.appendChild(this.panel);
 
+		this.map_id=map_id;
         var t, d, layers=document.createElement('div'), legendas=document.createElement('div');
 		layers.setAttribute('current', '');
         for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) {
