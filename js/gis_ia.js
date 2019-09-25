@@ -690,36 +690,32 @@ var gis_ia_filters={
     ;
     ol.inherits(ol.control.Legenda, ol.control.Control);
     ol.control.Legenda.prototype.showPanel = function() {
-        if (!this.element.classList.contains(this.shownClassName)) {
-            jQuery(this.panel).css('max-height', (jQuery('#gis_ia_map_' + this.map_id).height() - 68) + 'px');
-			// Als alle lagen verborgen zijn, toon dan de eerst zichtbare
-			var t, current, current_oud=this.layers.attr('current');
-			current=current_oud;
-			if (current=='') {
-				current=-1;
-			} else {
-				current=parseInt(current,10);
-				if (!GIS_ia_maps[this.map_id].layers[current].getVisible()) {current=-1;}
+		jQuery(this.panel).css('max-height', (jQuery('#gis_ia_map_' + this.map_id).height() - 68) + 'px');
+		// Als alle lagen verborgen zijn, toon dan de eerst zichtbare
+		var t, current, current_oud=this.layers.attr('current');
+		current=current_oud;
+		if (current=='') {
+			current=-1;
+		} else {
+			current=parseInt(current,10);
+			if (!GIS_ia_maps[this.map_id].layers[current].getVisible()) {current=-1;}
+		}
+		if (current==-1) {
+			for (t=0;t<GIS_ia_maps[this.map_id].layers.length;t++) if (GIS_ia_maps[this.map_id].layers[t].getVisible()) {current=t; t=1000;}
+		}
+		if (current==-1) {current=0;}
+		if (''.current!=''.current_oud) {
+			if (current_oud!='') {
+				jQuery('#gis_ia_'+this.map_id+'_'+current_oud+'_legenda_leg').hide();
+				jQuery('#gis_ia_'+this.map_id+'_'+current_oud+'_legenda_lay').hide();
 			}
-			if (current==-1) {
-				for (t=0;t<GIS_ia_maps[this.map_id].layers.length;t++) if (GIS_ia_maps[this.map_id].layers[t].getVisible()) {current=t; t=1000;}
-			}
-			if (current==-1) {current=0;}
-			if (''.current!=''.current_oud) {
-				if (current_oud!='') {
-					jQuery('#gis_ia_'+this.map_id+'_'+current_oud+'_legenda_leg').hide();
-					jQuery('#gis_ia_'+this.map_id+'_'+current_oud+'_legenda_lay').hide();
-				}
-				jQuery('#gis_ia_'+this.map_id+'_'+current+'_legenda_leg').show();
-				jQuery('#gis_ia_'+this.map_id+'_'+current+'_legenda_lay').show();
-			}
-            this.element.classList.add(this.shownClassName);
-        }
+			jQuery('#gis_ia_'+this.map_id+'_'+current+'_legenda_leg').show();
+			jQuery('#gis_ia_'+this.map_id+'_'+current+'_legenda_lay').show();
+		}
+        jQuery(this.panel).show();
     };
     ol.control.Legenda.prototype.hidePanel = function() {
-        if (this.element.classList.contains(this.shownClassName)) {
-            this.element.classList.remove(this.shownClassName);
-        }
+        jQuery(this.panel).hide();
     };
     var Legenda = ol.control.Legenda;
     return Legenda;
