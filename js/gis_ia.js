@@ -692,7 +692,7 @@ var gis_ia_filters={
     ol.control.Legenda.prototype.renderPanel = function(map_id) {
         while (this.panel.firstChild) {this.panel.removeChild(this.panel.firstChild);}
         var t, t1 = 0, t2;
-        for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) if (GIS_ol_maps[map_id].layers[t].getVisible()) {
+        for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) if (GIS_ia_maps[map_id].layers[t].getVisible()) {
 			t1++;
 			t2 = t;
 		}
@@ -1377,7 +1377,7 @@ function GIS_paragraaf_start(map_id) {
 	}
 	/* knoppen linksonder */
 	if (true || GIS_ia_maps[map_id].l1 == 1) {
-        GIS_ol_maps[map_id].map.addControl(new ol.control.Legenda({'map_id': map_id}));
+        GIS_ia_maps[map_id].map.addControl(new ol.control.Legenda({'map_id': map_id}));
     }
 
 	// knoppen rechtsonder
