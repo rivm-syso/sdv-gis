@@ -650,16 +650,10 @@ var gis_ia_filters={
         var options = opt_options || {};
         var map_id = options.map_id ? options.map_id : -1;
         var tipLabel = options.tipLabel ? options.tipLabel : 'Toon legenda';
-        this.hiddenClassName = 'ol-unselectable ol-control ' + (typeof (options['className']) == 'undefined' ? '' : ' ' + options['className']);
+        this.hiddenClassName = 'ol-unselectable ol-control legenda');
         this.shownClassName = 'shown';
-        var element = document.createElement('div');
-        element.className = this.hiddenClassName;
-        var button = document.createElement('button');
-        button.setAttribute('title', tipLabel);
-        element.appendChild(button);
-        this.panel = document.createElement('div');
-        this.panel.className = 'panel';
-        element.appendChild(this.panel);
+        var element = document.createElement('div'); element.className = this.hiddenClassName; var button = document.createElement('button'); button.setAttribute('title', tipLabel); element.appendChild(button);
+        this.panel = document.createElement('div'); this.panel.className = 'panel'; element.appendChild(this.panel);
         var this_ = this;
         button.onclick = function(e) {
             e = e || window.event;
@@ -669,15 +663,13 @@ var gis_ia_filters={
                 this_.hidePanel();
             }
             e.preventDefault();
-        }
-        ;
+        };
         this_.panel.onmouseout = function(e) {
             e = e || window.event;
             if (!this_.panel.contains(e.toElement || e.relatedTarget)) {
                 this_.hidePanel();
             }
-        }
-        ;
+        };
         ol.control.Control.call(this, {
             element: element,
             target: options.target
@@ -691,33 +683,26 @@ var gis_ia_filters={
             this.element.classList.add(this.shownClassName);
             this.renderPanel(map_id);
         }
-    }
-    ;
+    };
     ol.control.Legenda.prototype.hidePanel = function() {
         if (this.element.classList.contains(this.shownClassName)) {
             this.element.classList.remove(this.shownClassName);
         }
-    }
-    ;
+    };
     ol.control.Legenda.prototype.renderPanel = function(map_id) {
-        while (this.panel.firstChild) {
-            this.panel.removeChild(this.panel.firstChild);
-        }
+        while (this.panel.firstChild) {this.panel.removeChild(this.panel.firstChild);}
         var t, t1 = 0, t2;
-        ;for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++)
-            if (GIS_ol_maps[map_id].layers[t].getVisible()) {
-                t1++;
-                t2 = t;
-            }
-        var div = document.createElement('div')
-          , id = 'legend-layer-' + map_id + '-' + t2;
+        for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) if (GIS_ol_maps[map_id].layers[t].getVisible()) {
+			t1++;
+			t2 = t;
+		}
+        var div = document.createElement('div') , id = 'legend-layer-' + map_id + '-' + t2;
         div.setAttribute('id', id);
         if (t1 == 1) {
             showLegend(map_id, t2, id);
         }
         this.panel.appendChild(div);
-    }
-    ;
+    };
     var Legenda = ol.control.Legenda;
     return Legenda;
 }));
