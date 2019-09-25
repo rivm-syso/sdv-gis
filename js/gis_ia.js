@@ -658,6 +658,7 @@ var gis_ia_filters={
         var t, d;
         for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) {
 			d=document.createElement('div'); d.innerHTML=GIS_ia_maps[map_id].layers_def[t].title;
+			d.appendChild(this.panel);
 		}
 		
         var this_ = this;
