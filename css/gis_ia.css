@@ -50,9 +50,10 @@
 .gis_ia_filters .gis_ia_f_g {display: none; z-index: 1; position: absolute; margin-left: 229px; margin-top: -2em;}
 
 /* filters submenu */
+.gis_ia_info_button {background-repeat: no-repeat; background-position: center; width: 33px; height: 33px; position: absolute !important;}
 .gis_ia_filters_extra_info {position: relative; width: calc(100% - 24px); min-height: 34px;}
 .gis_ia_filters_submenu_parent {position: absolute;width: 100%; text-align: right;}
-.gis_ia_filters_submenu {text-align: left;display: inline-block;z-index: 1;position: relative;margin: 30px -30px 0 0;}
+.gis_ia_filters_submenu {text-align: left;display: inline-block;z-index: 1;position: relative;margin: 30px -30px 0 0; border: 1px solid black; background-color: white; padding: 12px;}
 
 /* Algemene instellingen (override ol-defaults) */
 .gis_ia .ol-control {padding: 0; border-radius: 0; background-color: transparent;}
@@ -67,7 +68,6 @@
 .panel .button, .ol-popup-2 .button {cursor: pointer; border-radius: 0 !important; background-image: none !important;}
 .gis_ia .gis_ia_filters_close button, .gis_ia .gis_ia_filters_toon button {position: initial !important;}
 .gis_ia_filters_button {cursor: pointer; outline: none; display: inline-block; border-radius: 16px; margin: 0; padding: 4px 12px; width: auto !important; position: relative !important;}
-.gis_ia_info_button {background-repeat: no-repeat; background-position: 4px 3px;}
 /* zorgen dat breedte popup gemaximaliseerd wordt */
 .ol-overlay-container.ol-selectable {width: 100%;}
 .ol-popup {max-width: calc(100% - 70px);}
