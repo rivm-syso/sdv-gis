@@ -1612,6 +1612,7 @@ function GIS_paragraaf_start(map_id) {
 			}
 		});*/
 		GIS_ia_maps[map_id].map.on('singleclick', function(evt) {
+			gis_ia_filters_submenuClick(map_id,-1);
 			filterwindowCheckHide(map_id);
 			if (GIS_ia_maps[map_id].layerDataToDo>=1) {return;}
 			// hide popup type 1
@@ -1814,7 +1815,6 @@ function hidePanels(map_id) {
 	el=jQuery('#gis_ia_map_'+map_id).find('.legenda');
 	if (el.length>=1) {if (el.hasClass('shown')) {el.removeClass('shown');}}
 	filterwindowCheckHide(map_id);
-	gis_ia_filters_submenuClick(map_id,-1);
 }
 
 if (typeof(Drupal)!='undefined') {
