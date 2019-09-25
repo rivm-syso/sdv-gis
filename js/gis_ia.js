@@ -1832,6 +1832,56 @@ function hidePanels(map_id) {
 	filterwindowCheckHide(map_id);
 }
 
+/* tbv download */
+window.downloadFile = function(sUrl) {
+    if (/(iP)/g.test(navigator.userAgent)) {
+        window.open(sUrl, '_blank');
+        return false;
+    }
+    if (window.downloadFile.isChrome || window.downloadFile.isSafari) {
+        var link = document.createElement('a');
+        link.href = sUrl;
+        link.setAttribute('target', '_blank');
+        if (link.download !== undefined) {
+            var fileName = sUrl.substring(sUrl.lastIndexOf('/') + 1, sUrl.length);
+            link.download = fileName;
+        }
+        if (document.createEvent) {
+            var e = document.createEvent('MouseEvents');
+            e.initEvent('click', true, true);
+            link.dispatchEvent(e);
+            return true;
+        }
+    }
+    if (sUrl.indexOf('?') === -1) {
+        sUrl += '?download';
+    }
+    window.open(sUrl, '_blank');
+    return true;
+};
+window.downloadFile.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+window.downloadFile.isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+function startDownload(map_id, lno, bb) {
+    GIS_ia_maps[map_id].overlay.setPosition(undefined);
+    if (GIS_ia_maps[map_id].popupCenter) {
+        GIS_ia_maps[map_id].map.getView().animate({
+            center: GIS_ia_maps[map_id].popupCenter,
+            duration: 250
+        });
+    }
+    if (lno >= 0 && lno < GIS_ia_maps[map_id].layers_def.length) {
+        var layer = GIS_ia_maps[map_id].layers_def[lno], url = layer.url;
+        layer = layer.layer;
+        url = url.substr(0, url.length - 3) + '/wfs';
+        url += '?service=WFS&version=2.0.0&request=GetFeature&typeNames=' + layer + '&srsName=EPSG:28992&outputFormat=CSV';
+        if (bb) {
+            var bbox = GIS_ia_maps[map_id].map.getView().calculateExtent();
+            url += '&bbox=' + bbox.join(',');
+        }
+        downloadFile(url);
+    }
+}
+
 if (typeof(Drupal)!='undefined') {
 	(function ($, Drupal, drupalSettings) {
 		Drupal.behaviors.gis_ia_Behavior = {
