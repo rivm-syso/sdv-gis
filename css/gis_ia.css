@@ -177,6 +177,7 @@
 .opaMelder {position: absolute; z-index: 1000; padding: 0 3px; border: solid 1px black;}
 .gis_ia_filter_button {display: none; width: auto !important; white-space: nowrap; padding: 0 12px 0 4px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;}
 .gis_ia_options_button {padding-left: 32px !important; background-repeat: no-repeat; background-position: 6px 6px !important;}
+.ol-control button.legenda {position: relative; bottom: -5px;}
 
 /* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
 #timeslider {width: calc(100% - 37px); margin-left: 4px;}
