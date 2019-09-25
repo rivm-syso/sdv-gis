@@ -628,6 +628,7 @@ var gis_ia_filters={
 		});
 		jQuery('.gis_ia_filters_submenu').click(function(e) {
 			e.preventDefault();
+			return false;
 		});
     };
     ol.inherits(ol.control.Filter, ol.control.Control);
