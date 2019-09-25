@@ -115,7 +115,7 @@
 .gis_ia_table_lvfh {display: inline-block;}
 .gis_ia_table_lvfh table {width: initial; margin: 0;}
 .gis_ia_popup_h {font-weight: bold;}
-.gis_ia_base .panel {padding: 4px 6px; margin: 0; display: none; max-height: 100%; overflow-y: auto; border-radius: 0;}
+.gis_ia_base .panel {padding: 4px 6px; margin: 0; display: none; overflow-y: auto; border-radius: 0;}
 .ol-popup   {position: absolute; padding: 12px 20px; border-radius: 0; left: -50px; padding-top: 24px; z-index: 200; white-space: nowrap; bottom: 9px; margin-left: 1px;}
 .ol-popup-2 {position: absolute; padding: 12px 20px; border-radius: 0; left: -50px; padding-top: 24px; z-index: 200; white-space: nowrap;}
 .ol-popup:after, .ol-popup:before     {top: calc(100% + 1px); border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none;}
@@ -177,7 +177,7 @@
 .opaMelder {position: absolute; z-index: 1000; padding: 0 3px; border: solid 1px black;}
 .gis_ia_filter_button {display: none; width: auto !important; white-space: nowrap; padding: 0 12px 0 4px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;}
 .gis_ia_options_button {padding-left: 32px !important; background-repeat: no-repeat; background-position: 6px 6px !important;}
-.ol-control button.legenda {position: relative; bottom: -5px;}
+.ol-control.legenda button {position: absolute; bottom: 0;}
 
 /* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
 #timeslider {width: calc(100% - 37px); margin-left: 4px;}
