@@ -911,10 +911,10 @@ function gis_ia_get_layer_div(map_id) {
 		r+='<div id="gis_ia_l_'+map_id+'_'+t+'_parent"'+(extra_info?' class="gis_ia_filters_extra_info"':'')+'>';
 		if (extra_info) {
 			r+='<div class="gis_ia_filters_submenu_parent"><div id="gis_ia_l_i_'+map_id+'_'+t+'" class="gis_ia_filters_submenu" style="display: none;">';
-			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div><b>Transparantie<br><span>10</span><input type="range" min="0" max="10"></div>';}
-			if (GIS_ia_maps[map_id].l.substr(3,1)==='1') {r+='<div><b>Download</b><br>Download de data van deze kaartlaag: <input type="button" value="Download"></div>';}
-			if (GIS_ia_maps[map_id].l.substr(4,1)==='1') {r+='<div><b>Download</b><br>Ga naar data.rivm.nl voor metadata over deze kaartlaag: <input type="button" value="data.rivm.nl"></div>';}
-			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><b>Legenda</b><br><img src="../css/wait.gif"></div>';}
+			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div><div>Transparantie</div><span>10</span><input type="range" min="0" max="10"></div>';}
+			if (GIS_ia_maps[map_id].l.substr(3,1)==='1') {r+='<div><div>Download</div>Download de data van deze kaartlaag: <input type="button" value="Download"></div>';}
+			if (GIS_ia_maps[map_id].l.substr(4,1)==='1') {r+='<div><div>Download</div>Ga naar data.rivm.nl voor metadata over deze kaartlaag: <input type="button" value="data.rivm.nl"></div>';}
+			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><div>Legenda</div><img src="../css/wait.gif"></div>';}
 			r+='</div></div>';
 		}
 		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');">';
