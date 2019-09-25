@@ -899,7 +899,7 @@ function gis_ia_filters_opa(map_id, no, d) {
 	if (v>=0 && v<=1) {
 		GIS_ia_maps[map_id].layers[no].setOpacity(v);
 		el.attr('opacity',v);
-		el.html('Transparantie: '+(v*100)+'%');
+		el.html('Transparantie: '+parseInt((v*100),10)+'%');
 	}
 }
 
