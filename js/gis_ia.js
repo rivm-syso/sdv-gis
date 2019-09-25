@@ -713,6 +713,7 @@ var gis_ia_filters={
 			jQuery('#gis_ia_'+this.map_id+'_'+current+'_legenda_lay').show();
 			this.layers.attr('current',current);
 		}
+		hidePanels(this.map_id);
         jQuery(this.panel).show();
     };
     ol.control.Legenda.prototype.hidePanel = function() {
@@ -1918,7 +1919,7 @@ function hidePanels(map_id) {
 	el=jQuery('#gis_ia_map_'+map_id).find('.filter');
 	if (el.length>=1) {if (el.hasClass('shown')) {el.removeClass('shown');}}
 	el=jQuery('#gis_ia_map_'+map_id).find('.legenda');
-	if (el.length>=1) {if (el.hasClass('shown')) {el.removeClass('shown');}}
+	if (el.length>=1) {el.find('.panel').hide();}
 	filterwindowCheckHide(map_id);
 }
 
