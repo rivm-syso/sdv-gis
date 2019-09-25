@@ -160,6 +160,7 @@
 
 /* posities knoppen linksonder */
 .ol-control.legenda {left: 8px; bottom: 8px;}
+.ol-control.legenda .panel {position: absolute;; bottom: 33px;}
 
 /* posities knoppen rechtsonder */
 .ol-control.timeSlider {right: 8px; bottom: 8px;}
