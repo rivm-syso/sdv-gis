@@ -58,7 +58,7 @@
 .gis_ia_filters_submenu>div {margin-top: 12px;}
 .gis_ia_filters_submenu>div:first-child {margin-top: 0;}
 .gis_ia_filters_submenu>div>div:first-child {font-weight: bold; margin-bottom: 4px;}
-.button-opa {display: inline-block; width: 150px; height: 27px; vertical-align: text-bottom;}
+.button-opa {display: inline-block;}
 .button-opa-min {float: right; width: 27px; height: 27px; border: solid 1px black; display: inline-block; border-top-left-radius: 13px; border-bottom-left-radius: 13px; background-repeat: no-repeat; background-position: center;}
 .button-opa-max {float: right; width: 27px; height: 27px; border: solid 1px black; display: inline-block; border-top-right-radius: 13px; border-bottom-right-radius: 13px; background-repeat: no-repeat; background-position: center;}
 
@@ -67,7 +67,7 @@
 .gis_ia .shown.ol-control:hover {background-color: transparent;}
 
 /* Override default ol-touch (grootte knoppen mobiel) */
-.ol-control button {font-size: 1em !important; font-weight: normal !important;}
+.gis_ia button {font-size: 1em !important; font-weight: normal !important;}
 
 /* Knoppen */
 .gis_ia button {cursor: pointer; position: absolute; outline: none; display: inline-block; background-position: center; width: 33px; height: 33px; border-radius: 16px; margin: 0;}
