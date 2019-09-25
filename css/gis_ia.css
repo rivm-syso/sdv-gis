@@ -70,8 +70,9 @@
 .gis_ia_base button {font-size: 1em !important; font-weight: normal !important;}
 
 /* Knoppen */
-.gis_ia_base button {cursor: pointer; position: absolute; outline: none; display: inline-block; background-position: center; min-width: 33px; height: 33px; border-radius: 16px; margin: 0;}
+.gis_ia_base button {cursor: pointer; outline: none; display: inline-block; background-position: center; min-width: 33px; height: 33px; border-radius: 16px; margin: 0;}
 .gis_ia_base button:focus {outline: none; background-color: transparent;}
+.gis_ia_map_holder button {position: absolute;}
 .panel .button, .ol-popup-2 .button {cursor: pointer; border-radius: 0 !important; background-image: none !important;}
 .gis_ia_filters_close button, .gis_ia_filters_toon button {position: initial !important;}
 .gis_ia_filters_button,gis_ia_filters_button {float: right; cursor: pointer; outline: none; display: inline-block; border-radius: 16px; margin: 0; padding: 4px 12px;}
