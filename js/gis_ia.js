@@ -911,7 +911,7 @@ function gis_ia_get_layer_div(map_id) {
 		r+='<div id="gis_ia_l_'+map_id+'_'+t+'_parent"'+(extra_info?' class="gis_ia_filters_extra_info"':'')+'>';
 		if (extra_info) {
 			r+='<div class="gis_ia_filters_submenu_parent"><div id="gis_ia_l_i_'+map_id+'_'+t+'" class="gis_ia_filters_submenu" style="display: none;">';
-			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div><div>Transparantie</div><span>10</span><input type="range" min="0" max="10"></div>';}
+			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div><div>Transparantie</div><div class="button-opa" id="gis_ia_filters_opa'+map_id+'_'+t+'" value="'+l.transp+'"><div title="Minder transparantie" class="button-opa-min"></div><div title="Meer transparantie" class="button-opa-max"></div></div>';}
 			if (GIS_ia_maps[map_id].l.substr(3,1)==='1') {r+='<div><div>Download</div>Download de data van deze kaartlaag: <input type="button" value="Download"></div>';}
 			if (GIS_ia_maps[map_id].l.substr(4,1)==='1') {r+='<div><div>Download</div>Ga naar data.rivm.nl voor metadata over deze kaartlaag: <input type="button" value="data.rivm.nl"></div>';}
 			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><div>Legenda</div><img src="../css/wait.gif"></div>';}
