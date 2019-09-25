@@ -656,12 +656,14 @@ var gis_ia_filters={
         this.panel = document.createElement('div'); this.panel.className = 'panel'; element.appendChild(this.panel);
 
         var t, d, layers=document.createElement('div'), legendas=document.createElement('div');
+		layers.setAttribute('current', '');
         for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) {
-			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_leg'); d.innerHTML=GIS_ia_maps[map_id].layers_def[t].title; layers.appendChild(d);
-			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_lay'); d.className='wait-cursor'; legendas.appendChild(d);
+			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_leg'); d.setAttribute('style', 'display: none;'); d.innerHTML=GIS_ia_maps[map_id].layers_def[t].title; layers.appendChild(d);
+			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_lay'); d.setAttribute('style', 'display: none;'); d.className='wait-cursor'; legendas.appendChild(d);
 		}
 		this.panel.appendChild(legendas);
 		this.panel.appendChild(layers);
+		this.layers=jQuery(layers);
 		
         var this_ = this;
         button.onclick = function(e) {
@@ -689,6 +691,25 @@ var gis_ia_filters={
     ol.control.Legenda.prototype.showPanel = function() {
         if (!this.element.classList.contains(this.shownClassName)) {
             jQuery(this.panel).css('max-height', (jQuery('#gis_ia_map_' + this.map_id).height() - 68) + 'px');
+			// Als alle lagen verborgen zijn, toon dan de eerst zichtbare
+			var t, current, current_oud=this.layers.attr('current');
+			current=current_oud;
+			if (current=='') {
+				current=-1;
+			} else {
+				current=parseInt(current,10);
+				if (!GIS_ia_maps[map_id].layers[current].getVisible()) {current=-1;}
+			}
+			if (current==-1) {
+				for (t=0;t<GIS_ia_maps[map_id].layers.length;t++) if (GIS_ia_maps[map_id].layers[t].getVisible()) {current=t; t=1000;}
+			}
+			if (current==-1) {current=0;}
+			if (current!=current_oud) {
+				jQuery('#gis_ia_'+this.map_id+'_'+current_oud+'_legenda_leg').hide();
+				jQuery('#gis_ia_'+this.map_id+'_'+current_oud+'_legenda_lay').hide();
+				jQuery('#gis_ia_'+this.map_id+'_'+current+'_legenda_leg').show();
+				jQuery('#gis_ia_'+this.map_id+'_'+current+'_legenda_lay').show();
+			}
             this.element.classList.add(this.shownClassName);
         }
     };
