@@ -887,14 +887,14 @@ function gis_ia_get_layer_div(map_id) {
 	r+='<div id="gis_ia_l_'+map_id+'_def" class="gis_ia_l_def">Kaartlagen</div>';
 	for (t=0;t<GIS_ia_maps[map_id].layers_def.length;t++) {
 		l=GIS_ia_maps[map_id].layers_def[t];
-		r+='<div id="gis_ia_l_'+map_id+'_'+t+'_parent"'+(extra_info?' style="position: relative; width: calc(100% - 24px); min-height: 34px;"':'')+'>';
+		r+='<div id="gis_ia_l_'+map_id+'_'+t+'_parent"'+(extra_info?' class="gis_ia_filters_extra_info"':'')+'>';
 		if (extra_info) {
-			r+='<div style="position: absolute;width: 100%;"><div style="text-align: right;margin: 30px -30px 0 0;"><div id="gis_ia_l_i_'+map_id+'_'+t+'" class="panel" style="display: none;padding-left:32px; text-align: left;display: inline-block;z-index: 1;position: relative;">';
+			r+='<div class="gis_ia_filters_submenu_parent"><div id="gis_ia_l_i_'+map_id+'_'+t+'" class="gis_ia_filters_submenu" style="display: none;">';
 			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div>Transparantie - +</div>';}
 			if (GIS_ia_maps[map_id].l.substr(3,1)==='1') {r+='<div>Download</div>';}
 			if (GIS_ia_maps[map_id].l.substr(4,1)==='1') {r+='<div>Data.rivm.nl Open</div>';}
 			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div>Legenda</div>';}
-			r+='</div></div></div>';
+			r+='</div></div>';
 		}
 		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');">';
 		r+='<label for="gis_ia_l_'+map_id+'_'+t+'" style="width: 100%;">'+l.title+'</label>';
