@@ -711,6 +711,7 @@ var gis_ia_filters={
 			}
 			jQuery('#gis_ia_'+this.map_id+'_'+current+'_legenda_leg').show();
 			jQuery('#gis_ia_'+this.map_id+'_'+current+'_legenda_lay').show();
+			this.layers.attr('current',current);
 		}
         jQuery(this.panel).show();
     };
