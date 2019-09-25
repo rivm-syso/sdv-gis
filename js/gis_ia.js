@@ -655,11 +655,13 @@ var gis_ia_filters={
         var element = document.createElement('div'); element.className = this.hiddenClassName; var button = document.createElement('button'); button.setAttribute('title', tipLabel); element.appendChild(button);
         this.panel = document.createElement('div'); this.panel.className = 'panel'; element.appendChild(this.panel);
 
-        var t, d;
+        var t, d, layers=document.createElement('div'), legendas=document.createElement('div');
         for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) {
-			d=document.createElement('div'); d.innerHTML=GIS_ia_maps[map_id].layers_def[t].title;
-			this.panel.appendChild(d);
+			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_leg'); d.innerHTML=GIS_ia_maps[map_id].layers_def[t].title; layers.appendChild(d);
+			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_lay'); d.className='wait_cursor'; legendas.appendChild(d);
 		}
+		this.panel.appendChild(legendas);
+		this.panel.appendChild(layers);
 		
         var this_ = this;
         button.onclick = function(e) {
