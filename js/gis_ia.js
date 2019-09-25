@@ -698,10 +698,10 @@ var gis_ia_filters={
 				current=-1;
 			} else {
 				current=parseInt(current,10);
-				if (!GIS_ia_maps[map_id].layers[current].getVisible()) {current=-1;}
+				if (!GIS_ia_maps[this.map_id].layers[current].getVisible()) {current=-1;}
 			}
 			if (current==-1) {
-				for (t=0;t<GIS_ia_maps[map_id].layers.length;t++) if (GIS_ia_maps[map_id].layers[t].getVisible()) {current=t; t=1000;}
+				for (t=0;t<GIS_ia_maps[this.map_id].layers.length;t++) if (GIS_ia_maps[this.map_id].layers[t].getVisible()) {current=t; t=1000;}
 			}
 			if (current==-1) {current=0;}
 			if (current!=current_oud) {
