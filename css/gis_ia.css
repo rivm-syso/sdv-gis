@@ -58,6 +58,9 @@
 .gis_ia_filters_submenu>div {margin-top: 12px;}
 .gis_ia_filters_submenu>div:first-child {margin-top: 0;}
 .gis_ia_filters_submenu>div>div:first-child {font-weight: bold; margin-bottom: 4px;}
+.button-opa {display: inline-block; width: 13px; height: 27px; vertical-align: text-bottom;}
+.button-opa-min {width: 27px; height: 27px; border: solid 1px black; display: inline-block; border-top-left-radius: 13px; border-bottom-left-radius: 13px;}
+.button-opa-max {width: 27px; height: 27px; border: solid 1px black; display: inline-block; border-top-left-radius: 13px; border-bottom-left-radius: 13px;}
 
 /* Algemene instellingen (override ol-defaults) */
 .gis_ia .ol-control {padding: 0; border-radius: 0; background-color: transparent;}
