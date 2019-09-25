@@ -11,6 +11,9 @@ Opmerkingen:
  
 **************************************************************************************/
 
+/* to do tbv kleuren-css:
+1. Zoek naar gis_ia_info_button in deze file en haal deze weg. zoek hem ook in de css en vervang die door gis_ia_filters_info_button
+*/
 
 // globale variabelen t.b.v. de autocomplete van position2 (ophalen o.b.v. postcode, adres, etc).
 var position2_url_suggest='https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?&rows=5&fq=*:*';
@@ -870,15 +873,18 @@ function performMelding(map_id,layerNo,coordinate) {
 }
 
 function gis_ia_filters_submenuClick(map_id,no) {
-	var el,go=true;
+	var el;
 	if (no>=0) {
 		el=jQuery('#gis_ia_l_i_'+map_id+'_'+no);
-		go=(el.css('display')!='none');
-	}
-	if (go) {
+		if (el.css('display')=='none') {
+			jQuery('#f2-'+map_id).find('.gis_ia_filters_submenu').hide();
+			el.show();
+		} else {
+			el.hide();
+		}
+	} else {
 		jQuery('#f2-'+map_id).find('.gis_ia_filters_submenu').hide();
 	}
-	el.toggle();
 }
 function gis_ia_get_layer_div(map_id) {
 	var t, t1, l, r,radio,extra_info;
