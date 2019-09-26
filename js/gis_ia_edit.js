@@ -594,7 +594,7 @@ function gis_ia_init() {
 	d+='<div class="form-item"><b>Panel</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<div>';
 	d+='<span style="width: 150px; vertical-align: top; display: inline-block;">Toon lagen in panel:</span>'+gis_ia_getRadio('show_layer','l-0',['0=Niet tonen','1=Toon boven filters','2=Toon onder filters'],false,'style="display: inline-block; vertical-align: top;"');	
-	d+='<div class="gis_ia_l_1" style="display: inline-block; margin-left: 20px;">';
+	d+='<div class="gis_ia_l_1" style="display: inline-block; margin-left: 80px;">';
 		d+='<div><input type="checkbox" id="gis_ia_l-1" gis_ia="l-1"><label for="gis_ia_l-1" class="option"> Met transparantie knoppen</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-2" gis_ia="l-2"><label for="gis_ia_l-2" class="option"> download mogelijkheid</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> data.rivm.nl knop</label></div>';
@@ -618,8 +618,8 @@ function gis_ia_init() {
 		d+='<div><input type="checkbox" id="gis_ia_l1" gis_ia="l1"><label for="gis_ia_l1" class="option"> Legenda</label></div>';
 	d+='</td><td></td><td>Rechts onder</td><td>';
 	// rechts onder
-		d+='<div><span style="width: 100px;">Layer slider:</span><select gis_ia="ts"><option value="0">Nee</option><option value="1">Ja</option><option value="2">Ja, incl. play-knop</option></select></div>';
-		d+='<div class="gis_ia_ts_1" style="margin-top: 8px;"><span style="width: 100px;">Interval:</span><input type="number" min="500" max="5000" step="500" class="form-number" gis_ia="i"></div>';
+		d+='<div><span style="width: 100px;display: inline-block;">Layer slider:</span><select gis_ia="ts"><option value="0">Nee</option><option value="1">Ja</option><option value="2">Ja, incl. play-knop</option></select></div>';
+		d+='<div class="gis_ia_ts_1" style="margin-top: 8px;"><span style="width: 100px;display: inline-block;">Interval:</span><input type="number" min="500" max="5000" step="500" class="form-number" gis_ia="i"></div>';
 	d+='</td></tr>';
 	d+='</table>';
 
