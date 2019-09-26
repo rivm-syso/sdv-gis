@@ -65,7 +65,7 @@ function gis_ia_showLegend(map_id,lno,where) {
 			img.no2=lno;
 			img.src2=src;
 			img.onload = function(){ // Als de image geladen is, toon deze dan
-				var i=jQuery(this)[0],map_id=i.map_id2,lno=i.no2,src=i.src2, img='<img class="gis_ia_layer-legend" src="'+src+'">', t;
+				var i=jQuery(this)[0],map_id=i.map_id2,lno=i.no2,src=i.src2, img='<img class="gis_ia_layer_legend" src="'+src+'">', t;
 				for (t=0;t<els.length;t++) {
 					jQuery(els[t]).removeClass('wait-cursor').html(img);
 				}
