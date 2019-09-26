@@ -1,13 +1,13 @@
 .gis_ia_base {background-color: #eef7fb;}
 /* Knoppen */
-.gis_ia button {background-color: #8fcae7 !important; border: solid 1px #535353;}
+.gis_ia_base button {background-color: #8fcae7 !important; border: solid 1px #535353;}
 .panel .button, .ol-popup-2 .button {background-color: #8fcae7 !important; color: black !important; border: solid 1px #535353;}
 
 /* position2 CSS */
 .autocomplete-selected {background: #8fcae7; color: black;}
 
 /* Popup & Panel */
-.gis_ia .panel, .autocomplete-suggestions {border: solid 1px #535353 !important; background-color: #eef7fb !important;}
+.gis_ia_base .panel, .autocomplete-suggestions {border: solid 1px #535353 !important; background-color: #eef7fb !important;}
 .ol-popup   {border: 1px solid #535353; background-color: #eef7fb;}
 .ol-popup-2 {border: 1px solid #535353; background-color: #eef7fb;}
 .ol-popup:after   {border-top-color: #535353;}
@@ -31,19 +31,10 @@
 .gis_ia_options_button {background-image: url(gis-ol-options.png);}
 .gis_ia_info_button {background-image: url(gis-ol-menu1.png);}
 
-/* DEFAULT: alles voor de thumb, voor verschillende browsers  */
-.gis_ia input[type=range]::-webkit-slider-thumb {background: #8fcae7; border: solid 1px #535353;}
-.gis_ia input[type=range]::-moz-range-thumb {background: #8fcae7; border: solid 1px #535353;}
-.gis_ia input[type=range]::-ms-thumb {background: #8fcae7; border: solid 1px #535353;}
-/* alles voor de track, voor verschillende browsers  */
-.gis_ia input[type=range]::-webkit-slider-runnable-track {background: #8fcae7; border: solid 1px #8fcae7;}
-.gis_ia input[type=range]::-moz-range-track {background: #8fcae7; border: solid 1px #8fcae7;}
-.gis_ia input[type=range]::-ms-track {background: #8fcae7;}
-
-/* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
+//* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
 #timeslider {width: calc(100% - 37px); margin-left: 4px;}
-.gis_ia .timeSlider input[type=range]::-webkit-slider-thumb {background-image: url(gis-ol-timeslider.png); background-color: #8fcae7;}
-.gis_ia .timeSlider input[type=range]::-moz-range-thumb {background-image: url(gis-ol-timeslider.png); background-color: #8fcae7;}
-.gis_ia .timeSlider input[type=range]::-ms-thumb {background-image: url(gis-ol-timeslider.png); background-color: #8fcae7;}
+.gis_ia_base .timeSlider input[type=range]::-webkit-slider-thumb {background-image: url(gis-ol-timeslider.png); background-color: #8fcae7;}
+.gis_ia_base .timeSlider input[type=range]::-moz-range-thumb {background-image: url(gis-ol-timeslider.png); background-color: #8fcae7;}
+.gis_ia_base .timeSlider input[type=range]::-ms-thumb {background-image: url(gis-ol-timeslider.png); background-color: #8fcae7;}
 .ol-control button.playpauze {background-image: url(gis-ol-play.png);}
 .ol-control button.playpauze.pauze {background-image: url(gis-ol-pauze.png);}
