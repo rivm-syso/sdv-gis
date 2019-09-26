@@ -1002,11 +1002,11 @@ function gis_ia_get_layer_div(map_id) {
 		r+='<div id="gis_ia_l_'+map_id+'_'+t+'_parent"'+(extra_info?' class="gis_ia_filters_extra_info"':'')+'>';
 		if (extra_info) {
 			r+='<div class="gis_ia_filters_submenu_parent"><div id="gis_ia_l_i_'+map_id+'_'+t+'" class="gis_ia_filters_submenu" style="display: none;">';
-//			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div><div>Transparantie</div><div class="button-opa" id="gis_ia_filters_opa_'+map_id+'_'+t+'" opacity="'+(100*l.opacity)+'">Transparantie: '+(l.opacity*100)+'%</div><button title="Meer transparantie" class="gis_ia_filters_button button-opa-max" onclick="gis_ia_filters_opa('+map_id+','+t+',10);"></button><button title="Minder transparantie" class="gis_ia_filters_button button-opa-min" onclick="gis_ia_filters_opa('+map_id+','+t+',-10);"></button></div>';}
+			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div><div>Transparantie</div><div class="button-opa" id="gis_ia_filters_opa_'+map_id+'_'+t+'" opacity="'+(100*l.opacity)+'">Transparantie: '+(l.opacity*100)+'%</div><button title="Meer transparantie" class="gis_ia_filters_button button-opa-max" onclick="gis_ia_filters_opa('+map_id+','+t+',10);"></button><button title="Minder transparantie" class="gis_ia_filters_button button-opa-min" onclick="gis_ia_filters_opa('+map_id+','+t+',-10);"></button></div>';}
 //			if (GIS_ia_maps[map_id].l.substr(3,1)!=='0') {r+='<div><div>Download</div>Download CSV data: <button class="gis_ia_filters_button" onclick="startDownload('+map_id+','+t+',false);">Download'+(GIS_ia_maps[map_id].l.substr(3,1)==='2'?' NL':'')+(GIS_ia_maps[map_id].l.substr(3,1)==='2'?' <button onclick="startDownload('+map_id+','+t+',true);">Download BB</button>':'')+'</div>';}
 //			if (GIS_ia_maps[map_id].l.substr(4,1)==='1') {r+='<div><div>Metadata</div>Zoek op data.rivm.nl naar metadata over deze kaartlaag: <button class="gis_ia_filters_button" onclick="gotoDataRIVMNl('+map_id+','+t+')">data.rivm.nl</button></div>';}
 //			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><div>Legenda</div><div class="wait-cursor gis_ia_'+map_id+'_'+t+'_legenda_leg"></div>';}
-			r+='Hallo</div></div>';
+			r+='</div></div>';
 		}
 		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');">';
 		r+='<label for="gis_ia_l_'+map_id+'_'+t+'" style="width: 100%;">'+l.title+'</label>';
