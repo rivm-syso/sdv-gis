@@ -31,9 +31,20 @@
 .gis_ia_gotopos {background-image: url(gis-ol-position2-white.png);}
 .legenda button {background-image: url(gis-ol-legenda-white.png);}
 .gis_ia_options_button {background-image: url(gis-ol-options-white.png);}
-.gis_ia_info_button {background-image: url(gis-ol-menu1-white.png);}
+.gis_ia_info_button {background-image: url(gis-ol-menu1-white.png); width: 29px; height:29px;}
+.button-opa-min {color: white; background-image: url(gis-ol-min-white.png);}
+.button-opa-max {color: white; background-image: url(gis-ol-plus-white.png);}
 
-//* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
+/* DEFAULT: alles voor de thumb, voor verschillende browsers  */
+.gis_ia_base input[type=range]::-webkit-slider-thumb {background: #42145f; border: solid 1px #535353;}
+.gis_ia_base input[type=range]::-moz-range-thumb {background: #42145f; border: solid 1px #535353;}
+.gis_ia_base input[type=range]::-ms-thumb {background: #42145f; border: solid 1px #535353;}
+/* alles voor de track, voor verschillende browsers  */
+.gis_ia_base input[type=range]::-webkit-slider-runnable-track {background: #42145f; border: solid 1px #42145f;}
+.gis_ia_base input[type=range]::-moz-range-track {background: #42145f; border: solid 1px #42145f;}
+.gis_ia_base input[type=range]::-ms-track {background: #42145f;}
+
+/* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
 #timeslider {width: calc(100% - 37px); margin-left: 4px;}
 .gis_ia_base .timeSlider input[type=range]::-webkit-slider-thumb {background-image: url(gis-ol-timeslider-white.png); background-color: #42145f;}
 .gis_ia_base .timeSlider input[type=range]::-moz-range-thumb {background-image: url(gis-ol-timeslider-white.png); background-color: #42145f;}
