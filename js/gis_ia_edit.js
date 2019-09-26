@@ -590,12 +590,15 @@ function gis_ia_init() {
 	d+='</table>';
 	d+='</div>';
 
+	d+='<div class="form-item"><b>Panel</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
+	d+='<div><span style="width: 140px;">Toon lagen in panel:</span>'+gis_ia_getRadio('show_layer','l-0',['0=Niet tonen','1=Toon boven filters','2=Toon onder filters'],false)+'</div>';	
+	
 	d+='<div class="form-item"><b>Knoppen en overige controls</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<table class="gis_ia_edit_table" style="font-style: normal;">';
 	d+='<tr><td>Links boven</td><td>';
 	// links boven
 		d+='<div><input type="checkbox" id="gis_ia_p" gis_ia="p"><label for="gis_ia_p" class="option"> Locatie zoeker</label></div>';
-		d+='<div id="gis_ia_pz_div">Zoom level: <input type="number" min="2" max="13" step="1" id="gis_ia_pz" gis_ia="pz"></div>';
+		d+='<div id="gis_ia_pz_div" style="margin-top: 8px;">Zoom level:<input type="number" min="2" max="13" step="1" id="gis_ia_pz" gis_ia="pz" style="margin-left: 20px;"></div>';
 	d+='</td><td></td><td>Rechts boven</td><td>';
 	// rechts boven
 		d+='<div><input type="checkbox" id="gis_ia_z" gis_ia="z"><label for="gis_ia_z" class="option"> In- en uitzoomen</label></div>';
@@ -603,9 +606,11 @@ function gis_ia_init() {
 		d+='<div><input type="checkbox" id="gis_ia_f" gis_ia="f"><label for="gis_ia_f" class="option"> Full screen</label></div>';
 	d+='</td></tr><tr><td>Links onder</td><td>';
 	// Links onder
+		d+='<div><input type="checkbox" id="gis_ia_l1" gis_ia="l1"><label for="gis_ia_l1" class="option"> Legenda</label></div>';
 	d+='</td><td></td><td>Rechts onder</td><td>';
 	// rechts onder
-		d+='<div>Layer slider:&nbsp;&nbsp;&nbsp;&nbsp;<select gis_ia="ts"><option value="0">Nee</option><option value="1">Ja</option><option value="2">Ja, incl. play-knop</option></select></div><div class="gis_ia_ts_1">Interval:&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" min="500" max="5000" step="500" class="form-number" gis_ia="i"></div>';
+		d+='<div><span style="width: 100px;">Layer slider:</span><select gis_ia="ts"><option value="0">Nee</option><option value="1">Ja</option><option value="2">Ja, incl. play-knop</option></select></div>';
+		d+='<div class="gis_ia_ts_1" style="margin-top: 8px;"><span style="width: 100px;">Interval:</span><input type="number" min="500" max="5000" step="500" class="form-number" gis_ia="i"></div>';
 	d+='</td></tr>';
 	d+='</table>';
 
