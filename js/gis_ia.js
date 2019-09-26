@@ -1461,7 +1461,7 @@ function GIS_paragraaf_start(map_id) {
 		GIS_ia_maps[map_id].map.addControl(filter);
 	}
 	/* knoppen linksonder */
-	if (true || GIS_ia_maps[map_id].l1 == 1) {
+	if (GIS_ia_maps[map_id].l1 == 1) {
         GIS_ia_maps[map_id].map.addControl(new ol.control.Legenda({'map_id': map_id}));
     }
 
