@@ -35,8 +35,8 @@ function gotoDataRIVMNl(map_id,lno) {
 // Gedurende het laden wordt de image loading.gif getoond.
 // Parameters:		map_id;		Integer; map ID
 //					lno;		Integer; layer-index
-function gis_ia_showLegend(map_id,lno) {
-	var t, t1, els=jQuery('.gis_ia_'+map_id+'_'+lno+'_legenda_leg');
+function gis_ia_showLegend(map_id,lno,where) {
+	var t, t1, els=jQuery('.gis_ia_'+map_id+'_'+lno+'_legenda_leg'+where);
 	for (t=0,t1=0;t<els.length;t++) {
 		if (jQuery(els[t]).hasClass('gis_ia_is_done')) {t1++;}
 		jQuery(els[t]).addClass('gis_ia_is_done');
@@ -59,8 +59,7 @@ function gis_ia_showLegend(map_id,lno) {
 	}
 	switch(legendType) {
 		case 0:
-//			src+='&LEGEND_OPTIONS=bgColor:0x'+GIS_ia_maps[map_id].kleuren[2].substr(1)+';fontColor:0x'+(GIS_ia_maps[map_id].kleuren[0].white?'FFFFFF':'000000');
-			src+='&LEGEND_OPTIONS=bgColor:0x00000080';
+			src+='&LEGEND_OPTIONS=bgColor:0x'+GIS_ia_maps[map_id].kleuren[2].substr(1)+';fontColor:0x'+(GIS_ia_maps[map_id].kleuren[0].white?'FFFFFF':'000000');
 			img = new Image();
 			img.map_id2=map_id;
 			img.no2=lno;
@@ -735,7 +734,7 @@ var gis_ia_filters={
 		layers.setAttribute('current', '-1');
         for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) {
 			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_lay'); d.setAttribute('style', 'display: none;'); d.innerHTML=GIS_ia_maps[map_id].layers_def[t].title; layers.appendChild(d);
-			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_leg'); d.setAttribute('style', 'display: none;'); d.className='wait-cursor gis_ia_'+map_id+'_'+t+'_legenda_leg'; legendas.appendChild(d);
+			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_leg'); d.setAttribute('style', 'display: none;'); d.className='wait-cursor gis_ia_'+map_id+'_'+t+'_legenda_leg2'; legendas.appendChild(d);
 		}
 		this.panel.appendChild(legendas);
 		this.panel.appendChild(layers);
@@ -782,7 +781,7 @@ var gis_ia_filters={
 		hidePanels(this.map_id);
         jQuery(this.panel).show();
 		if (current>=0) {
-			gis_ia_showLegend(this.map_id,current);
+			gis_ia_showLegend(this.map_id,current,2);
 		}
     };
     ol.control.Legenda.prototype.hidePanel = function() {
@@ -1042,7 +1041,7 @@ function gis_ia_filters_submenuClick(map_id,no) {
 			jQuery('#f2-'+map_id).find('.gis_ia_filters_submenu').hide();
 			setTimeout(function() { // om denderen van het event tegen te gaan
 				el.show(); //toggle('slide',{'direction':'up'},500);
-				gis_ia_showLegend(map_id,no);
+				gis_ia_showLegend(map_id,no,1);
 			},50);
 		} else {
 			el.hide();
@@ -1085,7 +1084,7 @@ function gis_ia_get_layer_div(map_id) {
 			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div><div>Transparantie</div><div class="button-opa" id="gis_ia_filters_opa_'+map_id+'_'+t+'" opacity="'+(100*l.opacity)+'">Transparantie: '+(l.opacity*100)+'%</div><button title="Meer transparantie" class="gis_ia_filters_button button-opa-max" onclick="gis_ia_filters_opa('+map_id+','+t+',10);"></button><button title="Minder transparantie" class="gis_ia_filters_button button-opa-min" onclick="gis_ia_filters_opa('+map_id+','+t+',-10);"></button></div>';}
 			if (GIS_ia_maps[map_id].l.substr(3,1)!=='0') {r+='<div><div>Download</div>Download CSV data: <button class="gis_ia_filters_button" onclick="startDownload('+map_id+','+t+',false);">Download'+(GIS_ia_maps[map_id].l.substr(3,1)==='2'?' NL':'')+(GIS_ia_maps[map_id].l.substr(3,1)==='2'?' <button onclick="startDownload('+map_id+','+t+',true);">Download BB</button>':'')+'</div>';}
 			if (GIS_ia_maps[map_id].l.substr(4,1)==='1') {r+='<div><div>Metadata</div>Zoek op data.rivm.nl naar metadata over deze kaartlaag: <button class="gis_ia_filters_button" onclick="gotoDataRIVMNl('+map_id+','+t+')">data.rivm.nl</button></div>';}
-			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><div>Legenda</div><div class="wait-cursor gis_ia_'+map_id+'_'+t+'_legenda_leg"></div></div>';}
+			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><div>Legenda</div><div class="wait-cursor gis_ia_'+map_id+'_'+t+'_legenda_leg1"></div></div>';}
 			r+='</div></div>';
 		}
 		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');">';
