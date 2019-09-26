@@ -612,7 +612,7 @@ function gis_ia_init() {
 		d+='</table>';
 	d+='</td><td></td><td>';
 	// rechts onder
-		d+='<div>Layer slider:&nbps;&nbps;&nbps;&nbps;<select gis_ia="ts"><option value="0">Nee</option><option value="1">Ja</option><option value="2">Ja, incl. play-knop</option></select></td><td class="gis_ia_ts_1">Interval:</td><td class="gis_ia_ts_1"><input type="number" min="500" max="5000" step="500" class="form-number" gis_ia="i"></div>';
+		d+='<div>Layer slider:&nbsp;&nbsp;&nbsp;&nbsp;<select gis_ia="ts"><option value="0">Nee</option><option value="1">Ja</option><option value="2">Ja, incl. play-knop</option></select></div><div class="gis_ia_ts_1">Interval:&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" min="500" max="5000" step="500" class="form-number" gis_ia="i"></div>';
 	d+='</td></tr>';
 	d+='</table>';
 
