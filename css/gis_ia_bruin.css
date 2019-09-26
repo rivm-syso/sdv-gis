@@ -29,7 +29,7 @@
 .gis_ia_gotopos {background-image: url(gis-ol-position2-white.png);}
 .legenda button {background-image: url(gis-ol-legenda-white.png);}
 .gis_ia_options_button {background-image: url(gis-ol-options-white.png);}
-.gis_ia_filters_info_button {background-image: url(gis-ol-menu1-white.png);}
+.gis_ia_info_button {background-image: url(gis-ol-menu1-white.png);}
 
 /* DEFAULT: alles voor de thumb, voor verschillende browsers  */
 .gis_ia input[type=range]::-webkit-slider-thumb {background: #94710a; border: solid 1px #535353;}
