@@ -592,25 +592,18 @@ function gis_ia_init() {
 
 	d+='<div class="form-item"><b>Knoppen en overige controls</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<table class="gis_ia_edit_table" style="font-style: normal;">';
-	d+='<tr><td>Links boven</td><td></td><td>Rechts boven</td></tr>';
-	d+='<tr><td>';
+	d+='<tr><td>Links boven</td><td>';
 	// links boven
 		d+='<div><input type="checkbox" id="gis_ia_p" gis_ia="p"><label for="gis_ia_p" class="option"> Locatie zoeker</label></div>';
 		d+='<div id="gis_ia_pz_div">Zoom level: <input type="number" min="2" max="13" step="1" id="gis_ia_pz" gis_ia="pz"></div>';
-	d+='</td><td></td><td>';
+	d+='</td><td></td><td>Rechts boven</td><td>';
 	// rechts boven
 		d+='<div><input type="checkbox" id="gis_ia_z" gis_ia="z"><label for="gis_ia_z" class="option"> In- en uitzoomen</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_e" gis_ia="e"><label for="gis_ia_e" class="option"> Zoom extend</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_f" gis_ia="f"><label for="gis_ia_f" class="option"> Full screen</label></div>';
-	d+='</td></tr>';
-	d+='<tr><td>Links onder</td><td></td><td>Rechts onder</td></tr>';
-	d+='<tr><td>';
-	// links onder
-		d+='<table class="gis_ia_edit_table">';
-		d+='<tr><td></td><td></td></tr>';
-		d+='<tr><td></td><td></td></tr>';
-		d+='</table>';
-	d+='</td><td></td><td>';
+	d+='</td></tr><tr><td>Links onder</td><td>';
+	// Links onder
+	d+='</td><td></td><td>Rechts onder</td><td>';
 	// rechts onder
 		d+='<div>Layer slider:&nbsp;&nbsp;&nbsp;&nbsp;<select gis_ia="ts"><option value="0">Nee</option><option value="1">Ja</option><option value="2">Ja, incl. play-knop</option></select></div><div class="gis_ia_ts_1">Interval:&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" min="500" max="5000" step="500" class="form-number" gis_ia="i"></div>';
 	d+='</td></tr>';
