@@ -61,6 +61,7 @@
 .button-opa {display: inline-block;}
 .button-opa-min {width: 27px; min-width: 27px !important; border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; background-repeat: no-repeat; background-position: center;}
 .button-opa-max {width: 27px; min-width: 27px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; background-repeat: no-repeat; background-position: center;}
+.gis_ia_base .legenda .panel>div>div {white-space: nowrap;}
 
 /* Algemene instellingen (override ol-defaults) */
 .gis_ia_base .ol-control {padding: 0; border-radius: 0; background-color: transparent;}
