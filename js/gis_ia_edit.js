@@ -592,12 +592,14 @@ function gis_ia_init() {
 
 	// panel
 	d+='<div class="form-item"><b>Panel</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
-	d+='<div><span style="width: 150px; vertical-align: top; display: inline-block;">Toon lagen in panel:</span>'+gis_ia_getRadio('show_layer','l-0',['0=Niet tonen','1=Toon boven filters','2=Toon onder filters'],false,'style="display: inline-block;"')+'</div>';	
+	d+='<div>';
+	d+='<span style="width: 150px; vertical-align: top; display: inline-block;">Toon lagen in panel:</span>'+gis_ia_getRadio('show_layer','l-0',['0=Niet tonen','1=Toon boven filters','2=Toon onder filters'],false,'style="display: inline-block;"');	
 	d+='<div style="display: inline-block;">';
 		d+='<div><input type="checkbox" id="gis_ia_l-1" gis_ia="l-1"><label for="gis_ia_l-1" class="option"> Met transparantie knoppen</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-2" gis_ia="l-2"><label for="gis_ia_l-2" class="option"> download mogelijkheid</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> data.rivm.nl knop</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-4" gis_ia="l-4"><label for="gis_ia_l-4" class="option"> legenda</label></div>';
+	d+='</div>';
 	d+='</div>';
 	
 	d+='<div class="form-item"><b>Knoppen en overige controls</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
