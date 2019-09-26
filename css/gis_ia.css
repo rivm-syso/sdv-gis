@@ -181,6 +181,20 @@
 .gis_ia_options_button {padding-left: 32px !important; background-repeat: no-repeat; background-position: 6px 6px !important;}
 .ol-control.legenda button {position: absolute; bottom: 0;}
 
+/* alles voor input range, voor verschillende browsers */
+.gis_ia_base input[type=range] {min-height: 20px; -webkit-appearance: none; background: transparent; margin: 0 !important; padding: 0; width: 30%;}
+.gis_ia_base input[type=range]:focus {outline: none;}
+.gis_ia_base input[type=range]::-ms-track {width: 100%;cursor: pointer;background: transparent; border-color: transparent; color: transparent;}
+/* alles voor de thumb, voor verschillende browsers  */
+.gis_ia_base input[type=range]::-webkit-slider-thumb {-webkit-appearance: none;border-radius: 0;border: 0;cursor: pointer;}
+.gis_ia_base input[type=range]::-moz-range-thumb {border-radius: 0; border: 0; cursor: pointer;}
+.gis_ia_base input[type=range]::-ms-thumb {border-radius: 0; border: 0; cursor: pointer;}
+/* alles voor de track, voor verschillende browsers  */
+.gis_ia_base input[type=range]::-webkit-slider-runnable-track {cursor: pointer;}
+.gis_ia_base input[type=range]:focus::-webkit-slider-runnable-track {}
+.gis_ia_base input[type=range]::-moz-range-track {cursor: pointer;}
+.gis_ia_base input[type=range]::-ms-track {cursor: pointer; background: transparent; border-color: transparent; border-width: 0; color: transparent;}
+
 /* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
 #timeslider {width: calc(100% - 37px); margin-left: 4px;}
 .gis_ia_base input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px;}
