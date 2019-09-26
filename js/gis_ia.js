@@ -36,8 +36,12 @@ function gotoDataRIVMNl(map_id,lno) {
 // Parameters:		map_id;		Integer; map ID
 //					lno;		Integer; layer-index
 function gis_ia_showLegend(map_id,lno) {
-	var el=jQuery('.gis_ia_'+map_id+'_'+lno+'_legenda_leg');
-	if (el.length==0) {return;}
+	var t, t1, els=jQuery('.gis_ia_'+map_id+'_'+lno+'_legenda_leg');
+	for (t=0,t1=0;t<els.length;t++) {
+		if (jQuery(els[t]).hasClass('gis_ia_is_done')) {t1++;}
+		jQuery(els[t]).addClass('gis_ia_is_done');
+	}
+	if (t1==0) {return;}
 	var l=GIS_ia_maps[map_id].layers_def[lno],src='',legendType;
 	switch (l.type) {
 		case 'WMS':
@@ -62,8 +66,8 @@ function gis_ia_showLegend(map_id,lno) {
 			img.src2=src;
 			img.onload = function(){ // Als de image geladen is, toon deze dan
 				var i=jQuery(this)[0],map_id=i.map_id2,lno=i.no2,src=i.src2, img='<img class="layer-legend" src="'+src+'">', t;
-				for (t=0;t<el.length;t++) {
-					jQuery(el[t]).removeClass('wait-cursor').html(img);
+				for (t=0;t<els.length;t++) {
+					jQuery(els[t]).removeClass('wait-cursor').html(img);
 				}
 			};
 			img.src = src;
@@ -89,11 +93,11 @@ function gis_ia_showLegend(map_id,lno) {
 						stroke=k.getStroke();
 						s+='<div><div style="display:inline-block; width: 18px; height: 18px; margin: 3px 30px 0 0; background-color: '+fill.getColor()+'; border: solid 1px '+stroke.getColor()+';"></div><div style="margin-top: 5px; display: inline-block; vertical-align: top;">'+keys[kt]+'</div></div>';
 					}
-					if (typeof(in_el_id)!='undefined') {
-						jQuery('#'+in_el_id).html(s+'</div>');
-					} else {
-						showUnderLayer(map_id,lno,s+'</div>');
+					for (t=0;t<els.length;t++) {
+						jQuery(els[t]).html(s+'</div>');
 					}
+				} else {
+					console.log('Interne fout');
 				}
 			}
 			break;
