@@ -10,6 +10,7 @@
 .ia_map:-ms-fullscreen {height: 100%; width: 100%;}
 .ia_map:fullscreen {height: 100%; width: 100%;}
 
+.ol-control button {width: initial;}
 /* Filters naast of op de kaart */
 /* berekening:   width van .gis_ia_map_holder = 260px    =>     width van .gis_ia_filters = 260 - 4 - 2*8 = 240px, de 4 vanwege drupal css en de 2*8 vanwege de padding */
 .gis_ia_base {display: flex;}
@@ -178,7 +179,7 @@
 .timeSlider input[type=range].play-left {width: calc(100% - 38px); margin: 0 4px 0 0 !important; float: left; height: 33px;}
 .opaMelder {position: absolute; z-index: 1000; padding: 0 3px; border: solid 1px black;}
 .gis_ia_filter_button {display: none; width: auto !important; white-space: nowrap; padding: 0 12px 0 4px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;}
-.gis_ia_options_button {padding-left: 32px !important; background-repeat: no-repeat; background-position: 6px 6px !important;}
+.gis_ia_options_button {padding-left: 32px !important; background-repeat: no-repeat; background-position: 6px 6px !important; border-top-left-radius: 0; border-bottom-left-radius: 0; padding-right: 8px;}
 .ol-control.legenda button {position: absolute; bottom: 0;}
 
 /* alles voor input range, voor verschillende browsers */
