@@ -1011,7 +1011,7 @@ function gis_ia_get_layer_div(map_id) {
 		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');">';
 		r+='<label for="gis_ia_l_'+map_id+'_'+t+'" style="width: 100%;">'+l.title+'</label>';
 		if (extra_info) {
-			r+='<span onclick="gis_ia_filters_submenuClick('+map_id+','+t+');" class="gis_ia_filters_info_button"></span>';
+			r+='<span onclick="gis_ia_filters_submenuClick('+map_id+','+t+');" class="gis_ia_filters_info_button gis_ia_info_button"></span>';
 		}
 		r+='</div>';
 	}
