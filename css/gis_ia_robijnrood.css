@@ -16,7 +16,9 @@
 
 /* filter panel */
 .gis_ia_filters .f2 {background-color: #f7d9e7;}
-.gis_ia_filter_button, .gis_ia_filters_button {background-color: #ca005d; color: white !important; border: solid 1px #535353;}
+.gis_ia_options_button {background-color: #ca005d; color: white !important; border: solid 1px #535353;}
+.gis_ia_filters_info_button {background-color: #ca005d; color: white !important; border: solid 1px #535353;}
+.gis_ia_filters_button {background-color: #ca005d; color: white !important; border: solid 1px #535353;}
 
 /* uiterlijk knoppen */
 .ol-control button.gis_ia_zoom-in {color: white; background-image: url(gis-ol-plus-white.png);}
