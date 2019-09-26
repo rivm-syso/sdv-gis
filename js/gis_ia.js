@@ -1046,6 +1046,7 @@ function gis_ia_filters_submenuClick(map_id,no) {
 		} else {
 			el.hide();
 		}
+		hidePanels(map_id);
 	} else {
 		jQuery('#f2-'+map_id).find('.gis_ia_filters_submenu').hide();
 	}
