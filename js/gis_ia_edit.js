@@ -60,11 +60,12 @@ var default_parameters={
 						// positie 1: Provinciegrenzen
 						// Positie 2: Gemeentegrenzen
 	// Knoppen en overige controls
-	'z': 0,				// Links boven: Zoom-knoppen
-	'e': 0,				// Links boven: Zoom-extend
 	'p': 0,				// Links boven: Position search
 	'pz': 10,			// Zoom after position search 
+	'z': 0,				// Rechts boven: Zoom-knoppen
+	'e': 0,				// Rechts boven: Zoom-extend
 	'f': 1,				// Rechts boven: Full-screen
+	'l1': 0,			// Links onder: Legenda
 	'ts': 0,			// Rechts onder: Timeslider
 	'i': 2000,			// Rechts onder: Timeslider interval
 	// Data weergave
@@ -581,7 +582,7 @@ function gis_ia_init() {
 	d+='<div><input type="checkbox" id="gis_ia_ok2" class="form-checkbox" gis_ia="o-1"><label for="gis_ia_ok2" class="option"> Provinciegrenzen</label></div>';
 	d+='<div><input type="checkbox" id="gis_ia_ok3" class="form-checkbox" gis_ia="o-2"><label for="gis_ia_ok3" class="option"> Gemeentegrenzen</label></div>';
 	d+='</td>';
-	d+='<td><table><tr>Aspect ratio:</td><td><input type="number" min="0.8" max="2" step="0.1" class="form-number" gis_ia="a"></td></tr><tr><td>Kleurstelling:</td><td><select gis_ia="u">';
+	d+='<td><table><tr><td>Aspect ratio:</td><td><input type="number" min="0.8" max="2" step="0.1" class="form-number" gis_ia="a"></td></tr><tr><td>Kleurstelling:</td><td><select gis_ia="u">';
 	for (t1=0;t1<kleuren.length;t1++) {
 		d+='<option value="'+kleuren[t1].toLowerCase()+'">'+kleuren[t1]+'</option>';
 	}
@@ -590,6 +591,36 @@ function gis_ia_init() {
 	d+='</div>';
 
 	d+='<div class="form-item"><b>Knoppen en overige controls</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
+	d+='<table class="gis_ia_edit_table" style="font-style: normal;">';
+	d+='<tr><td>Links boven</td><td></td><td>Rechts boven</td></tr>';
+	d+='<tr><td>';
+	// links boven
+		d+='<table class="gis_ia_edit_table">';
+		d+='<tr><td><input type="checkbox" id="gis_ia_p" gis_ia="p"><label for="gis_ia_p" class="option"> Locatie zoeker</label></td></tr>';
+		d+='<tr><td><div id="gis_ia_pz_div">Zoom level: <input type="number" min="2" max="13" step="1" id="gis_ia_pz" gis_ia="pz"></div></td></tr>';
+		d+='</table>';
+	d+='</td><td></td><td>';
+	// rechts boven
+		d+='<table class="gis_ia_edit_table">';
+		d+='<tr><td></td><td></td></tr>';
+		d+='<tr><td></td><td></td></tr>';
+		d+='</table>';
+	d+='</td></tr>';
+	d+='<tr><td>Links onder</td><td></td><td>Rechts onder</td></tr>';
+	d+='<tr><td>';
+	// links onder
+		d+='<table class="gis_ia_edit_table">';
+		d+='<tr><td></td><td></td></tr>';
+		d+='<tr><td></td><td></td></tr>';
+		d+='</table>';
+	d+='</td><td></td><td>';
+	// rechts onder
+		d+='<table class="gis_ia_edit_table">';
+		d+='<tr><td></td><td></td></tr>';
+		d+='<tr><td></td><td></td></tr>';
+		d+='</table>';
+	d+='</td></tr>';
+	d+='</table>';
 	d+='<table class="gis_ia_edit_table" style="font-style: normal;">';
 	d+='<tr>';
 	d+='<td><div><input type="checkbox" id="gis_ia_p" gis_ia="p"><label for="gis_ia_p" class="option"> Locatie zoeker</label></div></td><td><div id="gis_ia_pz_div">Zoom level: <input type="number" min="2" max="13" step="1" id="gis_ia_pz" gis_ia="pz"></div></td></tr>';
