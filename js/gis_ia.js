@@ -657,10 +657,10 @@ var gis_ia_filters={
 
 		this.map_id=map_id;
         var t, d, layers=document.createElement('div'), legendas=document.createElement('div');
-		layers.setAttribute('current', '');
+		layers.setAttribute('current', '-1');
         for (t = 0; t < GIS_ia_maps[map_id].layers.length; t++) {
-			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_leg'); d.setAttribute('style', 'display: none;'); d.innerHTML=GIS_ia_maps[map_id].layers_def[t].title; layers.appendChild(d);
-			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_lay'); d.setAttribute('style', 'display: none;'); d.className='wait-cursor'; legendas.appendChild(d);
+			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_lay'); d.setAttribute('style', 'display: none;'); d.innerHTML=GIS_ia_maps[map_id].layers_def[t].title; layers.appendChild(d);
+			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_leg'); d.setAttribute('style', 'display: none;'); d.className='wait-cursor gis_ia_'+map_id+'_'+t+'_legenda_leg'; legendas.appendChild(d);
 		}
 		this.panel.appendChild(legendas);
 		this.panel.appendChild(layers);
@@ -676,12 +676,6 @@ var gis_ia_filters={
             }
             e.preventDefault();
         };
-        this_.panel.onmouseout = function(e) {
-            e = e || window.event;
-            if (!this_.panel.contains(e.toElement || e.relatedTarget)) {
-                this_.hidePanel();
-            }
-        };
         ol.control.Control.call(this, {
             element: element,
             target: options.target
@@ -692,20 +686,17 @@ var gis_ia_filters={
     ol.control.Legenda.prototype.showPanel = function() {
 		jQuery(this.panel).css('max-height', (jQuery('#gis_ia_map_' + this.map_id).height() - 68) + 'px');
 		// Als alle lagen verborgen zijn, toon dan de eerst zichtbare
-		var t, current, current_oud=this.layers.attr('current');
+		var t, current, current_oud=parseInt(this.layers.attr('current'),10);
 		current=current_oud;
-		if (current=='') {
-			current=-1;
-		} else {
-			current=parseInt(current,10);
+		if (current>=0) {
 			if (!GIS_ia_maps[this.map_id].layers[current].getVisible()) {current=-1;}
 		}
 		if (current==-1) {
-			for (t=0;t<GIS_ia_maps[this.map_id].layers.length;t++) if (GIS_ia_maps[this.map_id].layers[t].getVisible()) {current=t; t=1000;}
+			for (t=0;t<GIS_ia_maps[this.map_id].layers.length;t++) if (GIS_ia_maps[this.map_id].layers[t].getVisible()) {current=t; t=GIS_ia_maps[this.map_id].layers.length;}
 		}
 		if (current==-1) {current=0;}
-		if (current!==current_oud) {
-			if (current_oud!='') {
+		if (current!=current_oud) {
+			if (current_oud>=0) {
 				jQuery('#gis_ia_'+this.map_id+'_'+current_oud+'_legenda_leg').hide();
 				jQuery('#gis_ia_'+this.map_id+'_'+current_oud+'_legenda_lay').hide();
 			}
@@ -1014,7 +1005,7 @@ function gis_ia_get_layer_div(map_id) {
 			if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div><div>Transparantie</div><div class="button-opa" id="gis_ia_filters_opa_'+map_id+'_'+t+'" opacity="'+(100*l.opacity)+'">Transparantie: '+(l.opacity*100)+'%</div><button title="Meer transparantie" class="gis_ia_filters_button button-opa-max" onclick="gis_ia_filters_opa('+map_id+','+t+',10);"></button><button title="Minder transparantie" class="gis_ia_filters_button button-opa-min" onclick="gis_ia_filters_opa('+map_id+','+t+',-10);"></button></div>';}
 			if (GIS_ia_maps[map_id].l.substr(3,1)!=='0') {r+='<div><div>Download</div>Download CSV data: <button class="gis_ia_filters_button" onclick="startDownload('+map_id+','+t+',false);">Download'+(GIS_ia_maps[map_id].l.substr(3,1)==='2'?' NL':'')+(GIS_ia_maps[map_id].l.substr(3,1)==='2'?' <button onclick="startDownload('+map_id+','+t+',true);">Download BB</button>':'')+'</div>';}
 			if (GIS_ia_maps[map_id].l.substr(4,1)==='1') {r+='<div><div>Metadata</div>Zoek op data.rivm.nl naar metadata over deze kaartlaag: <button class="gis_ia_filters_button" onclick="gotoDataRIVMNl('+map_id+','+t+')">data.rivm.nl</button></div>';}
-			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><div>Legenda</div><img class="wait-cursor"></div>';}
+			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><div>Legenda</div><div class="wait-cursor gis_ia_'+map_id+'_'+t+'_legenda_leg"></div>';}
 			r+='</div></div>';
 		}
 		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');">';
@@ -1719,7 +1710,7 @@ function GIS_paragraaf_start(map_id) {
 		});*/
 		GIS_ia_maps[map_id].map.on('singleclick', function(evt) {
 			gis_ia_filters_submenuClick(map_id,-1);
-			filterwindowCheckHide(map_id);
+			hidePanels(map_id);
 			if (GIS_ia_maps[map_id].layerDataToDo>=1) {return;}
 			// hide popup type 1
 			jQuery('#gis_ia_map_'+map_id+'_data').hide();
