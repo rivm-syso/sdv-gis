@@ -31,6 +31,76 @@ function gotoDataRIVMNl(map_id,lno) {
 	window.open('https://data.rivm.nl/geonetwork/srv/dut/catalog.search#/search?resultType=details&fast=index&_content_type=json&from=1&to=4&sortBy=relevance&any_OR__title='+l.layer);
 }
 
+// Deze functie wordt gebruikt om de legenda voor een bepaalde layer te laden en te tonen.
+// Gedurende het laden wordt de image loading.gif getoond.
+// Parameters:		map_id;		Integer; map ID
+//					lno;		Integer; layer-index
+function gis_ia_showLegend(map_id,lno) {
+	var el=jQuery('.gis_ia_'+map_id+'_'+lno+'_legenda_leg');
+	if (el.length==0) {return;}
+	var l=GIS_ia_maps[map_id].layers_def[lno],src='',legendType;
+	switch (l.type) {
+		case 'WMS':
+		case 'WMSinput':
+			src='https://geodata.rivm.nl/geoserver/wms?VERSION=1.1.1&REQUEST=GetLegendGraphic&LAYER='+GIS_ia_maps[map_id].layers_def[lno].layer+'&Format=image/png';
+			legendType=0;
+			break;
+		case 'datarivmnl':
+            src=l.url+'?VERSION=1.1.1&REQUEST=GetLegendGraphic&LAYER='+GIS_ia_maps[map_id].layers_def[lno].layer+'&Format=image/png';
+			legendType=0;
+            break;
+		case 'Vectortile':
+			legendType=1;
+			break;
+	}
+	switch(legendType) {
+		case 0:
+			src+='&LEGEND_OPTIONS=bgColor:0x'+GIS_ia_maps[map_id].kleuren[2].substr(1)+';fontColor:0x'+(GIS_ia_maps[map_id].kleuren[0].white?'FFFFFF':'000000');
+			img = new Image();
+			img.map_id2=map_id;
+			img.no2=lno;
+			img.src2=src;
+			img.onload = function(){ // Als de image geladen is, toon deze dan
+				var i=jQuery(this)[0],map_id=i.map_id2,lno=i.no2,src=i.src2, img='<img class="layer-legend" src="'+src+'">', t;
+				for (t=0;t<el.length;t++) {
+					jQuery(el[t]).removeClass('wait-cursor').html(img);
+				}
+			};
+			img.src = src;
+			break;
+		case 1:
+			var ll=l.lstyle, pos=ll.indexOf('styles'), openhaak=0,tl, c, qt='', lf='', styles;
+			if (pos!==false) {
+				ll=ll.substr(pos);
+				for (tl=0;tl<ll.length;tl++) {
+					c=ll.substr(tl,1);
+					switch (c) {
+						case '\'': case '"': if (c==qt) {qt='';} break;
+						case '{': if (qt=='') {openhaak++;} break;
+						case '}': if (qt=='') {openhaak--; if (openhaak==0) {lf=ll.substr(0,tl+1);tl=ll.length;}} break;
+					}
+				}
+				if (lf!='') {
+					eval(lf+';');
+					var s='<div style="text-align: left; background-color: white; font-size: 0.9em; padding: 3px 30px 0 0;">',keys=Object.keys(styles),k,kt,fill,stroke;
+					for (kt=0;kt<keys.length;kt++) {
+						k=styles[keys[kt]];
+						fill=k.getFill();
+						stroke=k.getStroke();
+						s+='<div><div style="display:inline-block; width: 18px; height: 18px; margin: 3px 30px 0 0; background-color: '+fill.getColor()+'; border: solid 1px '+stroke.getColor()+';"></div><div style="margin-top: 5px; display: inline-block; vertical-align: top;">'+keys[kt]+'</div></div>';
+					}
+					if (typeof(in_el_id)!='undefined') {
+						jQuery('#'+in_el_id).html(s+'</div>');
+					} else {
+						showUnderLayer(map_id,lno,s+'</div>');
+					}
+				}
+			}
+			break;
+	}
+}
+
+
 /**************************************************************************************
 Filtering:
 
@@ -706,6 +776,9 @@ var gis_ia_filters={
 		}
 		hidePanels(this.map_id);
         jQuery(this.panel).show();
+		if (current>=0) {
+			gis_ia_showLegend(this.map_id,current);
+		}
     };
     ol.control.Legenda.prototype.hidePanel = function() {
         jQuery(this.panel).hide();
@@ -964,6 +1037,7 @@ function gis_ia_filters_submenuClick(map_id,no) {
 			jQuery('#f2-'+map_id).find('.gis_ia_filters_submenu').hide();
 			setTimeout(function() { // om denderen van het event tegen te gaan
 				el.show(); //toggle('slide',{'direction':'up'},500);
+				gis_ia_showLegend(map_id,no);
 			},50);
 		} else {
 			el.hide();
