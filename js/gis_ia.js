@@ -567,7 +567,7 @@ var gis_ia_filters={
 		});
 		html=aantal+' Filter'+(aantal==1?'':'s');
 		jQuery('#gis_ia_no_filters_'+map_id).html(html);
-		//jQuery('#gis_ia_filter_button_'+map_id).html(html);
+		//jQuery('#gis_ia_options_button_'+map_id).html(html);
 	}
 };
 
@@ -597,16 +597,16 @@ var gis_ia_filters={
         this.shownClassName = 'shown';
 
         var element = document.createElement('div'); element.className = this.hiddenClassName;
-        var button = document.createElement('button'); button.setAttribute('title', 'Filtering'); button.setAttribute('id', 'gis_ia_filter_button_'+map_id); 
+        var button = document.createElement('button'); button.setAttribute('title', 'Filtering'); button.setAttribute('id', 'gis_ia_options_button_'+map_id); 
 		button.innerHTML='Opties'; // was ooit '0 Filters'; 
-		button.className='gis_ia_filter_button gis_ia_options_button'; element.appendChild(button);
+		button.className='gis_ia_options_button gis_ia_options_button'; element.appendChild(button);
         button.onclick = function(e) {
             e = e || window.event; e.preventDefault();
 			hidePanels(map_id);
 			jQuery('#f1b-'+map_id).show();
 			jQuery('#f3b-'+map_id).show();
 			jQuery('#f2-'+map_id).toggle('slide');
-			jQuery('#gis_ia_filter_button_'+map_id).hide();
+			jQuery('#gis_ia_options_button_'+map_id).hide();
         };
         ol.control.Control.call(this, {element: element,target: options.target});
 		// html opbouwen mbt de filtering
@@ -722,7 +722,7 @@ function filterwindowCheckHide(map_id) {
 		jQuery('#f1b-'+map_id).hide();
 		jQuery('#f3b-'+map_id).hide();
 		jQuery('#f2-'+map_id).hide();
-		jQuery('#gis_ia_filter_button_'+map_id).show();
+		jQuery('#gis_ia_options_button_'+map_id).show();
 	}
 	gis_ia_filters_hideSubmenus();
 }
@@ -750,7 +750,7 @@ function filterwindowCheck(map_id, force) {
 		filterwindowCheck_=dsp;
 //		if (dsp=='inline-block' && !force) { 
 		if (dsp=='flex' && !force) { // switch naar 'vast' filter-block
-			jQuery('#gis_ia_filter_button_'+map_id).hide();
+			jQuery('#gis_ia_options_button_'+map_id).hide();
 			jQuery('#f3a-'+map_id).show();
 			jQuery('#f1b-'+map_id).hide();
 			jQuery('#f3b-'+map_id).hide();
