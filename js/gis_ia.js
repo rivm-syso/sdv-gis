@@ -60,6 +60,7 @@ function gis_ia_showLegend(map_id,lno) {
 	switch(legendType) {
 		case 0:
 //			src+='&LEGEND_OPTIONS=bgColor:0x'+GIS_ia_maps[map_id].kleuren[2].substr(1)+';fontColor:0x'+(GIS_ia_maps[map_id].kleuren[0].white?'FFFFFF':'000000');
+			src+='&LEGEND_OPTIONS=bgColor:0x00000080';
 			img = new Image();
 			img.map_id2=map_id;
 			img.no2=lno;
