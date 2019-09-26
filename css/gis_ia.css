@@ -54,7 +54,7 @@
 .gis_ia_filters_info_button {cursor: pointer; outline: none; display: inline-block; border-radius: 16px; margin: 0 0 0 12px; background-repeat: no-repeat; background-position: center; width: 33px; height: 33px; position: absolute !important;}
 .gis_ia_filters_extra_info {position: relative; width: calc(100% - 36px); min-height: 34px;}
 .gis_ia_filters_submenu_parent {position: absolute;width: 100%; text-align: right;}
-.gis_ia_filters_submenu {text-align: left;display: inline-block;z-index: 1;position: relative;margin: 30px -30px 0 0; border: 1px solid black; background-color: white; padding: 12px;}
+.gis_ia_filters_submenu {text-align: left;display: inline-block;z-index: 1;position: relative;margin: 30px -42px 0 0; border: 1px solid black; background-color: white; padding: 12px;}
 /* filters submenu items */
 .gis_ia_filters_submenu>div {margin-top: 12px;}
 .gis_ia_filters_submenu>div:first-child {margin-top: 0;}
