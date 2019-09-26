@@ -591,7 +591,7 @@ function gis_ia_init() {
 	d+='</div>';
 
 	d+='<div class="form-item"><b>Panel</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
-	d+='<div><span style="width: 140px;">Toon lagen in panel:</span>'+gis_ia_getRadio('show_layer','l-0',['0=Niet tonen','1=Toon boven filters','2=Toon onder filters'],false)+'</div>';	
+	d+='<div><span style="width: 150px; vertical-align: top; display: inline-block;">Toon lagen in panel:</span>'+gis_ia_getRadio('show_layer','l-0',['0=Niet tonen','1=Toon boven filters','2=Toon onder filters'],false,'style="display: inline-block;"')+'</div>';	
 	
 	d+='<div class="form-item"><b>Knoppen en overige controls</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<table class="gis_ia_edit_table" style="font-style: normal;">';
