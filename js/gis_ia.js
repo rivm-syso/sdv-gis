@@ -41,7 +41,7 @@ function gis_ia_showLegend(map_id,lno) {
 		if (jQuery(els[t]).hasClass('gis_ia_is_done')) {t1++;}
 		jQuery(els[t]).addClass('gis_ia_is_done');
 	}
-	if (t1==0) {return;}
+	if (t1!=0) {return;}
 	var l=GIS_ia_maps[map_id].layers_def[lno],src='',legendType;
 	switch (l.type) {
 		case 'WMS':
