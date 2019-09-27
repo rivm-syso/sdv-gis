@@ -78,7 +78,6 @@ var default_parameters={
 	'w2': 1,			// Data weergave (tonen van layers en feautures)
 	'tl': 0,			// Toon laagnaam bij tonen features
 	// Filtering
-    'fg': 1,         	// Filtergedrag, 0=Toon alle filters, 1=Gebruik 1 filter voor velden met gelijke veldnamen, 2=Gebruik 1 filter voor velden met gelijk weergegeven namen
 	'fs': '',			// Filters
 	// layer data
 	'ld': '',			// Deze parameter wordt in gis_ia.module achter de 'echte' parameters geplakt en bevat alle layer-data!!!
@@ -661,10 +660,7 @@ function gis_ia_init() {
 	
 	// Laag- en velddefinities
 	d+='<div class="form-item"><b>Laag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
-	d += '<table class="gis_ia_edit_table" style="font-style: normal;">';
-	d += '<tr><td colspan="4"><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></td></tr>';
-	d+='<tr><td>Filtervelden gedrag:</td><td><select gis_ia="fg"><option value="0" selected="selected">Toon alle filters</option><option value="1">1 filter bij gelijke veldnamen</option><option value="2">1 filter bij gelijke labels</option></select></td></tr>';
-	d += '</table>';
+	d+='<div><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></div>';
 	d+='<div id="gis_ia_layer_defs">'+getLayerDefs()+'</div>';
 
 	d+='<div class="form-item"><b>Filter definities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#filter\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
