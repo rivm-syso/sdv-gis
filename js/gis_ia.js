@@ -683,6 +683,7 @@ var gis_ia_filters={
 			jQuery('#gis_ia_options_button_'+map_id).hide();
         };
         ol.control.Control.call(this, {element: element,target: options.target});
+/*
 		// html opbouwen mbt de filtering
         var html, checkSameField=GIS_ia_maps[map_id].fg>=1;
 		switch (GIS_ia_maps[map_id].l.substr(0,1)) {
@@ -705,6 +706,7 @@ var gis_ia_filters={
 			e.preventDefault();
 			return false;
 		});
+*/
     };
     ol.inherits(ol.control.Filter, ol.control.Control);
     var Filter = ol.control.Filter;
@@ -1454,6 +1456,29 @@ function GIS_paragraaf_start(map_id) {
 	// onthoud map_id in het map object.
 	GIS_ia_maps[map_id].map.map_id=map_id;
 	
+		// html opbouwen mbt de filtering
+	var html;
+	switch (GIS_ia_maps[map_id].l.substr(0,1)) {
+		case '0': html=gis_ia_filters.html(map_id); break;
+		case '1': html=gis_ia_get_layer_div(map_id)+gis_ia_filters.html(map_id); break;
+		case '2': html=gis_ia_filters.html(map_id)+gis_ia_get_layer_div(map_id); break;
+	}
+	html='<div id="f2-'+map_id+'" onclick="gis_ia_filters_submenuClick('+map_id+',-1);" class="f2"><div id="f1b-'+map_id+'" class=""><div class="gis_ia_filters_close"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">X sluiten</button></div></div>'+html+'<div id="f3b-'+map_id+'"><div class="gis_ia_filters_toon"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">Toon resultaten</button></div></div></div>';
+	jQuery('#gis_ia_filters_'+map_id).html(html);
+	var inputs=jQuery('#f2-'+map_id+' :input').on('keyup',function(e) {
+		if (e.keyCode==13) {
+			e.preventDefault();
+			var nextInput = inputs.get(inputs.index(this) + 1);
+			if (nextInput) {
+				nextInput.focus();
+			}
+		}
+	});
+	jQuery('.gis_ia_filters_submenu').click(function(e) {
+		e.preventDefault();
+		return false;
+	});
+
 	// Filter
 	var filter = new ol.control.Filter({'map_id':map_id,className:'gis_ia_filter'+(GIS_ia_maps[map_id].p==0?'':' gis_ia_filter1')});
 	GIS_ia_maps[map_id].map.addControl(filter);
