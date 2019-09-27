@@ -610,17 +610,17 @@ function gis_ia_init() {
 		d+='<div id="gis_ia_pz_div" style="margin-top: 8px;">Zoom level:<input type="number" min="2" max="13" step="1" id="gis_ia_pz" gis_ia="pz" style="margin-left: 20px;"></div>';
 		d+='</div>';
 	// rechts boven
-		d+='<div class="kolom_1"><div>Links boven</div>';
+		d+='<div class="kolom_1"><div>Rechts boven</div>';
 		d+='<div><input type="checkbox" id="gis_ia_z" gis_ia="z"><label for="gis_ia_z" class="option"> In- en uitzoomen</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_e" gis_ia="e"><label for="gis_ia_e" class="option"> Zoom extend</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_f" gis_ia="f"><label for="gis_ia_f" class="option"> Full screen</label></div>';
 		d+='</div>';
 	// Links onder
-		d+='<div class="kolom_1"><div>Links boven</div>';
+		d+='<div class="kolom_1"><div>Links onder</div>';
 		d+='<div><input type="checkbox" id="gis_ia_l1" gis_ia="l1"><label for="gis_ia_l1" class="option"> Legenda</label></div>';
 		d+='</div>';
 	// rechts onder
-		d+='<div class="kolom_1"><div>Links boven</div>';
+		d+='<div class="kolom_1"><div>Rechts onder</div>';
 		d+='<div><span style="width: 100px;display: inline-block;">Layer slider:</span><select gis_ia="ts"><option value="0">Nee</option><option value="1">Ja</option><option value="2">Ja, incl. play-knop</option></select></div>';
 		d+='<div class="gis_ia_ts_1" style="margin-top: 8px;"><span style="width: 100px;display: inline-block;">Interval:</span><input type="number" min="500" max="5000" step="500" class="form-number" gis_ia="i"></div>';
 		d+='</div>';
