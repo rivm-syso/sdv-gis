@@ -612,7 +612,7 @@ function gis_ia_init() {
 	// einde
 	d+='</div></div>';
 	
-	d+='<div class="form-item"><b>Knoppen en overige controls</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
+	d+='<div class="form-item"><b>Controls op de kaart</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<div class="form-item-start">';
 	// links boven
 		d+='<div class="kolom_1"><div>Links boven</div>';
@@ -637,6 +637,18 @@ function gis_ia_init() {
 	// einde
 	d+='</div></div>';
 
+	
+	d+='<div class="form-item"><b>Data weergave</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
+	d+='<div class="form-item-start">';
+	// links boven
+		d+='<div class="kolom_2"><div>Positie data-window:</div><div><select gis_ia="w1"><option value="0">Rechts boven muisklik, binnen de kaart</option><option value="1">Indien mogelijk onder de muisklik en over de pagina</option></select></div></div>';
+		d+='<div class="kolom_2"><div>Melding bij \'geen data\':</div><div><input gis_ia="m" style="width: 100%;"></div></div>';
+		d+='<div class="kolom_2"><div></div><div><input type="checkbox" id="gis_ia_tl" gis_ia="tl"><label for="gis_ia_tl" class="option"> Toon laagnaam bij features</label></div></div>';
+		d+='<div class="kolom_2"><div>Ordening bij meerdere lagen/features:</div><div><select gis_ia="w2"><option value="0">Lagen en features vertikaal</option><option value="1">Lagen horizontaal, features vertikaal</option><option value="2">Lagen vertikaal, features horizontaal</option><option value="3">Kruistabel Lagen horizontaal, properties vertikaal</option><option value="4">Kruistabel Lagen vertikaal, properties horizontaal</option></select></div></div>';
+	// einde
+	d+='</div></div>';
+	
+	
 	// Laag- en velddefinities
 	d+='<div class="form-item"><b>Laag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
 	d += '<table class="gis_ia_edit_table" style="font-style: normal;">';
@@ -644,14 +656,6 @@ function gis_ia_init() {
 	d+='<tr><td>Filtervelden gedrag:</td><td><select gis_ia="fg"><option value="0" selected="selected">Toon alle filters</option><option value="1">1 filter bij gelijke veldnamen</option><option value="2">1 filter bij gelijke labels</option></select></td></tr>';
 	d += '</table>';
 	d+='<div id="gis_ia_layer_defs">'+getLayerDefs()+'</div>';
-
-	d+='<div class="form-item"><b>Data weergave</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#data\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
-	d+='<table class="gis_ia_edit_table">';
-	d+='<tr><td>Positie data-window:</td><td><select gis_ia="w1"><option value="0">Rechts boven muisklik, binnen de kaart</option><option value="1">Indien mogelijk onder de muisklik en over de pagina</option></select></td></tr>';
-	d+='<tr><td>Melding bij \'geen data\':</td><td><input gis_ia="m" style="width: 100%;"></td></tr>';
-	d+='<tr><td>Ordening bij meerdere lagen/features:</td><td><select gis_ia="w2"><option value="0">Lagen en features vertikaal</option><option value="1">Lagen horizontaal, features vertikaal</option><option value="2">Lagen vertikaal, features horizontaal</option><option value="3">Kruistabel Lagen horizontaal, properties vertikaal</option><option value="4">Kruistabel Lagen vertikaal, properties horizontaal</option></select></td></tr>';
-	d+='<tr><td><input type="checkbox" id="gis_ia_tl" gis_ia="tl"><label for="gis_ia_tl" class="option"> Toon laagnaam bij features</label></td></tr>';
-	d+='</table>';
 
 	d+='<div class="form-item"><b>Filter definities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#filter\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
 	d+='<div id="gis_ia_filter_defs"><div id="gis_ia_div2"></div></div>';
