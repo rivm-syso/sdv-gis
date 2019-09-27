@@ -568,7 +568,7 @@ function gis_ia_init() {
 	kleuren=['Automatisch','Bruin','Donkerblauw','Donkerbruin','Donkergeel','Donkergroen','Geel','Groen','Hemelblauw','Lichtblauw','Mintgroen','Mosgroen','Oranje','Paars','Robijnrood','Rood','Roze','Violet','Wit'];
 	
 	d+='<div class="form-item"><b>Formaat en uiterlijk</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#form\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
-	d+='<div>';
+	d+='<div class="form-item-start">';
 	// Basiskaart
 		d+='<div class="kolom_1"><div>Basiskaart:</div>';
 		d+='<div><input type="checkbox" id="gis_ia_bk1" class="form-checkbox" gis_ia="b-0"><label for="gis_ia_bk1" class="option"> Openbasiskaart</label></div>';
@@ -597,7 +597,7 @@ function gis_ia_init() {
 
 	// panel
 	d+='<div class="form-item"><b>Panel</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
-	d+='<div>';
+	d+='<div class="form-item-start">';
 	// Toon lagen in panel
 		d+='<div class="kolom_1"><div>Toon lagen in panel:</div>';
 		d+=gis_ia_getRadio('show_layer','l-0',['0=Niet tonen','1=Toon boven filters','2=Toon onder filters'],false,'style="display: inline-block;"');
@@ -613,7 +613,7 @@ function gis_ia_init() {
 	d+='</div></div>';
 	
 	d+='<div class="form-item"><b>Knoppen en overige controls</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
-	d+='<div>';
+	d+='<div class="form-item-start">';
 	// links boven
 		d+='<div class="kolom_1"><div>Links boven</div>';
 		d+='<div><input type="checkbox" id="gis_ia_p" gis_ia="p"><label for="gis_ia_p" class="option"> Locatie zoeker</label></div>';
