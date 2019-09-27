@@ -184,7 +184,7 @@
 .ol-control.legenda button {position: absolute; bottom: 0;}
 
 /* alles voor input range, voor verschillende browsers */
-.gis_ia_base input[type=range] {min-height: 20px; -webkit-appearance: none; background: transparent; margin: 0 !important; padding: 0; width: 30%;}
+.gis_ia_base input[type=range] {min-height: 20px; -webkit-appearance: none; background: transparent; margin: 0 !important; padding: 0; width: 100%;}
 .gis_ia_base input[type=range]:focus {outline: none;}
 .gis_ia_base input[type=range]::-ms-track {width: 100%;cursor: pointer;background: transparent; border-color: transparent; color: transparent;}
 /* alles voor de thumb, voor verschillende browsers  */
