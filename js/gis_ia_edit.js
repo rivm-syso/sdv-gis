@@ -53,8 +53,12 @@ var default_parameters={
 	'fl': 0,			// Floating, 0=geen, 1=links, 2=rechts
 	// Basiskaarten
 	'b': '10000', 		// basiskaarten: Openbasiskaart, Openbasiskaart grijs, Openbasiskaart pastel, Luchtfoto, Topografisch
-	'l': '110001',		// Toon layer (Nee, boven, onder) en de layer opties
-	// Overlaykaarten
+	'l': '110101',		// positie 0: Toon layer (Nee, boven, onder)
+						// positie 1: 1 of alle lagen selecteerbaar (radio /checkbox)
+						// positie 2: Wel/geen opacity slider
+						// positie 3: Download knop (wel/NL/Bounding Box)
+						// positie 4: Wel/geen data.rivm.nl knop
+						// positie 5: Wel/geen legenda
 	'o': '000', 		// Overlaykaarten: Voor elke overlay een positie met 0=Nee, 1=Ja
 						// positie 0: NL schaduw
 						// positie 1: Provinciegrenzen
@@ -601,14 +605,14 @@ function gis_ia_init() {
 	// Toon lagen in panel
 		d+='<div class="kolom_1"><div>Toon lagen in panel:</div>';
 		d+=gis_ia_getRadio('show_layer','l-0',['0=Niet tonen','1=Toon boven filters','2=Toon onder filters'],false,'style="display: inline-block;"');
-		d+='<div style="margin-top: 8px;"><input type="checkbox" id="gis_ia_lt" gis_ia="lt"><label for="gis_ia_lt" class="option"> Slechts 1 laag selecteerbaar</label></div>';
+		d+='<div style="margin-top: 8px;"><input type="checkbox" id="gis_ia_lt" gis_ia="l-1"><label for="gis_ia_l-1" class="option"> Slechts 1 laag selecteerbaar</label></div>';
 		d+='</div>';
 	// opties per laag
 		d+='<div class="kolom_1 gis_ia_l_1"><div>Opties per laag</div>';
-		d+='<div><input type="checkbox" id="gis_ia_l-1" gis_ia="l-1"><label for="gis_ia_l-1" class="option"> Transparantie knoppen</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_l-2" gis_ia="l-2"><label for="gis_ia_l-2" class="option"> Download mogelijkheid</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> Zoek op data.rivm.nl knop</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_l-4" gis_ia="l-4"><label for="gis_ia_l-4" class="option"> Legenda knop</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_l-2" gis_ia="l-2"><label for="gis_ia_l-2" class="option"> Transparantie knoppen</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> Download mogelijkheid</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_l-4" gis_ia="l-4"><label for="gis_ia_l-4" class="option"> Zoek op data.rivm.nl knop</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_l-5" gis_ia="l-5"><label for="gis_ia_l-5" class="option"> Legenda knop</label></div>';
 		d+='</div>';
 	// einde
 	d+='</div></div>';
