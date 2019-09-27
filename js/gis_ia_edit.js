@@ -568,27 +568,32 @@ function gis_ia_init() {
 	kleuren=['Automatisch','Bruin','Donkerblauw','Donkerbruin','Donkergeel','Donkergroen','Geel','Groen','Hemelblauw','Lichtblauw','Mintgroen','Mosgroen','Oranje','Paars','Robijnrood','Rood','Roze','Violet','Wit'];
 	
 	d+='<div class="form-item"><b>Formaat en uiterlijk</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#form\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
-	d+='<table class="gis_ia_edit_table">';
-	d+='<tr>';
-	d+='<td>Basiskaart:</td><td>';
-	d+='<div><input type="checkbox" id="gis_ia_bk1" class="form-checkbox" gis_ia="b-0"><label for="gis_ia_bk1" class="option"> Openbasiskaart</label></div>';
-	d+='<div><input type="checkbox" id="gis_ia_bk2" class="form-checkbox" gis_ia="b-1"><label for="gis_ia_bk2" class="option"> Openbasiskaart grijs</label></div>';
-	d+='<div><input type="checkbox" id="gis_ia_bk3" class="form-checkbox" gis_ia="b-2"><label for="gis_ia_bk3" class="option"> Openbasiskaart pastel</label></div>';
-	d+='<div><input type="checkbox" id="gis_ia_bk4" class="form-checkbox" gis_ia="b-3"><label for="gis_ia_bk4" class="option"> Luchtfoto</label></div>';
-	d+='<div><input type="checkbox" id="gis_ia_bk5" class="form-checkbox" gis_ia="b-4"><label for="gis_ia_bk5" class="option"> Topografisch</label></div>';
-	d+='</td>';  		
-	d+='<td>Overlaykaart:</td><td>';
-	d+='<div><input type="checkbox" id="gis_ia_ok1" class="form-checkbox" gis_ia="o-0"><label for="gis_ia_ok1" class="option"> NL schaduw</label></div>';
-	d+='<div><input type="checkbox" id="gis_ia_ok2" class="form-checkbox" gis_ia="o-1"><label for="gis_ia_ok2" class="option"> Provinciegrenzen</label></div>';
-	d+='<div><input type="checkbox" id="gis_ia_ok3" class="form-checkbox" gis_ia="o-2"><label for="gis_ia_ok3" class="option"> Gemeentegrenzen</label></div>';
-	d+='</td>';
-	d+='<td><table><tr><td>Aspect ratio:</td><td><input type="number" min="0.8" max="2" step="0.1" class="form-number" gis_ia="a"></td></tr><tr><td>Kleurstelling:</td><td><select gis_ia="u">';
-	for (t1=0;t1<kleuren.length;t1++) {
-		d+='<option value="'+kleuren[t1].toLowerCase()+'">'+kleuren[t1]+'</option>';
-	}
-	d+='</select></td></tr></table></td></tr>';
-	d+='</table>';
-	d+='</div>';
+	d+='<div>';
+	// Basiskaart
+		d+='<div class="kolom_1"><div>Basiskaart:</div>';
+		d+='<div><input type="checkbox" id="gis_ia_bk1" class="form-checkbox" gis_ia="b-0"><label for="gis_ia_bk1" class="option"> Openbasiskaart</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_bk2" class="form-checkbox" gis_ia="b-1"><label for="gis_ia_bk2" class="option"> Openbasiskaart grijs</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_bk3" class="form-checkbox" gis_ia="b-2"><label for="gis_ia_bk3" class="option"> Openbasiskaart pastel</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_bk4" class="form-checkbox" gis_ia="b-3"><label for="gis_ia_bk4" class="option"> Luchtfoto</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_bk5" class="form-checkbox" gis_ia="b-4"><label for="gis_ia_bk5" class="option"> Topografisch</label></div>';
+		d+='</div>';
+	// Overlaykaart
+		d+='<div class="kolom_1 gis_ia_l_1"><div>Overlaykaart</div>';
+		d+='<div><input type="checkbox" id="gis_ia_ok1" class="form-checkbox" gis_ia="o-0"><label for="gis_ia_ok1" class="option"> NL schaduw</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_ok2" class="form-checkbox" gis_ia="o-1"><label for="gis_ia_ok2" class="option"> Provinciegrenzen</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_ok3" class="form-checkbox" gis_ia="o-2"><label for="gis_ia_ok3" class="option"> Gemeentegrenzen</label></div>';
+		d+='</div>';
+	// Overig
+		d+='<div class="kolom_1 gis_ia_l_1"><div>Overig</div>';
+		d+='<div class="kolom_2"><div>Aspect ratio:</div><div><input type="number" min="0.8" max="2" step="0.1" class="form-number" gis_ia="a"></div></div>';
+		d+='<div class="kolom_2"><div>Kleurstelling:</div><div><select gis_ia="u">';
+		for (t1=0;t1<kleuren.length;t1++) {
+			d+='<option value="'+kleuren[t1].toLowerCase()+'">'+kleuren[t1]+'</option>';
+		}
+		d+='</select></div></div>';
+		d+='</div>';
+	// einde
+	d+='</div></div>';
 
 	// panel
 	d+='<div class="form-item"><b>Panel</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
