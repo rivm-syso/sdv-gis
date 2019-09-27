@@ -820,7 +820,7 @@ function gis_ia_row(no,values,aant_rows) {
 	row+='<option'+(values[0]=='datarivmnl'?' selected="selected"':'')+' value="datarivmnl">data.rivm.nl</option>';
 	row+='<option'+(values[0]=='wmsacceptatie'?' selected="selected"':'')+' value="wmsacceptatie">wmsacceptatie</option>';
 	row+='</select></td>';
-    row+='<td><select onclick="gis_ia_setLayer('+no+');"><option id="gis_ia_layer_'+no+'">'+values[2]+'</option></select></td>';
+    row+='<td><select onclick="gis_ia_setLayer('+no+');"><option id="gis_ia_layer_'+no+'">'+(values[2]==''?'Zoek layer':values[2])+'</option></select></td>';
     row+='<td><input onchange="gis_ia_setOneValue('+no+',3,this.value);" size="24" value="'+values[3]+'" id="gis_ia_title_'+no+'"></td>';
     row+='<td><input onchange="gis_ia_setOneValue('+no+',4,this.value);" size="3" value="'+values[4]+'" type="number" step="0.1" min="0" max="1"></td>';
     row+='<td><input onchange="gis_ia_setOneValue('+no+',7,jQuery(this).prop(\'checked\')?1:0);" '+(values[7]==1?'checked="checked"':'')+' type="checkbox"></td>';
