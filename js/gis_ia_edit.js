@@ -652,8 +652,8 @@ function gis_ia_init() {
 	d+='<div class="form-item-start">';
 	// Data window
 		d+='<div class="kolom_1"><div>Data window</div>';
-		d+='<div>Positie:'+gis_ia_getRadio('gis_ia_w1','w1',['0=Rechts boven muisklik, binnen de kaart','1=Indien mogelijk onder de muisklik en over de pagina'],false)+'</div></div>';
-		d+='<div class="kolom_1"><div>Melding bij \'geen data\':</div>';
+		d+='<div>Positie:'+gis_ia_getRadio('gis_ia_w1','w1',['0=Rechts boven muisklik, binnen de kaart','1=Indien mogelijk onder de muisklik en over de pagina'],false)+'</div>';
+		d+='<div>Melding bij \'geen data\':</div>';
 		d+='<div><input gis_ia="m" style="width: 100%;"></div>';
 		d+='</div>';
 	// Tabel met data
