@@ -601,9 +601,10 @@ function gis_ia_init() {
 	// Toon lagen in panel
 		d+='<div class="kolom_1"><div>Toon lagen in panel:</div>';
 		d+=gis_ia_getRadio('show_layer','l-0',['0=Niet tonen','1=Toon boven filters','2=Toon onder filters'],false,'style="display: inline-block;"');
+		d+='<div style="margin-top: 8px;"><input type="checkbox" id="gis_ia_lt" gis_ia="lt"><label for="gis_ia_lt" class="option"> Slechts 1 laag selecteerbaar</label></div>';
 		d+='</div>';
-	// opties
-		d+='<div class="kolom_1 gis_ia_l_1"><div>Opties</div>';
+	// opties per laag
+		d+='<div class="kolom_1 gis_ia_l_1"><div>Opties per laag</div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-1" gis_ia="l-1"><label for="gis_ia_l-1" class="option"> Transparantie knoppen</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-2" gis_ia="l-2"><label for="gis_ia_l-2" class="option"> Download mogelijkheid</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> Zoek op data.rivm.nl knop</label></div>';
