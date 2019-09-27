@@ -1072,7 +1072,7 @@ function gis_ia_get_layer_div(map_id) {
 			r+='</div>';
 		}
 	}
-	radio=(GIS_ia_maps[map_id].l.substr(1,1)=='0');
+	radio=(GIS_ia_maps[map_id].l.substr(1,1)=='1');
 	extra_info=(GIS_ia_maps[map_id].l.substr(2,4)!=='0000');
 	r+='<div id="gis_ia_l_'+map_id+'_def" class="gis_ia_l_def">Kaartlagen</div>';
 	for (t=0;t<GIS_ia_maps[map_id].layers_def.length;t++) {
