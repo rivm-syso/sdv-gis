@@ -651,15 +651,15 @@ function gis_ia_init() {
 	d+='<div class="form-item"><b>Bij klik op de kaart</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<div class="form-item-start">';
 	// Data window
-		d+='<div class="kolom_1"><div>Data window</div>';
-		d+='<div>Positie:'+gis_ia_getRadio('gis_ia_w1','w1',['0=Rechts boven muisklik, binnen de kaart','1=Indien mogelijk onder de muisklik en over de pagina'],false)+'</div>';
-		d+='<div>Melding bij \'geen data\':</div>';
+		d+='<div class="kolom_1"><div>Info window</div>';
+		d+='<div>Plaatsing van het window:'+gis_ia_getRadio('gis_ia_w1','w1',['0=Rechts boven muisklik, binnen de kaart','1=Indien mogelijk onder de muisklik en over de pagina'],false)+'</div>';
+		d+='<div style="margin-top: 8px;">Melding bij \'geen data\':</div>';
 		d+='<div><input gis_ia="m" style="width: 100%;"></div>';
 		d+='</div>';
 	// Tabel met data
-		d+='<div class="kolom_1"><div>Tabel met data</div>';
+		d+='<div class="kolom_1" style="width: 450px;"><div>Tabel met data</div>';
 		d+='<div>Ordening bij meerdere lagen/features:'+gis_ia_getRadio('gis_ia_w2','w2',['0=Lagen en features vertikaal','1=Lagen horizontaal, features vertikaal','2=Lagen vertikaal, features horizontaal','3=Kruistabel Lagen horizontaal, properties vertikaal','4=Kruistabel Lagen vertikaal, properties horizontaal'],false)+'</div>';
-		d+='<div><input type="checkbox" id="gis_ia_tl" gis_ia="tl"><label for="gis_ia_tl" class="option"> Toon laagnaam bij features</label></div>';
+		d+='<div style="margin-top: 8px;"><input type="checkbox" id="gis_ia_tl" gis_ia="tl"><label for="gis_ia_tl" class="option"> Toon laagnaam bij features</label></div>';
 		d+='</div>';
 	// einde
 	d+='</div></div>';
