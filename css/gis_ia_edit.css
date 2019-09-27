@@ -2,3 +2,7 @@
 td input, td select, td textarea, td button {vertical-align: top !important;}
 td label {display: inline-block; margin: 0; padding: 0; font-weight: normal;}
 td input[type=checkbox] {vertical-align: middle !important; margin-right: 20px;}
+.kolom_1 {display: inline-block; width: 150px;}
+.kolom_2 {display: inline-block; width: 250px;}
+.kolom_3 {display: inline-block; width: 150px;}
+.kolom_4 {display: inline-block; width: 250px;}
