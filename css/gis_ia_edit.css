@@ -9,3 +9,5 @@ td input[type=checkbox] {vertical-align: middle !important; margin-right: 20px;}
 .kolom_1 {display: inline-block; width: 300px; vertical-align: top;}
 .kolom_2 > div:first-child {display: inline-block; width: 100px; vertical-align: top;}
 .kolom_2 > div:not(:first-child) {display: inline-block; width: 200px; vertical-align: top;}
+.kolom_3 > div:first-child {display: inline-block; width: 300px; vertical-align: top;}
+.kolom_3 > div:not(:first-child) {display: inline-block; width: 300px; vertical-align: top;}
