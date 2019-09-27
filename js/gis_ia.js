@@ -1454,12 +1454,9 @@ function GIS_paragraaf_start(map_id) {
 	// onthoud map_id in het map object.
 	GIS_ia_maps[map_id].map.map_id=map_id;
 	
-	/* knoppen rechtsboven */
 	// Filter
-	if (GIS_ia_maps[map_id].fg==1) {
-		var filter = new ol.control.Filter({'map_id':map_id,className:'gis_ia_filter'+(GIS_ia_maps[map_id].p==0?'':' gis_ia_filter1')});
-		GIS_ia_maps[map_id].map.addControl(filter);
-	}
+	var filter = new ol.control.Filter({'map_id':map_id,className:'gis_ia_filter'+(GIS_ia_maps[map_id].p==0?'':' gis_ia_filter1')});
+	GIS_ia_maps[map_id].map.addControl(filter);
 	/* knoppen linksonder */
 	if (GIS_ia_maps[map_id].l1 == 1) {
         GIS_ia_maps[map_id].map.addControl(new ol.control.Legenda({'map_id': map_id}));
