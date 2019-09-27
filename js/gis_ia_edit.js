@@ -602,7 +602,7 @@ function gis_ia_init() {
 	d+='</div>';
 	d+='</div>';
 	
-	d+='<div class="form-item"><b>Knoppen en overige controls</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
+	d+='<div class="form-item"><b>Knoppen en overige controls</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a>';
 	d+='<div class="kolom_1"><div>Links boven</div></div>';
 	// links boven
 		d+='<div class="kolom_1">';
@@ -625,7 +625,7 @@ function gis_ia_init() {
 		d+='<div class="gis_ia_ts_1" style="margin-top: 8px;"><span style="width: 100px;display: inline-block;">Interval:</span><input type="number" min="500" max="5000" step="500" class="form-number" gis_ia="i"></div>';
 		d+='</div>';
 	// einde
-	d+='</div>';
+	d+='</div></div>';
 
 	// Laag- en velddefinities
 	d+='<div class="form-item"><b>Laag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
