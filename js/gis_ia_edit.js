@@ -648,15 +648,19 @@ function gis_ia_init() {
 	// einde
 	d+='</div></div>';
 	
-	d+='<div class="form-item"><b>Data weergave</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
+	d+='<div class="form-item"><b>Bij klik op de kaart</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<div class="form-item-start">';
-	// links boven
-		d+='<div class="kolom_1"><div>Positie data-window</div>';
-		d+='<div>'+gis_ia_getRadio('gis_ia_w1','w1',['0=Rechts boven muisklik, binnen de kaart','1=Indien mogelijk onder de muisklik en over de pagina'],false)+'</div></div>';
+	// Data window
+		d+='<div class="kolom_1"><div>Data window</div>';
+		d+='<div>Positie:'+gis_ia_getRadio('gis_ia_w1','w1',['0=Rechts boven muisklik, binnen de kaart','1=Indien mogelijk onder de muisklik en over de pagina'],false)+'</div></div>';
 		d+='<div class="kolom_1"><div>Melding bij \'geen data\':</div>';
-		d+='<div><input gis_ia="m" style="width: 100%;"></div></div>';
-//		d+='<div class="kolom_3"><div>Ordening bij meerdere lagen/features:</div><div><select gis_ia="w2"><option value="0">Lagen en features vertikaal</option><option value="1">Lagen horizontaal, features vertikaal</option><option value="2">Lagen vertikaal, features horizontaal</option><option value="3">Kruistabel Lagen horizontaal, properties vertikaal</option><option value="4">Kruistabel Lagen vertikaal, properties horizontaal</option></select></div></div>';
-//		d+='<div class="kolom_3"><div></div><div><input type="checkbox" id="gis_ia_tl" gis_ia="tl"><label for="gis_ia_tl" class="option"> Toon laagnaam bij features</label></div></div>';
+		d+='<div><input gis_ia="m" style="width: 100%;"></div>';
+	// Tabel met data
+		d+='<div class="kolom_1"><div>Tabel met data</div>';
+		d+='<div>Ordening bij meerdere lagen/features:'+gis_ia_getRadio('gis_ia_w2','w2',['0=Lagen en features vertikaal','1=Lagen horizontaal, features vertikaal','2=Lagen vertikaal, features horizontaal','3=Kruistabel Lagen horizontaal, properties vertikaal','4=Kruistabel Lagen vertikaal, properties horizontaal'],false)+'</div></div>';
+		d+='<div class="kolom_1"><div>Melding bij \'geen data\':</div>';
+		d+='<div><input type="checkbox" id="gis_ia_tl" gis_ia="tl"><label for="gis_ia_tl" class="option"> Toon laagnaam bij features</label></div>';
+		d+='</div>';
 	// einde
 	d+='</div></div>';
 	
