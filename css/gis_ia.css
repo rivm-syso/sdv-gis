@@ -14,8 +14,8 @@
 /* Filters naast of op de kaart */
 /* berekening max-width:	flex-breedte van .gis_ia_map_holder en .gis_ia_filters plus 1 (dus 700 + 300 + 1 = 1001) */
 .gis_ia_base {display: block;}
-.gis_ia_filters {display: block; width: initial; vertical-align: top; z-index: 20; position: absolute;}
-.gis_ia_map_holder {display: block; width: 100%; vertical-align: top; background-color: white;}
+.gis_ia_filters {display: block; vertical-align: top; z-index: 20; position: absolute;}
+.gis_ia_map_holder {display: block; vertical-align: top; background-color: white;}
 .gis_ia_base.gis_ia_as_block {display: flex;}
 .gis_ia_base.gis_ia_as_block .gis_ia_filters {flex: 0 1 30%;}
 .gis_ia_base.gis_ia_as_block .gis_ia_map_holder {flex: 1 0 70%;}
