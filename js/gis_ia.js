@@ -686,7 +686,8 @@ var gis_ia_filters={
 					jQuery('#gis_ia_filters_'+map_id).css({'right':w_kaart+'px','left':'initial'});
 					jQuery('#f2-'+map_id).toggle('slide',{'direction':'right'});
 				} else {
-					jQuery('#gis_ia_filters_'+map_id).css({'left':(-w_links)+'px','right':'initial'});
+					// de -20 komt vanwege de padding op f2
+					jQuery('#gis_ia_filters_'+map_id).css({'left':(-w_filters-20)+'px','right':'initial'});
 					jQuery('#f2-'+map_id).toggle('slide');
 				}
 			} else {
