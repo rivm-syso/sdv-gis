@@ -685,7 +685,7 @@ var gis_ia_filters={
 					jQuery('#gis_ia_filters_'+map_id).css({'right':w_kaart+'px','left':'initial'});
 					jQuery('#f2-'+map_id).toggle('slide',{'direction':'right'});
 				} else {
-					jQuery('#gis_ia_filters_'+map_id).css({'left':(-w_links)+'px','right':'initial');
+					jQuery('#gis_ia_filters_'+map_id).css({'left':(-w_links)+'px','right':'initial'});
 					jQuery('#f2-'+map_id).toggle('slide');
 				}
 			} else {
