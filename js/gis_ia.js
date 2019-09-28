@@ -682,14 +682,14 @@ var gis_ia_filters={
 			if (true) {
 				var w_kaart=jQuery('#gis_ia_base_'+map_id).width(), w_links=jQuery('#gis_ia_base_'+map_id).offset().left, w_filters=jQuery('#gis_ia_filters_'+map_id).width();
 				if (w_filters<=w_links) {
-					jQuery('#gis_ia_filters_'+map_id).css('right',w_kaart+'px');
+					jQuery('#gis_ia_filters_'+map_id).css({'right':w_kaart+'px','left':'initial'});
 					jQuery('#f2-'+map_id).toggle('slide',{'direction':'right'});
 				} else {
-					jQuery('#gis_ia_filters_'+map_id).css('right',(w_links+w_kaart-w_filters)+'px');
+					jQuery('#gis_ia_filters_'+map_id).css({'left':(-w_links)+'px','right':'initial');
 					jQuery('#f2-'+map_id).toggle('slide');
 				}
 			} else {
-				jQuery('#gis_ia_filters_'+map_id).css('right','initial');
+				jQuery('#gis_ia_filters_'+map_id).css({'right':'initial','left':'initial'});
 				jQuery('#f2-'+map_id).toggle('slide');
 			}
 			jQuery('#gis_ia_options_button_'+map_id).hide();
