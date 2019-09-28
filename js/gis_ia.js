@@ -679,7 +679,13 @@ var gis_ia_filters={
 			hidePanels(map_id);
 			jQuery('#f1b-'+map_id).show();
 			jQuery('#f3b-'+map_id).show();
-			jQuery('#f2-'+map_id).toggle('slide');
+			if (true) {
+				var w=jQuery('#gis_ia_base_'+map_id).width();
+				jQuery('#gis_ia_filters_'+map_id).css('right',w+'px');
+				jQuery('#f2-'+map_id).toggle('slide',{'direction':'left'});
+			} else {
+				jQuery('#f2-'+map_id).toggle('slide');
+			}
 			jQuery('#gis_ia_options_button_'+map_id).hide();
         };
         ol.control.Control.call(this, {element: element,target: options.target});
