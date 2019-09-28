@@ -12,18 +12,13 @@
 
 .ol-control button {width: initial;}
 /* Filters naast of op de kaart */
-/* berekening:   width van .gis_ia_map_holder = 260px    =>     width van .gis_ia_filters = 260 - 4 - 2*8 = 240px, de 4 vanwege drupal css en de 2*8 vanwege de padding */
-/*.gis_ia_base {display: flex;}
-.gis_ia_map_holder {flex: 1 0 700px; vertical-align: top; background-color: white;}
-.gis_ia_filters {flex: 0 1 300px; vertical-align: top;}*/ /*  overflow: auto; */
+/* berekening max-width:	flex-breedte van .gis_ia_map_holder en .gis_ia_filters plus 1 (dus 700 + 300 + 1 = 1001) */
+.gis_ia_base {display: block;}
+.gis_ia_filters {display: block; width: initial; z-index: 20; position: absolute;}
+.gis_ia_map_holder {display: block; width: 100%;}
+
 .gis_ia_filters .f2 {padding: 8px 12px 8px 8px;}
 .gis_ia_filters.as-overlay .f2 {padding-left: 8px;}
-/* berekening max-width:	flex-breedte van .gis_ia_map_holder en .gis_ia_filters plus 1 (dus 700 + 300 + 1 = 1001) */
-/*@media all and (max-width: 1001px) {*/
-	.gis_ia_base {display: block;}
-	.gis_ia_filters {display: block; width: initial; z-index: 20; position: absolute;}
-	.gis_ia_map_holder {display: block; width: 100%;}
-/*}*/
 .gis_ia_filters_close {text-align: right; margin-bottom: 20px; height: 30px;}
 .gis_ia_filters_toon {text-align: right; margin-top: 20px; height: 30px;}
 .gis_ia_no_filters {display: inline-block; height: 33px; margin-bottom: 8px; padding-top: 12px;}

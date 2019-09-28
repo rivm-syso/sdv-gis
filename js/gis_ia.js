@@ -823,12 +823,14 @@ function gis_ia_filters_hideSubmenus() {
 
 function filterwindowCheck(map_id, force) {
 	if (typeof(force)=='undefined') {force=false;} // force geeft aan of je in fullscreen-modus zit
-//    var dsp = jQuery('.gis_ia_filters').css('display');
-    var dsp = jQuery('.gis_ia_base').css('display');
-	if (dsp!=filterwindowCheck_) {
-		filterwindowCheck_=dsp;
-//		if (dsp=='inline-block' && !force) { 
-		if (dsp=='flex' && !force) { // switch naar 'vast' filter-block
+//    var dsp = jQuery('.gis_ia_base').css('display');
+//	if (dsp!=filterwindowCheck_) {
+//		filterwindowCheck_=dsp;
+//		if (dsp=='flex' && !force) { // switch naar 'vast' filter-block
+	var w=700;
+	if (w!=filterwindowCheck_) {
+		filterwindowCheck_=w;
+		if (w<=1000 && !force) // switch naar 'vast' filter-block
 			jQuery('#gis_ia_options_button_'+map_id).hide();
 			jQuery('#f3a-'+map_id).show();
 			jQuery('#f1b-'+map_id).hide();
