@@ -795,8 +795,7 @@ var gis_ia_filters={
 
 var filterwindowCheck_='';
 function filterwindowCheckHide(map_id) {
-    var dsp = jQuery('.gis_ia_base').css('display');
-	if (dsp!='flex') {
+	if (jQuery('.gis_ia_base').hasClass('gis_ia_as_block')) {
 		jQuery('#f3a-'+map_id).hide();
 		jQuery('#f1b-'+map_id).hide();
 		jQuery('#f3b-'+map_id).hide();
@@ -839,6 +838,8 @@ function filterwindowCheck(map_id, force) {
 			base.removeClass('gis_ia_as_block');
 		}
 		jQuery('#gis_ia_filters_'+map_id).css('max-height',jQuery('#gis_ia_map_'+map_id).css('max-height')+'px');
+		var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
+		mapholder.css({'height': (wpixels*GIS_ia_maps[map_id].a)+'px'});
 	}
 }	
 
