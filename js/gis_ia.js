@@ -795,10 +795,16 @@ var gis_ia_filters={
 
 var filterwindowCheck_='';
 function filterwindowCheckHide(map_id) {
-	if (jQuery('.gis_ia_base').hasClass('gis_ia_as_block1')) {
+	if (jQuery('.gis_ia_base').hasClass('gis_ia_as_block')) {
 		jQuery('#f3a-'+map_id).hide();
 		jQuery('#f1b-'+map_id).hide();
 		jQuery('#f3b-'+map_id).hide();
+		jQuery('#f2-'+map_id).show();
+		jQuery('#gis_ia_options_button_'+map_id).hide();
+	} else {
+		jQuery('#f3a-'+map_id).show();
+		jQuery('#f1b-'+map_id).show();
+		jQuery('#f3b-'+map_id).show();
 		jQuery('#f2-'+map_id).hide();
 		jQuery('#gis_ia_options_button_'+map_id).show();
 	}
