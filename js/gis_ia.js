@@ -682,7 +682,7 @@ var gis_ia_filters={
 			if (true) {
 				var w=jQuery('#gis_ia_base_'+map_id).width();
 				jQuery('#gis_ia_filters_'+map_id).css('right',w+'px');
-				jQuery('#f2-'+map_id).toggle('slide',{'direction':'left'});
+				jQuery('#f2-'+map_id).toggle('slide',{'direction':'right'});
 			} else {
 				jQuery('#f2-'+map_id).toggle('slide');
 			}
