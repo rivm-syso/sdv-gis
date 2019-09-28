@@ -4,11 +4,11 @@
 .node--type-gis-ia-map .card-content h2 {display: none;}
 
 /* Zorg dat de kaart de juiste hoogte heeft (width*aspect-ratio) */
-.ia_map {height: 100%;}
-.ia_map:-moz-full-screen {height: 100%; width: 100%;}
-.ia_map:-webkit-full-screen {height: 100%; width: 100%;}
-.ia_map:-ms-fullscreen {height: 100%; width: 100%;}
-.ia_map:fullscreen {height: 100%; width: 100%;}
+.gis_ia_map_holder {height: 100%;}
+.gis_ia_map_holder:-moz-full-screen {height: 100%; width: 100%;}
+.gis_ia_map_holder:-webkit-full-screen {height: 100%; width: 100%;}
+.gis_ia_map_holder:-ms-fullscreen {height: 100%; width: 100%;}
+.gis_ia_map_holder:fullscreen {height: 100%; width: 100%;}
 
 .ol-control button {width: initial;}
 /* Filters naast of op de kaart */
