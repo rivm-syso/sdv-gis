@@ -107,7 +107,7 @@
 .playpauze.play {}
 .playpauze.pauze {}
 .timeSliderLayer {margin: 0 0 12px 0 !important; display: none;}
-.timeSlider {max-width: calc(100% - 200px); width: 200px;}
+.timeSlider {max-width: calc(100% - 60px); width: 200px;}
 
 
 /* Popup & Panel */
