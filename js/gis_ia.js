@@ -816,13 +816,12 @@ function gis_ia_filters_hideSubmenus() {
 	jQuery('.gis_ia_filters').find('.gis_ia_f_g').hide();
 }
 
-function filterwindowCheck(map_id, force) {
-	if (typeof(force)=='undefined') {force=false;} // force geeft aan of je in fullscreen-modus zit
+function filterwindowCheck(map_id) {
 	var base=jQuery('#gis_ia_base_'+map_id), w=base.width();
 	console.log('base width='+w);
 	if (w!=filterwindowCheck_) {
 		filterwindowCheck_=w;
-		if (w>=1000 || (force && w>600)) { // switch naar 'vast' filter-block
+		if (w>=1000 || (GIS_ia_maps[map_id].isFullscreen && w>600)) { // switch naar 'vast' filter-block
 			jQuery('#gis_ia_options_button_'+map_id).hide();
 			jQuery('#f3a-'+map_id).show();
 			jQuery('#f1b-'+map_id).hide();
@@ -1160,6 +1159,7 @@ function GIS_paragraaf_start(map_id) {
 		}
 	}
 	GIS_ia_maps[map_id].m=Base64.decode(GIS_ia_maps[map_id].m);
+	GIS_ia_maps[map_id].isFullscreen=false;
 	
 	/* Omgaan met verouderde data (zie de file gis_ia_edit.js) */
 	/*
@@ -1905,7 +1905,7 @@ function fullscreenChange(map_id) {
 	var map=jQuery('#gis_ia_map_'+map_id), to=[map.width(),map.height()];
 	if (GIS_ia_maps[map_id].fullscreenPrevSize[0]!=to[0] || GIS_ia_maps[map_id].fullscreenPrevSize[1]!=to[1]) { // als het formaat wijzigt
 		var fact, aspectratioFrom=GIS_ia_maps[map_id].fullscreenPrevSize[0]/GIS_ia_maps[map_id].fullscreenPrevSize[1], aspecRatioTo=to[0]/to[1];
-		var force=false;
+		GIS_ia_maps[map_id].isFullscreenfalse;
 		if (GIS_ia_maps[map_id].fullscreenPrevSize[0]<to[0]) { // naar fullsize
 			if (aspecRatioTo>aspectratioFrom) { // behoud hoogte
 				fact=GIS_ia_maps[map_id].fullscreenPrevSize[1]/to[1];
@@ -1914,7 +1914,7 @@ function fullscreenChange(map_id) {
 				fact=GIS_ia_maps[map_id].fullscreenPrevSize[0]/to[0];
 //				console.log('Naar fullscreen: Behoud breedte: '+fact);
 			}
-			force=true;
+			GIS_ia_maps[map_id].isFullscreen=true;
 		} else { // naar gewone weergave
 			if (aspecRatioTo>aspectratioFrom) { // behoud hoogte
 				fact=GIS_ia_maps[map_id].fullscreenPrevSize[0]/to[0];
@@ -1924,12 +1924,11 @@ function fullscreenChange(map_id) {
 //				console.log('Naar normalscreen: Behoud breedte: '+fact);
 			}
 		}
-		GIS_ia_maps[map_id].isFullscreen=force;
 		var v=GIS_ia_maps[map_id].map.getView();
 		v.setResolution(fact*v.getResolution());
 		GIS_ia_maps[map_id].fullscreenPrevSize=to;
 		jQuery('#gis_ia_map_'+map_id+'_data').hide();
-		filterwindowCheck(map_id,force);
+		filterwindowCheck(map_id);
 	}
 }
 /*  Functies voor de timeslider:
