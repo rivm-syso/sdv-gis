@@ -1176,11 +1176,6 @@ function GIS_paragraaf_start(map_id) {
 	jQuery(map.parent()).css({'height': (wpixels*GIS_ia_maps[map_id].a)+'px'});
 	jQuery('#gis_ia_filters_'+map_id).css('width',(parseInt(GIS_ia_maps[map_id].pw.substr(1,1))*20+180)+'px');
 	
-/***************
-Voor testdoeleinde: */
-jQuery(jQuery(jQuery('#gis_ia_base_'+map_id).parent()).parent()).css({'float:':'right'});
-/***************/
-
 	// Set de juiste projectie en 'set' proj4. Dit is nodig voor Position2
 	GIS_ia_maps[map_id].projection = new ol.proj.Projection({code: 'EPSG:28992',units: 'm',extent:GIS_ia_maps[map_id].extNL});
 	ol.proj.addProjection(GIS_ia_maps[map_id].projection); // Nodig om coordinaten (latlong) te vertalen naar zoom-center
@@ -2053,6 +2048,7 @@ function startDownload(map_id, lno, bb) {
     }
 }
 
+
 if (typeof(Drupal)!='undefined') {
 	(function ($, Drupal, drupalSettings) {
 		Drupal.behaviors.gis_ia_Behavior = {
@@ -2061,6 +2057,10 @@ if (typeof(Drupal)!='undefined') {
 					$('.ia_map').each(function(t,el) {
 						el=$(el);
 						var no=el.prop('id').substr(11);
+/***************
+Voor testdoeleinde: */
+$($($('#gis_ia_base_'+no).parent()).parent()).css({'float:':'right'});
+/***************/
 						GIS_paragraaf_start(parseInt(no,10));
 					});
 				}
