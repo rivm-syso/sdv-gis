@@ -822,7 +822,7 @@ function filterwindowCheck(map_id, force) {
 	console.log('base width='+w);
 	if (w!=filterwindowCheck_) {
 		filterwindowCheck_=w;
-		if (w>=1000 || force) { // switch naar 'vast' filter-block
+		if (w>=1000 || (force && w>600)) { // switch naar 'vast' filter-block
 			jQuery('#gis_ia_options_button_'+map_id).hide();
 			jQuery('#f3a-'+map_id).show();
 			jQuery('#f1b-'+map_id).hide();
