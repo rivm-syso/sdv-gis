@@ -687,7 +687,6 @@ var gis_ia_filters={
 					jQuery('#gis_ia_filters_'+map_id).css({'right':w_kaart+'px','left':'initial'});
 					jQuery('#f2-'+map_id).toggle('slide',{'direction':'right'});
 				} else {
-					// de -20 komt vanwege de padding op f2
 					jQuery('#gis_ia_filters_'+map_id).css({'left':(-w_links)+'px','right':'initial'});
 					jQuery('#f2-'+map_id).toggle('slide',{'direction':'right'});
 				}
@@ -1176,6 +1175,11 @@ function GIS_paragraaf_start(map_id) {
 	var wpixels=jQuery('#gis_ia_map_'+map_id).parent().width(); // breedte vd kaart
 	jQuery(map.parent()).css({'height': (wpixels*GIS_ia_maps[map_id].a)+'px'});
 	jQuery('#gis_ia_filters_'+map_id).css('width',(parseInt(GIS_ia_maps[map_id].pw.substr(1,1))*20+180)+'px');
+	
+/***************
+Voor testdoeleinde: */
+jQuery(jQuery(jQuery('#gis_ia_base_'+map_id).parent()).parent()).css({'float:':'right'});
+/***************/
 
 	// Set de juiste projectie en 'set' proj4. Dit is nodig voor Position2
 	GIS_ia_maps[map_id].projection = new ol.proj.Projection({code: 'EPSG:28992',units: 'm',extent:GIS_ia_maps[map_id].extNL});
