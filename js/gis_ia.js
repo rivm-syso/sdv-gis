@@ -681,14 +681,15 @@ var gis_ia_filters={
 			jQuery('#f3b-'+map_id).show();
 			if (GIS_ia_maps[map_id].pw.substr(0,1)==='1') {
 				var w_kaart=jQuery('#gis_ia_base_'+map_id).width(), w_links=jQuery('#gis_ia_base_'+map_id).offset().left, w_filters=parseInt(GIS_ia_maps[map_id].pw.substr(1,1))*20+180;
+				w_filters+=20; // padding left + padding right
 				jQuery('#f2-'+map_id).hide();
 				if (w_filters<=w_links) {
 					jQuery('#gis_ia_filters_'+map_id).css({'right':w_kaart+'px','left':'initial'});
 					jQuery('#f2-'+map_id).toggle('slide',{'direction':'right'});
 				} else {
 					// de -20 komt vanwege de padding op f2
-					jQuery('#gis_ia_filters_'+map_id).css({'left':(-w_filters-20)+'px','right':'initial'});
-					jQuery('#f2-'+map_id).toggle('slide');
+					jQuery('#gis_ia_filters_'+map_id).css({'left':(-w_links)+'px','right':'initial'});
+					jQuery('#f2-'+map_id).toggle('slide',{'direction':'right'});
 				}
 			} else {
 				jQuery('#gis_ia_filters_'+map_id).css({'right':'initial','left':'initial'});
