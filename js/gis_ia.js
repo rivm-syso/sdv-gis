@@ -2059,7 +2059,7 @@ if (typeof(Drupal)!='undefined') {
 						var no=el.prop('id').substr(11);
 /***************
 Voor testdoeleinde: */
-$('#gis_ia_base_'+no).css({'float:':'right','margin':'0 0 20px 40px','width':'50%'});
+$($($('#gis_ia_base_'+no).parent()).parent()).css({'float:':'right','margin':'0 0 20px 40px','width':'50%'});
 /***************/
 						GIS_paragraaf_start(parseInt(no,10));
 					});
