@@ -1144,7 +1144,7 @@ function GIS_paragraaf_start(map_id) {
 		t1=parms[t].indexOf('=');
 		v=parms[t].substr(t1+1);
 		w=parms[t].substr(0,t1);
-		if (w!='l' && w!='o' && w!='b' && v==parseInt(v,10)) {v=parseInt(v,10);}
+		if (w!='l' && w!='o' && w!='b' && w!='pw' && v==parseInt(v,10)) {v=parseInt(v,10);}
 		if (w=='fs') {
 			var par=0;
 			GIS_ia_maps[map_id].fs=[];
