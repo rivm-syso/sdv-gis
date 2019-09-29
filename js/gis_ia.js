@@ -679,7 +679,7 @@ var gis_ia_filters={
 			hidePanels(map_id);
 			jQuery('#f1b-'+map_id).show();
 			jQuery('#f3b-'+map_id).show();
-			if (true) {
+			if (false) {
 				var w_kaart=jQuery('#gis_ia_base_'+map_id).width(), w_links=jQuery('#gis_ia_base_'+map_id).offset().left, w_filters=jQuery('#f2-'+map_id).show().width();
 				jQuery('#f2-'+map_id).hide();
 				if (w_filters<=w_links) {
