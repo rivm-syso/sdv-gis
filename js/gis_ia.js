@@ -1905,7 +1905,7 @@ function fullscreenChange(map_id) {
 	var map=jQuery('#gis_ia_map_'+map_id), to=[map.width(),map.height()];
 	if (GIS_ia_maps[map_id].fullscreenPrevSize[0]!=to[0] || GIS_ia_maps[map_id].fullscreenPrevSize[1]!=to[1]) { // als het formaat wijzigt
 		var fact, aspectratioFrom=GIS_ia_maps[map_id].fullscreenPrevSize[0]/GIS_ia_maps[map_id].fullscreenPrevSize[1], aspecRatioTo=to[0]/to[1];
-		GIS_ia_maps[map_id].isFullscreenfalse;
+		GIS_ia_maps[map_id].isFullscreen=false;
 		if (GIS_ia_maps[map_id].fullscreenPrevSize[0]<to[0]) { // naar fullsize
 			if (aspecRatioTo>aspectratioFrom) { // behoud hoogte
 				fact=GIS_ia_maps[map_id].fullscreenPrevSize[1]/to[1];
