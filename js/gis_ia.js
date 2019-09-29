@@ -518,7 +518,7 @@ var gis_ia_filters={
 	// deze functie return de HTML voor alle filter elementen
 	html: function(map_id) {
 		var t, t1=GIS_ia_maps[map_id].fs.length, r='<div class="gis_ia_f_x">';
-		if (t1==0) {return '<div>Geen filters gedefini&euml;erd.</div>';}
+		if (t1==0) {return '';}
 		for (t=0;t<t1;t++) {r+=GIS_ia_maps[map_id].fs[t].x_button(0);}
 		r+='</div>';
 		for (t=0;t<t1;t++) {r+=GIS_ia_maps[map_id].fs[t].html(0);}
@@ -1058,7 +1058,7 @@ function gis_ia_filters_opa(map_id, no, d) {
 
 function gis_ia_get_layer_div(map_id) {
 	var t, t1, l, r,radio,extra_info;
-	r='<div class="gis_ia_filters_def">';
+	r='';
 	for (t=0,t1=0;t<GIS_ia_maps[map_id].base_layers.length;t++) if (GIS_ia_maps[map_id].base_layers[t].typ=='base') {t1++;}
 	if (t1>=2) {
 		r+='<div id="gis_ia_bl_'+map_id+'_def" class="gis_ia_bl_def">Basiskaarten</div>';
@@ -1090,7 +1090,7 @@ function gis_ia_get_layer_div(map_id) {
 		}
 		r+='</div>';
 	}
-	r+='</div>';
+	r=(r==''?'':'<div class="gis_ia_filters_def">'+r+'</div>');
 	return r;
 }
 
@@ -2059,10 +2059,12 @@ if (typeof(Drupal)!='undefined') {
 						var no=el.prop('id').substr(11);
 /***************
 Voor testdoeleinde: */
-if (Math.random()<0.5) {
+if (Math.random()<0.3) {
 	$($($('#gis_ia_base_'+no).parent()).parent()).css({'float':'right','margin':'0 0 20px 40px','width':'50%'});
 } else {
-	$($($('#gis_ia_base_'+no).parent()).parent()).css({'float':'left','margin':'0 40px 20px 0','width':'50%'});
+	if (Math.random()<0.5) {
+		$($($('#gis_ia_base_'+no).parent()).parent()).css({'float':'left','margin':'0 40px 20px 0','width':'50%'});
+	}
 }
 /***************/
 						GIS_paragraaf_start(parseInt(no,10));
