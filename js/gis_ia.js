@@ -680,7 +680,7 @@ var gis_ia_filters={
 			jQuery('#f1b-'+map_id).show();
 			jQuery('#f3b-'+map_id).show();
 			if (GIS_ia_maps[map_id].pw.substr(0,1)==='1') {
-				var w_kaart=jQuery('#gis_ia_base_'+map_id).width(), w_links=jQuery('#gis_ia_base_'+map_id).offset().left, w_filters=jQuery('#f2-'+map_id).show().width();
+				var w_kaart=jQuery('#gis_ia_base_'+map_id).width(), w_links=jQuery('#gis_ia_base_'+map_id).offset().left, w_filters=parseInt(GIS_ia_maps[map_id].pw.substr(1,1))*20+180;
 				jQuery('#f2-'+map_id).hide();
 				if (w_filters<=w_links) {
 					jQuery('#gis_ia_filters_'+map_id).css({'right':w_kaart+'px','left':'initial'});
@@ -1174,7 +1174,7 @@ function GIS_paragraaf_start(map_id) {
 	// zorg dat de kaart de juiste afmeting heeft; Maximale breedte op desktop en evt. volledige breedte op mobiel
 	var wpixels=jQuery('#gis_ia_map_'+map_id).parent().width(); // breedte vd kaart
 	jQuery(map.parent()).css({'height': (wpixels*GIS_ia_maps[map_id].a)+'px'});
-	//jQuery('#gis_ia_filters_'+map_id).css('width',300+'px');
+	jQuery('#gis_ia_filters_'+map_id).css('width',(parseInt(GIS_ia_maps[map_id].pw.substr(1,1))*20+180)+'px');
 
 	// Set de juiste projectie en 'set' proj4. Dit is nodig voor Position2
 	GIS_ia_maps[map_id].projection = new ol.proj.Projection({code: 'EPSG:28992',units: 'm',extent:GIS_ia_maps[map_id].extNL});

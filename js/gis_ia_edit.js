@@ -80,8 +80,8 @@ var default_parameters={
 	// Filtering
 	'fs': '',			// Filter definities
 	// Panel
-	'pw': '15',			// positie 0: Sliding: 0=Binnen de kaart, 1=Links van de kaart
-						// positie 1: breedte
+	'pw': '14',			// positie 0: Sliding: 0=Binnen de kaart, 1=Links van de kaart
+						// positie 1: breedte 0=180px ... 6=300px
 	// layer data
 	'ld': '',			// Deze parameter wordt in gis_ia.module achter de 'echte' parameters geplakt en bevat alle layer-data!!!
 	// Overig
@@ -607,6 +607,7 @@ function gis_ia_init() {
 	// panel opties
 		d+='<div class="kolom_1"><div>Panel opties</div>';
 		d+='<div><input type="checkbox" id="gis_ia_pw-0" gis_ia="pw-0"><label for="gis_ia_pw-0" class="option"> Slide links van kaart</label></div>';
+		d+='<div><span style="width: 100px;display: inline-block;">Breedte:</span><select gis_ia="pw-1"><option value="0">180px</option><option value="1">200px</option><option value="2">220px</option><option value="3">240px</option><option value="4">260px</option><option value="5">280px</option><option value="6">300px</option></select></div>';
 		d+='</div>';
 	// Toon lagen in panel
 		d+='<div class="kolom_1"><div>Lagen in panel</div>';
