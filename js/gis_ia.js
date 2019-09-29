@@ -2059,7 +2059,7 @@ if (typeof(Drupal)!='undefined') {
 						var no=el.prop('id').substr(11);
 /***************
 Voor testdoeleinde: */
-if (parseInt(no)|1==1) {
+if (Math.random()<0.5) {
 	$($($('#gis_ia_base_'+no).parent()).parent()).css({'float':'right','margin':'0 0 20px 40px','width':'50%'});
 } else {
 	$($($('#gis_ia_base_'+no).parent()).parent()).css({'float':'left','margin':'0 40px 20px 0','width':'50%'});
