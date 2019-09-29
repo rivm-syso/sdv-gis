@@ -20,7 +20,7 @@
 .gis_ia_base.gis_ia_as_block .gis_ia_filters {flex: 0 1 30%; position: initial;}
 .gis_ia_base.gis_ia_as_block .gis_ia_map_holder {flex: 1 0 70%;}
 
-.gis_ia_filters .f2 {padding: 8px 12px 8px 8px;}
+.gis_ia_filters .f2 {padding: 8px 12px 8px 8px; position: initial;}
 .gis_ia_filters.as-overlay .f2 {padding-left: 8px;}
 .gis_ia_filters_close {text-align: right; margin-bottom: 20px; height: 30px;}
 .gis_ia_filters_toon {text-align: right; margin-top: 20px; height: 30px;}
