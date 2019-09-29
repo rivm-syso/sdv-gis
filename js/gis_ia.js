@@ -679,7 +679,7 @@ var gis_ia_filters={
 			hidePanels(map_id);
 			jQuery('#f1b-'+map_id).show();
 			jQuery('#f3b-'+map_id).show();
-			if (GIS_ia_maps[map_id].pw.substr(0,1)==='1') {
+			if (GIS_ia_maps[map_id].pw.substr(0,1)==='1' && !GIS_ia_maps[map_id].isFullscreen) {
 				var w_kaart=jQuery('#gis_ia_base_'+map_id).width(), w_links=jQuery('#gis_ia_base_'+map_id).offset().left, w_filters=parseInt(GIS_ia_maps[map_id].pw.substr(1,1))*20+180;
 				w_filters+=20; // padding left + padding right
 				jQuery('#f2-'+map_id).hide();
@@ -1924,6 +1924,7 @@ function fullscreenChange(map_id) {
 //				console.log('Naar normalscreen: Behoud breedte: '+fact);
 			}
 		}
+		GIS_ia_maps[map_id].isFullscreen=force;
 		var v=GIS_ia_maps[map_id].map.getView();
 		v.setResolution(fact*v.getResolution());
 		GIS_ia_maps[map_id].fullscreenPrevSize=to;
