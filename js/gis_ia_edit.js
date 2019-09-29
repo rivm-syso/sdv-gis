@@ -78,7 +78,10 @@ var default_parameters={
 	'w2': 1,			// Data weergave (tonen van layers en feautures)
 	'tl': 0,			// Toon laagnaam bij tonen features
 	// Filtering
-	'fs': '',			// Filters
+	'fs': '',			// Filter definities
+	// Panel
+	'pw': '15',			// positie 0: Sliding: 0=Binnen de kaart, 1=Links van de kaart
+						// positie 1: breedte
 	// layer data
 	'ld': '',			// Deze parameter wordt in gis_ia.module achter de 'echte' parameters geplakt en bevat alle layer-data!!!
 	// Overig
@@ -601,6 +604,10 @@ function gis_ia_init() {
 	// panel
 	d+='<div class="form-item"><b>Panel</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<div class="form-item-start">';
+	// panel opties
+		d+='<div class="kolom_1"><div>Panel opties</div>';
+		d+='<div><input type="checkbox" id="gis_ia_pw-0" gis_ia="pw-0"><label for="gis_ia_pw-0" class="option"> Slide links van kaart</label></div>';
+		d+='</div>';
 	// Toon lagen in panel
 		d+='<div class="kolom_1"><div>Lagen in panel</div>';
 		d+=gis_ia_getRadio('show_layer','l-0',['0=Niet tonen','1=Toon boven filters','2=Toon onder filters'],false,'style="display: inline-block;"');
