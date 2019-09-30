@@ -458,7 +458,7 @@ function gis_ia_init() {
 				gis_ia_setOneValue(gis_ia_setLayerRow,2,layer);
 				jQuery('#gis_ia_layer_'+gis_ia_setLayerRow).html(layer);
 				gis_ia_setOneValue(gis_ia_setLayerRow,3,title);
-				jQuery('#gis_ia_title_'+gis_ia_setLayerRow).val(title);
+				jQuery('#gis_ia_title_'+gis_ia_setLayerRow).removeAttr('disabled').val(title);
 			}
 		},
 	});
@@ -484,7 +484,7 @@ function gis_ia_init() {
 				gis_ia_setOneValue(gis_ia_setLayerRow,2,layer);
 				jQuery('#gis_ia_layer_'+gis_ia_setLayerRow).html(layer);
 				gis_ia_setOneValue(gis_ia_setLayerRow,3,title);
-				jQuery('#gis_ia_title_'+gis_ia_setLayerRow).val(title);
+				jQuery('#gis_ia_title_'+gis_ia_setLayerRow).removeAttr('disabled').val(title);
 			}
 		},
 	});
@@ -511,7 +511,7 @@ function gis_ia_init() {
 				gis_ia_setOneValue(gis_ia_setLayerRow,2,layer);
 				jQuery('#gis_ia_layer_'+gis_ia_setLayerRow).html(layer);
 				gis_ia_setOneValue(gis_ia_setLayerRow,3,title);
-				jQuery('#gis_ia_title_'+gis_ia_setLayerRow).val(title);
+				jQuery('#gis_ia_title_'+gis_ia_setLayerRow).removeAttr('disabled').val(title);
 			}
 		},
 	});
