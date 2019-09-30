@@ -688,7 +688,11 @@ var gis_ia_filters={
 					jQuery('#f2-'+map_id).toggle('slide',{'direction':'right'});
 				} else { // Je kunt gewoon naar links schuiven
 					jQuery('#gis_ia_filters_'+map_id).css({'left':(-w_links+20)+'px','right':'initial'});
-					jQuery('#f2-'+map_id).toggle('slide',{'direction':(w_filters-w_links<100?'right':'left')});
+					if (w_filters-w_links<100) { // er is flink wat ruimte
+						jQuery('#f2-'+map_id).toggle('slide',{'direction':'right'});
+					} else { // er is nauwelijks ruimte
+						jQuery('#f2-'+map_id).toggle('slide',{'direction':'left'});
+					}
 				}
 			} else {
 				jQuery('#gis_ia_filters_'+map_id).css({'right':'initial','left':'initial'});
