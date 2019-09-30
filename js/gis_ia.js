@@ -1451,8 +1451,10 @@ function GIS_paragraaf_start(map_id) {
 		case '1': html=gis_ia_get_layer_div(map_id)+gis_ia_filters.html(map_id); break;
 		case '2': html=gis_ia_filters.html(map_id)+gis_ia_get_layer_div(map_id); break;
 	}
-	html='<div id="f2-'+map_id+'" onclick="gis_ia_filters_submenuClick('+map_id+',-1);" class="f2"><div id="f1b-'+map_id+'" class=""><div class="gis_ia_filters_close"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">X sluiten</button></div></div>'+html+'<div id="f3b-'+map_id+'"><div class="gis_ia_filters_toon"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">Toon resultaten</button></div></div></div>';
-	jQuery('#gis_ia_filters_'+map_id).html(html);
+	if (html!='') {
+		html='<div id="f2-'+map_id+'" onclick="gis_ia_filters_submenuClick('+map_id+',-1);" class="f2"><div id="f1b-'+map_id+'" class=""><div class="gis_ia_filters_close"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">X sluiten</button></div></div>'+html+'<div id="f3b-'+map_id+'"><div class="gis_ia_filters_toon"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">Toon resultaten</button></div></div></div>';
+		jQuery('#gis_ia_filters_'+map_id).html(html);
+	}
 	var inputs=jQuery('#f2-'+map_id+' :input').on('keyup',function(e) {
 		if (e.keyCode==13) {
 			e.preventDefault();
