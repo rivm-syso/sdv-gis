@@ -745,11 +745,11 @@ var gis_ia_filters={
 // Parameters:		map_id;		Integer; map ID
 //					old_scale;	Float; Oude schaal
 function ScaleBar2Set(map_id,old_scale) {
-    if (GIS_ol_maps[map_id].sb>=1) {
-        var v=GIS_ol_maps[map_id].map.getView();
+    if (GIS_ia_maps[map_id].sb>=1) {
+        var v=GIS_ia_maps[map_id].map.getView();
         var scale=v.getResolution();
 		var wpixels=jQuery('#gis_ol_map_'+map_id).parent().width(); // breedte vd kaart
-        var meterperpix=(scale/v.getMaxResolution()*(GIS_ol_maps[map_id].extNL[2]-GIS_ol_maps[map_id].extNL[0]))/wpixels;
+        var meterperpix=(scale/v.getMaxResolution()*(GIS_ia_maps[map_id].extNL[2]-GIS_ia_maps[map_id].extNL[0]))/wpixels;
         
         var b=30*meterperpix, b2, sg, g1, g2, w, u='meter';
         b2=''+b;
@@ -1550,37 +1550,37 @@ function GIS_paragraaf_start(map_id) {
 	
 	/* knoppen linksonder */
 	// Legenda
-	if (GIS_ol_maps[map_id].l1==1) {
+	if (GIS_ia_maps[map_id].l1==1) {
 		var legenda='';
-		if (GIS_ol_maps[map_id].c==1) {
-			if (GIS_ol_maps[map_id].sb>=1) { // muis en scalebar
+		if (GIS_ia_maps[map_id].c==1) {
+			if (GIS_ia_maps[map_id].sb>=1) { // muis en scalebar
 				legenda=' legenda2';
 			} else { // muis
 				legenda=' legenda1a';
 			}
 		} else {
-			if (GIS_ol_maps[map_id].sb>=1) { // scalebar
+			if (GIS_ia_maps[map_id].sb>=1) { // scalebar
 				legenda=' legenda1b';
 			}
 		}
-		GIS_ol_maps[map_id].map.addControl(new ol.control.Legenda({'map_id':map_id,className:'legenda'+legenda}));
+		GIS_ia_maps[map_id].map.addControl(new ol.control.Legenda({'map_id':map_id,className:'legenda'+legenda}));
 	}
 	// Muispositie
-	if (GIS_ol_maps[map_id].c==1) {
+	if (GIS_ia_maps[map_id].c==1) {
 		var mousePositionControl = new ol.control.MousePosition({
 			coordinateFormat: ol.coordinate.createStringXY(0),
-			projection: GIS_ol_maps[map_id].projection,
+			projection: GIS_ia_maps[map_id].projection,
 			// comment the following two lines to have the mouse position
 			// be placed within the map.
 			className: 'ol-control custom-mouse-position',
 			undefinedHTML: '&nbsp;'
 		});
-		GIS_ol_maps[map_id].map.addControl(mousePositionControl);
+		GIS_ia_maps[map_id].map.addControl(mousePositionControl);
 	}
 	// Scale bar
-	if (GIS_ol_maps[map_id].sb>=1) {
-		var scaleline = new ol.control.ScaleBar2({'map_id':map_id, className:'scalebar2 scalebar2'+(GIS_ol_maps[map_id].c?'1':'0')});
-		GIS_ol_maps[map_id].map.addControl(scaleline);
+	if (GIS_ia_maps[map_id].sb>=1) {
+		var scaleline = new ol.control.ScaleBar2({'map_id':map_id, className:'scalebar2 scalebar2'+(GIS_ia_maps[map_id].c?'1':'0')});
+		GIS_ia_maps[map_id].map.addControl(scaleline);
 	}
 
 	
