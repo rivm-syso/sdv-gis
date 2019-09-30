@@ -825,7 +825,7 @@ function filterwindowCheck(map_id) {
 	console.log('base width='+w);
 	if (w!=filterwindowCheck_) {
 		filterwindowCheck_=w;
-		if (w>=1000 || (GIS_ia_maps[map_id].isFullscreen && w>600)) { // switch naar 'vast' filter-block
+		if (!GIS_ia_maps[map_id].hasFilter && (w>=1000 || (GIS_ia_maps[map_id].isFullscreen && w>600))) { // switch naar 'vast' filter-block
 			jQuery('#gis_ia_options_button_'+map_id).hide();
 			jQuery('#f3a-'+map_id).show();
 			jQuery('#f1b-'+map_id).hide();
@@ -1178,7 +1178,6 @@ function GIS_paragraaf_start(map_id) {
 	// zorg dat de kaart de juiste afmeting heeft; Maximale breedte op desktop en evt. volledige breedte op mobiel
 	var wpixels=jQuery('#gis_ia_map_'+map_id).parent().width(); // breedte vd kaart
 	jQuery(map.parent()).css({'height': (wpixels*GIS_ia_maps[map_id].a)+'px'});
-	jQuery('#gis_ia_filters_'+map_id).css('width',(parseInt(GIS_ia_maps[map_id].pw.substr(1,1))*20+180)+'px');
 	
 	// Set de juiste projectie en 'set' proj4. Dit is nodig voor Position2
 	GIS_ia_maps[map_id].projection = new ol.proj.Projection({code: 'EPSG:28992',units: 'm',extent:GIS_ia_maps[map_id].extNL});
@@ -1453,9 +1452,10 @@ function GIS_paragraaf_start(map_id) {
 	}
 	if (html!='') {
 		html='<div id="f2-'+map_id+'" onclick="gis_ia_filters_submenuClick('+map_id+',-1);" class="f2"><div id="f1b-'+map_id+'" class=""><div class="gis_ia_filters_close"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">X sluiten</button></div></div>'+html+'<div id="f3b-'+map_id+'"><div class="gis_ia_filters_toon"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">Toon resultaten</button></div></div></div>';
-		jQuery('#gis_ia_filters_'+map_id).html(html);
+		jQuery('#gis_ia_filters_'+map_id).html(html).css('width',(parseInt(GIS_ia_maps[map_id].pw.substr(1,1))*20+180)+'px');
+		GIS_ia_maps[map_id].hasFilter=true;
 	} else {
-		jQuery('#gis_ia_filters_'+map_id).addClass('gis_ia_no_filters');
+		GIS_ia_maps[map_id].hasFilter=false;
 	}
 	var inputs=jQuery('#f2-'+map_id+' :input').on('keyup',function(e) {
 		if (e.keyCode==13) {
