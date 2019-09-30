@@ -1622,7 +1622,8 @@ function GIS_paragraaf_start(map_id) {
 						// zoek t_property[2] (weergegeven key) in tbl
 						for (t2=1,f=false;t2<tbl.length;t2++) if (tbl[t2][0]==t_property[2]) {
 							if (tbl[t2][t_layer]){
-								tbl[t2][t_layer][0]+='<br>'+t_property[3];
+								tbl[t2][t_layer][0]+=t_property[4]+'<br>'+t_property[3]+t_property[4];
+								tbl[t2][t_layer][1]='';
 							} else {
 								tbl[t2][t_layer]=[t_property[3],t_property[4],t_property[5]];
 							}
