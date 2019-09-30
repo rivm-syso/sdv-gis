@@ -1884,6 +1884,13 @@ function GIS_paragraaf_start(map_id) {
 			jQuery('#gis_ia_map_'+map_id+'_data').hide();
 			filterwindowCheckHide(map_id);
 		});
+
+		// ScaleBar2
+		ScaleBar2Set(map_id,GIS_ol_maps[map_id].map.getView().getResolution());
+		GIS_ol_maps[map_id].map.getView().on('change:resolution',function (e){
+				ScaleBar2Set(map_id,e.oldValue);
+		});
+
 		//GIS_ia_maps[map_id].currZoom = GIS_ia_maps[map_id].map.getView().getZoom();
 		GIS_ia_maps[map_id].map.on('moveend', function(evt) {
 			if (jQuery(jQuery('#popup'+map_id).parent()).css('display')=='none' && GIS_ia_maps[map_id].map.getView().getZoom()==0) {
