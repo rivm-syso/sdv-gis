@@ -745,36 +745,34 @@ var gis_ia_filters={
 // Parameters:		map_id;		Integer; map ID
 //					old_scale;	Float; Oude schaal
 function ScaleBar2Set(map_id,old_scale) {
-    if (GIS_ia_maps[map_id].sb>=1) {
-        var v=GIS_ia_maps[map_id].map.getView();
-        var scale=v.getResolution();
-		var wpixels=jQuery('#gis_ol_map_'+map_id).parent().width(); // breedte vd kaart
-        var meterperpix=(scale/v.getMaxResolution()*(GIS_ia_maps[map_id].extNL[2]-GIS_ia_maps[map_id].extNL[0]))/wpixels;
-        
-        var b=30*meterperpix, b2, sg, g1, g2, w, u='meter';
-        b2=''+b;
-        b2=b2.replace('.','')+'0000';
-        while(b2.substr(0,1)=='0') {b2=b2.substr(1);}
-        b2=parseInt(b2.substr(0,2),10);
-        if (b2<10) {sg=1;} else if (b2<20) {sg=2;} else if (b2<25) {sg=2.5;} else if (b2<50) {sg=5;} else {sg=1;}
-        g1=sg;
-        if (b<g1) {
-            while (g1/10>b) {g1/=10;}
-        } else {
-            while (g1<b) {g1*=10;}
-        }
-        w=g1/meterperpix;
-        if (g1>=1000) {
-            u='kilometer';
-            g1/=1000;
-        }
-        g2=2*g1;
-        // teken schaalbar a[f]
-		document.getElementById('scalebar2Title_'+map_id).innerHTML=u;
-		document.getElementById('scalebar2G1_'+map_id).innerHTML=g1;
-		document.getElementById('scalebar2G2_'+map_id).innerHTML=g2;
-		jQuery('#ScaleBar2_'+map_id).css({'width':(3*w)+'px','margin-left':(-w/2+4)+'px'});
-    }
+	var v=GIS_ia_maps[map_id].map.getView();
+	var scale=v.getResolution();
+	var wpixels=jQuery('#gis_ol_map_'+map_id).parent().width(); // breedte vd kaart
+	var meterperpix=(scale/v.getMaxResolution()*(GIS_ia_maps[map_id].extNL[2]-GIS_ia_maps[map_id].extNL[0]))/wpixels;
+	
+	var b=30*meterperpix, b2, sg, g1, g2, w, u='meter';
+	b2=''+b;
+	b2=b2.replace('.','')+'0000';
+	while(b2.substr(0,1)=='0') {b2=b2.substr(1);}
+	b2=parseInt(b2.substr(0,2),10);
+	if (b2<10) {sg=1;} else if (b2<20) {sg=2;} else if (b2<25) {sg=2.5;} else if (b2<50) {sg=5;} else {sg=1;}
+	g1=sg;
+	if (b<g1) {
+		while (g1/10>b) {g1/=10;}
+	} else {
+		while (g1<b) {g1*=10;}
+	}
+	w=g1/meterperpix;
+	if (g1>=1000) {
+		u='kilometer';
+		g1/=1000;
+	}
+	g2=2*g1;
+	// teken schaalbar a[f]
+	document.getElementById('scalebar2Title_'+map_id).innerHTML=u;
+	document.getElementById('scalebar2G1_'+map_id).innerHTML=g1;
+	document.getElementById('scalebar2G2_'+map_id).innerHTML=g2;
+	jQuery('#ScaleBar2_'+map_id).css({'width':(3*w)+'px','margin-left':(-w/2+4)+'px'});
 }
 
 (function(root, factory) {
@@ -1886,10 +1884,12 @@ function GIS_paragraaf_start(map_id) {
 		});
 
 		// ScaleBar2
-		ScaleBar2Set(map_id,GIS_ol_maps[map_id].map.getView().getResolution());
-		GIS_ol_maps[map_id].map.getView().on('change:resolution',function (e){
+		if (GIS_ia_maps[map_id].sb>=1) {
+			ScaleBar2Set(map_id,GIS_ia_maps[map_id].map.getView().getResolution());
+			GIS_ia_maps[map_id].map.getView().on('change:resolution',function (e){
 				ScaleBar2Set(map_id,e.oldValue);
-		});
+			});
+		}
 
 		//GIS_ia_maps[map_id].currZoom = GIS_ia_maps[map_id].map.getView().getZoom();
 		GIS_ia_maps[map_id].map.on('moveend', function(evt) {
