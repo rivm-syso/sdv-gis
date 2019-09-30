@@ -102,6 +102,13 @@
 .autocomplete-selected {cursor: pointer;}
 .autocomplete-suggestions strong {text-decoration: underline;}
 
+.ol-control.legenda1a {bottom: 30px;}
+.ol-control.legenda1b {bottom: 64px;}
+.ol-control.legenda2 {bottom: 86px;}
+.ol-control.custom-mouse-position {left: 8px; bottom: 8px;}
+.scalebar2 {left: 8px; bottom: 8px;}
+.scalebar21 {left: 8px; bottom: 28px;}
+
 /* scalebar2 CSS */
 .scalebar2 {position: absolute; background: transparent !important;}
 .scalebar2 table {width: 100%; margin: 0 0 -4px;}
