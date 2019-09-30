@@ -70,7 +70,8 @@ var default_parameters={
 	'e': 0,				// Rechts boven: Zoom-extend
 	'f': 1,				// Rechts boven: Full-screen
 	'l1': 0,			// Links onder: Legenda
-	'ts': 0,			// Rechts onder: Timeslider
+	'sb': 0,			// Links onder: Scalebar
+	'c': 0,				// Links onder: Coordinaten	'ts': 0,			// Rechts onder: Timeslider
 	'i': 2000,			// Rechts onder: Timeslider interval
 	// Data weergave
 	'm': '',			// Melding indien er geen data is gevonden
@@ -639,6 +640,8 @@ function gis_ia_init() {
 		d+='</div>';
 	// Links onder
 		d+='<div class="kolom_1"><div>Links onder</div>';
+		d+='<div><input type="checkbox" id="gis_ia_sb" gis_ia="sb"><label for="gis_ia_sb" class="option"> Scalebar</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_c" gis_ia="c"><label for="gis_ia_c" class="option"> Coordinaten</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l1" gis_ia="l1"><label for="gis_ia_l1" class="option"> Legenda</label></div>';
 		d+='</div>';
 	// rechts onder

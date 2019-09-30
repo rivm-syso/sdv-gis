@@ -102,6 +102,21 @@
 .autocomplete-selected {cursor: pointer;}
 .autocomplete-suggestions strong {text-decoration: underline;}
 
+/* scalebar2 CSS */
+.scalebar2 {position: absolute; background: transparent !important;}
+.scalebar2 table {width: 100%; margin: 0 0 -4px;}
+.scalebar2 td {width: 16.666666%;}
+.scalebar2 tr {background: transparent !important; border: 0px solid #ffffff;}
+.scalebar2 tbody tr:hover, .scalebar2 tbody tr:focus {background: transparent !important;}
+.scalebar2 tr td {padding: 0; border: 0px solid #ffffff; text-align: center; background: transparent !important; height: 5px;}
+.scalebar2 tr td.o {border-bottom: 1px solid black;}
+.scalebar2 tr td.lo {border-left: 1px solid black;border-bottom: 1px solid black;}
+.scalebar2 tr td.l {border-left: 1px solid black;}
+.scalebarTxt {padding: 2px 0 !important;}
+
+/* Mouseposition */
+.custom-mouse-position {position: absolute; margin-bottom: -1px;}
+
 /* Timeslider CSS */
 .playpauze {position: relative !important; display: inline-block !important;}
 .playpauze.play {}
