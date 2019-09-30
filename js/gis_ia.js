@@ -1915,12 +1915,6 @@ function GIS_paragraaf_start(map_id) {
 // Parameters:		map_id;		Integer; map ID
 function fullscreenChange(map_id) {
 	var map=jQuery('#gis_ia_map_'+map_id), to=[map.width(),map.height()];
-	// resize gis_ia_map_holder zodat breedte binnen de beschikbare hoogte valt (conform aspect ratio)
-	if (!GIS_ia_maps[map_id].isFullscreen) {
-		var el=jQuery(map.parent());
-		el.css('width',(el.height()/1.2)+'px');
-	}
-	// einde resize gis_ia_map_holder
 	if (GIS_ia_maps[map_id].fullscreenPrevSize[0]!=to[0] || GIS_ia_maps[map_id].fullscreenPrevSize[1]!=to[1]) { // als het formaat wijzigt
 		var fact, aspectratioFrom=GIS_ia_maps[map_id].fullscreenPrevSize[0]/GIS_ia_maps[map_id].fullscreenPrevSize[1], aspecRatioTo=to[0]/to[1];
 		GIS_ia_maps[map_id].isFullscreen=false;
