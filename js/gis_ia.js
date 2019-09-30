@@ -747,7 +747,7 @@ var gis_ia_filters={
 function ScaleBar2Set(map_id,old_scale) {
 	var v=GIS_ia_maps[map_id].map.getView();
 	var scale=v.getResolution();
-	var wpixels=jQuery('#gis_ol_map_'+map_id).parent().width(); // breedte vd kaart
+	var wpixels=jQuery('#gis_ia_map_'+map_id).parent().width(); // breedte vd kaart
 	var meterperpix=(scale/v.getMaxResolution()*(GIS_ia_maps[map_id].extNL[2]-GIS_ia_maps[map_id].extNL[0]))/wpixels;
 	
 	var b=30*meterperpix, b2, sg, g1, g2, w, u='meter';
