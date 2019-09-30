@@ -271,7 +271,7 @@ function getFilterDefTableItem(f,i,opts) {
 			for (t=0;t<f.e.length;t++) {s+=getFilterDefTableItem(f.e[t],i+'.'+(t+1),opts);}
 			break;
 		case 'c': // checkbox
-			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+gis_ia_fieldsOnServer[t][t1];}}
+			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+t+' '+gis_ia_fieldsOnServer[t][t1];}}
 			s+='<td>Checkbox</td>';
 			s+='<td><input value="'+f.v+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');"></td>';
 			s+='<td>';
@@ -281,7 +281,7 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
 			break;
 		case 'd': // list
-			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+gis_ia_fieldsOnServer[t][t1];}}
+			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+t+' '+gis_ia_fieldsOnServer[t][t1];}}
 			s+='<td>List</td>';
 			s+='<td><textarea rows="6" cols="20" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');">'+f.v+'</textarea></td>';
 			s+='<td style="white-space: nowrap;'+inspringen+'">';
@@ -290,7 +290,7 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
 			break;
 		case 'vt': // van - tot
-			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+gis_ia_fieldsOnServer[t][t1];}}
+			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+t+' '+gis_ia_fieldsOnServer[t][t1];}}
 			s+='<td>Numeriek</td>';
 			s+='<td>';
 			s+='<div><div style="display: inline-block; width: 70px;">Van tekst:</div><input style="width: calc(100% - 74px);" value="'+f.v1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v1\');"></div>';
