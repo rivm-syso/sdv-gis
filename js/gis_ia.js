@@ -1107,7 +1107,7 @@ function gis_ia_layers_change(map_id,typ,i) {
 			checked=jQuery('#gis_ia_bl_'+map_id+'_'+i).prop('checked');
 			break;
 		case 1: 
-			radio=(GIS_ia_maps[map_id].l.substr(1,1)=='0');
+			radio=(GIS_ia_maps[map_id].l.substr(1,1)=='1');
 			if (radio) {
 				for (t=0;t<GIS_ia_maps[map_id].layers.length;t++) if (t!=i) {GIS_ia_maps[map_id].layers[t].setVisible(false);}
 			}
