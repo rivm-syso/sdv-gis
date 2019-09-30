@@ -788,7 +788,7 @@ function ScaleBar2Set(map_id,old_scale) {
         var options = opt_options || {};
         var map_id = options.map_id ? options.map_id : -1;
         var tipLabel = options.tipLabel ? options.tipLabel : 'Toon legenda';
-        this.hiddenClassName = 'ol-unselectable ol-control legenda';
+        this.hiddenClassName = 'ol-unselectable ol-control '+options.className;
         this.shownClassName = 'shown';
         var element = document.createElement('div'); element.className = this.hiddenClassName; var button = document.createElement('button'); button.setAttribute('title', tipLabel); element.appendChild(button);
         this.panel = document.createElement('div'); this.panel.className = 'panel'; element.appendChild(this.panel);
