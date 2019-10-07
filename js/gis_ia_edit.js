@@ -845,10 +845,10 @@ var gis_ia_veld_url;
 
 // Deze functie opent een dialoog-box zodat de redacteur de velden van een laag kan definieren
 // Parameters:		no;		Integer; Velden van layer-index
-var gis_ia_veld_=false; // variable zodat je niet 2x op de knop kunt drukken
+var gis_ia_veld_pressed=false; // variable zodat je niet 2x op de knop kunt drukken
 function gis_ia_veld(no,forFilter) {
-	if (gis_ia_veld_===false) {
-		gis_ia_veld_=true;
+	if (!gis_ia_veld_pressed) {
+		gis_ia_veld_pressed=true;
 		// Haal velddefinities op
 		var el=jQuery('#edit-gis-ia-layers-0-value'),t=el.val(),s;
 		t=t.replace(/[\r\n]+/g,"\r");
@@ -934,10 +934,11 @@ function gis_ia_veld(no,forFilter) {
 					gis_ia_veld_(no,s,data);
 				}
 			}
+			gis_ia_veld_pressed=false;
 		}).fail(function(xhr, textStatus, errorThrown) {
 			alert('Kan de velddefinities van laag \''+s[0]+' '+s[2]+'\' niet ophalen. Fout: '+xhr.statusText +' '+ xhr.responseText+' Op acceptatie kan dit een CORS of CORB error zijn.');
+			gis_ia_veld_pressed=false;
 		});        
-		gis_ia_veld_=false;
 	}
 }
 
