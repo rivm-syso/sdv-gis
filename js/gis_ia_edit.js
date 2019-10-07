@@ -592,7 +592,7 @@ function gis_ia_init() {
 		d+='</div>';
 	// Overig
 		d+='<div class="kolom_1"><div>Overig</div>';
-		d+='<div class="kolom_2">Kleurstelling:<select gis_ia="u" style="margin0-left: 20px;">';
+		d+='<div class="kolom_2"><span style="width: 100px;display: inline-block;">Kleurstelling:</span><select gis_ia="u">';
 		for (t1=0;t1<kleuren.length;t1++) {
 			d+='<option value="'+kleuren[t1].toLowerCase()+'">'+kleuren[t1]+'</option>';
 		}
