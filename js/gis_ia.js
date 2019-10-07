@@ -1245,7 +1245,7 @@ function GIS_paragraaf_start(map_id) {
         
 	// zorg dat de kaart de juiste afmeting heeft; Maximale breedte op desktop en evt. volledige breedte op mobiel
 	var wpixels=jQuery('#gis_ia_map_'+map_id).parent().width(); // breedte vd kaart
-	jQuery(map.parent()).css({'height': (wpixels*GIS_ia_maps[map_id].a)+'px'});
+	jQuery(map.parent()).css({'height': (wpixels*1.2)+'px'});
 	
 	// Set de juiste projectie en 'set' proj4. Dit is nodig voor Position2
 	GIS_ia_maps[map_id].projection = new ol.proj.Projection({code: 'EPSG:28992',units: 'm',extent:GIS_ia_maps[map_id].extNL});

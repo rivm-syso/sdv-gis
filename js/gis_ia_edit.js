@@ -48,7 +48,6 @@ var gis_ia_default_row=new Array(
 var default_parameters={
 	'dataversie': 0, 	// dataversie (altijd integer) ophogen als deze niet meer compatible is met een vorige versie. 
 	// Formaat en uiterlijk
-	'a': 1.2,			// aspect ratio van de kaart (voor berekenen hoogte)
 	'u': 'hemelblauw',	// Uiterlijk CSS
 	'fl': 0,			// Floating, 0=geen, 1=links, 2=rechts
 	// Basiskaarten
@@ -593,7 +592,6 @@ function gis_ia_init() {
 		d+='</div>';
 	// Overig
 		d+='<div class="kolom_1"><div>Overig</div>';
-		d+='<div class="kolom_2"><div>Aspect ratio:</div><div><input type="number" min="0.8" max="2" step="0.1" class="form-number" gis_ia="a"></div></div>';
 		d+='<div class="kolom_2"><div>Kleurstelling:</div><div><select gis_ia="u">';
 		for (t1=0;t1<kleuren.length;t1++) {
 			d+='<option value="'+kleuren[t1].toLowerCase()+'">'+kleuren[t1]+'</option>';
