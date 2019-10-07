@@ -900,13 +900,25 @@ function filterwindowCheck(map_id) {
 			jQuery('#f3b-'+map_id).hide();
 			jQuery('#f2-'+map_id).show();
 			base.addClass('gis_ia_as_block');
+			// zet max-heigth van filterblok
+			jQuery('#gis_ia_filters_'+map_id).css('max-height',jQuery('#gis_ia_map_'+map_id).css('max-height')+'px');
+			// zet height van de kaart
+			if (GIS_ia_maps[map_id].isFullscreen) {
+				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(); 
+				mapholder.css({'height': 'initial'});
+			} else {
+				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
+				mapholder.css({'height': (wpixels*1.2)+'px'});
+			}
 		} else { // switch naar 'hidden/shown' filterblock
 			filterwindowCheckHide(map_id);
 			base.removeClass('gis_ia_as_block');
+			// zet max-heigth van filterblok
+			jQuery('#gis_ia_filters_'+map_id).css('max-height',jQuery('#gis_ia_map_'+map_id).css('max-height')+'px');
+			// zet height van de kaart
+			var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
+			mapholder.css({'height': (wpixels*1.2)+'px'});
 		}
-		jQuery('#gis_ia_filters_'+map_id).css('max-height',jQuery('#gis_ia_map_'+map_id).css('max-height')+'px');
-		var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
-		mapholder.css({'height': (wpixels*1.2)+'px'});
 	}
 }	
 
