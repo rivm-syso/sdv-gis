@@ -1890,10 +1890,10 @@ function GIS_paragraaf_start(map_id) {
 				// daarom huidige size opslaan en vertraagde functie fullscreenChange instellen
 				var map=jQuery('#gis_ia_map_'+map_id);
 				GIS_ia_maps[map_id].fullscreenPrevSize=[map.width(),map.height()];
-				jQuery(el).on('click',function(e) {
-					setTimeout('fullscreenChange('+map_id+');',50);
-				});
-			});
+//				jQuery(el).on('click',function(e) {
+//					setTimeout('fullscreenChange('+map_id+');',50);
+//				});
+jQuery(jQuery('#gis_ia_map_'+map_id).parent()).on('resize',function() {fullscreenChange(map_id);});
 		}
 		GIS_ia_maps[map_id].map.on('movestart', function(evt) {
 			jQuery('#gis_ia_map_'+map_id+'_data').hide();
