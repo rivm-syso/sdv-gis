@@ -834,7 +834,8 @@ function gis_ia_row(no,values,aant_rows) {
     row+='<td><input onchange="gis_ia_setOneValue('+no+',3,this.value);" size="24" value="'+values[3]+'" id="gis_ia_title_'+no+'"'+(values[2]==''?' disabled="disabled"':'')+'></td>';
     row+='<td><input onchange="gis_ia_setOneValue('+no+',4,this.value);" size="3" value="'+values[4]+'" type="number" step="0.1" min="0" max="1"></td>';
     row+='<td><input onchange="gis_ia_setOneValue('+no+',7,jQuery(this).prop(\'checked\')?1:0);" '+(values[7]==1?'checked="checked"':'')+' type="checkbox"></td>';
-    row+='<td><select onclick="gis_ia_veld('+no+',false);"><option>Velden</option></select></td>';
+//    row+='<td><select onclick="gis_ia_veld('+no+',false);"><option>Velden</option></select></td>';
+    row+='<td><input onclick="gis_ia_veld('+no+',false);" class="button" type="button" value="Velden"></td>';
     row+='<td><input onclick="gis_ia_delete('+no+');" class="button" type="button" value="Verwijder"></td>';
     row+='</tr>';
     return row;
