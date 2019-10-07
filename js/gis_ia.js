@@ -890,7 +890,7 @@ function gis_ia_filters_hideSubmenus() {
 
 function filterwindowCheck(map_id) {
 	var base=jQuery('#gis_ia_base_'+map_id), w=base.width();
-	console.log('base width='+w);
+console.log('base width='+w);
 	if (w!=filterwindowCheck_) {
 		filterwindowCheck_=w;
 		if (GIS_ia_maps[map_id].hasFilter && (w>=1000 || (GIS_ia_maps[map_id].isFullscreen && w>600))) { // switch naar 'vast' filter-block
@@ -906,9 +906,11 @@ function filterwindowCheck(map_id) {
 			if (GIS_ia_maps[map_id].isFullscreen) {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(); 
 				mapholder.css({'height': '100%'});
+console.log('Vast blok, height=100% (is fullscreen)');
 			} else {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
 				mapholder.css({'height': (wpixels*1.2)+'px'});
+console.log('Vast blok, height='+(wpixels*1.2)+'px (is desktop)');
 			}
 		} else { // switch naar 'hidden/shown' filterblock
 			filterwindowCheckHide(map_id);
@@ -919,9 +921,11 @@ function filterwindowCheck(map_id) {
 			if (GIS_ia_maps[map_id].isFullscreen) {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(); 
 				mapholder.css({'height': '100%'});
+console.log('Slide blok, height=100% (is fullscreen)');
 			} else {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
 				mapholder.css({'height': (wpixels*1.2)+'px'});
+console.log('Slide blok, height='+(wpixels*1.2)+'px (is desktop)');
 			}
 		}
 	}
