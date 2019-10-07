@@ -916,8 +916,13 @@ function filterwindowCheck(map_id) {
 			// zet max-heigth van filterblok
 			jQuery('#gis_ia_filters_'+map_id).css('max-height',jQuery('#gis_ia_map_'+map_id).css('max-height')+'px');
 			// zet height van de kaart
-			var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
-			mapholder.css({'height': (wpixels*1.2)+'px'});
+			if (GIS_ia_maps[map_id].isFullscreen) {
+				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(); 
+				mapholder.css({'height': 'initial'});
+			} else {
+				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
+				mapholder.css({'height': (wpixels*1.2)+'px'});
+			}
 		}
 	}
 }	
