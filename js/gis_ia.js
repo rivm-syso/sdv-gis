@@ -905,7 +905,7 @@ function filterwindowCheck(map_id) {
 			// zet height van de kaart
 			if (GIS_ia_maps[map_id].isFullscreen) {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(); 
-				mapholder.css({'height': 'initial'});
+				mapholder.css({'height': '100%'});
 			} else {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
 				mapholder.css({'height': (wpixels*1.2)+'px'});
@@ -918,7 +918,7 @@ function filterwindowCheck(map_id) {
 			// zet height van de kaart
 			if (GIS_ia_maps[map_id].isFullscreen) {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(); 
-				mapholder.css({'height': 'initial'});
+				mapholder.css({'height': '100%'});
 			} else {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
 				mapholder.css({'height': (wpixels*1.2)+'px'});
