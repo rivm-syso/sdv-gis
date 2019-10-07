@@ -834,7 +834,6 @@ function gis_ia_row(no,values,aant_rows) {
     row+='<td><input onchange="gis_ia_setOneValue('+no+',3,this.value);" size="24" value="'+values[3]+'" id="gis_ia_title_'+no+'"'+(values[2]==''?' disabled="disabled"':'')+'></td>';
     row+='<td><input onchange="gis_ia_setOneValue('+no+',4,this.value);" size="3" value="'+values[4]+'" type="number" step="0.1" min="0" max="1"></td>';
     row+='<td><input onchange="gis_ia_setOneValue('+no+',7,jQuery(this).prop(\'checked\')?1:0);" '+(values[7]==1?'checked="checked"':'')+' type="checkbox"></td>';
-//    row+='<td><select onclick="gis_ia_veld('+no+',false);"><option>Velden</option></select></td>';
     row+='<td><input onclick="gis_ia_veld('+no+',false);" class="button" type="button" value="Velden"></td>';
     row+='<td><input onclick="gis_ia_delete('+no+');" class="button" type="button" value="Verwijder"></td>';
     row+='</tr>';
@@ -846,95 +845,100 @@ var gis_ia_veld_url;
 
 // Deze functie opent een dialoog-box zodat de redacteur de velden van een laag kan definieren
 // Parameters:		no;		Integer; Velden van layer-index
+var gis_ia_veld_=false; // variable zodat je niet 2x op de knop kunt drukken
 function gis_ia_veld(no,forFilter) {
-	// Haal velddefinities op
-    var el=jQuery('#edit-gis-ia-layers-0-value'),t=el.val(),s;
-    t=t.replace(/[\r\n]+/g,"\r");
-    t=t.replace(/\n+/g,"\r");
-    t=t.split("\r");
-    s=t[no].split('|');
-	
-	//if (s[2]=='') {return;}
-	
-	// Creeer een layer met Source (openlayers type) en een View (openlayers type) met Projection en Resolution (openlayers type)
-    var layer;
-    switch (s[0]) {
-        case 'WMS':
-        case 'datarivmnl':
-        case 'wmsacceptatie':
-            layer=new ol.layer.Image({
-                title: 'title',
-                extent: [-285401.92,22598.08,595401.9199999999,903401.9199999999],
-                source: new ol.source.ImageWMS({
-                    url: s[1],
-                    params: {
-                        layers: s[2],
-                        srs: 'EPSG:28992',
-                        format: 'image/png',
-                    },
-                }),
-            });
-            break;
-        case 'WMTS':
-            break;
-    }
-    var pixpermeter=300000/600; // pixels per meter
-    var view=new ol.View({
-        projection: new ol.proj.Projection({code: 'EPSG:28992',units: 'm'}),
-        center: ol.extent.getCenter([0,300000,300000,650000]),
-        resolution: pixpermeter,
-        maxResolution: pixpermeter,
-    });
-    var viewResolution = view.getResolution();
-    var viewProjection = view.getProjection();
-    var wmsSource=layer.getSource();
-	
-    // Opvragen velden werkt als volgt:
-    // - De feature-count staat op 1 zodat ie maar 1 antwoord geeft (dat is genoeg).
-    // - De buffer staat op 1000 zodat ie vanuit het midden van de kaart ([150000,475000]) in een cirkel met een straal van 1000 pixels zoekt.
-    // Op een rasterkaart zou de buffer niet nodig zijn omdat elk punt in het raster een property terug geeft, maar op een vector-kaart
-    // moet ie in die cirkel zoeken.
-    gis_ia_veld_url = wmsSource.getGetFeatureInfoUrl([150000,475000],viewResolution, viewProjection, {'FEATURE_COUNT':1, 'INFO_FORMAT': 'application/json', 'QUERY_LAYERS':s[2], 'BUFFER':10000});
-	
-	// Haal veld-definities op van een server. Als dat lukt; Roep dan de functie gis_ia_veld_ aan.
-    jQuery.ajax({
-        type: 'GET',
-        url: gis_ia_veld_url,
-        data: [],
-        dataType: 'json',
-    }).done(function(data){
-		if (data.features.length==0) {
-			var url=gis_ia_veld_url,pos1=url.indexOf('&BBOX='),pos2=url.indexOf('&',pos1+1);
-			if (pos2<pos1) {pos2=url.length;}
-			url=url.substr(0,pos1)+'&BBOX=0%2C0%2C300000%2C650000'+url.substr(pos2);
-			jQuery.ajax({
-				type: 'GET',
-				url: url,
-				data: [],
-				dataType: 'json',
-			}).done(function(data){
-				if (data.features.length==0) {
-					alert('Kan de velddefinities niet ophalen.');
-				} else {
-					if (forFilter) {
-						gis_ia_setFieldsOnServer_(no,data);
-					} else {
-						gis_ia_veld_(no,s,data);
-					}
-				}
-			}).fail(function(xhr, textStatus, errorThrown) {
-				alert('Kan de velddefinities van laag \''+s[0]+' '+s[2]+'\' niet ophalen. Fout: '+xhr.statusText +' '+ xhr.responseText+' Op acceptatie kan dit een CORS of CORB error zijn.');
-			});        
-		} else {
-			if (forFilter) {
-				gis_ia_setFieldsOnServer_(no,data);
-			} else {
-				gis_ia_veld_(no,s,data);
-			}
+	if (gis_ia_veld_===false) {
+		gis_ia_veld_=true;
+		// Haal velddefinities op
+		var el=jQuery('#edit-gis-ia-layers-0-value'),t=el.val(),s;
+		t=t.replace(/[\r\n]+/g,"\r");
+		t=t.replace(/\n+/g,"\r");
+		t=t.split("\r");
+		s=t[no].split('|');
+		
+		//if (s[2]=='') {return;}
+		
+		// Creeer een layer met Source (openlayers type) en een View (openlayers type) met Projection en Resolution (openlayers type)
+		var layer;
+		switch (s[0]) {
+			case 'WMS':
+			case 'datarivmnl':
+			case 'wmsacceptatie':
+				layer=new ol.layer.Image({
+					title: 'title',
+					extent: [-285401.92,22598.08,595401.9199999999,903401.9199999999],
+					source: new ol.source.ImageWMS({
+						url: s[1],
+						params: {
+							layers: s[2],
+							srs: 'EPSG:28992',
+							format: 'image/png',
+						},
+					}),
+				});
+				break;
+			case 'WMTS':
+				break;
 		}
-    }).fail(function(xhr, textStatus, errorThrown) {
-		alert('Kan de velddefinities van laag \''+s[0]+' '+s[2]+'\' niet ophalen. Fout: '+xhr.statusText +' '+ xhr.responseText+' Op acceptatie kan dit een CORS of CORB error zijn.');
-    });        
+		var pixpermeter=300000/600; // pixels per meter
+		var view=new ol.View({
+			projection: new ol.proj.Projection({code: 'EPSG:28992',units: 'm'}),
+			center: ol.extent.getCenter([0,300000,300000,650000]),
+			resolution: pixpermeter,
+			maxResolution: pixpermeter,
+		});
+		var viewResolution = view.getResolution();
+		var viewProjection = view.getProjection();
+		var wmsSource=layer.getSource();
+		
+		// Opvragen velden werkt als volgt:
+		// - De feature-count staat op 1 zodat ie maar 1 antwoord geeft (dat is genoeg).
+		// - De buffer staat op 1000 zodat ie vanuit het midden van de kaart ([150000,475000]) in een cirkel met een straal van 1000 pixels zoekt.
+		// Op een rasterkaart zou de buffer niet nodig zijn omdat elk punt in het raster een property terug geeft, maar op een vector-kaart
+		// moet ie in die cirkel zoeken.
+		gis_ia_veld_url = wmsSource.getGetFeatureInfoUrl([150000,475000],viewResolution, viewProjection, {'FEATURE_COUNT':1, 'INFO_FORMAT': 'application/json', 'QUERY_LAYERS':s[2], 'BUFFER':10000});
+		
+		// Haal veld-definities op van een server. Als dat lukt; Roep dan de functie gis_ia_veld_ aan.
+		jQuery.ajax({
+			type: 'GET',
+			url: gis_ia_veld_url,
+			data: [],
+			dataType: 'json',
+		}).done(function(data){
+			if (data.features.length==0) {
+				var url=gis_ia_veld_url,pos1=url.indexOf('&BBOX='),pos2=url.indexOf('&',pos1+1);
+				if (pos2<pos1) {pos2=url.length;}
+				url=url.substr(0,pos1)+'&BBOX=0%2C0%2C300000%2C650000'+url.substr(pos2);
+				jQuery.ajax({
+					type: 'GET',
+					url: url,
+					data: [],
+					dataType: 'json',
+				}).done(function(data){
+					if (data.features.length==0) {
+						alert('Kan de velddefinities niet ophalen.');
+					} else {
+						if (forFilter) {
+							gis_ia_setFieldsOnServer_(no,data);
+						} else {
+							gis_ia_veld_(no,s,data);
+						}
+					}
+				}).fail(function(xhr, textStatus, errorThrown) {
+					alert('Kan de velddefinities van laag \''+s[0]+' '+s[2]+'\' niet ophalen. Fout: '+xhr.statusText +' '+ xhr.responseText+' Op acceptatie kan dit een CORS of CORB error zijn.');
+				});        
+			} else {
+				if (forFilter) {
+					gis_ia_setFieldsOnServer_(no,data);
+				} else {
+					gis_ia_veld_(no,s,data);
+				}
+			}
+		}).fail(function(xhr, textStatus, errorThrown) {
+			alert('Kan de velddefinities van laag \''+s[0]+' '+s[2]+'\' niet ophalen. Fout: '+xhr.statusText +' '+ xhr.responseText+' Op acceptatie kan dit een CORS of CORB error zijn.');
+		});        
+		gis_ia_veld_=false;
+	}
 }
 
 // globale variabelen die de dialoog-box bevat (gis_ia_velden_modal) en het drukken op Ok/Cancel door de redacteur (gis_ia_velden_modal_close)
