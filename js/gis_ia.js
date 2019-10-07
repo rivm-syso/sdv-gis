@@ -893,7 +893,7 @@ function filterwindowCheck(map_id) {
 console.log('base width='+w);
 	if (w!=filterwindowCheck_) {
 		filterwindowCheck_=w;
-		if (GIS_ia_maps[map_id].hasFilter && (w>=1000 || (GIS_ia_maps[map_id].isFullscreen && w>600))) { // switch naar 'vast' filter-block
+		if ((GIS_ia_maps[map_id].hasFilter || GIS_ia_maps[map_id].l.substr(0,1)!=='0') && (w>=1000 || (GIS_ia_maps[map_id].isFullscreen && w>600))) { // switch naar 'vast' filter-block
 			jQuery('#gis_ia_options_button_'+map_id).hide();
 			jQuery('#f3a-'+map_id).show();
 			jQuery('#f1b-'+map_id).hide();
