@@ -1880,7 +1880,7 @@ function GIS_paragraaf_start(map_id) {
 		// zorg dat filterwindow zich aanpast
 		filterwindowCheck(map_id);
 		jQuery(window).resize(function() {
-			filterwindowCheck(map_id);
+			//filterwindowCheck(map_id);
 		});
 
 		// fullscreen
