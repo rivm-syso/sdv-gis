@@ -714,7 +714,7 @@ var gis_ia_filters={
   } else if(typeof module === "object" && module.exports) {
     module.exports = factory(require("openlayers"));
   } else {
-    root.Legend = factory(root.ol);
+    root.ScaleBar2 = factory(root.ol);
   }
 }(this, function(ol) {
     /**
@@ -800,8 +800,8 @@ function ScaleBar2Set(map_id,old_scale) {
 			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_lay'); d.setAttribute('style', 'display: none;'); d.innerHTML=GIS_ia_maps[map_id].layers_def[t].title; layers.appendChild(d);
 			d=document.createElement('div'); d.setAttribute('id', 'gis_ia_'+map_id+'_'+t+'_legenda_leg'); d.setAttribute('style', 'display: none;'); d.className='wait-cursor gis_ia_'+map_id+'_'+t+'_legenda_leg2'; legendas.appendChild(d);
 		}
-		this.panel.appendChild(legendas);
 		this.panel.appendChild(layers);
+		this.panel.appendChild(legendas);
 		this.layers=jQuery(layers);
 		
         var this_ = this;

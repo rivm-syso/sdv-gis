@@ -71,7 +71,8 @@ var default_parameters={
 	'f': 1,				// Rechts boven: Full-screen
 	'l1': 0,			// Links onder: Legenda
 	'sb': 0,			// Links onder: Scalebar
-	'c': 0,				// Links onder: Coordinaten	'ts': 0,			// Rechts onder: Timeslider
+	'c': 0,				// Links onder: Coordinaten
+	'ts': 0,			// Rechts onder: Timeslider
 	'i': 2000,			// Rechts onder: Timeslider interval
 	// Data weergave
 	'm': '',			// Melding indien er geen data is gevonden
