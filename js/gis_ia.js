@@ -906,7 +906,7 @@ function filterwindowCheck(map_id) {
 		}
 		jQuery('#gis_ia_filters_'+map_id).css('max-height',jQuery('#gis_ia_map_'+map_id).css('max-height')+'px');
 		var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
-		mapholder.css({'height': (wpixels*GIS_ia_maps[map_id].a)+'px'});
+		mapholder.css({'height': (wpixels*1.2)+'px'});
 	}
 }	
 
