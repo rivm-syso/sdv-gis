@@ -266,7 +266,10 @@ gis_ia_filter.prototype.change=function(id,i) {
 					if (this.s=='0') { // selectbox
 						el=jQuery('#'+id);
 						t1=el.val();
-						if (t1==='-1') {el.removeClass('gis_ia_input_has_x');} else {el.addClass('gis_ia_input_has_x');}
+						if (this.x2=='1') {
+							var arrow=jQuery(jQuery(el.parent()).children()[0]);
+							if (t1==='-1') {el.removeClass('gis_ia_input_has_x'); arrow.removeClass('gis_ia_input_has_x');} else {el.addClass('gis_ia_input_has_x'); arrow.addClass('gis_ia_input_has_x');}
+						}
 						for (t=0;t<labels.length;t++) {
 							x_buttons=jQuery('[fromid='+id+'-'+t+']');
 							if (t==t1) {x_buttons.show();} else {x_buttons.hide();}
@@ -306,8 +309,12 @@ gis_ia_filter.prototype.change=function(id,i) {
 					var el1=jQuery('#'+id+'-van'), el2=jQuery('#'+id+'-tot'), x_buttons=jQuery('[fromid='+id+']'),t,inps=jQuery('#'+id+'_parent');
 					var lab1=jQuery('#'+id+'-van-label'), lab2=jQuery('#'+id+'-tot-label');
 					var s1=el1.val(),s2=el2.val(),st,t;
-					if (s1=='') {lab1.show(); el1.removeClass('gis_ia_input_has_x');} else {lab1.hide(); el1.addClass('gis_ia_input_has_x');}
-					if (s2=='') {lab2.show(); el2.removeClass('gis_ia_input_has_x');} else {lab2.hide(); el2.addClass('gis_ia_input_has_x');}
+					if (s1=='') {lab1.show();} else {lab1.hide();}
+					if (s2=='') {lab2.show();} else {lab2.hide();}
+					if (this.x2=='1') {
+						if (s1=='') {el1.removeClass('gis_ia_input_has_x');} else {el1.addClass('gis_ia_input_has_x');}
+						if (s2=='') {el2.removeClass('gis_ia_input_has_x');} else {el2.addClass('gis_ia_input_has_x');}
+					}
 					if (s1!='' || s2!='') {
 						if (parseInt(s1,10)>=parseInt(s2,10)) {
 							if (i==0) { // de van waarde is veranderd; pas tot aan...
