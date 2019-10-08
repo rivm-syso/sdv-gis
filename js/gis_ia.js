@@ -289,6 +289,20 @@ gis_ia_filter.prototype.change=function(id,i) {
 						}
 					}
 					break;
+				case 'i': // vrije tekst
+					var el=jQuery('#'+id), x_buttons=jQuery('[fromid='+id+']'),t,inps=jQuery('#'+id+'_parent');
+					if (el.val()!='') {
+						x_buttons.show();
+						if (this.x2=='1') {
+							inps.hide();
+						} else {
+							inps.show();
+						}
+					} else {
+						x_buttons.hide();
+						inps.show();
+					}
+					break;
 				case 'vt': // van - tot
 					var el1=jQuery('#'+id+'-van'), el2=jQuery('#'+id+'-tot'), x_buttons=jQuery('[fromid='+id+']'),t,inps=jQuery('#'+id+'_parent');
 					var lab1=jQuery('#'+id+'-van-label'), lab2=jQuery('#'+id+'-tot-label');
@@ -372,6 +386,11 @@ gis_ia_filter.prototype.x_button=function(xno,i) {
 				}
 			}
 			break;
+		case 'i': // vrije tekst
+			if ((this.x0=='1' && xno==0) || (this.x1=='1' && xno==1) || (this.x2=='1' && xno==2)) {
+				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"><span>'+this.v+'</span></a></div>';
+			}
+			break;
 		case 'vt': // van - tot
 			if ((this.x0=='1' && xno==0) || (this.x1=='1' && xno==1)) {
 				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"></a><span class="'+this.ID()+'_span"></span></div>';
@@ -403,6 +422,9 @@ gis_ia_filter.prototype.x=function(id,i) {
 					} else {
 						jQuery('#'+id+'-'+i).prop('checked',false);
 					}
+					break;
+				case 'i': // vrije tekst
+					jQuery('#'+id).val('');
 					break;
 				case 'vt': // van - tot
 					jQuery('#'+id+'-van').val('');
@@ -498,6 +520,15 @@ gis_ia_filter.prototype.cql_filter=function(changed_layer) {
 						}
 					}
 					if (aant>1) {r='('+r+')';}
+					break;
+				case 'i': // vrije tekst
+					el=jQuery('#'+this.ID());
+					if (el.val()!='') {
+						switch (this.s) {
+							case '0': r=this.f+'=\''+el.val()+'\''; break;
+							case '1': r=this.f+' like \'%'+el.val()+'%\''; break;
+						}
+					}
 					break;
 				case 'vt': // van - tot
 					var el1=jQuery('#'+this.ID()+'-van'),el2=jQuery('#'+this.ID()+'-tot'), v1=el1.val(), v2=el2.val();
