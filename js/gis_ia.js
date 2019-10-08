@@ -387,7 +387,7 @@ gis_ia_filter.prototype.x_button=function(xno,i) {
 				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"><span>'+this.v+'</span></a></div>';
 			}
 			if (this.x2=='1' && xno==2) {
-				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"><span>&nbsp;</span></a></div>';
+				r='<div class="gis_ia_f_f_x gis_ia_f_f_x_simple" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"><span>&nbsp;</span></a></div>';
 			}
 			break;
 		case 'vt': // van - tot
