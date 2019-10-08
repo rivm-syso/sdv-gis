@@ -283,7 +283,7 @@ function getFilterDefTableItem(f,i,opts) {
 		case 'd': // list
 			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+(t+1)+' '+gis_ia_fieldsOnServer[t][t1];}}
 			s+='<td>List</td>';
-			s+='<td></td>';
+			s+='<td><input value="'+f.l0+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'l0\');"></td>';
 			s+='<td style="white-space: nowrap;'+inspringen+'">';
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;'+gis_ia_getSelect(['0==','1=range'],f.o,'gis_ia_set_filterItem(this,\''+i+'\',\'o\');');
 			s+='</td><td>';
@@ -294,8 +294,7 @@ function getFilterDefTableItem(f,i,opts) {
 		case 'vt': // van - tot
 			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+(t+1)+' '+gis_ia_fieldsOnServer[t][t1];}}
 			s+='<td>Numeriek</td>';
-			s+='<td>';
-			s+='</td>';
+			s+='<td><input value="'+f.l0+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'l0\');"></td>';
 			s+='<td>';
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;'+gis_ia_getSelect(['0=van <= N < tot','1=van < N <= tot','2=van <= N <= tot','3=van < N < tot'],f.w,'gis_ia_set_filterItem(this,\''+i+'\',\'w\');');
 			s+='</td><td>';
@@ -409,8 +408,8 @@ function gis_ia_add_filter(e,no) {
 		case 'g': elm={'t':'g','s':'of','w':'','e':[],'b':'0'}; break;
 		case 'a': elm={'t':'a','v':'','s':'h2'}; break;
 		case 'c': elm={'t':'c','v':'','s':'0','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','x0':'1','x1':'0','x2':'1'}; break;
-		case 'd': elm={'t':'d','v':'','s':'0','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','o':'0'}; break;
-		case 'vt': elm={'t':'vt','v1':'','v2':'','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','mi1':'','mi2':'','ma1':'','ma2':'','st1':'','st2':'','l1':'','l2':''}; break;
+		case 'd': elm={'t':'d','v':'','s':'0','l0':'','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','o':'0'}; break;
+		case 'vt': elm={'t':'vt','v1':'','v2':'','l0':'','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','mi1':'','mi2':'','ma1':'','ma2':'','st1':'','st2':'','l1':'','l2':''}; break;
 		case 'i': elm={'t':'i','v':'','s':'0','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','x0':'1','x1':'0','x2':'1'}; break;
 		default: alert('Pas op: filter type \''+e+'\' niet gedefinieerd'); break;
 	}
