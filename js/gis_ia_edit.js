@@ -299,14 +299,14 @@ function getFilterDefTableItem(f,i,opts) {
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;'+gis_ia_getSelect(['0=van <= N < tot','1=van < N <= tot','2=van <= N <= tot','3=van < N < tot'],f.w,'gis_ia_set_filterItem(this,\''+i+'\',\'w\');');
 			s+='<div>';
 			s+='<div><b>Van</b></div>';
-			s+='<div><div style="display: inline-block; width: 70px;">Achtergrond tekst:</div><input style="width: calc(100% - 74px);" value="'+f.v1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v1\');"></div>';
+			s+='<div style="margin-bottom: 12px;"><div style="display: inline-block; width: 140px;">Achtergrond tekst:</div><input style="width: 100px;" value="'+f.v1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v1\');"></div>';
 			s+='<div style="display: inline-block;"><div style="display: inline-block; width: 40px;">Min:</div><input style="width: 50px;" value="'+f.mi1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'mi1\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Max:</div><input style="width: 50px;" value="'+f.ma1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'ma1\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Stap:</div><input style="width: 50px;" value="'+f.st1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'st1\');"></div>';
 			s+='</div><div>';
 			s+='<div style="margin-top: 12px;"><div style="display: inline-block; width: 60px;">Of lijst:</div><textarea style="width: 160px;" rows="6" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'l1\');">'+f.l1+'</textarea></div>';
 			s+='<div><b>Tot</b></div>';
-			s+='<div><div style="display: inline-block; width: 70px;">Achtergrond tekst:</div><input style="width: calc(100% - 74px);" value="'+f.v2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v2\');"></div>';
+			s+='<div style="margin-bottom: 12px;"><div style="display: inline-block; width: 140px;">Achtergrond tekst:</div><input style="width: 1--px;" value="'+f.v2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v2\');"></div>';
 			s+='<div style="display: inline-block;"><div style="display: inline-block; width: 40px;">Min:</div><input style="width: 50px;" value="'+f.mi2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'mi2\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Max:</div><input style="width: 50px;" value="'+f.ma2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'ma2\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Stap:</div><input style="width: 50px;" value="'+f.st2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'st2\');"></div>';
