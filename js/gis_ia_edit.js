@@ -285,9 +285,9 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='<td>List</td>';
 			s+='<td></td>';
 			s+='<td style="white-space: nowrap;'+inspringen+'">';
-			s+='<textarea rows="6" cols="20" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');">'+f.v+'</textarea>';
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;'+gis_ia_getSelect(['0==','1=range'],f.o,'gis_ia_set_filterItem(this,\''+i+'\',\'o\');')+'&nbsp;';
-			s+='<textarea rows="6" cols="20" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'w\');">'+f.w+'</textarea></td><td>'+gis_ia_getSelect(['0=Selectbox','1=Radio buttons','3=Checkboxes'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'<br><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
+			s+='<div style="display: inline-block;">Labels<textarea rows="6" cols="20" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');">'+f.v+'</textarea></div>&nbsp;';
+			s+='<div style="display: inline-block;">Waarden<textarea rows="6" cols="20" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'w\');">'+f.w+'</textarea></div></td><td>'+gis_ia_getSelect(['0=Selectbox','1=Radio buttons','3=Checkboxes'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'<br><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
 			s+='</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
 			break;
 		case 'vt': // van - tot
@@ -306,7 +306,7 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='</div><div>';
 			s+='<div style="margin-top: 12px;"><div style="display: inline-block; width: 60px;">Of lijst:</div><textarea style="width: 160px;" rows="6" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'l1\');">'+f.l1+'</textarea></div>';
 			s+='<div><b>Tot</b></div>';
-			s+='<div style="margin-bottom: 12px;"><div style="display: inline-block; width: 140px;">Achtergrond tekst:</div><input style="width: 1--px;" value="'+f.v2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v2\');"></div>';
+			s+='<div style="margin-bottom: 12px;"><div style="display: inline-block; width: 140px;">Achtergrond tekst:</div><input style="width: 100px;" value="'+f.v2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v2\');"></div>';
 			s+='<div style="display: inline-block;"><div style="display: inline-block; width: 40px;">Min:</div><input style="width: 50px;" value="'+f.mi2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'mi2\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Max:</div><input style="width: 50px;" value="'+f.ma2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'ma2\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Stap:</div><input style="width: 50px;" value="'+f.st2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'st2\');"></div>';
