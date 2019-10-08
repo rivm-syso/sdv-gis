@@ -410,6 +410,7 @@ function gis_ia_add_filter(e,no) {
 		case 'c': elm={'t':'c','v':'','s':'0','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','x0':'1','x1':'0','x2':'1'}; break;
 		case 'd': elm={'t':'d','v':'','s':'0','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','o':'0'}; break;
 		case 'vt': elm={'t':'vt','v1':'','v2':'','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','mi1':'','mi2':'','ma1':'','ma2':'','st1':'','st2':'','l1':'','l2':''}; break;
+		case 'i': elm={'t':'i','v':'','s':'0','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','x0':'1','x1':'0','x2':'1'}; break;
 		default: alert('Pas op: filter type \''+e+'\' niet gedefinieerd'); break;
 	}
 	if (no==-1) { // add hoofditem
