@@ -266,7 +266,7 @@ gis_ia_filter.prototype.change=function(id,i) {
 					if (this.s=='0') { // selectbox
 						el=jQuery('#'+id);
 						t1=el.val();
-						if (t1=='') {el.removeClass('gis_ia_input_has_x');} else {el.addClass('gis_ia_input_has_x');}
+						if (t1==='-1') {el.removeClass('gis_ia_input_has_x');} else {el.addClass('gis_ia_input_has_x');}
 						for (t=0;t<labels.length;t++) {
 							x_buttons=jQuery('[fromid='+id+'-'+t+']');
 							if (t==t1) {x_buttons.show();} else {x_buttons.hide();}
