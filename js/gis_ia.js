@@ -290,17 +290,13 @@ gis_ia_filter.prototype.change=function(id,i) {
 					}
 					break;
 				case 'i': // vrije tekst
-					var el=jQuery('#'+id), x_buttons=jQuery('[fromid='+id+']'),t,inps=jQuery('#'+id+'_parent');
+					var el=jQuery('#'+id), x_buttons=jQuery('[fromid='+id+']'),t;
 					if (el.val()!='') {
 						x_buttons.show();
-						if (this.x2=='1') {
-							inps.hide();
-						} else {
-							inps.show();
-						}
+						el.addClass('gis_ia_input_has_x');
 					} else {
 						x_buttons.hide();
-						inps.show();
+						el.removeClass('gis_ia_input_has_x');
 					}
 					break;
 				case 'vt': // van - tot
