@@ -283,8 +283,9 @@ function getFilterDefTableItem(f,i,opts) {
 		case 'd': // list
 			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+(t+1)+' '+gis_ia_fieldsOnServer[t][t1];}}
 			s+='<td>List</td>';
-			s+='<td><textarea rows="6" cols="20" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');">'+f.v+'</textarea></td>';
+			s+='<td></td>';
 			s+='<td style="white-space: nowrap;'+inspringen+'">';
+			s+='<textarea rows="6" cols="20" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');">'+f.v+'</textarea>';
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;'+gis_ia_getSelect(['0==','1=range'],f.o,'gis_ia_set_filterItem(this,\''+i+'\',\'o\');')+'&nbsp;';
 			s+='<textarea rows="6" cols="20" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'w\');">'+f.w+'</textarea></td><td>'+gis_ia_getSelect(['0=Selectbox','1=Radio buttons','3=Checkboxes'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'<br><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
 			s+='</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
@@ -293,10 +294,10 @@ function getFilterDefTableItem(f,i,opts) {
 			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+(t+1)+' '+gis_ia_fieldsOnServer[t][t1];}}
 			s+='<td>Numeriek</td>';
 			s+='<td>';
-			s+='<div><div style="display: inline-block; width: 70px;">Van tekst:</div><input style="width: calc(100% - 74px);" value="'+f.v1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v1\');"></div>';
-			s+='<div><div style="display: inline-block; width: 70px;">Tot tekst:</div><input style="width: calc(100% - 74px);" value="'+f.v2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v2\');"></div>';
 			s+='</td>';
 			s+='<td>';
+			s+='<div><div style="display: inline-block; width: 70px;">Van tekst:</div><input style="width: calc(100% - 74px);" value="'+f.v1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v1\');"></div>';
+			s+='<div><div style="display: inline-block; width: 70px;">Tot tekst:</div><input style="width: calc(100% - 74px);" value="'+f.v2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v2\');"></div>';
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;'+gis_ia_getSelect(['0=van <= N < tot','1=van < N <= tot','2=van <= N <= tot','3=van < N < tot'],f.w,'gis_ia_set_filterItem(this,\''+i+'\',\'w\');');
 			s+='<div>';
 			s+='<div><b>Van</b></div>';
