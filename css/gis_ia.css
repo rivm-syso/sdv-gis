@@ -31,7 +31,7 @@
 .gis_ia_f_def,.gis_ia_bl_def,.gis_ia_l_def {font-size: 1.1em; font-weight: bold;margin: 20px 0 8px 0;}
 .gis_ia_filters input[type="checkbox"], .gis_ia_filters input[type="radio"] {margin-right: 20px; vertical-align: top;}
 .gis_ia_filters input.gis_ia_input, .gis_ia_filters select.gis_ia_input {background: white; outline: none;-webkit-appearance: none;-moz-appearance: none; appearance: none;width: 100%; border: 1px solid black;}
-.gis_ia_filters input.gis_ia_input {padding: 0 4px; height: 26px;}
+.gis_ia_filters input.gis_ia_input {padding: 0 0 0 4px; height: 34px; width: calc(100% - 4px);}
 .gis_ia_filters select.gis_ia_input {padding: 4px; height: 36px;}
 .gis_ia_filters label {font-weight: normal; display: inline-block; max-width: calc(100% - 37px);}
 .gis_ia_filters div.gis_ia_input {display: inline-block; position: relative;}
@@ -46,6 +46,7 @@
 .gis_ia_filters .gis_ia_f_f_xx span {display: inline-block; max-width: calc(100% - 37px);}
 .gis_ia_filters .gis_ia_f_f_x_simple .gis_ia_f_f_xx:before {width: 16px !important;}
 .gis_ia_filters .gis_ia_f_f_x_simple {flex: 0 0 20px; text-align: right;}
+.gis_ia_filters .gis_ia_input_has_x {width: calc(100% - 20px);}
 /* Groep titels */
 .gis_ia_filters .gis_ia_f_g_t {cursor: pointer;}
 .gis_ia_filters .gis_ia_f_g_t:after {content: ">"; float: right;}
