@@ -167,7 +167,7 @@ gis_ia_filter.prototype.html=function(depth) {
 			r=this.x_button(2)+'<div id="'+this.ID()+'_parent"><input type="checkbox" id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');"><label for="'+this.ID()+'">'+this.v+'</label></div>';
 			break;
 		case 'd': // list
-			r='';
+			r=this.l0;
 			var labels=this.v,tl;
 			if (labels=='') {labels=[];} else {labels=labels.replace(/[\r\n]+/g,"\r"); labels=labels.replace(/\n+/g,"\r"); labels=labels.split("\r");}
 			if (this.s=='0') {
@@ -191,7 +191,7 @@ gis_ia_filter.prototype.html=function(depth) {
 			r='<div id="'+this.ID()+'_parent"><div style="display: flex;"><div style="flex: 1 1 30%; word-break: break-all;">'+this.v+'</div><input style="flex: 1 1 60%;" id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');">'+this.x_button(2)+'</div></div>';
 			break;
 		case 'vt': // van - tot
-			r='<div id="'+this.ID()+'_parent">';
+			r=this.l0+'<div id="'+this.ID()+'_parent">';
 			if (this.l1=='') {
 				r+='<div class="gis_ia_input gis_ia_input50"><label class="gis_ia_input" id="'+this.ID()+'-van-label">'+this.v1+'</label><div><input class="gis_ia_input" id="'+this.ID()+'-van" type="number" min="'+this.mi1+'" max="'+this.ma1+'" step="'+this.st1+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',0);" onkeydown="gis_ia_filters.keydown('+this.map_id+',\''+this.ID()+'\',0);"><span>'+this.x_button(2)+'</span></div></div>';
 			} else {
