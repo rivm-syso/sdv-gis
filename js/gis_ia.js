@@ -275,7 +275,7 @@ gis_ia_filter.prototype.change=function(id,i) {
 							if (t==t1) {x_buttons.show();} else {x_buttons.hide();}
 						}
 						x_buttons=jQuery('[fromid='+id+']');
-						if (t1!=='-1' || t1===null) {x_buttons.show();} else {x_buttons.hide();}
+						if (t1!=='-1' && t1!==null) {x_buttons.show();} else {x_buttons.hide();}
 					} else { // checkboxes of radio
 						for (t=0;t<labels.length;t++) {
 							el=jQuery('#'+id+'-'+t);
