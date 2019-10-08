@@ -268,7 +268,7 @@ gis_ia_filter.prototype.change=function(id,i) {
 						t1=el.val();
 						if (this.x2=='1') {
 							var arrow=jQuery(jQuery(el.parent()).children()[0]);
-							if (t1==='-1') {el.removeClass('gis_ia_input_has_x'); arrow.removeClass('gis_ia_input_has_x');} else {el.addClass('gis_ia_input_has_x'); arrow.addClass('gis_ia_input_has_x');}
+							if (t1==='-1') {el.removeClass('gis_ia_input_has_x'); arrow.removeClass('gis_ia_arrow_down_has_x');} else {el.addClass('gis_ia_input_has_x'); arrow.addClass('gis_ia_arrow_down_has_x');}
 						}
 						for (t=0;t<labels.length;t++) {
 							x_buttons=jQuery('[fromid='+id+'-'+t+']');
