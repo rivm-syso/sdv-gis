@@ -1854,7 +1854,12 @@ function GIS_paragraaf_start(map_id) {
 		if (jQuery('#gis_ia_map_'+map_id).find('.ol-control.ol-full-screen').find('button').hasClass('ol-full-screen-true')) {popupType=0;}
 		switch (popupType) {
 			case 1:
-				var el=jQuery('#main'); if (el.length==0) {el=jQuery('.container'); if (el.length>=1) {el=jQuery(el[0]);}}
+				// afstemmen met drupal expert; Welk element bevat breedte scherm
+				var el=jQuery('#main');
+				// als niet main dan container
+				if (el.length==0) {el=jQuery('.container'); if (el.length>=1) {el=jQuery(el[0]);}}
+				// voor entity view: 
+				if (el.length==0) {el=jQuery('.page-content'); if (el.length>=1) {el=jQuery(el[0]);}}
 				var x=jQuery('#gis_ia_map_'+map_id).offset().left+evt.pixel[0],w_screen=el.width(), x_screen=el.offset().left;
 				var p=jQuery('#gis_ia_map_'+map_id+'_data');
 				if (p.length==0) {
