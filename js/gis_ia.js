@@ -188,7 +188,7 @@ gis_ia_filter.prototype.html=function(depth) {
 			}
 			break;
 		case 'i': // vrije tekst
-			r=this.x_button(2)+'<div id="'+this.ID()+'_parent">'+this.v+'<input id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');"></div>';
+			r='<div id="'+this.ID()+'_parent">'+this.v+'<input id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');">'+this.x_button(2)+'</div>';
 			break;
 		case 'vt': // van - tot
 			r='<div id="'+this.ID()+'_parent">';
@@ -387,8 +387,11 @@ gis_ia_filter.prototype.x_button=function(xno,i) {
 			}
 			break;
 		case 'i': // vrije tekst
-			if ((this.x0=='1' && xno==0) || (this.x1=='1' && xno==1) || (this.x2=='1' && xno==2)) {
+			if ((this.x0=='1' && xno==0) || (this.x1=='1' && xno==1)) {
 				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"><span>'+this.v+'</span></a></div>';
+			}
+			if (this.x2=='1' && xno==2) {
+				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"><span>&nbsp;</span></a></div>';
 			}
 			break;
 		case 'vt': // van - tot
