@@ -187,6 +187,9 @@ gis_ia_filter.prototype.html=function(depth) {
 				}
 			}
 			break;
+		case 'i': // vrije tekst
+			r=this.x_button(2)+'<div id="'+this.ID()+'_parent">'+this.v+'<input id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');"></div>';
+			break;
 		case 'vt': // van - tot
 			r='<div id="'+this.ID()+'_parent">';
 			if (this.l1=='') {
