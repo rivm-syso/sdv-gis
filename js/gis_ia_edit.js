@@ -67,7 +67,7 @@ var default_parameters={
 	'pz': 10,			// Zoom after position search 
 	'z': 0,				// Rechts boven: Zoom-knoppen
 	'e': 0,				// Rechts boven: Zoom-extend
-	'f': 1,				// Rechts boven: Full-screen
+	'f': 0,				// Rechts boven: Full-screen
 	'l1': 0,			// Links onder: Legenda
 	'sb': 0,			// Links onder: Scalebar
 	'c': 0,				// Links onder: Coordinaten
@@ -315,6 +315,16 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='</td><td style="white-space: nowrap;"><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
 			s+='</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
 			break;
+		case 'i': // vrije tekst
+			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+(t+1)+' '+gis_ia_fieldsOnServer[t][t1];}}
+			s+='<td>Vrije tekst</td>';
+			s+='<td><input value="'+f.v+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');"></td>';
+			s+='<td>';
+			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;';
+			s+=gis_ia_getSelect(['0==','1=like'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'&nbsp;';
+			s+='</td><td style="white-space: nowrap;"><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
+			s+='</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
+			break;
 		default: // foutje :-)
 			s+='<td>Foutje :-)</td></tr>';
 			break;
@@ -329,7 +339,7 @@ function getFilterDefTableItemPos(f,prepos) {
 }
 
 function redrawFilterDefsTable() {
-	var hfd_options='<option value="">Voeg filter toe</option><option value="a">Tekst</option><option value="c">Checkbox</option><option value="d">List</option><option value="vt">Numeriek</option><option value="g">Groep</option>';
+	var hfd_options='<option value="">Voeg filter toe</option><option value="a">Tekst</option><option value="c">Checkbox</option><option value="d">List</option><option value="vt">Numeriek</option><option value="i">Vrije tekst</option><option value="g">Groep</option>';
 	var fs=gis_ia_getFilterArray(), t, t1, opts='';
 	for (t=0,t1=fs.length;t<t1;t++) {
 		opts+=getFilterDefTableItemPos(fs[t],t+1);
@@ -635,7 +645,8 @@ function gis_ia_init() {
 		d+='<div class="kolom_1"><div>Rechts boven</div>';
 		d+='<div><input type="checkbox" id="gis_ia_z" gis_ia="z"><label for="gis_ia_z" class="option"> In- en uitzoomen</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_e" gis_ia="e"><label for="gis_ia_e" class="option"> Zoom extend</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_f" gis_ia="f"><label for="gis_ia_f" class="option"> Full screen</label></div>';
+		// fullscreen optie uitgezet
+		//d+='<div><input type="checkbox" id="gis_ia_f" gis_ia="f"><label for="gis_ia_f" class="option"> Full screen</label></div>';
 		d+='</div>';
 	// Links onder
 		d+='<div class="kolom_1"><div>Links onder</div>';
