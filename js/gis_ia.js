@@ -292,7 +292,7 @@ gis_ia_filter.prototype.change=function(id,i) {
 				case 'i': // vrije tekst
 					var el=jQuery('#'+id), x_buttons=jQuery('[fromid='+id+']'),t, x_spans;
 					if (el.val()!='') {
-						x_spans=x_buttons.find('.gis_ia_x_i');
+						x_spans=x_buttons.find('.gis_ia_f_x_i');
 						x_spans.html(this.v+' '+el.val());
 						x_buttons.show();
 						el.addClass('gis_ia_input_has_x');
