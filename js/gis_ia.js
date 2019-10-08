@@ -384,8 +384,12 @@ gis_ia_filter.prototype.x_button=function(xno,i) {
 			if ((this.x0=='1' && xno==0) || (this.x1=='1' && xno==1) || (this.x2=='1' && xno==2)) {
 				if (labels=='') {labels=[];} else {labels=labels.replace(/[\r\n]+/g,"\r"); labels=labels.replace(/\n+/g,"\r"); labels=labels.split("\r");}
 				if (typeof(i)=='undefined') {
-					for (t=0;t<labels.length;t++) {
-						r+='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'-'+t+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\','+t+');"><span>'+labels[t]+'</span></a></div>';
+					if (this.s=='0' && xno==2)  {
+						r+='<div class="gis_ia_f_f_x gis_ia_f_f_x_simple" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x(2,\''+this.ID()+'\');"><span>&nbsp;</span></a></div>';
+					} else {
+						for (t=0;t<labels.length;t++) {
+							r+='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'-'+t+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\','+t+');"><span>'+labels[t]+'</span></a></div>';
+						}
 					}
 				} else {
 					r+='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'-'+i+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\','+i+');"><span>'+labels[i]+'</span></a></div>';
