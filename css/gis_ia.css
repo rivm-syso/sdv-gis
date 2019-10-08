@@ -39,10 +39,11 @@
 .gis_ia_filters_arrow_down {position: absolute; right: 12px; top: 10px;pointer-events:none;}
 .gis_ia_filters_arrow_down::before {border-style: solid;border-width: 0.15em 0.15em 0 0;content: '';display: inline-block;height: 0.45em;left: 0.15em;position: relative;top: 0.15em;transform: rotate(-45deg);vertical-align: top;width: 0.45em;top: 0;transform: rotate(135deg);pointer-events:none;}
 /* filter X buttons */
-.gis_ia_filters .gis_ia_f_f_x_simple {display: inline-block;}
 .gis_ia_filters .gis_ia_f_f_xx {cursor: pointer;text-decoration: none; border: none;}
 .gis_ia_filters .gis_ia_f_f_xx:before {content: "✖"; display: inline-block; width: 32px; vertical-align: top;}
 .gis_ia_filters .gis_ia_f_f_xx span {display: inline-block; max-width: calc(100% - 37px);}
+.gis_ia_filters .gis_ia_f_f_x_simple .gis_ia_f_f_xx:before {width: 16px !important;}
+.gis_ia_filters .gis_ia_f_f_x_simple {flex 0 0 16px;}
 /* Groep titels */
 .gis_ia_filters .gis_ia_f_g_t {cursor: pointer;}
 .gis_ia_filters .gis_ia_f_g_t:after {content: ">"; float: right;}
