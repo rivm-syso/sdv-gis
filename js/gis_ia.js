@@ -175,7 +175,7 @@ gis_ia_filter.prototype.html=function(depth) {
 				for (tl=0;tl<labels.length;tl++) {
 					r+='<option value="'+tl+'">'+labels[tl]+'</option>';
 				}
-				r+='</select></div></div>';
+				r+='</select></div>'+this.x_button(2)+'</div>';
 			} else {
 				for (tl=0;tl<labels.length;tl++) {
 					r+=this.x_button(2,tl);

@@ -38,9 +38,9 @@
 .gis_ia_filters div.gis_ia_input50 {width: 50%;}
 .gis_ia_filters div.gis_ia_input100 {width: 100%;}
 .gis_ia_filters label.gis_ia_input {position: absolute;left: 0.5rem;height: 1.5rem;top: 0;bottom: 0;margin: auto;z-index: 2;}
-.gis_ia_filters_arrow_down {position: absolute; right: 12px; top: 10px;pointer-events:none;}
+.gis_ia_filters_arrow_down {position: absolute; right: 12px; pointer-events:none; top: 3px; padding: 8px 4px 4px 8px;background-color: white;}
 .gis_ia_filters_arrow_down::before {border-style: solid;border-width: 0.15em 0.15em 0 0;content: '';display: inline-block;height: 0.45em;left: 0.15em;position: relative;top: 0.15em;transform: rotate(-45deg);vertical-align: top;width: 0.45em;top: 0;transform: rotate(135deg);pointer-events:none;}
-.gis_ia_arrow_down_has_x {right: 40px;}
+.gis_ia_arrow_down_has_x {right: 38px;}
 /* filter X buttons */
 .gis_ia_filters .gis_ia_f_f_xx {cursor: pointer;text-decoration: none; border: none;}
 .gis_ia_filters .gis_ia_f_f_xx:before {content: "✖"; display: inline-block; width: 32px; vertical-align: top;}
