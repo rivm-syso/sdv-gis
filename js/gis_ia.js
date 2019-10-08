@@ -274,6 +274,8 @@ gis_ia_filter.prototype.change=function(id,i) {
 							x_buttons=jQuery('[fromid='+id+'-'+t+']');
 							if (t==t1) {x_buttons.show();} else {x_buttons.hide();}
 						}
+						x_buttons=jQuery('[fromid='+id+']');
+						if (t1!=='-1') {x_buttons.show();} else {x_buttons.hide();}
 					} else { // checkboxes of radio
 						for (t=0;t<labels.length;t++) {
 							el=jQuery('#'+id+'-'+t);
@@ -385,7 +387,7 @@ gis_ia_filter.prototype.x_button=function(xno,i) {
 				if (labels=='') {labels=[];} else {labels=labels.replace(/[\r\n]+/g,"\r"); labels=labels.replace(/\n+/g,"\r"); labels=labels.split("\r");}
 				if (typeof(i)=='undefined') {
 					if (this.s=='0' && xno==2)  {
-						r+='<div class="gis_ia_f_f_x gis_ia_f_f_x_simple" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x(2,\''+this.ID()+'\');"><span>&nbsp;</span></a></div>';
+						r+='<div class="gis_ia_f_f_x gis_ia_f_f_x_simple" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x(2,\''+this.ID()+'\');"><span>&nbsp;</span></a></div>';
 					} else {
 						for (t=0;t<labels.length;t++) {
 							r+='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'-'+t+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\','+t+');"><span>'+labels[t]+'</span></a></div>';
