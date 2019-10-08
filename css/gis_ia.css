@@ -42,7 +42,7 @@
 .gis_ia_filters .gis_ia_f_f_xx {cursor: pointer;text-decoration: none; border: none;}
 .gis_ia_filters .gis_ia_f_f_xx:before {content: "✖"; display: inline-block; width: 32px; vertical-align: top;}
 .gis_ia_filters .gis_ia_f_f_xx span {display: inline-block; max-width: calc(100% - 37px);}
-
+.gis_ia_filters .gis_ia_f_f_x_simple .gis_ia_f_f_xx:before {width: 16px !important;}
 .gis_ia_filters .gis_ia_f_f_x_simple {flex: 0 0 20px; text-align: right;}
 /* Groep titels */
 .gis_ia_filters .gis_ia_f_g_t {cursor: pointer;}
