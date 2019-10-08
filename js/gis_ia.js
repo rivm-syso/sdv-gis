@@ -433,7 +433,12 @@ gis_ia_filter.prototype.x=function(id,i) {
 					break;
 				case 'd': // list
 					if (this.s=='0') {
-						jQuery('#'+id).val('');
+						var el=jQuery('#'+id);
+						el.val('');
+						el.removeClass('gis_ia_input_has_x');
+						jQuery(jQuery(el.parent().children()[0])).removeClass('gis_ia_arrow_down_has_x');
+						el=jQuery(el.parent());
+						jQuery(jQuery(el.parent().children()[0])).hide();
 					} else {
 						jQuery('#'+id+'-'+i).prop('checked',false);
 					}
