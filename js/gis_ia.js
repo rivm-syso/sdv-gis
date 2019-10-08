@@ -188,7 +188,7 @@ gis_ia_filter.prototype.html=function(depth) {
 			}
 			break;
 		case 'i': // vrije tekst
-			r='<div>'+this.v+'</div><div id="'+this.ID()+'_parent"><input id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');">'+this.x_button(2)+'</div>';
+			r='<div>'+this.v+'</div><div id="'+this.ID()+'_parent"><input class="gis_ia_input" id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');">'+this.x_button(2)+'</div>';
 			break;
 		case 'vt': // van - tot
 			r='<div>'+this.l0+'</div><div id="'+this.ID()+'_parent">';
