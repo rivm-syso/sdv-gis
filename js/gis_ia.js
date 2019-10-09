@@ -171,7 +171,7 @@ gis_ia_filter.prototype.html=function(depth) {
 			var labels=this.v,tl;
 			if (labels=='') {labels=[];} else {labels=labels.replace(/[\r\n]+/g,"\r"); labels=labels.replace(/\n+/g,"\r"); labels=labels.split("\r");}
 			if (this.s=='0') {
-				r+='<div id="'+this.ID()+'_parent"><div class="gis_ia_input gis_ia_input100">'+this.x_button(2)+'<div><span class="gis_ia_filters_arrow_down"></span><select id="'+this.ID()+'" name="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');" class="gis_ia_input"><option value="-1"></option>';
+				r+='<div id="'+this.ID()+'_parent"><div class="gis_ia_input gis_ia_input100">'+this.x_button(2)+'<div><span class="gis_ia_filters_arrow_down"></span><select id="'+this.ID()+'" name="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');" class="gis_ia_input"><option value="-1">'+this.p+'</option>';
 				for (tl=0;tl<labels.length;tl++) {
 					r+='<option value="'+tl+'">'+labels[tl]+'</option>';
 				}
@@ -188,7 +188,7 @@ gis_ia_filter.prototype.html=function(depth) {
 			}
 			break;
 		case 'i': // vrije tekst
-			r='<div>'+this.v+'</div><div id="'+this.ID()+'_parent"><input class="gis_ia_input" id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');">'+this.x_button(2)+'</div>';
+			r='<div>'+this.v+'</div><div id="'+this.ID()+'_parent"><input class="gis_ia_input" id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');" placeholder="'+this.p+'">'+this.x_button(2)+'</div>';
 			break;
 		case 'vt': // van - tot
 			r='<div>'+this.l0+'</div><div id="'+this.ID()+'_parent">';
@@ -309,10 +309,7 @@ gis_ia_filter.prototype.change=function(id,i) {
 					break;
 				case 'vt': // van - tot
 					var el1=jQuery('#'+id+'-van'), el2=jQuery('#'+id+'-tot'), x_buttons=jQuery('[fromid='+id+']'),t,inps=jQuery('#'+id+'_parent');
-					var lab1=jQuery('#'+id+'-van-label'), lab2=jQuery('#'+id+'-tot-label');
 					var s1=el1.val(),s2=el2.val(),st,t;
-					if (s1=='') {lab1.show();} else {lab1.hide();}
-					if (s2=='') {lab2.show();} else {lab2.hide();}
 					if (this.x2=='1') {
 						if (s1=='') {el1.removeClass('gis_ia_input_has_x');} else {el1.addClass('gis_ia_input_has_x');}
 						if (s2=='') {el2.removeClass('gis_ia_input_has_x');} else {el2.addClass('gis_ia_input_has_x');}
@@ -340,9 +337,7 @@ gis_ia_filter.prototype.change=function(id,i) {
 	}
 };
 
-// Deze functie handelt het wijzigen van een filter af, of geeft wijzigingen door aan element (als het een groep is)
-// De functie draagt zorg voor het tonen/verbergen van bij dit filter behorende zaken zoals x_button's en panels
-// De functie return de layer waar een wijziging plaats vindt, zodat de kaart data laat zien conform met de nieuwe filter
+// Deze functie handelt een keydown van een filter af
 // ** filterdefinitie-change
 gis_ia_filter.prototype.keydown=function(id,i) {
 	if (this.t=='g') { // groep
@@ -355,8 +350,6 @@ gis_ia_filter.prototype.keydown=function(id,i) {
 		if (this.ID()==id) {
 			switch (this.t) {
 				case 'vt': // van - tot
-					var lab=jQuery('#'+id+(i==0?'-van-label':'-tot-label'));
-					lab.hide();
 					break;
 			}
 			return this.l;
@@ -604,8 +597,7 @@ var gis_ia_filters={
 		}
 		this.gis_ia_setNumber(map_id);
 	},
-	// deze functie geeft change signaal aan het juiste element (zodat beeld kan worden bijgewerkt) en handelt 
-	// het updaten van de juiste kaartlaag af.
+	// deze functie geeft change signaal aan het juiste element (zodat beeld kan worden bijgewerkt) 
 	keydown: function(map_id,id,i) {
 		document.getElementById('popup-closer'+map_id).onclick(); // verberg evt. popup
 		var t, t1=GIS_ia_maps[map_id].fs.length;
