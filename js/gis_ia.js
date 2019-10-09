@@ -355,11 +355,8 @@ gis_ia_filter.prototype.keydown=function(id,i) {
 		if (this.ID()==id) {
 			switch (this.t) {
 				case 'vt': // van - tot
-					var el1=jQuery('#'+id+'-van'), el2=jQuery('#'+id+'-tot'), x_buttons=jQuery('[fromid='+id+']'),t,inps=jQuery('#'+id+'_parent');
-					var lab1=jQuery('#'+id+'-van-label'), lab2=jQuery('#'+id+'-tot-label');
-					var s1=el1.val(),s2=el2.val(),st,t;
-					if (s1=='') {lab1.show();} else {lab1.hide();}
-					if (s2=='') {lab2.show();} else {lab2.hide();}
+					var lab=jQuery('#'+id+(i==0?'-van-label':'-tot-label'));
+					lab.show();
 					break;
 			}
 			return this.l;
