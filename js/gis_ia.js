@@ -356,7 +356,7 @@ gis_ia_filter.prototype.keydown=function(id,i) {
 			switch (this.t) {
 				case 'vt': // van - tot
 					var lab=jQuery('#'+id+(i==0?'-van-label':'-tot-label'));
-					lab.show();
+					lab.hide();
 					break;
 			}
 			return this.l;
