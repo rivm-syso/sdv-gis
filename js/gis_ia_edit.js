@@ -652,7 +652,7 @@ function gis_ia_init() {
 	// Links onder
 		d+='<div class="kolom_1"><div>Links onder</div>';
 		d+='<div><input type="checkbox" id="gis_ia_sb" gis_ia="sb"><label for="gis_ia_sb" class="option"> Scalebar</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_c" gis_ia="c"><label for="gis_ia_c" class="option"> Co&oulm;rdinaten</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_c" gis_ia="c"><label for="gis_ia_c" class="option"> Co&ouml;rdinaten</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l1" gis_ia="l1"><label for="gis_ia_l1" class="option"> Legenda</label></div>';
 		d+='</div>';
 	// rechts onder
