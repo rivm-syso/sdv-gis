@@ -309,7 +309,7 @@ gis_ia_filter.prototype.change=function(id,i) {
 					break;
 				case 'vt': // van - tot
 					var el1=jQuery('#'+id+'-van'), el2=jQuery('#'+id+'-tot'), x_buttons=jQuery('[fromid='+id+']');
-					var s1=el1.val(),s2=el2.val(),t,el;
+					var s1=el1.val(),s2=el2.val();
 					if (this.x2=='1') {
 						if (s1=='') {el1.removeClass('gis_ia_input_has_x');} else {el1.addClass('gis_ia_input_has_x');}
 						if (s2=='') {el2.removeClass('gis_ia_input_has_x');} else {el2.addClass('gis_ia_input_has_x');}
@@ -325,12 +325,14 @@ gis_ia_filter.prototype.change=function(id,i) {
 							}
 						}
 						jQuery('.'+id+'_span').html((s1==''?'&hellip;':s1)+' - '+(s2==''?'&hellip;':s2));
+						var t, el, id;
 						for (t=0;t<x_buttons.length;t++) {
 							el=jQuery(x_buttons[t]);
-							if (el.hasClass(this.ID()+'-xx-van')) {
+							id=el.prop('id');
+							if (id==this.ID()+'-xx-van') {
 								if (i==0) {el.show();}
 							} else {
-								if (el.hasClass(this.ID()+'-xx-tot')) {
+								if (id==this.ID()+'-xx-tot') {
 									if (i==1) {el.show();}
 								} else {
 									el.show();
