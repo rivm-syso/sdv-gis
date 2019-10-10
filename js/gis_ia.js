@@ -317,10 +317,10 @@ gis_ia_filter.prototype.change=function(id,i) {
 					if (s1!='' || s2!='') {
 						if (parseInt(s1,10)>=parseInt(s2,10)) {
 							if (i==0) { // de van waarde is veranderd; pas tot aan...
-								s2=gis_ia_filter_next_value(parseInt(s1,10),true,this.mi2,this.ma2,this.st2,this.l2);
+								s2=gis_ia_filter_next_value(parseInt(s1,10),true,parseInt(this.mi2,10),parseInt(this.ma2,10),parseInt(this.st2,10),this.l2);
 								el2.val(s2);
 							} else { // de tot waarde is verandert, pas van aan...
-								s1=gis_ia_filter_next_value(parseInt(s2,10),false,this.mi1,this.ma1,this.st1,this.l1);
+								s1=gis_ia_filter_next_value(parseInt(s2,10),false,parseInt(this.mi1,10),parseInt(this.ma1,10),parseInt(this.st1,10),this.l1);
 								el1.val(s1);
 							}
 						}
