@@ -330,10 +330,10 @@ gis_ia_filter.prototype.change=function(id,i) {
 							el=jQuery(x_buttons[t]);
 							id=el.prop('id');
 							if (id==this.ID()+'-xx-van') {
-								if (i==0) {el.show();}
+								if (i==0) {el.show();} else {el.hide();}
 							} else {
 								if (id==this.ID()+'-xx-tot') {
-									if (i==1) {el.show();}
+									if (i==1) {el.show();} else {el.hide();}
 								} else {
 									el.show();
 								}
