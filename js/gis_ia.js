@@ -416,7 +416,7 @@ gis_ia_filter.prototype.x_button=function(xno,i) {
 				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\','+i+');"></a><span class="'+this.ID()+'_span"></span></div>';
 			}
 			if (this.x2=='1' && xno==2) {
-				r='<div class="gis_ia_f_f_x" id="'+this.ID()+'-xx-'+(i==0?'van':'tot')+'" style="display: none; position: absolute; top: 0; right: -10px;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\',,'+i+');"></a></div>';
+				r='<div class="gis_ia_f_f_x" id="'+this.ID()+'-xx-'+(i==0?'van':'tot')+'" style="display: none; position: absolute; top: 0; right: -10px;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\','+i+');"></a></div>';
 			}
 			break;
 	}
