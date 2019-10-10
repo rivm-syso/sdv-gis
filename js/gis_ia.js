@@ -452,9 +452,14 @@ gis_ia_filter.prototype.x=function(id,i) {
 					jQuery('#'+id).val('');
 					break;
 				case 'vt': // van - tot
-					jQuery('#'+id+'-van').val('');
-					jQuery('#'+id+'-tot').val('');
-					jQuery('[fromid='+id+']').hide();
+					if (typeof(i)=='undefined') { // gehele filter uitzetten
+						jQuery('#'+id+'-van').val('');
+						jQuery('#'+id+'-tot').val('');
+						//jQuery('[fromid='+id+']').hide();
+					} else {
+						if (i==0) {jQuery('#'+id+'-van').val('');}
+						if (i==1) {jQuery('#'+id+'-tot').val('');}
+					}
 					break;
 			}
 		}
