@@ -405,18 +405,18 @@ gis_ia_filter.prototype.x_button=function(xno,i) {
 			break;
 		case 'i': // vrije tekst
 			if ((this.x0=='1' && xno==0) || (this.x1=='1' && xno==1)) {
-				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"><span class="gis_ia_f_x_i"></span></a></div>';
+				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\',0);"><span class="gis_ia_f_x_i"></span></a></div>';
 			}
 			if (this.x2=='1' && xno==2) {
-				r='<div class="gis_ia_f_f_x gis_ia_f_f_x_simple" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"><span>&nbsp;</span></a></div>';
+				r='<div class="gis_ia_f_f_x gis_ia_f_f_x_simple" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\',0);"><span>&nbsp;</span></a></div>';
 			}
 			break;
 		case 'vt': // van - tot
 			if ((this.x0=='1' && xno==0) || (this.x1=='1' && xno==1)) {
-				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"></a><span class="'+this.ID()+'_span"></span></div>';
+				r='<div class="gis_ia_f_f_x" style="display: none;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\',1);"></a><span class="'+this.ID()+'_span"></span></div>';
 			}
 			if (this.x2=='1' && xno==2) {
-				r='<div class="gis_ia_f_f_x" id="'+this.ID()+'-xx-'+(i==0?'van':'tot')+'" style="display: none; position: absolute; top: 0; right: -10px;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\');"></a></div>';
+				r='<div class="gis_ia_f_f_x" id="'+this.ID()+'-xx-'+(i==0?'van':'tot')+'" style="display: none; position: absolute; top: 0; right: -10px;" fromid="'+this.ID()+'"><a class="gis_ia_f_f_xx" onclick="gis_ia_filters.x('+this.map_id+',\''+this.ID()+'\',1);"></a></div>';
 			}
 			break;
 	}
