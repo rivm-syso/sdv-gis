@@ -327,10 +327,10 @@ gis_ia_filter.prototype.change=function(id,i) {
 						jQuery('.'+id+'_span').html((s1==''?'&hellip;':s1)+' - '+(s2==''?'&hellip;':s2));
 						for (t=0;t<x_buttons.length;t++) {
 							el=jQuery(x_buttons[t]);
-							if (el.hasClass(this.ID()+'-xx-van') {
+							if (el.hasClass(this.ID()+'-xx-van')) {
 								if (i==0) {el.show();}
 							} else {
-								if (el.hasClass(this.ID()+'-xx-tot') {
+								if (el.hasClass(this.ID()+'-xx-tot')) {
 									if (i==1) {el.show();}
 								} else {
 									el.show();
