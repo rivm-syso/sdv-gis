@@ -20,6 +20,8 @@ function sdv_gis_help($route_name, RouteMatchInterface $route_match) {
       return $output;
 
     default:
+      $output = 'Hallo wereld: '.var_export($_GET,true);
+      return $output;
   }
 }
 
