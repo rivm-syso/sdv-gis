@@ -196,7 +196,7 @@ gis_ia_filter.prototype.html=function(depth) {
 				r+='<div class="gis_ia_input gis_ia_input50"><div><input class="gis_ia_input" id="'+this.ID()+'-van" type="number" min="'+this.mi1+'" max="'+this.ma1+'" step="'+this.st1+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',0);" placeholder="'+this.v1+'"><span>'+this.x_button(2,0)+'</span></div></div>';
 			} else {
 				var opts='<option value="">'+this.v1+'</option>', os=this.l1, ot; os=os.replace(/\r\n/g,String.fromCharCode(13)); os=os.replace(/\n/g,String.fromCharCode(13)); os=os.split(String.fromCharCode(13)); for (ot=0;ot<os.length;ot++) {opts+='<option>'+os[ot]+'</option>';}
-				r+='<div class="gis_ia_input gis_ia_input50"><div><select id="'+this.ID()+'-van" class="gis_ia_input" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',0);">'+opts+'</select><span>'+this.x_button(2,0)+'</span></div></div>';
+				r+='<div class="gis_ia_input gis_ia_input50"><div><span class="gis_ia_filters_arrow_down"></span><select id="'+this.ID()+'-van" class="gis_ia_input" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',0);">'+opts+'</select><span>'+this.x_button(2,0)+'</span></div></div>';
 			}
 			if (this.l2=='') {
 				r+='<div class="gis_ia_input gis_ia_input50"><div><input class="gis_ia_input" id="'+this.ID()+'-tot" type="number" min="'+this.mi2+'" max="'+this.ma2+'" step="'+this.st2+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',1);" placeholder="'+this.v2+'"><span>'+this.x_button(2,1)+'</span></div></div>';
@@ -311,8 +311,8 @@ gis_ia_filter.prototype.change=function(id,i) {
 					var el1=jQuery('#'+id+'-van'), el2=jQuery('#'+id+'-tot'), x_buttons=jQuery('[fromid='+id+']');
 					var s1=el1.val(),s2=el2.val();
 					if (this.x2=='1') {
-						if (s1=='') {el1.removeClass('gis_ia_input_has_x');} else {el1.addClass('gis_ia_input_has_x');}
-						if (s2=='') {el2.removeClass('gis_ia_input_has_x');} else {el2.addClass('gis_ia_input_has_x');}
+						if (s1=='') {jQuery(jQuery(el1.removeClass('gis_ia_input_has_x').parent()).children()[0]).removeClass('gis_ia_arrow_down_has_x');} else {jQuery(jQuery(el1.addClass('gis_ia_input_has_x').parent()).children()[0]).addClass('gis_ia_arrow_down_has_x');}
+						if (s2=='') {jQuery(jQuery(el2.removeClass('gis_ia_input_has_x').parent()).children()[0]).removeClass('gis_ia_arrow_down_has_x');} else {jQuery(jQuery(el2.addClass('gis_ia_input_has_x').parent()).children()[0]).addClass('gis_ia_arrow_down_has_x');}
 					}
 					if (s1!='' || s2!='') {
 						if (parseInt(s1,10)>=parseInt(s2,10)) {
