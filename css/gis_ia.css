@@ -29,9 +29,13 @@
 /* filters styling */
 .gis_ia_filters_def {margin-top: -20px;}
 .gis_ia_f_def,.gis_ia_bl_def,.gis_ia_l_def {font-size: 1.1em; font-weight: bold;margin: 20px 0 8px 0;}
-.gis_ia_filters input[type="checkbox"], .gis_ia_filters input[type="radio"] {margin-right: 20px; vertical-align: top;}
-.gis_ia_filters input[type="checkbox"] {background: white; outline: none;-webkit-appearance: none;-moz-appearance: none; appearance: none; width: 16px; height: 16px; border: solid 1px black;}
-.gis_ia_filters input[type="checkbox"]:selected {background: red;}
+/*.gis_ia_filters input[type="checkbox"], .gis_ia_filters input[type="radio"] {margin-right: 20px; vertical-align: top;}*/
+.gis_ia_filters label {padding-left: 16px;}
+.gis_ia_filters input[type="checkbox"] {position: absolute; width: 1px; height: 1px; margin: -1px;}
+.gis_ia_filters input[type="checkbox"]:checked ~ label:before {content: "\2714"; color: black; font-size:16px; padding-left: 1px;}
+.gis_ia_filters label:before {content: ""; position: absolute;border: solid 1px black; background-color: white; width: 16px; height: 16px; display: inline-block;}
+
+/* */
 .gis_ia_filters input.gis_ia_input, .gis_ia_filters select.gis_ia_input {background: white; outline: none;-webkit-appearance: none;-moz-appearance: none; appearance: none;width: 100%; border: 1px solid black;}
 .gis_ia_filters input.gis_ia_input {padding: 0 0 0 4px; height: 34px; width: calc(100% - 4px);}
 .gis_ia_filters select.gis_ia_input {padding: 4px; height: 36px;}
