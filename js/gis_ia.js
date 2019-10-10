@@ -193,16 +193,16 @@ gis_ia_filter.prototype.html=function(depth) {
 		case 'vt': // van - tot
 			r='<div>'+this.l0+'</div><div id="'+this.ID()+'_parent">';
 			if (this.l1=='') {
-				r+='<div class="gis_ia_input gis_ia_input50"><div><input class="gis_ia_input" id="'+this.ID()+'-van" type="number" min="'+this.mi1+'" max="'+this.ma1+'" step="'+this.st1+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',0);" placeholder="'+this.v1+'"><span>'+this.x_button(2)+'</span></div></div>';
+				r+='<div class="gis_ia_input gis_ia_input50"><div><input class="gis_ia_input" id="'+this.ID()+'-van" type="number" min="'+this.mi1+'" max="'+this.ma1+'" step="'+this.st1+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',0);" placeholder="'+this.v1+'"><span>'+this.x_button(2,0)+'</span></div></div>';
 			} else {
 				var opts='<option>'+this.v1+'</option>', os=this.l1, ot; os=os.replace(/\r\n/g,String.fromCharCode(13)); os=os.replace(/\n/g,String.fromCharCode(13)); os=os.split(String.fromCharCode(13)); for (ot=0;ot<os.length;ot++) {opts+='<option>'+os[ot]+'</option>';}
-				r+='<div class="gis_ia_input gis_ia_input50"><div><select id="'+this.ID()+'-van" class="gis_ia_input" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',0);">'+opts+'</select><span>'+this.x_button(2)+'</span></div></div>';
+				r+='<div class="gis_ia_input gis_ia_input50"><div><select id="'+this.ID()+'-van" class="gis_ia_input" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',0);">'+opts+'</select><span>'+this.x_button(2,0)+'</span></div></div>';
 			}
 			if (this.l2=='') {
-				r+='<div class="gis_ia_input gis_ia_input50"><div><input class="gis_ia_input" id="'+this.ID()+'-tot" type="number" min="'+this.mi2+'" max="'+this.ma2+'" step="'+this.st2+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',1);" placeholder="'+this.v2+'"><span>'+this.x_button(2)+'</span></div></div>';
+				r+='<div class="gis_ia_input gis_ia_input50"><div><input class="gis_ia_input" id="'+this.ID()+'-tot" type="number" min="'+this.mi2+'" max="'+this.ma2+'" step="'+this.st2+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',1);" placeholder="'+this.v2+'"><span>'+this.x_button(2,1)+'</span></div></div>';
 			} else {
 				var opts='<option>'+this.v2+'</option>', os=this.l2, ot; os=os.replace(/\r\n/g,String.fromCharCode(13)); os=os.replace(/\n/g,String.fromCharCode(13)); os=os.split(String.fromCharCode(13)); for (ot=0;ot<os.length;ot++) {opts+='<option>'+os[ot]+'</option>';}
-				r+='<div class="gis_ia_input gis_ia_input50"><div><span class="gis_ia_filters_arrow_down"></span><select id="'+this.ID()+'-tot" class="gis_ia_input" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',1);">'+opts+'</select><span>'+this.x_button(2)+'</span></div></div>';
+				r+='<div class="gis_ia_input gis_ia_input50"><div><span class="gis_ia_filters_arrow_down"></span><select id="'+this.ID()+'-tot" class="gis_ia_input" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\',1);">'+opts+'</select><span>'+this.x_button(2,1)+'</span></div></div>';
 			}
 			r+='</div>';
 			break;
