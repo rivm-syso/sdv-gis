@@ -32,10 +32,14 @@
 /*.gis_ia_filters input[type="checkbox"], .gis_ia_filters input[type="radio"] {margin-right: 20px; vertical-align: top;}*/
 .gis_ia_filters .gis_ia_filters_radio, .gis_ia_filters .gis_ia_filters_checkbox {padding-left: 32px;}
 .gis_ia_filters input.gis_ia_filters_checkbox, .gis_ia_filters input.gis_ia_filters_radio {position: absolute; width: 1px; height: 1px; margin: -1px;}
-.gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {content: "\2714"; color: black; font-size:16px; padding-left: 1px;}
-.gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {content: ""; position: absolute;border: solid 1px black; background-color: white; width: 16px; height: 16px; display: inline-block; left: 8px;}
+.gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {content: "\2714"; font-size:15px; text-indent: 3px;}
+.gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {content: ""; position: absolute; width: 16px; height: 16px; display: inline-block; left: 8px;}
 .gis_ia_filters label.gis_ia_filters_radio:before {border-radius: 9px;}
-.gis_ia_filters input.gis_ia_filters_radio:checked ~ label.gis_ia_filters_radio:before {background-color: red;}
+/* verplaatsen naar kleuren css */
+.gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {border: solid 1px #01689b; background-color: white;}
+.gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {color: white; background-color: #01689b;}
+.gis_ia_filters input.gis_ia_filters_radio:checked ~ label.gis_ia_filters_radio:before {background-color: #01689b;}
+
 
 /* */
 .gis_ia_filters input.gis_ia_input, .gis_ia_filters select.gis_ia_input {background: white; outline: none;-webkit-appearance: none;-moz-appearance: none; appearance: none;width: 100%; border: 1px solid black;}
