@@ -1220,8 +1220,8 @@ function gis_ia_get_layer_div(map_id) {
 		r+='<div id="gis_ia_bl_'+map_id+'_def" class="gis_ia_bl_def">Basiskaarten</div>';
 		for (t=0;t<GIS_ia_maps[map_id].base_layers.length;t++) if (GIS_ia_maps[map_id].base_layers[t].typ=='base') {
 			r+='<div id="gis_ia_bl_'+map_id+'_'+t+'_parent">';
-			r+='<input type="radio" name="gis_ia_bl_'+map_id+'" id="gis_ia_bl_'+map_id+'_'+t+'" '+(t==0?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',0,'+t+');">';
-			r+='<label for="gis_ia_bl_'+map_id+'_'+t+'">'+GIS_ia_maps[map_id].base_layers[t].get('title')+'</label>';
+			r+='<input type="radio" name="gis_ia_bl_'+map_id+'" id="gis_ia_bl_'+map_id+'_'+t+'" '+(t==0?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',0,'+t+');" class="gis_ia_filters_radio">';
+			r+='<label for="gis_ia_bl_'+map_id+'_'+t+'" class="gis_ia_filters_radio">'+GIS_ia_maps[map_id].base_layers[t].get('title')+'</label>';
 			r+='</div>';
 		}
 	}
@@ -1239,8 +1239,8 @@ function gis_ia_get_layer_div(map_id) {
 			if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><div>Legenda</div><div class="wait-cursor gis_ia_'+map_id+'_'+t+'_legenda_leg1"></div></div>';}
 			r+='</div></div>';
 		}
-		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');">';
-		r+='<label for="gis_ia_l_'+map_id+'_'+t+'" style="width: 100%;">'+l.title+'</label>';
+		r+='<input type="'+(radio?'radio':'checkbox')+'" '+(radio?'name="gis_ia_l_'+map_id+'" ':'')+'id="gis_ia_l_'+map_id+'_'+t+'" '+(l.visible_?'checked="checked" ':'')+'onchange="gis_ia_layers_change('+map_id+',1,'+t+');" class="gis_ia_filters_'+(radio?'radio':'checkbox')+'">';
+		r+='<label for="gis_ia_l_'+map_id+'_'+t+'" style="width: 100%;" class="gis_ia_filters_'+(radio?'radio':'checkbox')+'">'+l.title+'</label>';
 		if (extra_info) {
 			r+='<span onclick="gis_ia_filters_submenuClick('+map_id+','+t+');" class="gis_ia_info_button gis_ia_filters_info_button"></span>';
 		}
