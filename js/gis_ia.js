@@ -164,7 +164,7 @@ gis_ia_filter.prototype.html=function(depth) {
 			}
 			break;
 		case 'c': // checkbox
-			r=this.x_button(2)+'<div id="'+this.ID()+'_parent"><input type="checkbox" id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');"><label for="'+this.ID()+'">'+this.v+'</label></div>';
+			r=this.x_button(2)+'<div id="'+this.ID()+'_parent"><input type="checkbox" id="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\');" class="gis_ia_filters_checkbox"><label for="'+this.ID()+'" class="gis_ia_filters_checkbox">'+this.v+'</label></div>';
 			break;
 		case 'd': // list
 			r='<div>'+this.l0+'</div>';
@@ -180,9 +180,9 @@ gis_ia_filter.prototype.html=function(depth) {
 				for (tl=0;tl<labels.length;tl++) {
 					r+=this.x_button(2,tl);
 					if (this.s=='1') {
-						r+='<div id="'+this.ID()+'-'+tl+'_parent"><input type="radio" id="'+this.ID()+'-'+tl+'" name="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\','+tl+');"><label for="'+this.ID()+'-'+tl+'" class="gis_ia_filters_radio">'+labels[tl]+'</label></div>';
+						r+='<div id="'+this.ID()+'-'+tl+'_parent"><input type="radio" id="'+this.ID()+'-'+tl+'" name="'+this.ID()+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\','+tl+');" class="gis_ia_filters_radio"><label for="'+this.ID()+'-'+tl+'" class="gis_ia_filters_radio">'+labels[tl]+'</label></div>';
 					} else {
-						r+='<div id="'+this.ID()+'-'+tl+'_parent"><input type="checkbox" id="'+this.ID()+'-'+tl+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\','+tl+');"><label for="'+this.ID()+'-'+tl+'" class="gis_ia_filters_checkbox">'+labels[tl]+'</label></div>';
+						r+='<div id="'+this.ID()+'-'+tl+'_parent"><input type="checkbox" id="'+this.ID()+'-'+tl+'" onchange="gis_ia_filters.change('+this.map_id+',\''+this.ID()+'\','+tl+');" class="gis_ia_filters_checkbox"><label for="'+this.ID()+'-'+tl+'" class="gis_ia_filters_checkbox">'+labels[tl]+'</label></div>';
 					}
 				}
 			}
