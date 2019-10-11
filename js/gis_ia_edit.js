@@ -52,12 +52,13 @@ var default_parameters={
 	'fl': 0,			// Floating, 0=geen, 1=links, 2=rechts
 	// Basiskaarten
 	'b': '10000', 		// basiskaarten: Openbasiskaart, Openbasiskaart grijs, Openbasiskaart pastel, Luchtfoto, Topografisch
-	'l': '110101',		// positie 0: Toon layer (Nee, boven, onder)
+	'l': '1101101',		// positie 0: Toon layer (Nee, boven, onder)
 						// positie 1: 1 of alle lagen selecteerbaar (radio /checkbox)
 						// positie 2: Wel/geen opacity slider
-						// positie 3: Download knop (wel/NL/Bounding Box)
-						// positie 4: Wel/geen data.rivm.nl knop
-						// positie 5: Wel/geen legenda
+						// positie 3: Download knop NL
+						// positie 4: Download Bounding Box
+						// positie 5: Wel/geen data.rivm.nl knop
+						// positie 6: Wel/geen legenda
 	'o': '000', 		// Overlaykaarten: Voor elke overlay een positie met 0=Nee, 1=Ja
 						// positie 0: NL schaduw
 						// positie 1: Provinciegrenzen
@@ -632,9 +633,10 @@ function gis_ia_init() {
 	// opties per laag
 		d+='<div class="kolom_1 gis_ia_l_1"><div>Opties per laag</div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-2" gis_ia="l-2"><label for="gis_ia_l-2" class="option"> Transparantie knoppen</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> Download mogelijkheid</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_l-4" gis_ia="l-4"><label for="gis_ia_l-4" class="option"> Zoek op data.rivm.nl knop</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_l-5" gis_ia="l-5"><label for="gis_ia_l-5" class="option"> Legenda knop</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> Download geheel NL</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_l-4" gis_ia="l-4"><label for="gis_ia_l-4" class="option"> Download Bounding Box</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_l-5" gis_ia="l-5"><label for="gis_ia_l-5" class="option"> Zoek op data.rivm.nl knop</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_l-6" gis_ia="l-6"><label for="gis_ia_l-6" class="option"> Legenda knop</label></div>';
 		d+='</div>';
 	// einde
 	d+='</div></div>';

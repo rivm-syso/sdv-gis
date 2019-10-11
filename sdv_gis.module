@@ -14,15 +14,14 @@ function sdv_gis_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
     // Main module help for the sdv_gis module.
     case 'help.page.sdv_gis':
-      $output = ''.var_export($_GET,true);
+      $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
       $output .= '<p>' . t('TODO Module description here ...') . '</p>';
       return $output;
 
     default:
-      $output = 'Hallo wereld: '.var_export($_GET,true);
-      return $output;
   }
+  
 }
 
 function sdv_gis_theme($existing, $type, $theme, $path) {
