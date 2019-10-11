@@ -121,6 +121,7 @@ function getParmValue(parm) {
 function gis_ia_show_hide() {
 	if (getParmValue('p')==1) {jQuery('#gis_ia_pz_div').show();} else {jQuery('#gis_ia_pz_div').hide();}
 	if (getParmValue('l-0')!=0) {jQuery('.gis_ia_l_1').show();} else {jQuery('.gis_ia_l_1').hide();}
+	if (getParmValue('l-3')!=0) {jQuery('.gis_ia_l_4').show();} else {jQuery('.gis_ia_l_4').hide();}
 	if (getParmValue('ts')>=1) {jQuery('.gis_ia_ts_1').show();} else {jQuery('.gis_ia_ts_1').hide();}
 }
 
@@ -634,7 +635,7 @@ function gis_ia_init() {
 		d+='<div class="kolom_1 gis_ia_l_1"><div>Opties per laag</div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-2" gis_ia="l-2"><label for="gis_ia_l-2" class="option"> Transparantie knoppen</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> Download geheel NL</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_l-4" gis_ia="l-4"><label for="gis_ia_l-4" class="option"> Download Bounding Box</label></div>';
+		d+='<div class="gis_ia_l_4"><input type="checkbox" id="gis_ia_l-4" gis_ia="l-4"><label for="gis_ia_l-4" class="option"> Download Bounding Box</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-5" gis_ia="l-5"><label for="gis_ia_l-5" class="option"> Zoek op data.rivm.nl knop</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-6" gis_ia="l-6"><label for="gis_ia_l-6" class="option"> Legenda knop</label></div>';
 		d+='</div>';
