@@ -32,7 +32,7 @@
 /*.gis_ia_filters input[type="checkbox"], .gis_ia_filters input[type="radio"] {margin-right: 20px; vertical-align: top;}*/
 .gis_ia_filters .gis_ia_filters_radio, .gis_ia_filters .gis_ia_filters_checkbox {padding-left: 32px;}
 .gis_ia_filters input.gis_ia_filters_checkbox, .gis_ia_filters input.gis_ia_filters_radio {position: absolute; width: 1px; height: 1px; margin: -1px;}
-.gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {content: "\2714"; font-size:15px; text-indent: 3px;}
+.gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {content: "\2713"; font-size:15px; text-indent: 3px;}
 .gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {content: ""; position: absolute; width: 16px; height: 16px; display: inline-block; left: 8px;}
 .gis_ia_filters label.gis_ia_filters_radio:before {border-radius: 9px;}
 /* verplaatsen naar kleuren css */
