@@ -337,7 +337,6 @@ function getFilterDefTableItem(f,i,opts) {
 }
 var gis_ia_toggle_filters_=false;
 function gis_ia_toggle_filters(el) {
-	console.log('gis_ia_toggle_filters');
 	if (typeof(el)!='undefined') {
 		var els=jQuery(jQuery(jQuery(el).parent()).parent()).children(),t;
 		for (t=0;t<els.length;t++) {
@@ -712,8 +711,6 @@ function gis_ia_init() {
 
 	d+='</div>';
 	
-	d+='<script>gis_ia_toggle_filters();</script>';
-
 	// Plaats de HTML in de pagina
 	start_el.append(d);
 	
@@ -1137,4 +1134,5 @@ function gis_ia_delete(row) {
 (function($){
     gis_ia_init();
 	gis_ia_show_hide();
+	$( document ).ready( function(){gis_ia_toggle_filters();})
 })(jQuery);
