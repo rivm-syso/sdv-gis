@@ -710,6 +710,8 @@ function gis_ia_init() {
 	d+='<div id="gis_ia_filter_defs"><div id="gis_ia_div2"></div></div>';
 
 	d+='</div>';
+	
+	d+='<script>gis_ia_toggle_filters();</script>';
 
 	// Plaats de HTML in de pagina
 	start_el.append(d);
@@ -734,7 +736,6 @@ function gis_ia_init() {
 	});
 	
 	gis_ia_setFieldsOnServer();
-	setTimeout(gis_ia_toggle_filters,2000);
 }
 
 //  Deze functie wordt door de dialoogboxen in gis_ia_modals aangeroepen, om te zorgen dat laagnamen die een bepaalde text bevatten worde getoond.
