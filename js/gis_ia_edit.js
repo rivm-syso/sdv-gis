@@ -337,14 +337,23 @@ function getFilterDefTableItem(f,i,opts) {
 	}
 	return s;
 }
+var gis_ia_toggle_filters_=false;
 function gis_ia_toggle_filters(el) {
 	if (typeof(el)!='undefined') {
 		var els=jQuery(jQuery(jQuery(el).parent()).parent()).children(),t;
 		for (t=0;t<els.length;t++) {
-			jQuery(els[t]).find('.gis_ia_hideable').toggle();
+			if (jQuery(els[t]).hasClass('.gis_ia_hideable')) {
+				jQuery(els[t]).toggle();
+			}
 		}
 	} else {
-		jQuery('.gis_ia_hideable').toggle();
+		if (gis_ia_toggle_filters_) {
+			jQuery('.gis_ia_hideable').show();
+			gis_ia_toggle_filters_=false;
+		} else {
+			jQuery('.gis_ia_hideable').hide();
+			gis_ia_toggle_filters_=true;
+		}
 	}
 }
 function getFilterDefTableItemPos(f,prepos) {
