@@ -369,7 +369,7 @@ function redrawFilterDefsTable() {
 		opts+=getFilterDefTableItemPos(fs[t],t+1);
 	}
 	opts=opts.substr(1).split(',');
-    var tbl='<table class="field-multiple-table responsive-enabled"><thead><tr><th>Pos.</th><th>Type</th><th>Label(s)</th><th>Veld / Operator</th><th>Toon</th><th>Definitie</th><th>Weergave</th><th></th></tr></thead><tbody>';
+    var tbl='<table class="field-multiple-table responsive-enabled"><thead><tr><th>Pos.</th><th>Type</th><th>Label(s)</th><th>Veld / Operator</th><th><input type="button" onclick="gis_ia_toggle_filters();" value="klik"></th><th>Definitie</th><th>Weergave</th><th></th></tr></thead><tbody>';
 	for (t=0,t1=fs.length;t<t1;t++) {
 		tbl+=getFilterDefTableItem(fs[t],t+1,opts);
 	}
