@@ -328,7 +328,7 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='<td>';
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;';
 			s+=gis_ia_getSelect(['0==','1=like'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'&nbsp;';
-			s+='</td><td>KKK</td><td class="gis_ia_hideable"></td><td style="white-space: nowrap;" class="gis_ia_hideable">Placeholder: <input value="'+f.p+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'p\');"><br><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
+			s+='</td><td><button onclick="gis_ia_toggle_filters(this);"></button></td><td class="gis_ia_hideable"></td><td style="white-space: nowrap;" class="gis_ia_hideable">Placeholder: <input value="'+f.p+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'p\');"><br><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
 			s+='</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
 			break;
 		default: // foutje :-)
@@ -337,7 +337,16 @@ function getFilterDefTableItem(f,i,opts) {
 	}
 	return s;
 }
-
+function gis_ia_toggle_filters(el) {
+	if (typeof(el)!='undefined') {
+		var els=jQuery(jQuery(jQuery(this).parent()).parent()).children();
+		for (el in els) {
+			jQuery(el).find('.gis_ia_hideable').toggle();
+		}
+	} else {
+		jQuery('.gis_ia_hideable').toggle();
+	}
+}
 function getFilterDefTableItemPos(f,prepos) {
 	var t, r=','+prepos;
 	if (f.t=='g') {for (t=0;t<f.e.length;t++) {r+=getFilterDefTableItemPos(f.e[t],prepos+'.'+(t+1));} r+=','+prepos+'.'+(t+1);}
