@@ -342,9 +342,7 @@ function gis_ia_toggle_filters(el) {
 	if (typeof(el)!='undefined') {
 		var els=jQuery(jQuery(jQuery(el).parent()).parent()).children(),t;
 		for (t=0;t<els.length;t++) {
-			if (jQuery(els[t]).hasClass('gis_ia_hideable')) {
-				jQuery(els[t]).toggle();
-			}
+			jQuery(els[t]).find('.gis_ia_hideable').toggle();
 		}
 	} else {
 		if (gis_ia_toggle_filters_) {
