@@ -739,8 +739,6 @@ function gis_ia_init() {
 	
 	gis_ia_setFieldsOnServer();
 	
-	gis_ia_toggle_filters();
-	
 }
 
 //  Deze functie wordt door de dialoogboxen in gis_ia_modals aangeroepen, om te zorgen dat laagnamen die een bepaalde text bevatten worde getoond.
@@ -1141,4 +1139,5 @@ function gis_ia_delete(row) {
 (function($){
     gis_ia_init();
 	gis_ia_show_hide();
+	gis_ia_toggle_filters();
 })(jQuery);
