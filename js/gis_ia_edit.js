@@ -337,6 +337,7 @@ function getFilterDefTableItem(f,i,opts) {
 }
 var gis_ia_toggle_filters_=false;
 function gis_ia_toggle_filters(el) {
+	console.log('gis_ia_toggle_filters');
 	if (typeof(el)!='undefined') {
 		var els=jQuery(jQuery(jQuery(el).parent()).parent()).children(),t;
 		for (t=0;t<els.length;t++) {
