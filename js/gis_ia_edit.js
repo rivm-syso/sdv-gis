@@ -266,20 +266,20 @@ function getFilterDefTableItem(f,i,opts) {
 	var t,s='<tr><td style="white-space: nowrap; '+inspringen+'">'+gis_ia_getSelect(opts,i,'gis_ia_filter_volgorde(this,\''+i+'\');')+'</td>';
 	switch (f.t) {
 		case 'a': // header
-			s+='<td>Tekst</td><td><input value="'+f.v+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');"></td><td style="'+inspringen+'"></td><td></td><td>'+gis_ia_getSelect(['t=Tekst','h2=Header 2','h3=Header 3'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
+			s+='<td>Tekst</td><td><input value="'+f.v+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');"></td><td style="'+inspringen+'"></td><td>KKK</td><td class="gis_ia_hideable"></td><td class="gis_ia_hideable">'+gis_ia_getSelect(['t=Tekst','h2=Header 2','h3=Header 3'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
 			break;
 		case 'g': // groep
-			s+='<td>Groep</td><td><input value="'+f.w+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'w\');"></td><td style="'+inspringen+'"></td><td>Soort:&nbsp;&nbsp;&nbsp;&nbsp;'+gis_ia_getSelect(['of=Or','en=And'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'</td><td>'+gis_ia_getSelect(['0=In place','1=As submenu'],f.b,'gis_ia_set_filterItem(this,\''+i+'\',\'b\');',((''+i).indexOf('.')>=1?'style="display: none;"':''))+'</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
+			s+='<td>Groep</td><td><input value="'+f.w+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'w\');"></td><td style="'+inspringen+'"></td><td>KKK</td><td class="gis_ia_hideable">Soort:&nbsp;&nbsp;&nbsp;&nbsp;'+gis_ia_getSelect(['of=Or','en=And'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'</td><td class="gis_ia_hideable">'+gis_ia_getSelect(['0=In place','1=As submenu'],f.b,'gis_ia_set_filterItem(this,\''+i+'\',\'b\');',((''+i).indexOf('.')>=1?'style="display: none;"':''))+'</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
 			for (t=0;t<f.e.length;t++) {s+=getFilterDefTableItem(f.e[t],i+'.'+(t+1),opts);}
 			break;
 		case 'c': // checkbox
 			var a=[], t, t1; for (t=0;t<gis_ia_fieldsOnServer.length;t++) {for (t1=0;t1<gis_ia_fieldsOnServer[t].length;t1++) {a[a.length]=t+'.'+gis_ia_fieldsOnServer[t][t1]+'='+(t+1)+' '+gis_ia_fieldsOnServer[t][t1];}}
 			s+='<td>Checkbox</td>';
-			s+='<td><input value="'+f.v+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');"></td>';
-			s+='<td>';
+			s+='<td><input value="'+f.v+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');"></td><td>KKK</td>';
+			s+='<td class="gis_ia_hideable">';
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;';
 			s+=gis_ia_getSelect(['0==','1=<','2=<=','3=>','4=>=','5=<>'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'&nbsp;';
-			s+='</td><td>Waarde: <input value="'+f.w+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'w\');" size="6"></td><td style="white-space: nowrap;"><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
+			s+='</td><td class="gis_ia_hideable">Waarde: <input value="'+f.w+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'w\');" size="6"></td><td style="white-space: nowrap;"><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
 			s+='</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
 			break;
 		case 'd': // list
@@ -288,10 +288,10 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='<td><input value="'+f.l0+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'l0\');"></td>';
 			s+='<td style="white-space: nowrap;'+inspringen+'">';
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;'+gis_ia_getSelect(['0==','1=range'],f.o,'gis_ia_set_filterItem(this,\''+i+'\',\'o\');');
-			s+='</td><td>';
+			s+='</td><td>KKK</td><td class="gis_ia_hideable">';
 			s+='<div style="display: inline-block;">Labels<br><textarea rows="6" cols="20" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'w\');">'+f.w+'</textarea></div>&nbsp;';
 			s+='<div style="display: inline-block;">Waarden<br><textarea rows="6" cols="20" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');">'+f.v+'</textarea></div></td>';
-			s+='<td>'+gis_ia_getSelect(['0=Selectbox','1=Radio buttons','3=Checkboxes'],f.s,'if (jQuery(this).val()==\'0\') {jQuery(jQuery(jQuery(this).parent()).children()[1]).show();} else {jQuery(jQuery(jQuery(this).parent()).children()[1]).hide();} gis_ia_set_filterItem(this,\''+i+'\',\'p\'); gis_ia_set_filterItem(this,\''+i+'\',\'s\');');
+			s+='<td class="gis_ia_hideable">'+gis_ia_getSelect(['0=Selectbox','1=Radio buttons','3=Checkboxes'],f.s,'if (jQuery(this).val()==\'0\') {jQuery(jQuery(jQuery(this).parent()).children()[1]).show();} else {jQuery(jQuery(jQuery(this).parent()).children()[1]).hide();} gis_ia_set_filterItem(this,\''+i+'\',\'p\'); gis_ia_set_filterItem(this,\''+i+'\',\'s\');');
 			s+='<div style="margin-top: 12px;'+(f.s=='0'?'':'display: none;')+'">Placeholder: <input size="10" value="'+f.p+'"></div>';
 			s+='<div style="margin-top: 12px;"><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label></div>';
 			s+='</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
@@ -302,7 +302,7 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='<td><input value="'+f.l0+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'l0\');"></td>';
 			s+='<td>';
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;'+gis_ia_getSelect(['0=van <= N < tot','1=van < N <= tot','2=van <= N <= tot','3=van < N < tot'],f.w,'gis_ia_set_filterItem(this,\''+i+'\',\'w\');');
-			s+='</td><td>';
+			s+='</td><td>KKK</td><td class="gis_ia_hideable">';
 			s+='<div><b>Van</b></div>';
 			s+='<div style="display: inline-block;"><div style="display: inline-block; width: 40px;">Min:</div><input style="width: 50px;" value="'+f.mi1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'mi1\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Max:</div><input style="width: 50px;" value="'+f.ma1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'ma1\');"></div>';
@@ -315,7 +315,7 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Stap:</div><input style="width: 50px;" value="'+f.st2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'st2\');"></div>';
 			s+='</div><div>';
 			s+='<div style="margin-top: 12px;"><div style="display: inline-block; width: 60px;">Of lijst:</div><textarea style="width: 160px;" rows="6" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'l2\');">'+f.l2+'</textarea></div>';
-			s+='</td><td style="white-space: nowrap;">';
+			s+='</td><td style="white-space: nowrap;" class="gis_ia_hideable">';
 			s+='<div style="margin-bottom: 12px;">Placeholder van: <input size="10" value="'+f.v1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v1\');"></div>';
 			s+='<div style="margin-bottom: 12px;">Placeholder t/m: <input size="10" value="'+f.v2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v2\');"></div>';
 			s+='<input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
@@ -328,7 +328,7 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='<td>';
 			s+=gis_ia_getSelect(a,f.l+'.'+f.f,'gis_ia_set_filterItem(this,\''+i+'\',\'f\');')+'&nbsp;';
 			s+=gis_ia_getSelect(['0==','1=like'],f.s,'gis_ia_set_filterItem(this,\''+i+'\',\'s\');')+'&nbsp;';
-			s+='</td><td></td><td style="white-space: nowrap;">Placeholder: <input value="'+f.p+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'p\');"><br><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
+			s+='</td><td>KKK</td><td class="gis_ia_hideable"></td><td style="white-space: nowrap;" class="gis_ia_hideable">Placeholder: <input value="'+f.p+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'p\');"><br><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
 			s+='</td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
 			break;
 		default: // foutje :-)
@@ -351,7 +351,7 @@ function redrawFilterDefsTable() {
 		opts+=getFilterDefTableItemPos(fs[t],t+1);
 	}
 	opts=opts.substr(1).split(',');
-    var tbl='<table class="field-multiple-table responsive-enabled"><thead><tr><th>Pos.</th><th>Type</th><th>Label(s)</th><th>Veld / Operator</th><th>Definitie</th><th>Weergave</th><th></th></tr></thead><tbody>';
+    var tbl='<table class="field-multiple-table responsive-enabled"><thead><tr><th>Pos.</th><th>Type</th><th>Label(s)</th><th>Veld / Operator</th><th>Toon</th><th>Definitie</th><th>Weergave</th><th></th></tr></thead><tbody>';
 	for (t=0,t1=fs.length;t<t1;t++) {
 		tbl+=getFilterDefTableItem(fs[t],t+1,opts);
 	}
@@ -634,8 +634,8 @@ function gis_ia_init() {
 	// opties per laag
 		d+='<div class="kolom_1 gis_ia_l_1"><div>Opties per laag</div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-2" gis_ia="l-2"><label for="gis_ia_l-2" class="option"> Transparantie knoppen</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> Download geheel NL</label></div>';
-		d+='<div class="gis_ia_l_4"><input type="checkbox" id="gis_ia_l-4" gis_ia="l-4"><label for="gis_ia_l-4" class="option"> Download Bounding Box</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> Download (heel NL)</label></div>';
+		d+='<div class="gis_ia_l_4" style="padding-left: 32px;"><input type="checkbox" id="gis_ia_l-4" gis_ia="l-4"><label for="gis_ia_l-4" class="option"> en Bounding Box</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-5" gis_ia="l-5"><label for="gis_ia_l-5" class="option"> Zoek op data.rivm.nl knop</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-6" gis_ia="l-6"><label for="gis_ia_l-6" class="option"> Legenda knop</label></div>';
 		d+='</div>';
