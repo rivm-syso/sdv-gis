@@ -734,8 +734,7 @@ function gis_ia_init() {
 	});
 	
 	gis_ia_setFieldsOnServer();
-	gis_ia_toggle_filters();
-
+	setTimeout(gis_ia_toggle_filters,2000);
 }
 
 //  Deze functie wordt door de dialoogboxen in gis_ia_modals aangeroepen, om te zorgen dat laagnamen die een bepaalde text bevatten worde getoond.
