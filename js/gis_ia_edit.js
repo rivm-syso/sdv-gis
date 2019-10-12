@@ -339,7 +339,7 @@ function getFilterDefTableItem(f,i,opts) {
 }
 function gis_ia_toggle_filters(el) {
 	if (typeof(el)!='undefined') {
-		var els=jQuery(jQuery(jQuery(this).parent()).parent()).children();
+		var els=jQuery(jQuery(jQuery(el).parent()).parent()).children();
 		for (el in els) {
 			jQuery(el).find('.gis_ia_hideable').toggle();
 		}
