@@ -339,9 +339,9 @@ function getFilterDefTableItem(f,i,opts) {
 }
 function gis_ia_toggle_filters(el) {
 	if (typeof(el)!='undefined') {
-		var els=jQuery(jQuery(jQuery(el).parent()).parent()).children();
-		for (el in els) {
-			jQuery(el).find('.gis_ia_hideable').toggle();
+		var els=jQuery(jQuery(jQuery(el).parent()).parent()).children(),t;
+		for (t=0;t<els.length;t++) {
+			jQuery(els[t]).find('.gis_ia_hideable').toggle();
 		}
 	} else {
 		jQuery('.gis_ia_hideable').toggle();
@@ -729,6 +729,8 @@ function gis_ia_init() {
 	});
 	
 	gis_ia_setFieldsOnServer();
+	
+	gis_ia_toggle_filters();
 	
 }
 
