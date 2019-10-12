@@ -307,15 +307,13 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='<div style="display: inline-block;"><div style="display: inline-block; width: 40px;">Min:</div><input style="width: 50px;" value="'+f.mi1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'mi1\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Max:</div><input style="width: 50px;" value="'+f.ma1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'ma1\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Stap:</div><input style="width: 50px;" value="'+f.st1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'st1\');"></div>';
-			s+='</div>';
 			s+='<div style="margin-top: 12px;"><div style="display: inline-block; width: 60px;">Of lijst:</div><textarea style="width: 160px;" rows="6" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'l1\');">'+f.l1+'</textarea></div>';
 			s+='<div><b>Tot</b></div>';
 			s+='<div style="display: inline-block;"><div style="display: inline-block; width: 40px;">Min:</div><input style="width: 50px;" value="'+f.mi2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'mi2\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Max:</div><input style="width: 50px;" value="'+f.ma2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'ma2\');"></div>';
 			s+='<div style="display: inline-block;margin-left: 12px;"><div style="display: inline-block; width: 40px;">Stap:</div><input style="width: 50px;" value="'+f.st2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'st2\');"></div>';
-			s+='</div>';
 			s+='<div style="margin-top: 12px;"><div style="display: inline-block; width: 60px;">Of lijst:</div><textarea style="width: 160px;" rows="6" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'l2\');">'+f.l2+'</textarea></div>';
-			s+='</div></div></td><td style="white-space: nowrap;"><div class="gis_ia_hideable">';
+			s+='</div></td><td style="white-space: nowrap;"><div class="gis_ia_hideable">';
 			s+='<div style="margin-bottom: 12px;">Placeholder van: <input size="10" value="'+f.v1+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v1\');"></div>';
 			s+='<div style="margin-bottom: 12px;">Placeholder t/m: <input size="10" value="'+f.v2+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v2\');"></div>';
 			s+='<input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label>';
