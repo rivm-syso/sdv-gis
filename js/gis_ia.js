@@ -680,25 +680,26 @@ var gis_ia_filters={
 				case 'INPUT':
 					switch (el.attr('type')) {
 						case 'checkbox':
-							if (el.prop('checked')) {aantal++;}
+							if (el.prop('checked')) {
+								aantal++;
+							}
 							break;
 						case 'radio':
-							if (el.prop('checked')) {aantal++;}
+							if (el.prop('checked')) {
+								aantal++;
+							}
 							break;
 						default:
 							if (el.val()!='') {
 								aantal++;
-							} else { // misschien is er een range-filter waarvan de min niet is ingevuld, maar de max wel.
-								id=el.prop('id').split('_');
-								id[2]='f2';
-								id=jQuery('#'+id.join('_'));
-								if (id.length==1 && id.val()!='') {aantal++;}
 							}
 							break;
 					}
 					break;
 				case 'SELECT':
-					if (el.val()!='' && el.val()!=-1 && el.val()!==null) {aantal++;}
+					if (el.val()!='' && el.val()!=-1 && el.val()!==null) {
+						aantal++;
+					}
 					break;
 			}
 		});
