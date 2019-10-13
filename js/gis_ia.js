@@ -702,7 +702,15 @@ var gis_ia_filters={
 					break;
 				case 'SELECT':
 					if (el.val()!='' && el.val()!=-1 && el.val()!==null) {
-						aantal++;
+						id=el.prop('id');
+						if (id.substr(-4)=='-van') {
+							ids[ids.length]=id;
+						}
+						if (id.substr(-4)=='-tot') {
+							if (ids.indexOf(id.substr(0,id.length-4)+'-van')==-1) {aantal++;}
+						} else {
+							aantal++;
+						}
 					}
 					break;
 			}
