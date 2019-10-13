@@ -698,7 +698,7 @@ var gis_ia_filters={
 					}
 					break;
 				case 'SELECT':
-					if (el.val()!='' && el.val()!=-1) {aantal++;}
+					if (el.val()!='' && el.val()!=-1 && el.val()!==null) {aantal++;}
 					break;
 			}
 		});
