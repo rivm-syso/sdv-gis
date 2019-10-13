@@ -673,24 +673,25 @@ var gis_ia_filters={
 		this.gis_ia_setNumber(map_id);
 	},
 	gis_ia_setNumber: function(map_id) {
-		var id, html, aantal=0;
+		var id, html, aantal=0, ids=[];
 		jQuery('[id^=gis_ia_f_'+map_id+'_]').each(function(t,el) {
 			el=jQuery(el);
 			switch (el.prop('tagName')) {
 				case 'INPUT':
 					switch (el.attr('type')) {
 						case 'checkbox':
-							if (el.prop('checked')) {
-								aantal++;
-							}
+							if (el.prop('checked')) {aantal++;}
 							break;
 						case 'radio':
-							if (el.prop('checked')) {
-								aantal++;
-							}
+							if (el.prop('checked')) {aantal++;}
 							break;
 						default:
 							if (el.val()!='') {
+								id=el.prop('id');
+								if (id.substr(-4)=='-tot') {
+									a=1;
+								}
+								ids[ids.length]=id;
 								aantal++;
 							}
 							break;
