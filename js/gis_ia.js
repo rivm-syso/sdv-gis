@@ -688,11 +688,14 @@ var gis_ia_filters={
 						default:
 							if (el.val()!='') {
 								id=el.prop('id');
-								if (id.substr(-4)=='-tot') {
-									a=1;
+								if (id.substr(-4)=='-van') {
+									ids[ids.length]=id;
 								}
-								ids[ids.length]=id;
-								aantal++;
+								if (id.substr(-4)=='-tot') {
+									if (ids.indexOf(id.substr(0,id.length-4)+'-van')==-1) {aantal++;}
+								} else {
+									aantal++;
+								}
 							}
 							break;
 					}
