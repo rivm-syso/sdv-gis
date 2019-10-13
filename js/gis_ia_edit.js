@@ -292,7 +292,7 @@ function getFilterDefTableItem(f,i,opts) {
 			s+='<div style="display: inline-block;">Labels<br><textarea rows="6" cols="20" placeholder="'+"'='\t\tWonen\n\t\tAgrarisch\n\t\tIndustrie\n'range'\tJong\n\t\tGemiddeld\n\t\tOud"+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'w\');">'+f.w+'</textarea></div>&nbsp;';
 			s+='<div style="display: inline-block;">Waarden<br><textarea rows="6" cols="20" placeholder="'+"'='\t\t1\n\t\t2\n\t\t3\n'range'\t<20\n\t\t>=20 <70\n\t\t>=70"+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'v\');">'+f.v+'</textarea></div></div></td>';
 			s+='<td><div class="gis_ia_hideable">'+gis_ia_getSelect(['0=Selectbox','1=Radio buttons','3=Checkboxes'],f.s,'if (jQuery(this).val()==\'0\') {jQuery(jQuery(jQuery(this).parent()).children()[1]).show();} else {jQuery(jQuery(jQuery(this).parent()).children()[1]).hide();} gis_ia_set_filterItem(this,\''+i+'\',\'p\'); gis_ia_set_filterItem(this,\''+i+'\',\'s\');');
-			s+='<div style="margin-top: 12px;'+(f.s=='0'?'':'display: none;')+'">Placeholder: <input size="10" value="'+f.p+'"></div>';
+			s+='<div style="margin-top: 12px;'+(f.s=='0'?'':'display: none;')+'">Placeholder: <input size="10" value="'+f.p+'" onchange="gis_ia_set_filterItem(this,\''+i+'\',\'p\');"></div>';
 			s+='<div style="margin-top: 12px;"><input type="checkbox" '+(f.x0=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x0\');" id="gis_ia_f_'+i+'x0"><label for="gis_ia_f_'+i+'x0"> X-button bovenaan</label><br><input type="checkbox"'+(f.x1=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x1\');" id="gis_ia_f_'+i+'x1"><label for="gis_ia_f_'+i+'x1"> X-button in hoofdgroep</label><br><input type="checkbox"'+(f.x2=='1'?'checked="checked" ':'')+'onchange="gis_ia_set_filterItem(this,\''+i+'\',\'x2\');" id="gis_ia_f_'+i+'x2"><label for="gis_ia_f_'+i+'x2"> X-button in place</label></div>';
 			s+='</div></td><td><input onclick="gis_ia_del_filter(\''+i+'\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
 			break;
@@ -428,7 +428,7 @@ function gis_ia_add_filter(e,no) {
 		case 'g': elm={'t':'g','s':'of','w':'','e':[],'b':'0'}; break;
 		case 'a': elm={'t':'a','v':'','s':'h2'}; break;
 		case 'c': elm={'t':'c','v':'','s':'0','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','x0':'1','x1':'0','x2':'1'}; break;
-		case 'd': elm={'t':'d','v':'','s':'0','l0':'','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','o':'0'}; break;
+		case 'd': elm={'t':'d','v':'','s':'0','l0':'','p':'','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','o':'0'}; break;
 		case 'vt': elm={'t':'vt','v1':'','v2':'','l0':'','p':'','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','mi1':'','mi2':'','ma1':'','ma2':'','st1':'','st2':'','l1':'','l2':''}; break;
 		case 'i': elm={'t':'i','v':'','s':'0','p':'','l':layer,'f':gis_ia_fieldsOnServer[layer][0],'w':'','x0':'1','x1':'0','x2':'1'}; break;
 		default: alert('Pas op: filter type \''+e+'\' niet gedefinieerd'); break;
