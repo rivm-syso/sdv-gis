@@ -603,7 +603,7 @@ function gis_ia_init() {
 	// de edit-URL ziet er zo uit:	http://geodata2-sscc-geoweb-co.apps.ssc-campus.nl/drupal/admin/structure/sdv_gis_entity/8/edit?destination=/drupal/admin/structure/sdv_gis_entity
 	// Vertaal deze naar:			http://geodata2-sscc-geoweb-co.apps.ssc-campus.nl/drupal/admin/help/sdv_gis?etc...
 	href=href.substr(0,href.indexOf('/structure/'))+'/help/sdv_gis';
-	start_el.prepend('<div class="button" style="float: right;margin: 12px 60px 12px 20px;" onclick="window.open(\''+href+'#all',\'gis_ia_help\');">Help</div>');
+	start_el.prepend('<div class="button" style="float: right;margin: 12px 60px 12px 20px;" onclick="window.open(\''+href+'#all\',\'gis_ia_help\');">Help</div>');
 
 	kleuren=['Automatisch','Bruin','Donkerblauw','Donkerbruin','Donkergeel','Donkergroen','Geel','Groen','Hemelblauw','Lichtblauw','Mintgroen','Mosgroen','Oranje','Paars','Robijnrood','Rood','Roze','Violet','Wit'];
 	
