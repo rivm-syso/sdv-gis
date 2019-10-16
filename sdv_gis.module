@@ -27,7 +27,7 @@ function sdv_gis_help($route_name, RouteMatchInterface $route_match) {
 				
 			} else {
 				$output = '';
-				$output .= '';$content. = '<h3>' . t('About') . '</h3>';
+				$output .= '<h3>' . t('About') . '</h3>';
 				$output .= '<p>' . t('TODO Module description here ...') . '</p>';
 			}
 			return $output;
