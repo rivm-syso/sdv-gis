@@ -574,7 +574,7 @@ gis_ia_filter.prototype.cql_filter=function(changed_layer) {
 			}
 		}
 	}
-	console.log(r);
+//	console.log(r);
 	return r;
 };
 

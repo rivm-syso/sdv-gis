@@ -635,7 +635,7 @@ function gis_ia_init() {
 	d+='</div></div>';
 
 	// panel
-	d+='<div class="form-item"><b>Panel</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
+	d+='<div class="form-item"><b>Panel</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#panel\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<div class="form-item-start">';
 	// panel opties
 		d+='<div class="kolom_1"><div>Panel opties</div>';
@@ -658,7 +658,7 @@ function gis_ia_init() {
 	// einde
 	d+='</div></div>';
 	
-	d+='<div class="form-item"><b>Controls op de kaart</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
+	d+='<div class="form-item"><b>Controls op de kaart</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#controls\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<div class="form-item-start">';
 	// links boven
 		d+='<div class="kolom_1"><div>Links boven</div>';
