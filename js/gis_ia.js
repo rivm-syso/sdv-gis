@@ -562,6 +562,8 @@ gis_ia_filter.prototype.cql_filter=function(changed_layer) {
 					break;
 				case 'vt': // van - tot
 					var el1=jQuery('#'+this.ID()+'-van'),el2=jQuery('#'+this.ID()+'-tot'), v1=el1.val(), v2=el2.val();
+					if (v1==null) {v1='';}
+					if (v2==null) {v2='';}
 					if (v1!='' || v2!='') {
 						switch (this.w) {
 							case '0': if (v1!='') {r=this.f+'>='+v1;} if (v2!='') {r=(r==''?'':'('+r+' AND ')+this.f+'<'+v2+(r==''?'':')');} break;
