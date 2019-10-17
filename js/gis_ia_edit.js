@@ -653,7 +653,7 @@ function gis_ia_init() {
 		d+='<div><input type="checkbox" id="gis_ia_l-3" gis_ia="l-3"><label for="gis_ia_l-3" class="option"> Download (heel NL)</label></div>';
 		d+='<div class="gis_ia_l_4" style="padding-left: 32px;"><input type="checkbox" id="gis_ia_l-4" gis_ia="l-4"><label for="gis_ia_l-4" class="option"> en Bounding Box</label></div>';
 		d+='<div><input type="checkbox" id="gis_ia_l-5" gis_ia="l-5"><label for="gis_ia_l-5" class="option"> Zoek op data.rivm.nl knop</label></div>';
-		d+='<div><input type="checkbox" id="gis_ia_l-6" gis_ia="l-6"><label for="gis_ia_l-6" class="option"> Legenda knop</label></div>';
+		d+='<div><input type="checkbox" id="gis_ia_l-6" gis_ia="l-6"><label for="gis_ia_l-6" class="option"> Legenda</label></div>';
 		d+='</div>';
 	// einde
 	d+='</div></div>';
