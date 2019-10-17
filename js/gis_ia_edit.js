@@ -686,7 +686,7 @@ function gis_ia_init() {
 	// einde
 	d+='</div></div>';
 
-	d+='<div class="form-item"><b>Bij klik op de kaart</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
+	d+='<div class="form-item"><b>Bij klik op de kaart</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#klik\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
 	d+='<div class="form-item-start">';
 	// Data window
 		d+='<div class="kolom_1"><div>Info window</div>';
@@ -704,7 +704,7 @@ function gis_ia_init() {
 	
 	
 	// Laag- en velddefinities
-	d+='<div class="form-item"><b>Laag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#knop\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
+	d+='<div class="form-item"><b>Laag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\''+href+'#layer\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
 	d+='<div><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></div>';
 	d+='<div id="gis_ia_layer_defs">'+getLayerDefs()+'</div>';
 
