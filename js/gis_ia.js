@@ -606,7 +606,7 @@ var gis_ia_filters={
 						cql_filter += (cql_filter==''?'':' AND ') + r1;
 					}
 				}
-				console.log('cql_filter='+cql_filter);
+				console.log('cql_filter: '+cql_filter);
 				if (cql_filter!='') {
 					GIS_ia_maps[map_id].layers[changed_layer].getSource().updateParams({cql_filter: cql_filter});
 				} else {
