@@ -606,7 +606,7 @@ var gis_ia_filters={
 						cql_filter += (cql_filter==''?'':' AND ') + r1;
 					}
 				}
-				console.log(cql_filter);
+				console.log('cql_filter='+cql_filter);
 				if (cql_filter!='') {
 					GIS_ia_maps[map_id].layers[changed_layer].getSource().updateParams({cql_filter: cql_filter});
 				} else {
@@ -968,7 +968,7 @@ function gis_ia_filters_hideSubmenus() {
 
 function filterwindowCheck(map_id) {
 	var base=jQuery('#gis_ia_base_'+map_id), w=base.width();
-console.log('base width='+w);
+//console.log('base width='+w);
 	if (w!=filterwindowCheck_) {
 		filterwindowCheck_=w;
 		if ((GIS_ia_maps[map_id].hasFilter || GIS_ia_maps[map_id].l.substr(0,1)!=='0') && (w>=1000 || (GIS_ia_maps[map_id].isFullscreen && w>600))) { // switch naar 'vast' filter-block
