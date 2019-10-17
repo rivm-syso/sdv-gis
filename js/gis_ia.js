@@ -984,11 +984,11 @@ console.log('base width='+w);
 			if (GIS_ia_maps[map_id].isFullscreen) {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(); 
 				mapholder.css({'height': '100%'});
-console.log('Vast blok, height=100% (is fullscreen)');
+//console.log('Vast blok, height=100% (is fullscreen)');
 			} else {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
 				mapholder.css({'height': (wpixels*1.2)+'px'});
-console.log('Vast blok, height='+(wpixels*1.2)+'px (is desktop)');
+//console.log('Vast blok, height='+(wpixels*1.2)+'px (is desktop)');
 			}
 		} else { // switch naar 'hidden/shown' filterblock
 			filterwindowCheckHide(map_id);
@@ -999,11 +999,11 @@ console.log('Vast blok, height='+(wpixels*1.2)+'px (is desktop)');
 			if (GIS_ia_maps[map_id].isFullscreen) {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(); 
 				mapholder.css({'height': '100%'});
-console.log('Slide blok, height=100% (is fullscreen)');
+//console.log('Slide blok, height=100% (is fullscreen)');
 			} else {
 				var mapholder=jQuery('#gis_ia_map_'+map_id).parent(), wpixels=mapholder.width(); // breedte vd kaart
 				mapholder.css({'height': (wpixels*1.2)+'px'});
-console.log('Slide blok, height='+(wpixels*1.2)+'px (is desktop)');
+//console.log('Slide blok, height='+(wpixels*1.2)+'px (is desktop)');
 			}
 		}
 	}
