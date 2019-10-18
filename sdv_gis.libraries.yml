@@ -2,10 +2,10 @@ sdv_gis:
   version: 1.0
   css:
     layout:
-      https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.css: {}
+      css/ol.css: {}
       css/gis_ia.css: {}
   js:
-    https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.js: {}
+    js/ol.js: {}
     js/gis_ia.js: {}
     js/proj4.js: {}
     js/jquery.autocomplete.js: {}
@@ -20,7 +20,7 @@ sdv_gis_edit:
     layout:
       css/gis_ia_edit.css: {}
   js:
-    https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.js: {}
+    js/ol.js: {}
     js/gis_ia.js: {}
     js/gis_ia_edit.js: {}
   dependencies:
