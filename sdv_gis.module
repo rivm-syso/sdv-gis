@@ -120,9 +120,12 @@ function template_preprocess_sdv_gis_entity(&$variables) {
 		if ($ldef!='') {$parms.=base64_encode($ldef).'|';}
 	}
 	
+	$urls = \Drupal::config('sdv_gis.sdv_gis')->get('urls');
+	
 	$variables['node_id']=$variables['elements']['#contextual_links']['sdv_gis_entity']['route_parameters']['sdv_gis_entity'];
 	$variables['dwnld']=__DIR__;
 	$variables['parms']=$parms;
+	$variables['urls']=$urls;
 }
 
 /**
