@@ -31,8 +31,11 @@ class SdvGisEntitySettingsForm extends FormBase {
    *   The current state of the form.
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Empty implementation of the abstract submit class.
-  }
+    parent::submitForm($form, $form_state);
+
+    $this->config('sdv_gis.ents')
+      ->set('urls', $form_state->getValue('urls'))
+      ->save();  }
 
   /**
    * Defines the settings form for Sdv gis entity entities.
@@ -46,25 +49,19 @@ class SdvGisEntitySettingsForm extends FormBase {
    *   Form definition array.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+	$config = $this->config('sdv_gis.ents');
     $form['sdvgisentity_settings']['#markup'] = 'Settings form for Sdv gis entity entities. Manage field settings here.';
     $form['description'] = [
       '#type' => 'item',
       '#markup' => $this->t('Please enter the title and accept the terms of use of the site.'),
     ];
-	$form['title'] = [
+	$form['urls'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Title'),
-      '#description' => $this->t('Enter the title of the book. Note that the title must be at least 10 characters in length.'),
+      '#title' => $this->t('URL'),
+      '#description' => $this->t('Enter the URL(s) of the map-server(s).'),
       '#required' => TRUE,
-    ];
-
-    $form['accept'] = array(
-      '#type' => 'checkbox',
-      '#title' => $this
-        ->t('I accept the terms of use of the site'),
-      '#description' => $this->t('Please read and accept the terms of use'),
-    );
-
+      '#size' => 64,
+      '#default_value' => $config->get('urls'),    ];
 
     // Group submit handlers in an actions element with a key of "actions" so
     // that it gets styled correctly, and so that other modules may add actions
