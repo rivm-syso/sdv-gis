@@ -32,13 +32,11 @@ function sdv_gis_help($route_name, RouteMatchInterface $route_match) {
 				$output.='<tr><th colspan="2"><b>Lagen in panel</b></th></tr>';
 				$output.='<tr><td colspan="2">Er kan worden aangegeven of de lagen in het panel moeten worden getoond (en waar; boven of onder de filters). De basiskaarten worden alleen getoond als er meer dan 1 zijn geselecteerd. De website-bezoeker kan dan zelf de basiskaart kiezen.<br>De overlay-kaarten worden niet getoont.</td></tr>';
 				$output.='<tr><td>Slechts 1 laag selecteerbaar:</td><td>Als deze optie is aangevinkt, kan de website-bezoeker slechts 1 kaart zien. Anders kunnen de kaarten over elkaar worden getoond.</td></tr>';
-				$output.='<tr><th colspan="2"><b>Opties per laag</b></th></tr>';
-				$output.='<tr><td colspan="2">Voor elke kaartlaag (niet voor de basiskaarten) kunnen de volgende opties worden aangevinkt:</td></tr>';
+				$output.='<tr><th colspan="2"><b>Opties per laag</b><br>Deze opties zijn beschikbaar als de website-bezoeker op de \'I\' klikt, rechts van de kaartnaam in het panel. Voor elke kaartlaag (niet voor de basiskaarten) kunnen de volgende opties worden aangevinkt:</th></tr>';
 				$output.='<tr><td>Transparantie knoppen:</td><td>Knoppen waarmee de website-bezoeker de transparantie van de kaartlaag kan wijzigen.</td></tr>';
 				$output.='<tr><td>Download knop(pen):</td><td>Knop waarmee men een download van de data kan doen. In principe bevat de download de data van heel Nederland. Als \' en Bounding Box\' is aangevinkt, kan men ook de data downloaden van het gebied waarop men is ingezoomd.<br>De download bevat altijd alle data (en dus niet conform een eventueel filter).</td></tr>';
 				$output.='<tr><td>Zoek op data.rivm.nl knop:</td><td>Knop waarmee de website-bezoeker een nieuw browser-tab opent waarin direct op de betreffende kaartlaag wordt gezocht.</td></tr>';
 				$output.='<tr><td>Legenda:</td><td>Toon de legenda van deze kaart.</td></tr>';
-				$output.='<tr><td colspan="2">Deze opties zijn beschikbaar als de website-bezoeker op de \'I\' klikt, rechts van de kaartnaam in het panel.</td></tr>';
 				$output.='</tbody></table>';
 				
 				$output.='<h3><a name="controls">Controls op de kaart</a></h3>';
