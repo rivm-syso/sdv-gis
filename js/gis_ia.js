@@ -1167,8 +1167,8 @@ function gis_ia_getLayerWMTS(map_id,url,layer,addLayerToUrl,title,opacity,visibl
             projection: GIS_ia_maps[map_id].projection,
             tileGrid: new ol.tilegrid.WMTS({
                 extent: GIS_ia_maps[map_id].ext,
-                gis_ia_resolutions: gis_ia_resolutions,
-                gis_ia_matrixIds: gis_ia_matrixIds
+                resolutions: gis_ia_resolutions,
+                matrixIds: gis_ia_matrixIds
             })
         }),
         type: grp,
