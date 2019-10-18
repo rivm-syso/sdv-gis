@@ -2,7 +2,7 @@
 
 namespace Drupal\sdv_gis\Form;
 
-use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -10,7 +10,12 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @ingroup sdv_gis
  */
-class SdvGisEntitySettingsForm extends FormBase {
+class SdvGisEntitySettingsForm extends ConfigFormBase {
+  protected function getEditableConfigNames() {
+    return [
+      'sdv_gis.ents',
+    ];
+  }
 
   /**
    * Returns a unique string identifying the form.
