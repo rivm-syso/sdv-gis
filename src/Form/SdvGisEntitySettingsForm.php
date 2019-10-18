@@ -31,11 +31,8 @@ class SdvGisEntitySettingsForm extends FormBase {
    *   The current state of the form.
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    parent::submitForm($form, $form_state);
-
-    $this->config('sdv_gis.ents')
-      ->set('urls', $form_state->getValue('urls'))
-      ->save();  }
+    $this->config('sdv_gis.ents')->set('urls', $form_state->getValue('urls'))->save();
+}
 
   /**
    * Defines the settings form for Sdv gis entity entities.
