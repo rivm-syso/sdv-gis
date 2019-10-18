@@ -469,6 +469,7 @@ function gis_ia_init() {
 	jQuery('.form-item-gis-ia-params-0-value').hide();
 	jQuery('.form-item-gis-ia-layers-0-value').hide();
 	
+	console.log(drupalSettings.gis_ia.urls);
 	// Maak dialog-box voor WMS
 	var wms = drupalSettings.gis_ia.wms.split('|'), t1,s1;
 	var wmsDom='<div style="min-width: 600px;"><table style="width: initial;"><tr><td>Zoek:</td><td><input size="24" onkeyup="gis_ia_zoek(\'wms\');" id="gis_ia_zoek_wms"></td></tr><tr><td style="vertical-align: top;">Layer:</td><td><div style="max-height: 14em; overflow-y: scroll;"><table id="gis_ia_res_wms" style="min-width: 100%;">';

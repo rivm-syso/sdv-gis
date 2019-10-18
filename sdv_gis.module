@@ -223,5 +223,9 @@ function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_s
 			$wms=file_get_contents($fname);
 		}
         $form['#attached']['drupalSettings']['gis_ia']['datarivmnl'] = $wms;
+		
+		$urls = \Drupal::config('sdv_gis.sdv_gis')->get('urls');
+        $form['#attached']['drupalSettings']['gis_ia']['urls'] = $urls;
+
     }
 }
