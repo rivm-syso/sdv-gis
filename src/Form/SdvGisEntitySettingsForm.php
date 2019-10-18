@@ -13,7 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
 class SdvGisEntitySettingsForm extends ConfigFormBase {
   protected function getEditableConfigNames() {
     return [
-      'sdv_gis.ents',
+      'sdv_gis.sdv_gis',
     ];
   }
 
@@ -36,7 +36,7 @@ class SdvGisEntitySettingsForm extends ConfigFormBase {
    *   The current state of the form.
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->config('sdv_gis.ents')->set('urls', $form_state->getValue('urls'))->save();
+    $this->config('sdv_gis.sdv_gis')->set('urls', $form_state->getValue('urls'))->save();
 }
 
   /**
@@ -51,7 +51,7 @@ class SdvGisEntitySettingsForm extends ConfigFormBase {
    *   Form definition array.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-	$config = $this->config('sdv_gis.ents');
+	$config = $this->config('sdv_gis.sdv_gis');
     $form['sdvgisentity_settings']['#markup'] = 'Settings form for Sdv gis entity entities. Manage field settings here.';
     $form['description'] = [
       '#type' => 'item',
