@@ -43,7 +43,7 @@ var position2_url_lookup='https://geodata.nationaalgeoregister.nl/locatieserver/
 // Deze functie opent een window waarin op data.rivm.nl een search wordt gedaan naar een bepaalde layer.
 // Parameters:    map_id;    Integer; map ID
 //          lno;    Integer; layer-index
-function gotoDataRIVMNl(map_id,lno) {
+function gis_ia_gotoDataRIVMNl(map_id,lno) {
   var l=GIS_ia_maps[map_id].layers_def[lno];
   window.open('https://data.rivm.nl/geonetwork/srv/dut/catalog.search#/search?resultType=details&fast=index&_content_type=json&from=1&to=4&sortBy=relevance&any_OR__title='+l.layer);
 }
@@ -771,7 +771,7 @@ var gis_ia_filters={
     button.className='gis_ia_options_button gis_ia_options_button'; element.appendChild(button);
         button.onclick = function(e) {
             e = e || window.event; e.preventDefault();
-      hidePanels(map_id);
+      gis_ia_hidePanels(map_id);
       jQuery('#f1b-'+map_id).show();
       jQuery('#f3b-'+map_id).show();
       if (GIS_ia_maps[map_id].pw.substr(0,1)==='1' && !GIS_ia_maps[map_id].isFullscreen) {
@@ -937,7 +937,7 @@ function ScaleBar2Set(map_id,old_scale) {
       jQuery('#gis_ia_'+this.map_id+'_'+current+'_legenda_lay').show();
       this.layers.attr('current',current);
     }
-    hidePanels(this.map_id);
+    gis_ia_hidePanels(this.map_id);
         jQuery(this.panel).show();
     if (current>=0) {
       gis_ia_showLegend(this.map_id,current,2);
@@ -950,8 +950,8 @@ function ScaleBar2Set(map_id,old_scale) {
     return Legenda;
 }));
 
-var filterwindowCheck_='';
-function filterwindowCheckHide(map_id) {
+var gis_ia_filterwindowCheck_='';
+function gis_ia_filterwindowCheckHide(map_id) {
   if (jQuery('.gis_ia_base').hasClass('gis_ia_as_block')) {
     jQuery('#f3a-'+map_id).hide();
     jQuery('#f1b-'+map_id).hide();
@@ -983,11 +983,11 @@ function gis_ia_filters_hideSubmenus() {
   jQuery('.gis_ia_filters').find('.gis_ia_f_g').hide();
 }
 
-function filterwindowCheck(map_id) {
+function gis_ia_filterwindowCheck(map_id) {
   var base=jQuery('#gis_ia_base_'+map_id), w=base.width();
 //console.log('base width='+w);
-  if (w!=filterwindowCheck_) {
-    filterwindowCheck_=w;
+  if (w!=gis_ia_filterwindowCheck_) {
+    gis_ia_filterwindowCheck_=w;
     if ((GIS_ia_maps[map_id].hasFilter || GIS_ia_maps[map_id].l.substr(0,1)!=='0') && (w>=1000 || (GIS_ia_maps[map_id].isFullscreen && w>600))) { // switch naar 'vast' filter-block
       jQuery('#gis_ia_options_button_'+map_id).hide();
       jQuery('#f3a-'+map_id).show();
@@ -1008,7 +1008,7 @@ function filterwindowCheck(map_id) {
 //console.log('Vast blok, height='+(wpixels*1.2)+'px (is desktop)');
       }
     } else { // switch naar 'hidden/shown' filterblock
-      filterwindowCheckHide(map_id);
+      gis_ia_filterwindowCheckHide(map_id);
       base.removeClass('gis_ia_as_block');
       // zet max-heigth van filterblok
       jQuery('#gis_ia_filters_'+map_id).css('max-height',jQuery('#gis_ia_map_'+map_id).css('max-height')+'px');
@@ -1052,11 +1052,11 @@ function filterwindowCheck(map_id) {
         this.shownClassName = 'shown';
 
         var element = document.createElement('div'); element.className = this.hiddenClassName;
-        var input = document.createElement('input'); input.setAttribute('onfocus','hidePanels('+map_id+');'); input.setAttribute('title', 'Zoek locatie'); input.className='gis_ia_zoekveld'; input.setAttribute('id', 'gis_ia_z_'+map_id); element.appendChild(input);
+        var input = document.createElement('input'); input.setAttribute('onfocus','gis_ia_hidePanels('+map_id+');'); input.setAttribute('title', 'Zoek locatie'); input.className='gis_ia_zoekveld'; input.setAttribute('id', 'gis_ia_z_'+map_id); element.appendChild(input);
         var button = document.createElement('button'); button.setAttribute('title', 'Start zoeken'); button.className='gis_ia_zoekknop'; element.appendChild(button);
         button.onclick = function(e) {
             e = e || window.event; e.preventDefault();
-      hidePanels(map_id);
+      gis_ia_hidePanels(map_id);
       jQuery.getJSON( position2_url_suggest+'&q='+jQuery('#gis_ia_z_'+map_id).val(), function( data ) {
         if (data.response && data.response.docs.length>=1) {
           var id=data.response.docs[0].id;
@@ -1064,9 +1064,9 @@ function filterwindowCheck(map_id) {
             var l=data.response.docs[0].centroide_ll.split(' ');
             l[0]=parseFloat(l[0].substr(6));
             l[1]=parseFloat(l[1].substr(0,l[1].length-1));
-            position2map=map_id;
+            gis_ia_position2map=map_id;
             jQuery('#gis_ia_z_'+map_id).val(data.response.docs[0].weergavenaam);
-            gotoPosition2({coords: {longitude:l[0],latitude:l[1]}});
+            gis_ia_gotoPosition2({coords: {longitude:l[0],latitude:l[1]}});
           });
         }
       });
@@ -1074,10 +1074,10 @@ function filterwindowCheck(map_id) {
         var button2 = document.createElement('button'); button2.setAttribute('title', tipLabel); button2.className='gis_ia_gotopos'; element.appendChild(button2);
         button2.onclick = function(e) {
             e = e || window.event; e.preventDefault();
-      hidePanels(map_id);
+      gis_ia_hidePanels(map_id);
       if (navigator.geolocation) {
-        position2map=map_id;
-        navigator.geolocation.getCurrentPosition(gotoPosition2);
+        gis_ia_position2map=map_id;
+        navigator.geolocation.getCurrentPosition(gis_ia_gotoPosition2);
       } else {
         alert('Geolocation is not supported by this browser.');
       }      
@@ -1090,15 +1090,15 @@ function filterwindowCheck(map_id) {
 }));
 
 // globale variabele om te weten welke kaart moet inzoemen op een bep. positie
-var position2map=0;
+var gis_ia_position2map=0;
 
-// Deze functie zoomt in op een bepaalde positie (p) op een bepaalde kaart (position2map)
+// Deze functie zoomt in op een bepaalde positie (p) op een bepaalde kaart (gis_ia_position2map)
 // Parameters:    p;  Coordinates object
-function gotoPosition2(p) {
+function gis_ia_gotoPosition2(p) {
   var c=ol.proj.fromLonLat([p.coords.longitude, p.coords.latitude],'EPSG:28992');
-  GIS_ia_maps[position2map].map.getView().animate({zoom: GIS_ia_maps[position2map].pz,center: c});
-  if (GIS_ia_maps[position2map].marker) {
-    GIS_ia_maps[position2map].marker.getSource().getFeatures()[0].getGeometry().setCoordinates(c);
+  GIS_ia_maps[gis_ia_position2map].map.getView().animate({zoom: GIS_ia_maps[gis_ia_position2map].pz,center: c});
+  if (GIS_ia_maps[gis_ia_position2map].marker) {
+    GIS_ia_maps[gis_ia_position2map].marker.getSource().getFeatures()[0].getGeometry().setCoordinates(c);
   }
 }
 
@@ -1115,7 +1115,7 @@ var GIS_ia_maps=[];
 //          visible_;  Optional Boolean; Initially visible?
 //          grp;    Optional String; Groupname
 // Return:      ol.layer.Image
-function getLayerWMS(map_id,url,layer,title,opacity,visible_,grp) {
+function gis_ia_getLayerWMS(map_id,url,layer,title,opacity,visible_,grp) {
     if (typeof(visible_)=='undefined') {visible_=false;}
     if (typeof(grp)=='undefined') {grp='Overlay';}
     return new ol.layer.Image({
@@ -1136,7 +1136,7 @@ function getLayerWMS(map_id,url,layer,title,opacity,visible_,grp) {
 }
 
 // globale variabelen t.b.v. Layer type WMTS
-var resolutions, matrixIds;
+var gis_ia_resolutions, gis_ia_matrixIds;
 
 // Deze functie creeert Layer van het type WMTS
 // Parameters:    map_id;    Integer; map ID
@@ -1147,14 +1147,14 @@ var resolutions, matrixIds;
 //          visible_;  Optional Boolean; Initially visible?
 //          grp;    Optional String; Groupname
 // Return:      ol.layer.Tile
-function getLayerWMTS(map_id,url,layer,addLayerToUrl,title,opacity,visible_,grp) {
+function gis_ia_getLayerWMTS(map_id,url,layer,addLayerToUrl,title,opacity,visible_,grp) {
     if (typeof(visible_)=='undefined') {visible_=false;}
     if (typeof(grp)=='undefined') {grp='Overlay';}
-    resolutions = [3440.64, 1720.32, 860.16, 430.08, 215.04, 107.52, 53.76, 26.88, 13.44, 6.72, 3.36, 1.68, 0.84, 0.42];
-    matrixIds = new Array(14);
+    gis_ia_resolutions = [3440.64, 1720.32, 860.16, 430.08, 215.04, 107.52, 53.76, 26.88, 13.44, 6.72, 3.36, 1.68, 0.84, 0.42];
+    gis_ia_matrixIds = new Array(14);
     for (var z = 0; z < 15; ++z) {
-        // generate resolutions and matrixIds arrays for this WMTS
-        matrixIds[z] = 'EPSG:28992:' + z;
+        // generate gis_ia_resolutions and gis_ia_matrixIds arrays for this WMTS
+        gis_ia_matrixIds[z] = 'EPSG:28992:' + z;
     }
     var tile={
         title: title,
@@ -1167,8 +1167,8 @@ function getLayerWMTS(map_id,url,layer,addLayerToUrl,title,opacity,visible_,grp)
             projection: GIS_ia_maps[map_id].projection,
             tileGrid: new ol.tilegrid.WMTS({
                 extent: GIS_ia_maps[map_id].ext,
-                resolutions: resolutions,
-                matrixIds: matrixIds
+                gis_ia_resolutions: gis_ia_resolutions,
+                gis_ia_matrixIds: gis_ia_matrixIds
             })
         }),
         type: grp,
@@ -1179,13 +1179,13 @@ function getLayerWMTS(map_id,url,layer,addLayerToUrl,title,opacity,visible_,grp)
     return new ol.layer.Tile(tile);
 }
 
-// Object tbv encoding/decoding Base64 strings
-var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9+/=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}};
+// Object tbv encoding/decoding gis_ia_Base64 strings
+var gis_ia_Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=gis_ia_Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9+/=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=gis_ia_Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}};
 
 // Deze functie wordt aangeroepen als website bezoeker een melding kan doen
 // Parameters:    map_id;    Integer; map ID
 //          coordinate;  String; X,Y
-function performMelding(map_id,layerNo,coordinate) {
+function gis_ia_performMelding(map_id,layerNo,coordinate) {
   var els=[];
   
   jQuery('#gis_ia_data_error'+map_id).html('');
@@ -1266,8 +1266,8 @@ function gis_ia_get_layer_div(map_id) {
     if (extra_info) {
       r+='<div class="gis_ia_filters_submenu_parent"><div id="gis_ia_l_i_'+map_id+'_'+t+'" class="gis_ia_filters_submenu" style="display: none;">';
       if (GIS_ia_maps[map_id].l.substr(2,1)==='1') {r+='<div><div>Transparantie</div><div class="button-opa" id="gis_ia_filters_opa_'+map_id+'_'+t+'" opacity="'+(100*l.opacity)+'">Transparantie: '+(l.opacity*100)+'%</div><button title="Meer transparantie" class="gis_ia_filters_button button-opa-max" onclick="gis_ia_filters_opa('+map_id+','+t+',10);"></button><button title="Minder transparantie" class="gis_ia_filters_button button-opa-min" onclick="gis_ia_filters_opa('+map_id+','+t+',-10);"></button></div>';}
-      if (GIS_ia_maps[map_id].l.substr(3,1)!=='0') {r+='<div><div>Download</div>Download CSV data: <button class="gis_ia_filters_button" onclick="startDownload('+map_id+','+t+',false);">Download'+(GIS_ia_maps[map_id].l.substr(4,1)==='1'?' NL':'')+(GIS_ia_maps[map_id].l.substr(4,1)==='1'?' <button class="gis_ia_filters_button" onclick="startDownload('+map_id+','+t+',true);">Download BB</button>':'')+'</div>';}
-      if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><div>Metadata</div>Zoek op data.rivm.nl naar metadata over deze kaartlaag: <button class="gis_ia_filters_button" onclick="gotoDataRIVMNl('+map_id+','+t+')">data.rivm.nl</button></div>';}
+      if (GIS_ia_maps[map_id].l.substr(3,1)!=='0') {r+='<div><div>Download</div>Download CSV data: <button class="gis_ia_filters_button" onclick="gis_ia_startDownload('+map_id+','+t+',false);">Download'+(GIS_ia_maps[map_id].l.substr(4,1)==='1'?' NL':'')+(GIS_ia_maps[map_id].l.substr(4,1)==='1'?' <button class="gis_ia_filters_button" onclick="gis_ia_startDownload('+map_id+','+t+',true);">Download BB</button>':'')+'</div>';}
+      if (GIS_ia_maps[map_id].l.substr(5,1)==='1') {r+='<div><div>Metadata</div>Zoek op data.rivm.nl naar metadata over deze kaartlaag: <button class="gis_ia_filters_button" onclick="gis_ia_gotoDataRIVMNl('+map_id+','+t+')">data.rivm.nl</button></div>';}
       if (GIS_ia_maps[map_id].l.substr(6,1)==='1') {r+='<div><div>Legenda</div><div class="wait-cursor gis_ia_'+map_id+'_'+t+'_legenda_leg1"></div></div>';}
       r+='</div></div>';
     }
@@ -1336,7 +1336,7 @@ function GIS_paragraaf_start(map_id) {
       var par=0;
       GIS_ia_maps[map_id].fs=[];
       if (v!='') {
-        v=Base64.decode(v);
+        v=gis_ia_Base64.decode(v);
         v=eval(v);
         for (t1=0;t1<v.length;t1++) {
           GIS_ia_maps[map_id].fs[t1]=new gis_ia_filter(v[t1],map_id,t1+1,false);
@@ -1346,7 +1346,7 @@ function GIS_paragraaf_start(map_id) {
       GIS_ia_maps[map_id][w]=v;
     }
   }
-  GIS_ia_maps[map_id].m=Base64.decode(GIS_ia_maps[map_id].m);
+  GIS_ia_maps[map_id].m=gis_ia_Base64.decode(GIS_ia_maps[map_id].m);
   GIS_ia_maps[map_id].isFullscreen=false;
   
   /* Omgaan met verouderde data (zie de file gis_ia_edit.js) */
@@ -1517,7 +1517,7 @@ function GIS_paragraaf_start(map_id) {
     for (ldt=0;ldt<lds.length;ldt++) {
       ld=lds[ldt];
       if (ld!='') {
-        ld=Base64.decode(ld).split('|');
+        ld=gis_ia_Base64.decode(ld).split('|');
         dobj=(typeof(ld[6])=='undefined'?'':jQuery.trim(ld[6]));
         // initialisatie van dataVelden (welke velden moeten worden weergegeven als bezoeker op de kaart klikt?)
         // initaialisatie van inputvelden (op welke velden kan de bezoeker filteren, en met wat voor filter?)
@@ -1562,19 +1562,19 @@ function GIS_paragraaf_start(map_id) {
       case 'WMS':
       case 'datarivmnl':
       case 'wmsacceptatie':
-        GIS_ia_maps[map_id].layers[t]=getLayerWMS(map_id,l.url,l.layer,l.title,l.opacity,l.visible_);
+        GIS_ia_maps[map_id].layers[t]=gis_ia_getLayerWMS(map_id,l.url,l.layer,l.title,l.opacity,l.visible_);
         break;
     }
   }
   // Initialiseer de base-layer
   var b=GIS_ia_maps[map_id]['b'],bt=0, vis=true;
-  if (b.substr(0,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaart',true,'Openbasiskaart',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
-  if (b.substr(1,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaartgrijs',true,'Openbasiskaart grijs',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
-  if (b.substr(2,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaartpastel',true,'Openbasiskaart pastel',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
-  if (b.substr(3,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/luchtfoto/rgb/wmts','Actueel_ortho25',false,'Luchtfoto',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
-  if (b.substr(4,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','top25raster',true,'Topografisch',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
+  if (b.substr(0,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=gis_ia_getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaart',true,'Openbasiskaart',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
+  if (b.substr(1,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=gis_ia_getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaartgrijs',true,'Openbasiskaart grijs',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
+  if (b.substr(2,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=gis_ia_getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','brtachtergrondkaartpastel',true,'Openbasiskaart pastel',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
+  if (b.substr(3,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=gis_ia_getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/luchtfoto/rgb/wmts','Actueel_ortho25',false,'Luchtfoto',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
+  if (b.substr(4,1)==1) {GIS_ia_maps[map_id].base_layers[bt]=gis_ia_getLayerWMTS(map_id,'https://geodata.nationaalgeoregister.nl/tiles/service/wmts','top25raster',true,'Topografisch',1,vis,'base'); GIS_ia_maps[map_id].base_layers[bt].typ='base'; vis=false; bt++;}
   b=''+GIS_ia_maps[map_id]['o'];
-  if (b.substr(0,1)=='1') {GIS_ia_maps[map_id].base_layers[bt]=getLayerWMS(map_id,'https://geodata.rivm.nl/geoserver/wms','rivm:nl_landscontour_lw','',1,true,'overlaykaart'); GIS_ia_maps[map_id].base_layers[bt].typ='overlaykaart'; bt++;}
+  if (b.substr(0,1)=='1') {GIS_ia_maps[map_id].base_layers[bt]=gis_ia_getLayerWMS(map_id,'https://geodata.rivm.nl/geoserver/wms','rivm:nl_landscontour_lw','',1,true,'overlaykaart'); GIS_ia_maps[map_id].base_layers[bt].typ='overlaykaart'; bt++;}
         
   // Voorbereiden initialisatie van de kaart (ol.Map)
   var wmeter=GIS_ia_maps[map_id].extNL[2]-GIS_ia_maps[map_id].extNL[0]; // breedte NL volgens rijksdriehoekmeting
@@ -1598,8 +1598,8 @@ function GIS_paragraaf_start(map_id) {
   }
   // Initialiseer de overlay-layers
   b=''+GIS_ia_maps[map_id]['o']; bt=0; o=[];
-  if (b.substr(1,1)=='1') {o[bt]=getLayerWMS(map_id,'https://geodata.rivm.nl/geoserver/wms','rivm:nl_provincie_2019','',1,true,'overlaykaart'); bt++;}
-  if (b.substr(2,1)=='1') {o[bt]=getLayerWMS(map_id,'https://geodata.rivm.nl/geoserver/wms','rivm:adm_nl_gemeente_2019','',1,true,'overlaykaart'); bt++;}
+  if (b.substr(1,1)=='1') {o[bt]=gis_ia_getLayerWMS(map_id,'https://geodata.rivm.nl/geoserver/wms','rivm:nl_provincie_2019','',1,true,'overlaykaart'); bt++;}
+  if (b.substr(2,1)=='1') {o[bt]=gis_ia_getLayerWMS(map_id,'https://geodata.rivm.nl/geoserver/wms','rivm:adm_nl_gemeente_2019','',1,true,'overlaykaart'); bt++;}
   if (bt>=1) {
     layer_d[layer_d.length]=new ol.layer.Group({
       'title': 'Overlaykaart',
@@ -1635,7 +1635,7 @@ function GIS_paragraaf_start(map_id) {
     case '2': html=gis_ia_filters.html(map_id)+gis_ia_get_layer_div(map_id); break;
   }
   if (html!='') {
-    html='<div id="f2-'+map_id+'" onclick="gis_ia_filters_submenuClick('+map_id+',-1);" class="f2"><div id="f1b-'+map_id+'" class=""><div class="gis_ia_filters_close"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">X sluiten</button></div></div>'+html+'<div id="f3b-'+map_id+'"><div class="gis_ia_filters_toon"><button onclick="filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">Toon resultaten</button></div></div></div>';
+    html='<div id="f2-'+map_id+'" onclick="gis_ia_filters_submenuClick('+map_id+',-1);" class="f2"><div id="f1b-'+map_id+'" class=""><div class="gis_ia_filters_close"><button onclick="gis_ia_filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">X sluiten</button></div></div>'+html+'<div id="f3b-'+map_id+'"><div class="gis_ia_filters_toon"><button onclick="gis_ia_filterwindowCheckHide('+map_id+');" class="gis_ia_filters_button">Toon resultaten</button></div></div></div>';
     jQuery('#gis_ia_filters_'+map_id).html(html).css('width',(parseInt(GIS_ia_maps[map_id].pw.substr(1,1))*20+180)+'px');
     GIS_ia_maps[map_id].hasFilter=true;
     // jquery voor filter-panel
@@ -1705,7 +1705,7 @@ function GIS_paragraaf_start(map_id) {
     var app = window.app;
     app.timeSlider = function(opt_options) {
       var options = opt_options || {};
-      var handleTimeSlider = function() {hidePanels(map_id);togglePlay(map_id);};
+      var handleTimeSlider = function() {gis_ia_hidePanels(map_id);gis_ia_togglePlay(map_id);};
       var button='';
                         
       if (GIS_ia_maps[map_id].ts==2) {
@@ -1715,9 +1715,9 @@ function GIS_paragraaf_start(map_id) {
       }
 
       var range = document.createElement('input'); range.setAttribute("id", "timeslider"+map_id); range.setAttribute("type", "range"); range.setAttribute("min", "0");  range.setAttribute("max", GIS_ia_maps[map_id].layers.length-1); range.setAttribute("type", "range"); range.setAttribute("title", "Slider"); if (GIS_ia_maps[map_id].ts==2) {range.setAttribute('class','play-left');}
-      range.setAttribute('onchange','if (!jQuery(\'#playpauze'+map_id+'\').hasClass(\'play\')) {togglePlay('+map_id+');} gotoLayer('+map_id+',parseInt(this.value,10));');
-      range.setAttribute('oninput','gotoLayer('+map_id+',parseInt(this.value,10));');
-      range.setAttribute('onfocus','hidePanels('+map_id+');');
+      range.setAttribute('onchange','if (!jQuery(\'#playpauze'+map_id+'\').hasClass(\'play\')) {gis_ia_togglePlay('+map_id+');} gis_ia_gotoLayer('+map_id+',parseInt(this.value,10));');
+      range.setAttribute('oninput','gis_ia_gotoLayer('+map_id+',parseInt(this.value,10));');
+      range.setAttribute('onfocus','gis_ia_hidePanels('+map_id+');');
       var t,t1=false;
       for (t=0;t<GIS_ia_maps[map_id].layers_def.length;t++) if (GIS_ia_maps[map_id].layers_def[t].visible_) {
         range.setAttribute('value',t);
@@ -1982,26 +1982,26 @@ function GIS_paragraaf_start(map_id) {
     }
 
     // zorg dat filterwindow zich aanpast
-    filterwindowCheck(map_id);
+    gis_ia_filterwindowCheck(map_id);
     jQuery(window).resize(function() {
-      filterwindowCheck(map_id);
+      gis_ia_filterwindowCheck(map_id);
     });
 
     // fullscreen
     if (GIS_ia_maps[map_id].f) {
       jQuery('#gis_ia_map_'+map_id).find('.gis_ia_fullscreen').each(function(t,el) {
         // bij schakelen van/naar fullscreen is het mooier om het zoom-level te wijzigen. Dat past bij beleving bezoeker.
-        // daarom huidige size opslaan en vertraagde functie fullscreenChange instellen
+        // daarom huidige size opslaan en vertraagde functie gis_ia_fullscreenChange instellen
         var map=jQuery('#gis_ia_map_'+map_id);
         GIS_ia_maps[map_id].fullscreenPrevSize=[map.width(),map.height()];
         jQuery(el).on('click',function(e) {
-          setTimeout('fullscreenChange('+map_id+');',3000);
+          setTimeout('gis_ia_fullscreenChange('+map_id+');',3000);
         });
       });
     }
     GIS_ia_maps[map_id].map.on('movestart', function(evt) {
       jQuery('#gis_ia_map_'+map_id+'_data').hide();
-      filterwindowCheckHide(map_id);
+      gis_ia_filterwindowCheckHide(map_id);
     });
 
     // ScaleBar2
@@ -2037,7 +2037,7 @@ function GIS_paragraaf_start(map_id) {
     });*/
     GIS_ia_maps[map_id].map.on('singleclick', function(evt) {
       gis_ia_filters_submenuClick(map_id,-1);
-      hidePanels(map_id);
+      gis_ia_hidePanels(map_id);
       if (GIS_ia_maps[map_id].layerDataToDo>=1) {return;}
       // hide popup type 1
       jQuery('#gis_ia_map_'+map_id+'_data').hide();
@@ -2116,8 +2116,8 @@ function GIS_paragraaf_start(map_id) {
             var l=data.response.docs[0].centroide_ll.split(' ');
             l[0]=parseFloat(l[0].substr(6));
             l[1]=parseFloat(l[1].substr(0,l[1].length-1));
-            position2map=map_id;
-            gotoPosition2({coords: {longitude:l[0],latitude:l[1]}});
+            gis_ia_position2map=map_id;
+            gis_ia_gotoPosition2({coords: {longitude:l[0],latitude:l[1]}});
           });
         },
       }).on('keyup',function (e) {
@@ -2144,7 +2144,7 @@ function GIS_paragraaf_start(map_id) {
 
 // Deze functie wordt aangeroepen na wijziging fullscreen
 // Parameters:    map_id;    Integer; map ID
-function fullscreenChange(map_id) {
+function gis_ia_fullscreenChange(map_id) {
   var map=jQuery('#gis_ia_map_'+map_id), to=[map.width(),map.height()];
   if (GIS_ia_maps[map_id].fullscreenPrevSize[0]!=to[0] || GIS_ia_maps[map_id].fullscreenPrevSize[1]!=to[1]) { // als het formaat wijzigt
     var fact, aspectratioFrom=GIS_ia_maps[map_id].fullscreenPrevSize[0]/GIS_ia_maps[map_id].fullscreenPrevSize[1], aspecRatioTo=to[0]/to[1];
@@ -2171,39 +2171,39 @@ function fullscreenChange(map_id) {
     v.setResolution(fact*v.getResolution());
     GIS_ia_maps[map_id].fullscreenPrevSize=to;
     jQuery('#gis_ia_map_'+map_id+'_data').hide();
-    filterwindowCheck(map_id);
+    gis_ia_filterwindowCheck(map_id);
   }
 }
 /*  Functies voor de timeslider:
-  - laagControlText    toon de laagnaam boven de timeslider
-  - gotoLayer(newLayer)   zet een nieuwe laag aan (en de oude uit)
-  - togglePlay()       (start/stop) zet alle lagen uit en start met tonen van de eerste laag
-  - playing        schakelt naar de volgende laag (en stopt bij de laatste laag)
+  - gis_ia_laagControlText    toon de laagnaam boven de timeslider
+  - gis_ia_gotoLayer(newLayer)   zet een nieuwe laag aan (en de oude uit)
+  - gis_ia_togglePlay()       (start/stop) zet alle lagen uit en start met tonen van de eerste laag
+  - gis_ia_playing        schakelt naar de volgende laag (en stopt bij de laatste laag)
   Gebruikte globale variabelen:
-  - playAt        houdt bij hoe evr het afslepen is (laagnummer)
-  - playN          variable met de timeout
-  - playCT        variable met de timeout voor de laagnaam
+  - gis_ia_playAt        houdt bij hoe evr het afslepen is (laagnummer)
+  - gis_ia_playN          variable met de timeout
+  - gis_ia_playCT        variable met de timeout voor de laagnaam
 */
-function laagControlText(map_id,lno) {
+function gis_ia_laagControlText(map_id,lno) {
   var el=jQuery('#timeSliderLayer'+map_id);
   if (el.length==1) {
-    if (playCT>0) {clearTimeout(playCT);}
+    if (gis_ia_playCT>0) {clearTimeout(gis_ia_playCT);}
     var t=GIS_ia_maps[map_id].layers_def[lno].title;
     el.html(t).show();
-    playCT=setTimeout('jQuery(\'#timeSliderLayer'+map_id+'\').hide().html(\'\');',GIS_ia_maps[map_id].i);
+    gis_ia_playCT=setTimeout('jQuery(\'#timeSliderLayer'+map_id+'\').hide().html(\'\');',GIS_ia_maps[map_id].i);
   }
 }
 
-function gotoLayer(map_id,newLayer) {
+function gis_ia_gotoLayer(map_id,newLayer) {
     if (newLayer!=GIS_ia_maps[map_id].currentLayer) {
         if (GIS_ia_maps[map_id].currentLayer>=0) {GIS_ia_maps[map_id].layers[GIS_ia_maps[map_id].currentLayer].setVisible(false);}
         GIS_ia_maps[map_id].currentLayer=newLayer;
         if (GIS_ia_maps[map_id].currentLayer>=0) {GIS_ia_maps[map_id].layers[GIS_ia_maps[map_id].currentLayer].setVisible(true);}
-        laagControlText(map_id,newLayer);
+        gis_ia_laagControlText(map_id,newLayer);
     }
 }
-var playAt=-1, playN=0, playCT=0;
-function togglePlay(map_id) {
+var gis_ia_playAt=-1, gis_ia_playN=0, gis_ia_playCT=0;
+function gis_ia_togglePlay(map_id) {
     el=jQuery('#playpauze'+map_id);
     if (el.hasClass('play')) {
         for (var t=1;t<GIS_ia_maps[map_id].layers.length;t++) {
@@ -2211,21 +2211,21 @@ function togglePlay(map_id) {
         }
         if (!GIS_ia_maps[map_id].layers[0].getVisible()) {GIS_ia_maps[map_id].layers[0].setVisible(true);}
         el.removeClass('play').addClass('pauze');
-        playAt=0; jQuery('#timeslider'+map_id).val(1); jQuery('#timeslider'+map_id).val(0);
-        gotoLayer(map_id,0);
-        laagControlText(map_id,0);
-        playing(map_id);
+        gis_ia_playAt=0; jQuery('#timeslider'+map_id).val(1); jQuery('#timeslider'+map_id).val(0);
+        gis_ia_gotoLayer(map_id,0);
+        gis_ia_laagControlText(map_id,0);
+        gis_ia_playing(map_id);
     } else {
         if (GIS_ia_maps[map_id].currentLayer>0) { // prevent clicking when just started
             el.removeClass('pauze').addClass('play');
-            if (playN>0) {clearTimeout(playN);}
+            if (gis_ia_playN>0) {clearTimeout(gis_ia_playN);}
         }
     }
 }
-function playing(map_id) {
-    playN=setTimeout(function(){
-        if (playAt<GIS_ia_maps[map_id].layers.length-1) {
-            playAt++; jQuery('#timeslider'+map_id).val(playAt); gotoLayer(map_id,playAt); playing(map_id);
+function gis_ia_playing(map_id) {
+    gis_ia_playN=setTimeout(function(){
+        if (gis_ia_playAt<GIS_ia_maps[map_id].layers.length-1) {
+            gis_ia_playAt++; jQuery('#timeslider'+map_id).val(gis_ia_playAt); gis_ia_gotoLayer(map_id,gis_ia_playAt); gis_ia_playing(map_id);
         } else {
             el=jQuery('#playpauze'+map_id);
             el.removeClass('pauze').addClass('play');
@@ -2233,12 +2233,12 @@ function playing(map_id) {
     },GIS_ia_maps[map_id].i);
 }
 
-function hidePanels(map_id) {
+function gis_ia_hidePanels(map_id) {
   el=jQuery('#gis_ia_map_'+map_id).find('.filter');
   if (el.length>=1) {if (el.hasClass('shown')) {el.removeClass('shown');}}
   el=jQuery('#gis_ia_map_'+map_id).find('.legenda');
   if (el.length>=1) {el.find('.panel').hide();}
-  filterwindowCheckHide(map_id);
+  gis_ia_filterwindowCheckHide(map_id);
 }
 
 /* tbv download */
@@ -2270,7 +2270,7 @@ window.downloadFile = function(sUrl) {
 };
 window.downloadFile.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 window.downloadFile.isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
-function startDownload(map_id, lno, bb) {
+function gis_ia_startDownload(map_id, lno, bb) {
     GIS_ia_maps[map_id].overlay.setPosition(undefined);
     if (GIS_ia_maps[map_id].popupCenter) {
         GIS_ia_maps[map_id].map.getView().animate({
