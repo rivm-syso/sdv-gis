@@ -20,7 +20,7 @@
 .gis_ia_filters_info_button {background-color: #007bc7; color: white !important; border: solid 1px #535353;}
 .gis_ia_filters_button {background-color: #007bc7; color: white !important; border: solid 1px #535353;}
 /* tbv checkboxes en radio buttons */
-.gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {border: solid 1px #007bc7; background-color: white;}
+.gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {border: solid 1px white; background-color: #007bc7;}
 .gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {color: white; background-color: #007bc7;}
 
 /* uiterlijk knoppen */
