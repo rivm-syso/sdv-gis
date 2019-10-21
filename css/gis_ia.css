@@ -36,9 +36,6 @@
 .gis_ia_filters input.gis_ia_filters_radio:checked ~ label.gis_ia_filters_radio:before {border-width: 6px; width: 7px; height: 7px;}
 .gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {content: ""; position: absolute; width: 16px; height: 16px; display: inline-block; left: 0;}
 .gis_ia_filters label.gis_ia_filters_radio:before {border-radius: 9px;}
-/* verplaatsen naar kleuren css */
-.gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {border: solid 1px #01689b; background-color: white;}
-.gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {color: white; background-color: #01689b;}
 
 
 /* */
