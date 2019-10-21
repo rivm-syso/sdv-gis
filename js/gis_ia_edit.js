@@ -1494,5 +1494,6 @@ function gis_ia_delete(row) {
 // Start javascript na laden van de pagina
 (function ($) {
   gis_ia_init();
+  redrawFilterDefsTable();
   gis_ia_show_hide();
 })(jQuery);
