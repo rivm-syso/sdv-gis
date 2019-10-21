@@ -330,7 +330,7 @@ function gis_ia_setFieldsOnServer_(no, data) {
 function gis_ia_getFilterArray() {
   var fs = getParmValue('fs'), fa = [];
   if (fs != '') {
-    fs = Base64.decode(fs);
+    fs = gis_ia_Base64.decode(fs);
     fa = eval(fs);
   }
   return fa;
@@ -341,7 +341,7 @@ function gis_ia_setFilterArray(fa) {
     fa = [];
   }
   fs = JSON.stringify(fa);
-  fs = Base64.encode(fs);
+  fs = gis_ia_Base64.encode(fs);
   gis_ia_change_regel('fs', fs);
 }
 
@@ -1494,6 +1494,5 @@ function gis_ia_delete(row) {
 // Start javascript na laden van de pagina
 (function ($) {
   gis_ia_init();
-  redrawFilterDefsTable();
   gis_ia_show_hide();
 })(jQuery);
