@@ -8,9 +8,9 @@ sdv_gis:
     js/ol.js: {}
     js/gis_ia.js: {}
     js/proj4.js: {}
-    js/jquery.autocomplete.js: {}
   dependencies:
     - core/jquery
+    - core/jquery.ui.autocomplete 
     - core/jquery.ui.effects.slide
     - core/jquery.ui.position
     - core/drupal.ajax
