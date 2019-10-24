@@ -4,7 +4,7 @@
 .gis_ia_base .panel .button, .gis_ia_base .ol-popup-2 .button {background-color: #007bc7 !important; color: white !important; border: solid 1px #535353;}
 
 /* position2 CSS */
-.gis_ia_base .autocomplete-selected {background: #007bc7; color: white;}
+.gis_ia_base .ui-autocomplete .ui-menu-item .ui-state-active {background: #007bc7; color: white;}
 
 /* Popup & Panel */
 .gis_ia_base .panel, .gis_ia_base .autocomplete-suggestions {border: solid 1px #535353 !important; background-color: #d9ebf7 !important;}
