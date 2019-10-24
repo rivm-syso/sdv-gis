@@ -2973,7 +2973,7 @@ function GIS_paragraaf_start(map_id) {
 			jQuery.ajax({
 				dataType: "json",
 				type : 'Get',
-				url: position2_url_suggest+'q='+request,
+				url: position2_url_suggest+'&q='+request.term,
 				success: function(data) {
 					response( jQuery.map( data, function(item) {
 						// your operation on data
