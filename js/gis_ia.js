@@ -2958,17 +2958,7 @@ function GIS_paragraaf_start(map_id) {
     jQuery('.gis_ia_zoekveld').each(function (t, el) {
       el = jQuery(el);
       el.autocomplete({
-		//containerClass wordt classes
-        classes: 'autocomplete-suggestions panel',
-		// appendTo blijft gelijk
         appendTo: jQuery(jQuery('#gis_ia_base_' + map_id).find('.gis_ia_position2')[0]),
-		// width niet in API gevonden
-        width: 'initial',
-		//
-        paramName: 'q',
-		//
-        serviceUrl: position2_url_suggest,
-		// transformResult wordt source
         source: function (request, response) {
 			jQuery.ajax({
 				dataType: "json",
