@@ -2984,7 +2984,7 @@ function GIS_paragraaf_start(map_id) {
 				}
 			});
 		},
-		source__: function (response,bla)
+		source__: function (response,bla) {
           var o = JSON.parse(response), t, t1 = o.response.docs.length;
           var a = {'suggestions': []};
           for (t = 0; t < t1; t++) {
