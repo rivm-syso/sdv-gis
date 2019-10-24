@@ -29,7 +29,6 @@
 /* filters styling */
 .gis_ia_filters_def {margin-top: -20px;}
 .gis_ia_f_def,.gis_ia_bl_def,.gis_ia_l_def {font-size: 1.1em; font-weight: bold;margin: 20px 0 8px 0;}
-/*.gis_ia_filters input[type="checkbox"], .gis_ia_filters input[type="radio"] {margin-right: 20px; vertical-align: top;}*/
 .gis_ia_filters .gis_ia_filters_radio, .gis_ia_filters .gis_ia_filters_checkbox {padding-left: 32px;}
 .gis_ia_filters input.gis_ia_filters_checkbox, .gis_ia_filters input.gis_ia_filters_radio {position: absolute; width: 1px; height: 1px; margin: -1px;}
 .gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {content: "\2713"; font-size:15px; text-indent: 3px;}
@@ -73,11 +72,11 @@
 .gis_ia_filters_submenu>div {margin-top: 12px;}
 .gis_ia_filters_submenu>div:first-child {margin-top: 0;}
 .gis_ia_filters_submenu>div>div:first-child {font-weight: bold; margin-bottom: 4px;}
-.button-opa {display: inline-block;}
-.button-opa-min {width: 27px; min-width: 27px !important; border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; background-repeat: no-repeat; background-position: center;}
-.button-opa-max {width: 27px; min-width: 27px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; background-repeat: no-repeat; background-position: center;}
-.gis_ia_base .legenda .panel>div>div {white-space: nowrap;}
-.legenda .gis_ia_layer_legend {max-width: initial;}
+.gis_ia_base .button-opa {display: inline-block;}
+.gis_ia_base .button-opa-min {width: 27px; min-width: 27px !important; border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; background-repeat: no-repeat; background-position: center;}
+.gis_ia_base .button-opa-max {width: 27px; min-width: 27px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; background-repeat: no-repeat; background-position: center;}
+.gis_ia_base .gis_ia_legenda .panel>div>div {white-space: nowrap;}
+.gis_ia_legenda .gis_ia_layer_legend {max-width: initial;}
 
 /* Algemene instellingen (override ol-defaults) */
 .gis_ia_base .ol-control {padding: 0; border-radius: 0; background-color: transparent;}
@@ -90,19 +89,19 @@
 .gis_ia_base button {cursor: pointer; outline: none; display: inline-block; background-position: center; min-width: 33px; height: 33px; border-radius: 16px; margin: 0;}
 .gis_ia_base button:focus {outline: none; background-color: transparent;}
 .gis_ia_map_holder button {position: absolute;}
-.panel .button, .ol-popup-2 .button {cursor: pointer; border-radius: 0 !important; background-image: none !important;}
+.gis_ia_base .panel .button, .gis_ia_base .ol-popup-2 .button {cursor: pointer; border-radius: 0 !important; background-image: none !important;}
 .gis_ia_filters_close button, .gis_ia_filters_toon button {position: initial !important;}
 .gis_ia_filters_button,gis_ia_filters_button {float: right; cursor: pointer; outline: none; display: inline-block; border-radius: 16px; margin: 0; padding: 4px 12px;}
 /* zorgen dat breedte popup gemaximaliseerd wordt */
 .ol-overlay-container.ol-selectable {width: 100%;}
 .ol-popup {max-width: calc(100% - 70px);}
-.legenda button {background-repeat: no-repeat;}
+.gis_ia_legenda button {background-repeat: no-repeat;}
 
 /* z-index voor alle elementen */
 .gis_ia_zoom_extent {z-index: 1;}
 .gis_ia_fullscreen {z-index: 2;}
 .gis_ia_position2 {z-index: 3;}
-.timeSlider {z-index: 5;}
+.gis_ia_layerSlider {z-index: 5;}
 
 /* Edit pagina beter leesbaar maken */
 .gis_ia_edit_table {width: initial;}
@@ -111,12 +110,12 @@
 .gis_ia_edit_table tr td:first-child {padding-left: 0;}
 
 /* position2 CSS */
-.ol-control.gis_ia_position2 {line-height: 0; max-width: calc(100% - 110px);}
-.ol-control.gis_ia_position2 button {position: relative;}
+.gis_ia_base .ol-control.gis_ia_position2 {line-height: 0; max-width: calc(100% - 110px);}
+.gis_ia_base .ol-control.gis_ia_position2 button {position: relative;}
 .gis_ia_zoekveld {position: relative; margin: 0; padding: 0;vertical-align: top;}
-.autocomplete-suggestion { padding: 5px; overflow: hidden;line-height: 125%;}
-.autocomplete-selected {cursor: pointer;}
-.autocomplete-suggestions strong {text-decoration: underline;}
+.gis_ia_base .autocomplete-suggestion { padding: 5px; overflow: hidden;line-height: 125%;}
+.gis_ia_base .autocomplete-selected {cursor: pointer;}
+.gis_ia_base .autocomplete-suggestions strong {text-decoration: underline;}
 
 /* scalebar2 CSS */
 .scalebar2 {position: absolute; background: transparent !important;}
@@ -134,33 +133,33 @@
 .custom-mouse-position {position: absolute; margin-bottom: -1px;}
 
 /* Timeslider CSS */
-.playpauze {position: relative !important; display: inline-block !important;}
-.playpauze.play {}
-.playpauze.pauze {}
-.timeSliderLayer {margin: 0 0 12px 0 !important; display: none;}
-.timeSlider {max-width: calc(100% - 60px); width: 200px;}
+.gis_ia_base .playpauze {position: relative !important; display: inline-block !important;}
+.gis_ia_base .playpauze.play {}
+.gis_ia_base .playpauze.pauze {}
+.gis_ia_base .gis_ia_layerSliderLayer {margin: 0 0 12px 0 !important; display: none;}
+.gis_ia_base .gis_ia_layerSlider {max-width: calc(100% - 60px); width: 200px;}
 
 
 /* Popup & Panel */
-.ol-popup-table td {vertical-align: top;}
-.ol-popup-table tr td:first-child {padding-left: 0;}
+.gis_ia_base .ol-popup-table td {vertical-align: top;}
+.gis_ia_base .ol-popup-table tr td:first-child {padding-left: 0;}
 .gis_ia_table_lvfh {display: inline-block;}
 .gis_ia_table_lvfh table {width: initial; margin: 0;}
 .gis_ia_popup_h {font-weight: bold;}
 .gis_ia_base .panel {padding: 4px 6px; margin: 0; display: none; overflow-y: auto; border-radius: 0;}
-.ol-popup   {position: absolute; padding: 12px 20px; border-radius: 0; left: -50px; padding-top: 24px; z-index: 200; white-space: nowrap; bottom: 9px; margin-left: 1px;}
-.ol-popup-2 {position: absolute; padding: 12px 20px; border-radius: 0; left: -50px; padding-top: 24px; z-index: 200; white-space: nowrap;}
-.ol-popup:after, .ol-popup:before     {top: calc(100% + 1px); border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none;}
-.ol-popup-2:after, .ol-popup-2:before {top: calc(100% + 1px); border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none;}
-.ol-popup:after   {border-width: 10px; left: 48px; margin-left: -10px;}
-.ol-popup-2:after {border-width: 10px; left: 48px; margin-left: -10px; top: -21px;}
-.ol-popup:before   {border-width: 11px; left: 48px; margin-left: -11px;}
-.ol-popup-2:before {border-width: 11px; left: 48px; margin-left: -11px; top:-22px;}
-.ol-popup-closer {cursor: pointer; text-decoration: none; position: absolute; top: 2px; right: 8px;}
-.ol-popup-closer:after { content: "✖";}
-.ol-popup-closer, .ol-popup-closer:link, .ol-popup-closer:visited, .ol-popup-closer:hover {border-bottom: solid 0px transparent;color: black;}
-.ol-popup-table {border: 0;border-spacing: 0; margin: 10px 0 0 0;width: 100%;color: black;}
-.ol-popup-table tr {border-bottom: 1px solid transparent;padding: 0 10px 0 0;background: transparent;}
+.gis_ia_base .ol-popup   {position: absolute; padding: 12px 20px; border-radius: 0; left: -50px; padding-top: 24px; z-index: 200; white-space: nowrap; bottom: 9px; margin-left: 1px;}
+.gis_ia_base .ol-popup-2 {position: absolute; padding: 12px 20px; border-radius: 0; left: -50px; padding-top: 24px; z-index: 200; white-space: nowrap;}
+.gis_ia_base .ol-popup:after, .gis_ia_base .ol-popup:before     {top: calc(100% + 1px); border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none;}
+.gis_ia_base .ol-popup-2:after, .gis_ia_base .ol-popup-2:before {top: calc(100% + 1px); border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none;}
+.gis_ia_base .ol-popup:after   {border-width: 10px; left: 48px; margin-left: -10px;}
+.gis_ia_base .ol-popup-2:after {border-width: 10px; left: 48px; margin-left: -10px; top: -21px;}
+.gis_ia_base .ol-popup:before   {border-width: 11px; left: 48px; margin-left: -11px;}
+.gis_ia_base .ol-popup-2:before {border-width: 11px; left: 48px; margin-left: -11px; top:-22px;}
+.gis_ia_base .ol-popup-closer {cursor: pointer; text-decoration: none; position: absolute; top: 2px; right: 8px;}
+.gis_ia_base .ol-popup-closer:after { content: "✖";}
+.gis_ia_base .ol-popup-closer, .gis_ia_base .ol-popup-closer:link, .gis_ia_base .ol-popup-closer:visited, .gis_ia_base .ol-popup-closer:hover {border-bottom: solid 0px transparent;color: black;}
+.gis_ia_base .ol-popup-table {border: 0;border-spacing: 0; margin: 10px 0 0 0;width: 100%;color: black;}
+.gis_ia_base .ol-popup-table tr {border-bottom: 1px solid transparent;padding: 0 10px 0 0;background: transparent;}
 .gis_ia_data_pre {margin-bottom: 12px;}
 .gis_ia_data_post {margin-top: 12px;}
 .gis_ia_data_error {color: red; font-weight: bold; padding: 10px 0; white-space: normal;}
@@ -170,53 +169,53 @@
 #popup-content td:nth-child(1) {font-weight: bold;vertical-align: top;padding-right: 20px;}
 #popup-content table tr td:nth-child(2) {overflow: hidden;text-overflow: ellipsis;max-height: 4em;display: inline-block;line-height: normal;}
 
-.panel table, .ol-popup table, .ol-popup-2 table {border: none; margin: 0; width: initial;}
-.panel table tr, .ol-popup table tr, .ol-popup-2 table tr {border: none;padding: 0;background-color: transparent;}
-.panel table tr:hover, .ol-popup table tr:hover, .ol-popup-2 table tr:hover {background-color: transparent !important;}
-.panel table td, .ol-popup table td, .ol-popup-2 table td {border: none;padding: 4px 8px;background-color: transparent;}
+.gis_ia_base .panel table, .gis_ia_base .ol-popup table, .gis_ia_base .ol-popup-2 table {border: none; margin: 0; width: initial;}
+.gis_ia_base .panel table tr, .gis_ia_base .ol-popup table tr, .gis_ia_base .ol-popup-2 table tr {border: none;padding: 0;background-color: transparent;}
+.gis_ia_base .panel table tr:hover, .gis_ia_base .ol-popup table tr:hover, .gis_ia_base .ol-popup-2 table tr:hover {background-color: transparent !important;}
+.gis_ia_base .panel table td, .gis_ia_base .ol-popup table td, .gis_ia_base .ol-popup-2 table td {border: none;padding: 4px 8px;background-color: transparent;}
 
 /* Posities knoppen linksboven */
-.ol-control.gis_ia_zoom {right: 41px; top: 8px;}
-.gis_ol_zoom-out {top: 26px;}
-.ol-control.gis_ia_zoom_extent {right: 41px; top: 8px;}
-.ol-control.gis_ia_zoom_extent1 {top: 70px;}			/* als extent onder zoom-knoppen staat */
-.ol-control.gis_ia_fullscreen {right: 41px; top: 8px;}
-.ol-control.gis_ia_fullscreen1a {top: 50px;}			/* als fullscreen alleen onder zoom-knoppen staat */
-.ol-control.gis_ia_fullscreen1b {top: 70px;}			/* als fullscreen alleen onder extend-knop staat */
-.ol-control.gis_ia_fullscreen2 {top: 113px;} 			/* als fullscreen onder beide staat */
+.gis_ia_base .ol-control.gis_ia_zoom {right: 41px; top: 8px;}
+.gis_ia_base .gis_ol_zoom-out {top: 26px;}
+.gis_ia_base .ol-control.gis_ia_zoom_extent {right: 41px; top: 8px;}
+.gis_ia_base .ol-control.gis_ia_zoom_extent1 {top: 70px;}			/* als extent onder zoom-knoppen staat */
+.gis_ia_base .ol-control.gis_ia_fullscreen {right: 41px; top: 8px;}
+.gis_ia_base .ol-control.gis_ia_fullscreen1a {top: 50px;}			/* als fullscreen alleen onder zoom-knoppen staat */
+.gis_ia_base .ol-control.gis_ia_fullscreen1b {top: 70px;}			/* als fullscreen alleen onder extend-knop staat */
+.gis_ia_base .ol-control.gis_ia_fullscreen2 {top: 113px;} 			/* als fullscreen onder beide staat */
 .gis_ia_zoom-out {top: 26px;}
-.ol-control.gis_ia_position2 {left: 8px; top: 8px;}
-.gis_ial_zoekveld {margin: 1px;}
-.ol-control.gis_ia_filter {left: 8px; top: 8px;}
-.ol-control.gis_ia_filter1 {top: 68px;}
+.gis_ia_base .ol-control.gis_ia_position2 {left: 8px; top: 8px;}
+.gis_ia_base .gis_ial_zoekveld {margin: 1px;}
+.gis_ia_base .ol-control.gis_ia_filter {left: 8px; top: 8px;}
+.gis_ia_base .ol-control.gis_ia_filter1 {top: 68px;}
 
 /* posities knoppen linksonder */
-.ol-control.legenda {left: 8px; bottom: 8px;}
-.ol-control.legenda1a {bottom: 30px;}
-.ol-control.legenda1b {bottom: 64px;}
-.ol-control.legenda2 {bottom: 86px;}
-.ol-control.custom-mouse-position {left: 8px; bottom: 8px;}
-.scalebar2 {left: 8px; bottom: 8px;}
-.scalebar21 {left: 8px; bottom: 28px;}
-.ol-control.legenda .panel {position: absolute;; bottom: 33px;}
+.gis_ia_base .ol-control.gis_ia_legenda {left: 8px; bottom: 8px;}
+.gis_ia_base .ol-control.legenda1a {bottom: 30px;}
+.gis_ia_base .ol-control.legenda1b {bottom: 64px;}
+.gis_ia_base .ol-control.legenda2 {bottom: 86px;}
+.gis_ia_base .ol-control.custom-mouse-position {left: 8px; bottom: 8px;}
+.gis_ia_base .scalebar2 {left: 8px; bottom: 8px;}
+.gis_ia_base .scalebar21 {left: 8px; bottom: 28px;}
+.gis_ia_base .ol-control.gis_ia_legenda .panel {position: absolute;; bottom: 33px;}
 
 /* posities knoppen rechtsonder */
-.ol-control.timeSlider {right: 8px; bottom: 8px;}
+.gis_ia_base .ol-control.gis_ia_layerSlider {right: 8px; bottom: 8px;}
 
 /* uiterlijk knoppen */
-.ol-control button.gis_ia_zoom-in {font-size: 0 !important; border-bottom-left-radius: 0; border-bottom-right-radius: 0; height: 27px; border-bottom-width: 0;background-repeat: no-repeat;}
-.ol-control button.gis_ia_zoom-out {font-size: 0 !important; border-top-left-radius: 0; border-top-right-radius: 0; height: 27px;background-repeat: no-repeat;}
+.gis_ia_base .ol-control button.gis_ia_zoom-in {font-size: 0 !important; border-bottom-left-radius: 0; border-bottom-right-radius: 0; height: 27px; border-bottom-width: 0;background-repeat: no-repeat;}
+.gis_ia_base .ol-control button.gis_ia_zoom-out {font-size: 0 !important; border-top-left-radius: 0; border-top-right-radius: 0; height: 27px;background-repeat: no-repeat;}
 .gis_ia_zoom_extent button {background-repeat: no-repeat;}
 .gis_ia_fullscreen button {background-repeat: no-repeat; font-size: 0;}
-.zoom-position {border-top-right-radius: 16px !important; border-bottom-right-radius: 16px !important;}
+.gis_ia_base .zoom-position {border-top-right-radius: 16px !important; border-bottom-right-radius: 16px !important;}
 .gis_ia_zoekveld {margin: 0; border-top-width: 0; border-left-width: 0; border-bottom-width: 0; width: calc(100% - 76px); height:33px; padding: 0 4px;}
 .gis_ia_zoekknop {border-width: 0 !important; border-radius: 0 !important; background-repeat: no-repeat;}
 .gis_ia_gotopos {border-width: 0 !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;background-repeat: no-repeat;}
-.timeSlider input[type=range].play-left {width: calc(100% - 38px); margin: 0 4px 0 0 !important; float: left; height: 33px;}
-.opaMelder {position: absolute; z-index: 1000; padding: 0 3px; border: solid 1px black;}
+.gis_ia_layerSlider input[type=range].play-left {width: calc(100% - 38px); margin: 0 4px 0 0 !important; float: left; height: 33px;}
+.gis_ia_base .opaMelder {position: absolute; z-index: 1000; padding: 0 3px; border: solid 1px black;}
 .gis_ia_filter_button {display: none; width: auto !important; white-space: nowrap; padding: 0 12px 0 4px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;}
 .gis_ia_options_button {padding-left: 32px !important; background-repeat: no-repeat; background-position: 6px 6px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; padding-right: 8px !important;}
-.ol-control.legenda button {position: absolute; bottom: 0;}
+.gis_ia_base .ol-control.gis_ia_legenda button {position: absolute; bottom: 0;}
 
 /* alles voor input range, voor verschillende browsers */
 .gis_ia_base input[type=range] {min-height: 20px; -webkit-appearance: none; background: transparent; margin: 0 !important; padding: 0; width: 100%;}
@@ -236,9 +235,9 @@
 .gis_ia_base input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px;}
 .gis_ia_base input[type=range]::-moz-range-track {width: 100%; height: 4px;}
 .gis_ia_base input[type=range]::-ms-track { width: 100%; height: 4px;}
-.gis_ia_base .timeSlider input[type=range]::-webkit-slider-thumb {height: 35px; width: 45px; margin-top: -17px; border-radius: 17px; background-repeat: no-repeat;background-position: center;}
-.gis_ia_base .timeSlider input[type=range]::-moz-range-thumb {height: 31px; width: 41px; margin-top: -15px; border-radius: 16px; background-repeat: no-repeat;background-position: center;}
-.gis_ia_base .timeSlider input[type=range]::-ms-thumb { height: 31px; width: 41px; margin-top: 0px; border-radius: 16px; background-repeat: no-repeat;background-position: center;}
+.gis_ia_base .gis_ia_layerSlider input[type=range]::-webkit-slider-thumb {height: 35px; width: 45px; margin-top: -17px; border-radius: 17px; background-repeat: no-repeat;background-position: center;}
+.gis_ia_base .gis_ia_layerSlider input[type=range]::-moz-range-thumb {height: 31px; width: 41px; margin-top: -15px; border-radius: 16px; background-repeat: no-repeat;background-position: center;}
+.gis_ia_base .gis_ia_layerSlider input[type=range]::-ms-thumb { height: 31px; width: 41px; margin-top: 0px; border-radius: 16px; background-repeat: no-repeat;background-position: center;}
 .gis_ia_base button.playpauze {height: 33px; width: 33px; border-radius: 16px; background-position: center; background-repeat: no-repeat;}
 
-.wait-cursor {background-image: url(wait.gif); width: 32px; height: 32px;}
+.gis_ia_base .wait-cursor {background-image: url(wait.gif); width: 32px; height: 32px;}

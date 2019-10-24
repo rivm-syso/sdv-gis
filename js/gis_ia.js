@@ -5,7 +5,6 @@
  2. Op IOS (Ipad) werken de range-inputs niet. Dit is mogelijk te verhelpen met: https://github.com/Patrick64/jquerytools/blob/dev/src/rangeinput/rangeinput.js
  Opmerkingen:
  - Loading.gif is gemaakt mbv https://icons8.com/preloaders/en/free
- - Autocomplete tbv position2 komt van: https://www.devbridge.com/sourcery/components/jquery-autocomplete/
  **************************************************************************************/
 
 /* to do tbv kleuren-css:
@@ -1882,7 +1881,7 @@ function gis_ia_layers_change(map_id, typ, i) {
       break;
   }
   l.setVisible(checked);
-  var el = document.getElementById('timeSliderLayer' + map_id);
+  var el = document.getElementById('gis_ia_layerSliderLayer' + map_id);
   if (el) {
     jQuery(el).hide();
   }
@@ -2403,7 +2402,7 @@ function GIS_paragraaf_start(map_id) {
     }
     GIS_ia_maps[map_id].map.addControl(new ol.control.Legenda({
       'map_id': map_id,
-      className: 'legenda' + legenda
+      className: 'gis_ia_legenda' + legenda
     }));
   }
   // Muispositie
@@ -2477,9 +2476,9 @@ function GIS_paragraaf_start(map_id) {
 
       var element = document.createElement('div');
       var element2 = document.createElement('div');
-      element.className = 'ol-unselectable ol-control timeSlider';
-      element2.className = 'panel timeSliderLayer';
-      element2.id = 'timeSliderLayer' + map_id;
+      element.className = 'ol-unselectable ol-control gis_ia_layerSlider';
+      element2.className = 'panel gis_ia_layerSliderLayer';
+      element2.id = 'gis_ia_layerSliderLayer' + map_id;
       element.appendChild(element2);
       if (button != '') {
         element.appendChild(button);
@@ -2959,13 +2958,18 @@ function GIS_paragraaf_start(map_id) {
     jQuery('.gis_ia_zoekveld').each(function (t, el) {
       el = jQuery(el);
       el.autocomplete({
-        containerClass: 'autocomplete-suggestions panel',
+		//containerClass wordt classes
+        classes: 'autocomplete-suggestions panel',
+		// appendTo blijft gelijk
         appendTo: jQuery(jQuery('#gis_ia_base_' + map_id).find('.gis_ia_position2')[0]),
+		// width niet in API gevonden
         width: 'initial',
+		//
         paramName: 'q',
+		//
         serviceUrl: position2_url_suggest,
-        //appendTo: jQuery(el.parent()),
-        transformResult: function (response, originalQuery) {
+		// transformResult wordt source
+        source: function (response, originalQuery) {
           var o = JSON.parse(response), t, t1 = o.response.docs.length;
           var a = {'suggestions': []};
           for (t = 0; t < t1; t++) {
@@ -2977,7 +2981,8 @@ function GIS_paragraaf_start(map_id) {
           }
           return a;
         },
-        onSelect: function (suggestion) {
+		// onSelect wordt search
+        search: function (suggestion) {
           jQuery.getJSON(position2_url_lookup + suggestion.data, function (data) {
             var l = data.response.docs[0].centroide_ll.split(' ');
             l[0] = parseFloat(l[0].substr(6));
@@ -3059,14 +3064,14 @@ function gis_ia_fullscreenChange(map_id) {
   - gis_ia_playCT        variable met de timeout voor de laagnaam
 */
 function gis_ia_laagControlText(map_id, lno) {
-  var el = jQuery('#timeSliderLayer' + map_id);
+  var el = jQuery('#gis_ia_layerSliderLayer' + map_id);
   if (el.length == 1) {
     if (gis_ia_playCT > 0) {
       clearTimeout(gis_ia_playCT);
     }
     var t = GIS_ia_maps[map_id].layers_def[lno].title;
     el.html(t).show();
-    gis_ia_playCT = setTimeout('jQuery(\'#timeSliderLayer' + map_id + '\').hide().html(\'\');', GIS_ia_maps[map_id].i);
+    gis_ia_playCT = setTimeout('jQuery(\'#gis_ia_layerSliderLayer' + map_id + '\').hide().html(\'\');', GIS_ia_maps[map_id].i);
   }
 }
 
@@ -3136,7 +3141,7 @@ function gis_ia_hidePanels(map_id) {
       el.removeClass('shown');
     }
   }
-  el = jQuery('#gis_ia_map_' + map_id).find('.legenda');
+  el = jQuery('#gis_ia_map_' + map_id).find('.gis_ia_legenda');
   if (el.length >= 1) {
     el.find('.panel').hide();
   }
