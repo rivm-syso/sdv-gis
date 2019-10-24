@@ -113,9 +113,9 @@
 .gis_ia_base .ol-control.gis_ia_position2 {line-height: 0; max-width: calc(100% - 110px);}
 .gis_ia_base .ol-control.gis_ia_position2 button {position: relative;}
 .gis_ia_zoekveld {position: relative; margin: 0; padding: 0;vertical-align: top;}
-.gis_ia_base .autocomplete-suggestion { padding: 5px; overflow: hidden;line-height: 125%;}
-.gis_ia_base .autocomplete-selected {cursor: pointer;}
-.gis_ia_base .autocomplete-suggestions strong {text-decoration: underline;}
+.gis_ia_base .ui-autocomplete .ui-menu-item { padding: 5px; overflow: hidden;line-height: 125%;}
+.gis_ia_base .ui-autocomplete .ui-menu-item.selected {cursor: pointer;}
+.gis_ia_base .ui-autocomplete .ui-menu-item strong {text-decoration: underline;}
 
 /* scalebar2 CSS */
 .scalebar2 {position: absolute; background: transparent !important;}
