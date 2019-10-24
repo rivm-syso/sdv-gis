@@ -2967,7 +2967,7 @@ function GIS_paragraaf_start(map_id) {
 				success: function(data) {
 					var t,ans=[];
 					for (t=0;t<data.response.docs.length;t++) {
-						ans[ans.length]=data.response.docs[t].weergavenaam;
+						ans[ans.length]='<span style="display: none;">'+data.response.docs[t].id+'</span>'+data.response.docs[t].weergavenaam;
 					}
 					response(ans);
 				},
