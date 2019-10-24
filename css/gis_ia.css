@@ -114,7 +114,7 @@
 .gis_ia_base .ol-control.gis_ia_position2 button {position: relative;}
 .gis_ia_zoekveld {position: relative; margin: 0; padding: 0;vertical-align: top;}
 .gis_ia_base .ui-autocomplete .ui-menu-item { padding: 5px; overflow: hidden;line-height: 125%;}
-.gis_ia_base .ui-autocomplete .ui-menu-item .ui-state-active {cursor: pointer;}
+.gis_ia_base .ui-autocomplete .ui-menu-item .ui-state-active {cursor: pointer; margin: 0 !important;}
 .gis_ia_base .ui-autocomplete .ui-menu-item strong {text-decoration: underline;}
 
 /* scalebar2 CSS */
