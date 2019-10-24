@@ -2976,7 +2976,7 @@ function GIS_paragraaf_start(map_id) {
 				url: position2_url_suggest+'&q='+request.term,
 				success: function(data) {
 					var t,ans=[];
-					for (t=0;t<item.docs.length;t++) {
+					for (t=0;t<data.response.docs.length;t++) {
 						
 					}
 					response(['a','b','c']);
