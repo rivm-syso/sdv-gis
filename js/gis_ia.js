@@ -2969,7 +2969,8 @@ function GIS_paragraaf_start(map_id) {
 		//
         serviceUrl: position2_url_suggest,
 		// transformResult wordt source
-        search: function (response, originalQuery) {
+        source: 'position2_url_suggest',
+		source__: function (response, originalQuery) {
           var o = JSON.parse(response), t, t1 = o.response.docs.length;
           var a = {'suggestions': []};
           for (t = 0; t < t1; t++) {
@@ -2982,7 +2983,7 @@ function GIS_paragraaf_start(map_id) {
           return a;
         },
 		// onSelect wordt search
-        source: function (suggestion) {
+        search__: function (suggestion) {
           jQuery.getJSON(position2_url_lookup + suggestion.data, function (data) {
             var l = data.response.docs[0].centroide_ll.split(' ');
             l[0] = parseFloat(l[0].substr(6));
