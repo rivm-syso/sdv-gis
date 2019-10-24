@@ -2969,8 +2969,22 @@ function GIS_paragraaf_start(map_id) {
 		//
         serviceUrl: position2_url_suggest,
 		// transformResult wordt source
-        source: 'position2_url_suggest',
-		source__: function (response, originalQuery) {
+        source: function (request, response) {
+			$.ajax({
+				dataType: "json",
+				type : 'Get',
+				url: position2_url_suggest+'q='+request,
+				success: function(data) {
+					response( $.map( data, function(item) {
+						// your operation on data
+						var aaa=1;
+					}));
+				},
+				error: function(data) {
+				}
+			});
+		},
+		source__: function (response,bla)
           var o = JSON.parse(response), t, t1 = o.response.docs.length;
           var a = {'suggestions': []};
           for (t = 0; t < t1; t++) {
