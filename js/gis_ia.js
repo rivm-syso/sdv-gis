@@ -2975,10 +2975,11 @@ function GIS_paragraaf_start(map_id) {
 				type : 'Get',
 				url: position2_url_suggest+'&q='+request.term,
 				success: function(data) {
-					response( jQuery.map( data, function(item) {
-						// your operation on data
-						var aaa=1;
-					}));
+					var t,ans=[];
+					for (t=0;t<item.docs.length;t++) {
+						
+					}
+					response(['a','b','c']);
 				},
 				error: function(data) {
 				}
