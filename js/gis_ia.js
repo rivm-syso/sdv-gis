@@ -3144,12 +3144,12 @@ function gis_ia_hidePanels(map_id) {
 }
 
 /* tbv download */
-window.downloadFile = function (sUrl) {
+window.gis_ia_downloadFile = function (sUrl) {
   if (/(iP)/g.test(navigator.userAgent)) {
     window.open(sUrl, '_blank');
     return false;
   }
-  if (window.downloadFile.isChrome || window.downloadFile.isSafari) {
+  if (window.gis_ia_downloadFile.isChrome || window.gis_ia_downloadFile.isSafari) {
     var link = document.createElement('a');
     link.href = sUrl;
     link.setAttribute('target', '_blank');
@@ -3170,8 +3170,8 @@ window.downloadFile = function (sUrl) {
   window.open(sUrl, '_blank');
   return true;
 };
-window.downloadFile.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-window.downloadFile.isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+window.gis_ia_downloadFile.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+window.gis_ia_downloadFile.isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
 
 function gis_ia_startDownload(map_id, lno, bb) {
   GIS_ia_maps[map_id].overlay.setPosition(undefined);
@@ -3190,7 +3190,7 @@ function gis_ia_startDownload(map_id, lno, bb) {
       var bbox = GIS_ia_maps[map_id].map.getView().calculateExtent();
       url += '&bbox=' + bbox.join(',');
     }
-    downloadFile(url);
+    gis_ia_downloadFile(url);
   }
 }
 

@@ -1,18 +1,18 @@
 /******************** Algemene werking ******************************************************************************
  In drupal zijn er 2 velden (fields) die alle benodigde informatie bevatten:
- - gis_ia_params    Bevat een reeks aan parameters (zie default_parameters voor beschrijving)
+ - gis_ia_params    Bevat een reeks aan parameters (zie gis_ia_default_parameters voor beschrijving)
  - gis_ia_layers    Bevat voor elke laag een aantal setting (zie gis_ia_default_row voor beschrijving)
  Na het laden van de pagina wordt er javascript afgevuurd die deze velden verbergt. Vervolgens wordt er nieuwe HTML
  gegenereerd zodat een redacteur alle benodigde parameters en layers op kan geven.
  Aanpassingen als volgt doorvoeren:
  1. Toevoegen nieuwe parameter:
- - Neem nieuwe parameter op in default_parameters en programmeer in deze file de invoer (edit-modus) er van.
+ - Neem nieuwe parameter op in gis_ia_default_parameters en programmeer in deze file de invoer (edit-modus) er van.
  - Programmeer in de file 'gis_ia.js' het effect van de parameter.
  2. Uitbreiding van een bestaande parameter met een nieuwe waarde:
- - Neem nieuwe waarde in default_parameters op en programmeer in deze file de invoer (edit-modus) er van.
+ - Neem nieuwe waarde in gis_ia_default_parameters op en programmeer in deze file de invoer (edit-modus) er van.
  - Programmeer in de file 'gis_ia.js' het effect van de nieuwe waarde.
  3. Parameter verwijderen
- - Verwijder de parameter uit default_parameters en haal uit deze file ook het invoer stuk (edit-modus).
+ - Verwijder de parameter uit gis_ia_default_parameters en haal uit deze file ook het invoer stuk (edit-modus).
  - Haal uit de file 'gis_ia.js' het geprogrammeerde effect van de parameter.
  4. Waarde van een parameter verwijderen
  - Hoog de dataversie op
@@ -40,7 +40,7 @@ var gis_ia_default_row = ['WMS',                    // 0=type
   '1'];
 
 /***************** Default parameters ******************************/
-var default_parameters = {
+var gis_ia_default_parameters = {
   'dataversie': 0,   // dataversie (altijd integer) ophogen als deze niet meer
                      // compatible is met een vorige versie.
   // Formaat en uiterlijk
@@ -100,7 +100,7 @@ var gis_ia_modals = [];
 // parameter-positie) de waarde op een bepaalde positie Return:  waarde van de
 // parameter, of waarde van de parameter op een bebaaplde positie, of een lege
 // string als de waarde niet bestaat
-function getParmValue(parm) {
+function gis_ia_getParmValue(parm) {
   var parmsplit = parm.split('-'), r,
       body = jQuery('#edit-gis-ia-params-0-value'), regels = body.val(), t, pos,
       v;
@@ -132,25 +132,25 @@ function getParmValue(parm) {
 // Deze functies worden bij initialisatie aangeroepen en bij de onchange-event
 // van een parameter; Zie de functie gis_ia_change()
 function gis_ia_show_hide() {
-  if (getParmValue('p') == 1) {
+  if (gis_ia_getParmValue('p') == 1) {
     jQuery('#gis_ia_pz_div').show();
   }
   else {
     jQuery('#gis_ia_pz_div').hide();
   }
-  if (getParmValue('l-0') != 0) {
+  if (gis_ia_getParmValue('l-0') != 0) {
     jQuery('.gis_ia_l_1').show();
   }
   else {
     jQuery('.gis_ia_l_1').hide();
   }
-  if (getParmValue('l-3') != 0) {
+  if (gis_ia_getParmValue('l-3') != 0) {
     jQuery('.gis_ia_l_4').show();
   }
   else {
     jQuery('.gis_ia_l_4').hide();
   }
-  if (getParmValue('ts') >= 1) {
+  if (gis_ia_getParmValue('ts') >= 1) {
     jQuery('.gis_ia_ts_1').show();
   }
   else {
@@ -220,7 +220,7 @@ function gis_ia_change_regel(parameter, v) {
 
 // Functie die alle benodigde HTML genereert om layers te defini"eren
 // (muteren/toevoegen/verwijderen/volgorde) De functie returnt een string.
-function getLayerDefs() {
+function gis_ia_getLayerDefs() {
   var layer_defs = jQuery('#edit-gis-ia-layers-0-value'), t = layer_defs.val();
   t = t.replace(/[\r\n]+/g, "\r");
   t = t.replace(/\n+/g, "\r");
@@ -239,8 +239,8 @@ function getLayerDefs() {
 }
 
 // Deze functie plaatst de juiste layer-HTML (opnieuw) in de pagina.
-function redrawLayerDefsTable() {
-  jQuery('#gis_ia_layer_defs').html(getLayerDefs());
+function gis_ia_redrawLayerDefsTable() {
+  jQuery('#gis_ia_layer_defs').html(gis_ia_getLayerDefs());
 }
 
 // Functie die alle benodigde HTML genereert om filters te defini"eren
@@ -320,7 +320,7 @@ function gis_ia_setFieldsOnServer_(no, data) {
       }
     }
     gis_ia_setFilterArray(fs);
-    redrawFilterDefsTable();
+    gis_ia_redrawFilterDefsTable();
     if (msg != '') {
       alert('De volgende velden bestaan niet meer in de kaartlaag:' + msg);
     }
@@ -328,7 +328,7 @@ function gis_ia_setFieldsOnServer_(no, data) {
 }
 
 function gis_ia_getFilterArray() {
-  var fs = getParmValue('fs'), fa = [];
+  var fs = gis_ia_getParmValue('fs'), fa = [];
   if (fs != '') {
     fs = gis_ia_Base64.decode(fs);
     fa = eval(fs);
@@ -346,7 +346,7 @@ function gis_ia_setFilterArray(fa) {
 }
 
 // Deze functie plaatst de juiste filter-HTML (opnieuw) in de pagina.
-function getFilterDefTableItem(f, i, opts) {
+function gis_ia_getFilterDefTableItem(f, i, opts) {
   var ia = ('' + i).split('.'),
       inspringen = 'padding-left:' + (54 * (ia.length - 1)) + 'px;';
   var t,
@@ -358,7 +358,7 @@ function getFilterDefTableItem(f, i, opts) {
     case 'g': // groep
       s += '<td>Groep</td><td><input value="' + f.w + '" onchange="gis_ia_set_filterItem(this,\'' + i + '\',\'w\');"></td><td></td><td><input type="button" onclick="gis_ia_toggle_filters(this);" value=" &uarr; &darr; "></td><td><div class="gis_ia_hideable">Soort:&nbsp;&nbsp;&nbsp;&nbsp;' + gis_ia_getSelect(['of=Or', 'en=And'], f.s, 'gis_ia_set_filterItem(this,\'' + i + '\',\'s\');') + '</div></td><td><div class="gis_ia_hideable">' + gis_ia_getSelect(['0=In place', '1=As submenu'], f.b, 'gis_ia_set_filterItem(this,\'' + i + '\',\'b\');', (('' + i).indexOf('.') >= 1 ? 'style="display: none;"' : '')) + '</div></td><td><input onclick="gis_ia_del_filter(\'' + i + '\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
       for (t = 0; t < f.e.length; t++) {
-        s += getFilterDefTableItem(f.e[t], i + '.' + (t + 1), opts);
+        s += gis_ia_getFilterDefTableItem(f.e[t], i + '.' + (t + 1), opts);
       }
       break;
     case 'c': // checkbox
@@ -477,7 +477,7 @@ function getFilterDefTableItemPos(f, prepos) {
   return r;
 }
 
-function redrawFilterDefsTable() {
+function gis_ia_redrawFilterDefsTable() {
   var hfd_options = '<option value="">Voeg filter toe</option><option value="a">Tekst</option><option value="c">Checkbox</option><option value="d">List</option><option value="vt">Numeriek</option><option value="i">Vrije tekst</option><option value="g">Groep</option>';
   var fs = gis_ia_getFilterArray(), t, t1, opts = '';
   for (t = 0, t1 = fs.length; t < t1; t++) {
@@ -486,7 +486,7 @@ function redrawFilterDefsTable() {
   opts = opts.substr(1).split(',');
   var tbl = '<table class="field-multiple-table responsive-enabled"><thead><tr><th>Pos.</th><th>Type</th><th>Label(s)</th><th>Veld / Operator</th><th><input type="button" onclick="gis_ia_toggle_filters();" value=" &uarr; &darr; "></th><th>Definitie</th><th>Weergave</th><th></th></tr></thead><tbody>';
   for (t = 0, t1 = fs.length; t < t1; t++) {
-    tbl += getFilterDefTableItem(fs[t], t + 1, opts);
+    tbl += gis_ia_getFilterDefTableItem(fs[t], t + 1, opts);
   }
   tbl += '</tbody></table>';
   tbl += '<select onchange="gis_ia_add_filter(this,-1);" class="button" style="margin-top: 32px;">' + hfd_options + '</select>';
@@ -519,7 +519,7 @@ function gis_ia_del_filter(i) {
     e.e.splice(parseInt(i[t], 10) - 1, 1);
   }
   gis_ia_setFilterArray(fs);
-  redrawFilterDefsTable();
+  gis_ia_redrawFilterDefsTable();
 }
 
 function gis_ia_filter_volgorde(e, from_no) {
@@ -568,7 +568,7 @@ function gis_ia_filter_volgorde(e, from_no) {
     e = from_e.splice(from_e_pos, 1)[0];
     to_e.splice(to_e_pos, 0, e);
     gis_ia_setFilterArray(fs);
-    redrawFilterDefsTable();
+    gis_ia_redrawFilterDefsTable();
   }
 }
 
@@ -652,7 +652,7 @@ function gis_ia_add_filter(e, no) {
     fs[no].e[fs[no].e.length] = elm;
   }
   gis_ia_setFilterArray(fs);
-  redrawFilterDefsTable();
+  gis_ia_redrawFilterDefsTable();
 }
 
 function gis_ia_set_filterItem_(e, parm, v) {
@@ -792,7 +792,7 @@ function gis_ia_init() {
 
   // Up to date maken van het veld gis_ia_params
   var body = jQuery('#edit-gis-ia-params-0-value');
-  // de variabele default_parameters bevat de defaults voor de laatste
+  // de variabele gis_ia_default_parameters bevat de defaults voor de laatste
   // dataversie. Deze wordt als volgt gemerged met bestaande data: - Als een
   // parameter niet meer bestaat dan wordt deze uit 'body' gehaald - Als een
   // parameter wel een default heeft maar niet in 'body' bestaat, dan wordt
@@ -801,12 +801,12 @@ function gis_ia_init() {
   // toegevoegd.
   if (body.val() == '') { // nieuwe node, set alle default parameters, behalve ld
     var key, v = '';
-    for (key in default_parameters) {
-      if (!default_parameters.hasOwnProperty(key)) {
+    for (key in gis_ia_default_parameters) {
+      if (!gis_ia_default_parameters.hasOwnProperty(key)) {
         continue;
       }
       if (key != 'ld') {
-        v += (v == '' ? '' : String.fromCharCode(13)) + key + '=' + default_parameters[key];
+        v += (v == '' ? '' : String.fromCharCode(13)) + key + '=' + gis_ia_default_parameters[key];
       }
     }
     body.val(v);
@@ -816,19 +816,19 @@ function gis_ia_init() {
     regels = regels.replace(/[\r\n]+/g, "\r");
     regels = regels.replace(/\n+/g, "\r");
     regels = regels.split("\r");
-    // verwijder elke regel die niet meer in default_parameters bestaat, of de
+    // verwijder elke regel die niet meer in gis_ia_default_parameters bestaat, of de
     // ld parameter
     for (t = regels.length - 1; t >= 0; t--) {
       pos = regels[t].indexOf('=');
       parm = regels[t].substr(0, pos);
-      if (parm == 'ld' || !default_parameters.hasOwnProperty(parm)) {
+      if (parm == 'ld' || !gis_ia_default_parameters.hasOwnProperty(parm)) {
         regels.splice(t, 1);
       }
     }
-    // voeg elke parameter uit default_parameters toe aan body als deze niet in
+    // voeg elke parameter uit gis_ia_default_parameters toe aan body als deze niet in
     // body bestaat, of verleng deze indien nodig
-    for (key in default_parameters) {
-      if (key == 'u' || key == 'ld' || (key != 'tmp' && !default_parameters.hasOwnProperty(key))) {
+    for (key in gis_ia_default_parameters) {
+      if (key == 'u' || key == 'ld' || (key != 'tmp' && !gis_ia_default_parameters.hasOwnProperty(key))) {
         continue;
       }
       for (t = 0, regel = -1; t < regels.length; t++) {
@@ -840,15 +840,15 @@ function gis_ia_init() {
         }
       }
       if (regel == -1) { // hij bestaat niet
-        regels[regels.length] = key + '=' + default_parameters[key];
+        regels[regels.length] = key + '=' + gis_ia_default_parameters[key];
       }
       else { // mogelijk verlenging nodig
         if (key == 'tmp') { // tmp key altijd vervangen
-          regels[regel] = key + '=' + default_parameters[key];
+          regels[regel] = key + '=' + gis_ia_default_parameters[key];
         }
         else {
-          if (typeof (default_parameters[key]) == 'string') {
-            regels[regel] += default_parameters[key].substr(regels[regel].length);
+          if (typeof (gis_ia_default_parameters[key]) == 'string') {
+            regels[regel] += gis_ia_default_parameters[key].substr(regels[regel].length);
           }
         }
       }
@@ -971,7 +971,7 @@ function gis_ia_init() {
   // Laag- en velddefinities
   d += '<div class="form-item"><b>Laag- en velddefinities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\'' + href + '#layer\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
   d += '<div><input type="checkbox" id="gis_ia_tmp-0" gis_ia="tmp-0"><label for="gis_ia_tmp-0" class="option"> Cache met laag-informatie legen.</label></div>';
-  d += '<div id="gis_ia_layer_defs">' + getLayerDefs() + '</div>';
+  d += '<div id="gis_ia_layer_defs">' + gis_ia_getLayerDefs() + '</div>';
 
   d += '<div class="form-item"><b>Filter definities</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\'' + href + '#filter\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div></div>';
   d += '<div id="gis_ia_filter_defs"><div id="gis_ia_div2"></div></div>';
@@ -987,7 +987,7 @@ function gis_ia_init() {
   var els = jQuery('[gis_ia]').each(function (t, el) {
     el = jQuery(el);
     // set de waarde, of de default
-    var v = getParmValue(el.attr('gis_ia'));
+    var v = gis_ia_getParmValue(el.attr('gis_ia'));
     if (el.prop('type') == 'checkbox') {
       el.prop('checked', v == '1');
     }
@@ -1079,7 +1079,7 @@ function gis_ia_getRadio(name, parameter, labels, horizontal, atts) {
     horizontal = true;
   }
   var s = '<div' + (typeof (atts) != 'undefined' ? ' ' + atts : '') + '>', t,
-      s1, pos, value = getParmValue(parameter);
+      s1, pos, value = gis_ia_getParmValue(parameter);
   for (t = 0; t < labels.length; t++) {
     pos = labels[t].indexOf('=');
     if (pos >= 0) {
@@ -1115,7 +1115,7 @@ function gis_ia_changePos(no, aant_rows, to_no) {
     t.splice(no, 1);
     t.splice(to_no, 0, s);
     el.val(t.join("\r"));
-    redrawLayerDefsTable();
+    gis_ia_redrawLayerDefsTable();
     var fs = gis_ia_getFilterArray(), t1;
     for (t = 0; t < fs.length; t++) {
       if (fs[t].t == 'g') {
@@ -1146,7 +1146,7 @@ function gis_ia_changePos(no, aant_rows, to_no) {
       }
     }
     gis_ia_setFilterArray(fs);
-    redrawFilterDefsTable();
+    gis_ia_redrawFilterDefsTable();
   }
 }
 
@@ -1401,7 +1401,7 @@ function gis_ia_setOneValue(row, col, v) {
   el.val(t);
   switch (col) {
     case 0: // Wijziging van de servertype
-      redrawLayerDefsTable();
+      gis_ia_redrawLayerDefsTable();
       break;
     case 2: // wijziging van de layernaam (en dus ook de velden)
       gis_ia_setFieldsOnServer();
@@ -1447,7 +1447,7 @@ function gis_ia_add() {
   }
   t = t.join("\r");
   el.val(t);
-  redrawLayerDefsTable();
+  gis_ia_redrawLayerDefsTable();
 }
 
 // Deze functie wordt aangeroepen als de redacteur op 'Laag verwijderen'.
@@ -1461,7 +1461,7 @@ function gis_ia_delete(row) {
   t.splice(row, 1);
   t = t.join("\r");
   el.val(t);
-  redrawLayerDefsTable();
+  gis_ia_redrawLayerDefsTable();
   var fs = gis_ia_getFilterArray(), t, t1;
   for (t = fs.length; t >= 0; t--) {
     if (fs[t].t == 'g') {
@@ -1488,12 +1488,12 @@ function gis_ia_delete(row) {
     }
   }
   gis_ia_setFilterArray(fs);
-  redrawFilterDefsTable();
+  gis_ia_redrawFilterDefsTable();
 }
 
 // Start javascript na laden van de pagina
 (function ($) {
   gis_ia_init();
-  redrawFilterDefsTable();
+  gis_ia_redrawFilterDefsTable();
   gis_ia_show_hide();
 })(jQuery);
