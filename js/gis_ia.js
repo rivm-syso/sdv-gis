@@ -2975,20 +2975,7 @@ function GIS_paragraaf_start(map_id) {
 				}
 			});
 		},
-		source__: function (response,bla) {
-          var o = JSON.parse(response), t, t1 = o.response.docs.length;
-          var a = {'suggestions': []};
-          for (t = 0; t < t1; t++) {
-            e = o.response.docs[t];
-            a.suggestions[a.suggestions.length] = {
-              value: e.weergavenaam,
-              data: e.id
-            };
-          }
-          return a;
-        },
-		// onSelect wordt search
-        search__: function (suggestion) {
+        select: function (evt, ui) {
           jQuery.getJSON(position2_url_lookup + suggestion.data, function (data) {
             var l = data.response.docs[0].centroide_ll.split(' ');
             l[0] = parseFloat(l[0].substr(6));
