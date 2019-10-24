@@ -2967,7 +2967,7 @@ function GIS_paragraaf_start(map_id) {
 				success: function(data) {
 					var t,ans=[];
 					for (t=0;t<data.response.docs.length;t++) {
-						ans[ans.length]='<span style="display: none;">'+data.response.docs[t].id+'</span>'+data.response.docs[t].weergavenaam;
+						ans[ans.length]={'label':data.response.docs[t].id,'value':data.response.docs[t].weergavenaam};
 					}
 					response(ans);
 				},
@@ -2976,6 +2976,7 @@ function GIS_paragraaf_start(map_id) {
 			});
 		},
         select: function (evt, ui) {
+		  var id=ui.label;
           jQuery.getJSON(position2_url_lookup + suggestion.data, function (data) {
             var l = data.response.docs[0].centroide_ll.split(' ');
             l[0] = parseFloat(l[0].substr(6));
