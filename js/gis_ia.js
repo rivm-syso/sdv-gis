@@ -2970,12 +2970,12 @@ function GIS_paragraaf_start(map_id) {
         serviceUrl: position2_url_suggest,
 		// transformResult wordt source
         source: function (request, response) {
-			$.ajax({
+			jQuery.ajax({
 				dataType: "json",
 				type : 'Get',
 				url: position2_url_suggest+'q='+request,
 				success: function(data) {
-					response( $.map( data, function(item) {
+					response( jQuery.map( data, function(item) {
 						// your operation on data
 						var aaa=1;
 					}));
