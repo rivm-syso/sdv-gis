@@ -6,7 +6,6 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\File\FileSystemInterface;
 
 /**
  * Implements hook_help().
@@ -220,7 +219,7 @@ function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_s
 					}
 				}
 			}
-      \Drupal::service('file_system')->saveData($wms, $fname, FileSystemInterface::EXISTS_REPLACE);
+      file_unmanaged_save_data($wms, $fname, FILE_EXISTS_REPLACE);
       } else {
 			$wms=file_get_contents($fname);
 		}
