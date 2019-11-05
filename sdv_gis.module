@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\File\FileSystemInterface;
 
 /**
  * Implements hook_help().
@@ -195,7 +196,8 @@ function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_s
         }
         $form['#attached']['drupalSettings']['gis_ia']['wmsacceptatie'] = $wms;
 
-		$readFromServer=true; $fname='/var/www/html/drupal/published/datarivmnl.def';
+		$readFromServer=true;
+		$fname= 'public://datarivmnl.def';
 		if (file_exists($fname)) {$readFromServer=false;}
 		if ($readFromServer) {
 			$xml=file_get_contents('https://data.rivm.nl/geonetwork/srv/dut/csw-ngr?service=CSW&resultType=results&version=2.0.2&request=GetRecords&MaxRecords=1000');
@@ -218,8 +220,8 @@ function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_s
 					}
 				}
 			}
-			file_put_contents($fname,$wms);
-		} else {
+      \Drupal::service('file_system')->saveData($wms, $fname, FileSystemInterface::EXISTS_REPLACE);
+      } else {
 			$wms=file_get_contents($fname);
 		}
         $form['#attached']['drupalSettings']['gis_ia']['datarivmnl'] = $wms;
