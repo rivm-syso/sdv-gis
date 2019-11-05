@@ -6,7 +6,6 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\File\FileSystemInterface;
 
 /**
  * Implements hook_help().
@@ -113,14 +112,18 @@ function template_preprocess_sdv_gis_entity(&$variables) {
 		if (substr($b,0,2)=='u=') {$uiterlijk=substr($b,2);}
 	}
 	// layer_definities er achter plakken
-	$ldefs=str_replace("\r\n","\r",$variables['elements']['gis_ia_layers'][0]['#context']['value']);
-	$ldefs=str_replace("\n","\r",$ldefs);
-	$ldefs=explode("\r",$ldefs);
-	$parms.=',ld=';
-	foreach ($ldefs as $ldef) {
-		if ($ldef!='') {$parms.=base64_encode($ldef).'|';}
-	}
-	
+  if(isset($variables['elements']['gis_ia_layers'][0]['#context']['value'])) {
+    $ldefs = str_replace("\r\n", "\r", $variables['elements']['gis_ia_layers'][0]['#context']['value']);
+    $ldefs = str_replace("\n", "\r", $ldefs);
+    $ldefs = explode("\r", $ldefs);
+    $parms .= ',ld=';
+    foreach ($ldefs as $ldef) {
+      if ($ldef != '') {
+        $parms .= base64_encode($ldef) . '|';
+      }
+    }
+  }
+
 	$urls = \Drupal::config('sdv_gis.sdv_gis')->get('urls');
 	
 	$variables['node_id']=$variables['elements']['#contextual_links']['sdv_gis_entity']['route_parameters']['sdv_gis_entity'];
@@ -220,7 +223,7 @@ function sdv_gis_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_s
 					}
 				}
 			}
-      \Drupal::service('file_system')->saveData($wms, $fname, FileSystemInterface::EXISTS_REPLACE);
+      file_unmanaged_save_data($wms, $fname, FILE_EXISTS_REPLACE);
       } else {
 			$wms=file_get_contents($fname);
 		}
