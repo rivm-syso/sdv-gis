@@ -11,6 +11,10 @@ use Drupal\Core\Form\FormStateInterface;
  * @ingroup sdv_gis
  */
 class SdvGisEntitySettingsForm extends ConfigFormBase {
+
+  /**
+   * {@inheritdoc}
+   */
   protected function getEditableConfigNames() {
     return [
       'sdv_gis.sdv_gis',
@@ -37,7 +41,7 @@ class SdvGisEntitySettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('sdv_gis.sdv_gis')->set('urls', $form_state->getValue('urls'))->save();
-}
+  }
 
   /**
    * Defines the settings form for Sdv gis entity entities.
@@ -51,19 +55,20 @@ class SdvGisEntitySettingsForm extends ConfigFormBase {
    *   Form definition array.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-	$config = $this->config('sdv_gis.sdv_gis');
+    $config = $this->config('sdv_gis.sdv_gis');
     $form['sdvgisentity_settings']['#markup'] = 'Settings form for Sdv gis entity entities. Manage field settings here.';
     $form['description'] = [
       '#type' => 'item',
       '#markup' => $this->t('Please enter the title and accept the terms of use of the site.'),
     ];
-	$form['urls'] = [
+    $form['urls'] = [
       '#type' => 'textfield',
       '#title' => $this->t('URL'),
       '#description' => $this->t('Enter the URL(s) of the map-server(s).'),
       '#required' => TRUE,
       '#size' => 64,
-      '#default_value' => $config->get('urls'),    ];
+      '#default_value' => $config->get('urls'),
+    ];
 
     // Group submit handlers in an actions element with a key of "actions" so
     // that it gets styled correctly, and so that other modules may add actions
