@@ -175,8 +175,6 @@ function sdv_gis_entity_view(array &$build, EntityInterface $entity, EntityViewD
  *
  * The layers for each layer-type are read from different sources:
  *     - WMS:		  		The layers are read from the geo-server via a GetCapabilities request
- *	   - wmsacceptatie:	  	The layers are read from the acceptatie geo-server via a GetCapabilities request
- *	   - datarivmnl:  Reads layers from cached-file or via a GetRecords request (followed by an GetRecordsById request per layer)
  *	   - URL:  				The layer has its own URL
  *
  */
@@ -197,57 +195,6 @@ function sdv_gis_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       }
     }
     $form['#attached']['drupalSettings']['gis_ia']['wms'] = $wms;
-    $xml = simplexml_load_file('https://acceptatie.geodata.rivm.nl/geoserver/wms?VERSION=1.1.1&REQUEST=GetCapabilities');
-    $wms = '';
-    if ($xml->Capability->Layer) {
-      foreach ($xml->Capability->Layer->children() as $layer) {
-        $name = $layer->Name;
-        $title = $layer->Title;
-        if ($name != '') {
-          $wms .= ($wms == '' ? '' : '|') . $name . '=' . $title;
-        }
-      }
-    }
-    $form['#attached']['drupalSettings']['gis_ia']['wmsacceptatie'] = $wms;
-
-    $readFromServer = TRUE;
-    $fname = 'public://datarivmnl.def';
-    if (file_exists($fname)) {
-      $readFromServer = FALSE;
-    }
-    if ($readFromServer) {
-      $xml = file_get_contents('https://data.rivm.nl/geonetwork/srv/dut/csw-ngr?service=CSW&resultType=results&version=2.0.2&request=GetRecords&MaxRecords=1000');
-      $xml = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $xml);
-      $xml = new SimpleXMLElement($xml);
-      $wms = '';
-      foreach ($xml->cswSearchResults->children() as $layer) {
-        $layerXML = file_get_contents('https://data.rivm.nl/geonetwork/srv/dut/csw-ngr?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=' . $layer->dcidentifier);
-        $layerXML = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $layerXML);
-        $layerXML = new SimpleXMLElement($layerXML);
-        if ($layer->dctitle != '') {
-          foreach ($layerXML->cswRecord->children() as $key => $value) {
-            if ($key == 'dcURI' && $value['protocol'] == 'OGC:WMS') {
-              $server = $value[0];
-              if (substr($server, -1, 1) == '?') {
-                $server = substr($server, 0, strlen($server) - 1);
-              }
-              if (substr($server, -1, 1) == '/') {
-                $server = substr($server, 0, strlen($server) - 1);
-              }
-              if ($server != '' && $value['name'] != '') {
-                $wms .= ($wms == '' ? '' : '|');
-                $wms .= $server . '=' . $layer->dctitle . '=' . $value['name'];
-              }
-            }
-          }
-        }
-      }
-      file_unmanaged_save_data($wms, $fname, FILE_EXISTS_REPLACE);
-    }
-    else {
-      $wms = file_get_contents($fname);
-    }
-    $form['#attached']['drupalSettings']['gis_ia']['datarivmnl'] = $wms;
 
     $urls = \Drupal::config('sdv_gis.sdv_gis')->get('urls');
     $form['#attached']['drupalSettings']['gis_ia']['urls'] = $urls;

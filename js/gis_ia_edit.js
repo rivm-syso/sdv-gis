@@ -730,63 +730,6 @@ function gis_ia_init() {
     },
   });
 
-  // Maak dialog-box voor WMS acceptatie
-  wms = drupalSettings.gis_ia.wmsacceptatie.split('|');
-  var wmsDom2 = '<div style="min-width: 600px;"><table style="width: initial;"><tr><td>Zoek:</td><td><input size="24" onkeyup="gis_ia_zoek(\'wmsacceptatie\');" id="gis_ia_zoek_wmsacceptatie"></td></tr><tr><td style="vertical-align: top;">Layer:</td><td><div style="max-height: 14em; overflow-y: scroll;"><table id="gis_ia_res_wmsacceptatie" style="min-width: 100%;">';
-  for (t1 = 0; t1 < wms.length; t1++) {
-    s1 = wms[t1].split('=');
-    wmsDom2 += '<tr style="display: none; border: none;"><td style="padding: 0;"><input type="radio" name="gis_ia_res_wmsacceptatie" id="gis_ia_res_wmsacceptatie_' + t1 + '" value="' + wms[t1] + '" onchange="gis_ia_zoek(\'wmsacceptatie\');"></td><td style="padding: 0 0 0 20px;"> <label for="gis_ia_res_wmsacceptatie_' + t1 + '"> ' + s1[0] + '</label></td></tr>';
-  }
-  wmsDom2 += '</table></div></td></tr></table><div><input type="button" value="Ok" onclick="gis_ia_modals_close=true;gis_ia_modals[\'wmsacceptatie\'].close();" class="button buton--primary js-form-submit form-submit" id="gis_ia_ok_wmsacceptatie"><input type="button" value="Cancel" onclick="gis_ia_modals[\'wmsacceptatie\'].close();" class="button js-form-submit form-submit"></div></div>';
-  wmsDom2 = jQuery(wmsDom2);
-  gis_ia_modals['wmsacceptatie'] = Drupal.dialog(wmsDom2, {
-    //werkt niet: resizable: true,
-    //werkt niet: draggable: true,
-    closeOnEscape: true,
-    title: 'Kies WMS acceptatie layer',
-    width: 'auto',
-    beforeClose: function () {
-      if (gis_ia_modals_close) {
-        var layer = jQuery('[name=gis_ia_res_wmsacceptatie]:checked').val().split('='),
-            title = layer[1];
-        layer = layer[0];
-        gis_ia_setOneValue(gis_ia_setLayerRow, 2, layer);
-        jQuery('#gis_ia_layer_' + gis_ia_setLayerRow).val(layer);
-        gis_ia_setOneValue(gis_ia_setLayerRow, 3, title);
-        jQuery('#gis_ia_title_' + gis_ia_setLayerRow).removeAttr('disabled').val(title);
-      }
-    },
-  });
-
-
-  // Maak dialog-box voor WMS data.rivm.nl
-  var wms = drupalSettings.gis_ia.datarivmnl.split('|'), t1, s1;
-  var wmsDom3 = '<div style="min-width: 600px;"><table style="width: initial;"><tr><td>Zoek:</td><td><input size="24" onkeyup="gis_ia_zoek(\'datarivmnl\');" id="gis_ia_zoek_datarivmnl"></td></tr><tr><td style="vertical-align: top;">Layer:</td><td><div style="max-height: 14em; overflow-y: scroll;"><table id="gis_ia_res_datarivmnl" style="min-width: 100%;">';
-  for (t1 = 0; t1 < wms.length; t1++) {
-    s1 = wms[t1].split('=');
-    wmsDom3 += '<tr style="display: none; border: none;"><td style="padding: 0;"><input type="radio" name="gis_ia_res_datarivmnl" id="gis_ia_res_datarivmnl_' + t1 + '" value="' + wms[t1] + '" onchange="gis_ia_zoek(\'datarivmnl\');"></td><td style="padding: 0 0 0 20px;"> <label for="gis_ia_res_datarivmnl_' + t1 + '"> ' + s1[2] + '</label></td></tr>';
-  }
-  wmsDom3 += '</table></div></td></tr></table><div><input type="button" value="Ok" onclick="gis_ia_modals_close=true;gis_ia_modals[\'datarivmnl\'].close();" class="button buton--primary js-form-submit form-submit" id="gis_ia_ok_datarivmnl"><input type="button" value="Cancel" onclick="gis_ia_modals[\'datarivmnl\'].close();" class="button js-form-submit form-submit"></div></div>';
-  wmsDom3 = jQuery(wmsDom3);
-  gis_ia_modals['datarivmnl'] = Drupal.dialog(wmsDom3, {
-    //werkt niet: resizable: true,
-    //werkt niet: draggable: true,
-    closeOnEscape: true,
-    title: 'Kies layer',
-    width: 'auto',
-    beforeClose: function () {
-      if (gis_ia_modals_close) {
-        var layer = jQuery('[name=gis_ia_res_datarivmnl]:checked').val().split('='),
-            title = layer[1];
-        layer = layer[0];
-        gis_ia_setOneValue(gis_ia_setLayerRow, 2, layer);
-        jQuery('#gis_ia_layer_' + gis_ia_setLayerRow).val(layer);
-        gis_ia_setOneValue(gis_ia_setLayerRow, 3, title);
-        jQuery('#gis_ia_title_' + gis_ia_setLayerRow).removeAttr('disabled').val(title);
-      }
-    },
-  });
-
   // Maak dialog box voor ...
   // gis_ia_modals['WMTS']= ...
 
@@ -1168,8 +1111,6 @@ function gis_ia_row(no, values, aant_rows) {
   row += '<td>' + gis_ia_getSelect(a, no, 'gis_ia_changePos(' + no + ',' + aant_rows + ',this.value)') + '</td>';
   row += '<td><select onchange="gis_ia_setOneValue(' + no + ',0,this.value);">';
   row += '<option' + (values[0] == 'WMS' ? ' selected="selected"' : '') + ' value="WMS">WMS</option>';
-  row += '<option' + (values[0] == 'datarivmnl' ? ' selected="selected"' : '') + ' value="datarivmnl">data.rivm.nl</option>';
-  row += '<option' + (values[0] == 'wmsacceptatie' ? ' selected="selected"' : '') + ' value="wmsacceptatie">wmsacceptatie</option>';
   row += '<option' + (values[0] == 'URL' ? ' selected="selected"' : '') + ' value="URL">URL</option>';
   row += '</select></td>';
   if (values[0] == 'URL') {
@@ -1210,8 +1151,6 @@ function gis_ia_veld(no, forFilter) {
     var layer;
     switch (s[0]) {
       case 'WMS':
-      case 'datarivmnl':
-      case 'wmsacceptatie':
 	  case 'URL':
         layer = new ol.layer.Image({
           title: 'title',
@@ -1393,12 +1332,6 @@ function gis_ia_setOneValue(row, col, v) {
     switch (s[0]) {
       case 'WMS':
         s[1] = 'https://geodata.rivm.nl/geoserver/wms';
-        break;
-      case 'datarivmnl':
-        s[1] = 'https://geodata.rivm.nl/geoserver/wms';
-        break;
-      case 'wmsacceptatie':
-        s[1] = 'https://acceptatie.geodata.rivm.nl/geoserver/wms';
         break;
       case 'URL':
         s[1] = 'bladiebla';

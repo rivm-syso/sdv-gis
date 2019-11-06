@@ -2232,8 +2232,7 @@ function GIS_paragraaf_start(map_id) {
     l = GIS_ia_maps[map_id].layers_def[t];
     switch (l.type) {
       case 'WMS':
-      case 'datarivmnl':
-      case 'wmsacceptatie':
+      case 'URL':
         GIS_ia_maps[map_id].layers[t] = gis_ia_getLayerWMS(map_id, l.url, l.layer, l.title, l.opacity, l.visible_);
         break;
     }
@@ -2900,8 +2899,6 @@ function GIS_paragraaf_start(map_id) {
       for (var t = 0; t < GIS_ia_maps[map_id].layers_def.length; t++) {
         switch (GIS_ia_maps[map_id].layers_def[t].type) {
           case 'WMS':
-          case 'datarivmnl':
-          case 'wmsacceptatie':
           case 'URL':
             var view = evt.map.getView();
             var viewResolution = view.getResolution();
