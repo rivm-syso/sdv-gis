@@ -1114,7 +1114,7 @@ function gis_ia_row(no, values, aant_rows) {
   row += '<option' + (values[0] == 'URL' ? ' selected="selected"' : '') + ' value="URL">URL</option>';
   row += '</select></td>';
   if (values[0] == 'URL') {
-	row += '<td><input onchange="" value="' + values[2] + '" id="gis_ia_layer_' + no + '"></td>';
+	row += '<td><input onchange="gis_ia_setLayerURL('+no+')" size="32" value="' + values[2] + '" id="gis_ia_layer_' + no + '"></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
@@ -1371,6 +1371,19 @@ function gis_ia_setLayer(row) {
   gis_ia_modals_value = t[row];
   gis_ia_zoek(s[0].toLowerCase());
   gis_ia_modals[s[0]].showModal();
+}
+// Deze functie wordt aangeroepen als de redacteur de url wijzigt
+function gis_ia_setLayerURL(row) {
+	var url=jQuery('#gis_ia_layer_'+row),title=jQuery('#gis_ia_title_' + row);
+    gis_ia_setOneValue(row, 2, url.val(););
+	if (title.val()=='') {
+		var parts=url.val().split('?'),naam='';
+		parts=parts[0].replace(/\\/g, '/').split('/');
+		if (parts.length>=1) {if (parts[parts.length-1]!='') {naam=parts[parts.length-1];} else {if (parts.length>=2) {naam=parts[parts.length-2];}}}
+        gis_ia_setOneValue(row, 3, naam);
+		title.val(naam);
+	}
+    if (url.val()!='') {title.removeAttr('disabled');}
 }
 
 // Deze functie wordt aangeroepen als de redacteur op 'Nieuwe laag' klikt en
