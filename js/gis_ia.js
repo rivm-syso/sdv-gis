@@ -67,7 +67,7 @@ function gis_ia_showLegend(map_id, lno, where) {
       legendType = 0;
       break;
 	case 'URL':
-      src = 'https://geodata.rivm.nl/geoserver/wms?VERSION=1.1.1&REQUEST=GetLegendGraphic&LAYER=' + GIS_ia_maps[map_id].layers_def[lno].layer + '&Format=image/png';
+      src = GIS_ia_maps[map_id].layers_def[lno].url + '?VERSION=1.1.1&REQUEST=GetLegendGraphic&LAYER=' + GIS_ia_maps[map_id].layers_def[lno].layer + '&Format=image/png';
       legendType = 0;
       break;
   }

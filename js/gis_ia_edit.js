@@ -1114,7 +1114,7 @@ function gis_ia_row(no, values, aant_rows) {
   row += '<option' + (values[0] == 'URL' ? ' selected="selected"' : '') + ' value="URL">URL</option>';
   row += '</select></td>';
   if (values[0] == 'URL') {
-	row += '<td><input onchange="gis_ia_setLayerURL('+no+')" size="32" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><input onchange="gis_ia_setLayerURL('+no+')" size="16" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"></td>';
+	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><input onchange="gis_ia_setLayerURL('+no+')" size="24" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
