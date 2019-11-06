@@ -63,16 +63,8 @@ function gis_ia_showLegend(map_id, lno, where) {
   var l = GIS_ia_maps[map_id].layers_def[lno], src = '', legendType;
   switch (l.type) {
     case 'WMS':
-    case 'WMSinput':
       src = 'https://geodata.rivm.nl/geoserver/wms?VERSION=1.1.1&REQUEST=GetLegendGraphic&LAYER=' + GIS_ia_maps[map_id].layers_def[lno].layer + '&Format=image/png';
       legendType = 0;
-      break;
-    case 'datarivmnl':
-      src = l.url + '?VERSION=1.1.1&REQUEST=GetLegendGraphic&LAYER=' + GIS_ia_maps[map_id].layers_def[lno].layer + '&Format=image/png';
-      legendType = 0;
-      break;
-    case 'Vectortile':
-      legendType = 1;
       break;
 	case 'URL':
       src = 'https://geodata.rivm.nl/geoserver/wms?VERSION=1.1.1&REQUEST=GetLegendGraphic&LAYER=' + GIS_ia_maps[map_id].layers_def[lno].layer + '&Format=image/png';

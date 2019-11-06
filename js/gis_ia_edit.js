@@ -1114,7 +1114,7 @@ function gis_ia_row(no, values, aant_rows) {
   row += '<option' + (values[0] == 'URL' ? ' selected="selected"' : '') + ' value="URL">URL</option>';
   row += '</select></td>';
   if (values[0] == 'URL') {
-	row += '<td><input onchange="gis_ia_setLayerURL('+no+')" size="32" value="' + values[2] + '" id="gis_ia_layer_' + no + '"></td>';
+	row += '<td><input onchange="gis_ia_setLayerURL('+no+')" size="32" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><input onchange="gis_ia_setLayerURL('+no+')" size="16" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
@@ -1334,7 +1334,7 @@ function gis_ia_setOneValue(row, col, v) {
         s[1] = 'https://geodata.rivm.nl/geoserver/wms';
         break;
       case 'URL':
-        s[1] = 'bladiebla';
+        s[1] = '';
         break;
     }
   }
@@ -1374,16 +1374,21 @@ function gis_ia_setLayer(row) {
 }
 // Deze functie wordt aangeroepen als de redacteur de url wijzigt
 function gis_ia_setLayerURL(row) {
-	var url=jQuery('#gis_ia_layer_'+row),title=jQuery('#gis_ia_title_' + row);
-    gis_ia_setOneValue(row, 2, url.val());
-	if (title.val()=='') {
+	var url=jQuery('#gis_ia_layer_'+row),url2=jQuery('#gis_ia_layer2_'+row),title=jQuery('#gis_ia_title_' + row);
+    gis_ia_setOneValue(row, 1, url.val());
+    gis_ia_setOneValue(row, 2, url2.val());
+	if (url2.val()=='') {
 		var parts=url.val().split('?'),naam='';
 		parts=parts[0].replace(/\\/g, '/').split('/');
 		if (parts.length>=1) {if (parts[parts.length-1]!='') {naam=parts[parts.length-1];} else {if (parts.length>=2) {naam=parts[parts.length-2];}}}
-        gis_ia_setOneValue(row, 3, naam);
-		title.val(naam);
+		url2.val(naam);
+		gis_ia_setOneValue(row, 2, naam);
+		if (title.val()=='') {
+			gis_ia_setOneValue(row, 3, naam);
+			title.val(naam);
+		}
 	}
-    if (url.val()!='') {title.removeAttr('disabled');}
+    if (url2.val()!='') {title.removeAttr('disabled');}
 }
 
 // Deze functie wordt aangeroepen als de redacteur op 'Nieuwe laag' klikt en
