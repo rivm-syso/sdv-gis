@@ -1170,8 +1170,13 @@ function gis_ia_row(no, values, aant_rows) {
   row += '<option' + (values[0] == 'WMS' ? ' selected="selected"' : '') + ' value="WMS">WMS</option>';
   row += '<option' + (values[0] == 'datarivmnl' ? ' selected="selected"' : '') + ' value="datarivmnl">data.rivm.nl</option>';
   row += '<option' + (values[0] == 'wmsacceptatie' ? ' selected="selected"' : '') + ' value="wmsacceptatie">wmsacceptatie</option>';
+  row += '<option' + (values[0] == 'URL' ? ' selected="selected"' : '') + ' value="URL">URL</option>';
   row += '</select></td>';
-  row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
+  if (values[0] == 'URL') {
+	row += '<td><input onchange="" value="' + values[2] + '" id="gis_ia_layer_' + no + '"></td>';
+  } else {
+	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
+  }
   row += '<td><input onchange="gis_ia_setOneValue(' + no + ',3,this.value);" size="24" value="' + values[3] + '" id="gis_ia_title_' + no + '"' + (values[2] == '' ? ' disabled="disabled"' : '') + '></td>';
   row += '<td><input onchange="gis_ia_setOneValue(' + no + ',4,this.value);" size="3" value="' + values[4] + '" type="number" step="0.1" min="0" max="1"></td>';
   row += '<td><input onchange="gis_ia_setOneValue(' + no + ',7,jQuery(this).prop(\'checked\')?1:0);" ' + (values[7] == 1 ? 'checked="checked"' : '') + ' type="checkbox"></td>';
@@ -1207,6 +1212,7 @@ function gis_ia_veld(no, forFilter) {
       case 'WMS':
       case 'datarivmnl':
       case 'wmsacceptatie':
+	  case 'URL':
         layer = new ol.layer.Image({
           title: 'title',
           extent: [-285401.92, 22598.08, 595401.9199999999, 903401.9199999999],
@@ -1393,6 +1399,9 @@ function gis_ia_setOneValue(row, col, v) {
         break;
       case 'wmsacceptatie':
         s[1] = 'https://acceptatie.geodata.rivm.nl/geoserver/wms';
+        break;
+      case 'URL':
+        s[1] = 'bladiebla';
         break;
     }
   }

@@ -160,10 +160,10 @@ function sdv_gis_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
  * Sets the right libraries and pass data to javascript functions about several sources of layers.
  *
  * The layers for each layer-type are read from different sources:
- *     - WMS:		  The layers are read from the server via a GetCapabilities request
- *	   - WMSinput:	  Uses the layers from WMS
+ *     - WMS:		  		The layers are read from the geo-server via a GetCapabilities request
+ *	   - wmsacceptatie:	  	The layers are read from the acceptatie geo-server via a GetCapabilities request
  *	   - datarivmnl:  Reads layers from cached-file or via a GetRecords request (followed by an GetRecordsById request per layer)
- *	   - Vectortile:  The layers are read from the server via a bare tms request
+ *	   - URL:  				The layer has its own URL
  *
  */
 
