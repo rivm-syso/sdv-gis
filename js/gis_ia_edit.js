@@ -1375,7 +1375,7 @@ function gis_ia_setLayer(row) {
 // Deze functie wordt aangeroepen als de redacteur de url wijzigt
 function gis_ia_setLayerURL(row) {
 	var url=jQuery('#gis_ia_layer_'+row),title=jQuery('#gis_ia_title_' + row);
-    gis_ia_setOneValue(row, 2, url.val(););
+    gis_ia_setOneValue(row, 2, url.val());
 	if (title.val()=='') {
 		var parts=url.val().split('?'),naam='';
 		parts=parts[0].replace(/\\/g, '/').split('/');
