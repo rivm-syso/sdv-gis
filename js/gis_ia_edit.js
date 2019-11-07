@@ -1106,14 +1106,27 @@ function gis_ia_row(no, values, aant_rows) {
       values[t] = '';
     }
   }
-  var row = '<tr>';
+  var row = '<tr>', dis;
   row += '<td>' + gis_ia_getSelect(a, no, 'gis_ia_changePos(' + no + ',' + aant_rows + ',this.value)') + '</td>';
   row += '<td><select onchange="gis_ia_setOneValue(' + no + ',0,this.value);">';
   row += '<option' + (values[0] == 'WMS' ? ' selected="selected"' : '') + ' value="WMS">WMS</option>';
   row += '<option' + (values[0] == 'URL' ? ' selected="selected"' : '') + ' value="URL">URL</option>';
   row += '</select></td>';
   if (values[0] == 'URL') {
-	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><input onchange="gis_ia_setLayerURL('+no+')" size="24" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"><a id="gis_ia_layer2a_' + no + '" class="button" href="" style="display: none; padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
+	var datarivmnl=url.val().match(/^(https:[\/\\][\/\\]|http:[\/\\][\/\\]|){1}(acceptatie\.data|data){1}\.rivm.nl[\/\\]geo[\/\\](.+)[\/\\](.+)$/);
+	// datarivmnl is null of bevat:
+	// [0] de gehele url
+	// [1] https://, http:// of niks
+	// [2] acceptatie.data of data
+	// [3] onderwerp
+	// [4] kaartnaam
+	dis='';
+	if (typeof(datarivmnl)=='object') {
+		if (datarivmnl.length>=5) {
+			dis='https://'+datarivmnl[2]+'/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4];
+		}
+	}
+	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><input onchange="gis_ia_setLayerURL('+no+')" size="24" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" style="'+(dis==''?'display: none;':'')+'padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
@@ -1384,15 +1397,17 @@ function gis_ia_setLayerURL(row) {
     gis_ia_setOneValue(row, 1, url.val());
     gis_ia_setOneValue(row, 2, url2.val());
 	jQuery('gis_ia_layer2a_' + row).hide();
-	if (url2.val()=='' && typeof(datarivmnl)=='object') {
+	if (typeof(datarivmnl)=='object') {
 		if (datarivmnl.length>=5) {
 			jQuery('gis_ia_layer2a_' + row).attr('href','https://'+datarivmnl[2]+'/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4]).show();
-			var naam=datarivmnl[4];
-			url2.val(naam);
-			gis_ia_setOneValue(row, 2, naam);
-			if (title.val()=='') {
-				gis_ia_setOneValue(row, 3, naam);
-				title.val(naam);
+			if (url2.val()=='') {
+				var naam=datarivmnl[4];
+				url2.val(naam);
+				gis_ia_setOneValue(row, 2, naam);
+				if (title.val()=='') {
+					gis_ia_setOneValue(row, 3, naam);
+					title.val(naam);
+				}
 			}
 		}
 	}
