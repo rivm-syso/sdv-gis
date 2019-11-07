@@ -1113,7 +1113,7 @@ function gis_ia_row(no, values, aant_rows) {
   row += '<option' + (values[0] == 'URL' ? ' selected="selected"' : '') + ' value="URL">URL</option>';
   row += '</select></td>';
   if (values[0] == 'URL') {
-	var datarivmnl=values[1].match(/^(https:[\/\\][\/\\]|http:[\/\\][\/\\]|){1}(acceptatie\.data|data){1}\.rivm.nl[\/\\]geo[\/\\](.+)[\/\\](.+)$/);
+	var datarivmnl=gis_ia_datarivmnl(values[1]);
 	// datarivmnl is null of bevat:
 	// [0] de gehele url
 	// [1] https://, http:// of niks
@@ -1122,11 +1122,9 @@ function gis_ia_row(no, values, aant_rows) {
 	// [4] kaartnaam
 	dis='';
 	if (datarivmnl) {
-		if (datarivmnl.length>=5) {
-			dis='https://'+datarivmnl[2]+'.rivm.nl/geo/portal/index.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4];
-		}
+		dis=datarivmnl['href'];
 	}
-	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><input onchange="gis_ia_setLayerURL('+no+')" size="24" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" terget="gisportal" style="'+(dis==''?'display: none;':'')+'padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
+	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><input onchange="gis_ia_setLayerURL('+no+')" size="24" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" target="gisportal" style="'+(dis==''?'display: none;':'')+'padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
@@ -1137,6 +1135,15 @@ function gis_ia_row(no, values, aant_rows) {
   row += '<td><input onclick="gis_ia_delete(' + no + ');" class="button" type="button" value="Verwijder"></td>';
   row += '</tr>';
   return row;
+}
+function gis_ia_datarivmnl(v) {
+	var r=v.match(/^(https:[\/\\][\/\\]|http:[\/\\][\/\\]|){1}(acceptatie\.data|data){1}\.rivm.nl[\/\\]geo[\/\\](.+)[\/\\](.+)$/);
+	if (r) {
+		if (r.length>=5) {
+			r['href']='https://'+r[2]+'.rivm.nl/geo/portal/index.php?thema='+r[3]+'&kaart='+r[4];
+		}
+	}
+	return r;
 }
 
 // globale variabele om de URL te bewaren tbv een AJAX call
@@ -1387,7 +1394,7 @@ function gis_ia_setLayer(row) {
 // Deze functie wordt aangeroepen als de redacteur de url wijzigt
 function gis_ia_setLayerURL(row) {
 	var url=jQuery('#gis_ia_layer_'+row),url2=jQuery('#gis_ia_layer2_'+row),title=jQuery('#gis_ia_title_' + row);
-	var datarivmnl=url.val().match(/^(https:[\/\\][\/\\]|http:[\/\\][\/\\]|){1}(acceptatie\.data|data){1}\.rivm.nl[\/\\]geo[\/\\](.+)[\/\\](.+)$/);
+	var datarivmnl=gis_ia_datarivmnl(url.val());
 	// datarivmnl is null of bevat:
 	// [0] de gehele url
 	// [1] https://, http:// of niks
@@ -1398,16 +1405,14 @@ function gis_ia_setLayerURL(row) {
     gis_ia_setOneValue(row, 2, url2.val());
 	jQuery('#gis_ia_layer2a_' + row).hide();
 	if (datarivmnl) {
-		if (datarivmnl.length>=5) {
-			jQuery('#gis_ia_layer2a_' + row).attr('href','https://'+datarivmnl[2]+'.rivm.nl/geo/portal/index.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4]).show();
-			if (url2.val()=='') {
-				var naam=datarivmnl[4];
-				url2.val(naam);
-				gis_ia_setOneValue(row, 2, naam);
-				if (title.val()=='') {
-					gis_ia_setOneValue(row, 3, naam);
-					title.val(naam);
-				}
+		jQuery('#gis_ia_layer2a_' + row).attr('href',datarivmnl['href']).show();
+		if (url2.val()=='') {
+			var naam=datarivmnl[4];
+			url2.val(naam);
+			gis_ia_setOneValue(row, 2, naam);
+			if (title.val()=='') {
+				gis_ia_setOneValue(row, 3, naam);
+				title.val(naam);
 			}
 		}
 	}
