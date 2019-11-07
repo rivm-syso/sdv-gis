@@ -18,7 +18,7 @@ use Drupal\user\UserInterface;
  *
  * @ContentEntityType(
  *   id = "sdv_gis_entity",
- *   label = @Translation("Sdv gis entity"),
+ *   label = @Translation("GIS map"),
  *   handlers = {
  *     "storage" = "Drupal\sdv_gis\SdvGisEntityStorage",
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
@@ -191,7 +191,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
 
     $fields['user_id'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Authored by'))
-      ->setDescription(t('The user ID of author of the Sdv gis entity entity.'))
+      ->setDescription(t('The user ID of author of the GIS map.'))
       ->setRevisionable(TRUE)
       ->setSetting('target_type', 'user')
       ->setSetting('handler', 'default')
@@ -216,7 +216,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
-      ->setDescription(t('The name of the Sdv gis entity entity.!!!'))
+      ->setDescription(t('Name of the GIS map'))
       ->setRevisionable(TRUE)
       ->setSettings([
         'max_length' => 50,
@@ -238,7 +238,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
 
     $fields['gis_ia_params'] = BaseFieldDefinition::create('string_long')
       ->setLabel(t('GIS IA Params'))
-      ->setDescription(t('TODO Description here ...'))
+      ->setDescription(t('Parameters for the GIS IA'))
       ->setRevisionable(TRUE)
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
@@ -259,7 +259,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
 
     $fields['gis_ia_layers'] = BaseFieldDefinition::create('string_long')
       ->setLabel(t('GIS IA Layers'))
-      ->setDescription(t('TODO Description here ...'))
+      ->setDescription(t('Layers for the GIS IA'))
       ->setRevisionable(TRUE)
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
@@ -278,7 +278,7 @@ class SdvGisEntity extends EditorialContentEntityBase implements SdvGisEntityInt
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(FALSE);
 
-    $fields['status']->setDescription(t('A boolean indicating whether the Sdv gis entity is published.'))
+    $fields['status']->setDescription(t('A boolean indicating whether the GIS map is published.'))
       ->setDisplayOptions('form', [
         'type' => 'boolean_checkbox',
         'weight' => -3,
