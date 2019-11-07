@@ -1119,7 +1119,7 @@ function gis_ia_row(no, values, aant_rows) {
 	if (datarivmnl) {
 		dis=datarivmnl['href'];
 	}
-	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input url="url" onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><select id="gis_ia_layer2_' + no + '"><option></option></select><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" target="gisportal" style="padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
+	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input url="url" onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><select id="gis_ia_layer2_' + no + '"><option>'+values[2]+'</option></select><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" target="gisportal" style="padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
@@ -1397,7 +1397,7 @@ function gis_ia_setLayer(row) {
 }
 // Deze functie wordt aangeroepen als de redacteur de url wijzigt
 function gis_ia_setLayerURL(row) {
-	var url=jQuery('#gis_ia_layer_'+row),url2=jQuery('#gis_ia_layer2_'+row),title=jQuery('#gis_ia_title_' + row);
+	var url=jQuery('#gis_ia_layer_'+row),url2=jQuery('#gis_ia_layer2_'+row),title=jQuery('#gis_ia_title_' + row), old_layer=url2.val();
 	var datarivmnl=gis_ia_datarivmnl(url.val());
 	// datarivmnl is null of bevat:
 	// [0] de gehele url
@@ -1416,7 +1416,7 @@ function gis_ia_setLayerURL(row) {
 			url: url.val()+'?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities',
 			type: "GET",
 			success: function(data) {
-				var t, t1, childs1, t2, childs2, t3, childs3, opts=[];
+				var t, t1, childs1, t2, childs2, t3, childs3, opts=[], html='';
 				for (t=0;t<data.children.length;t++) if (data.children[t].localName=='WMS_Capabilities') {
 					childs1=data.children[t].children;
 					for (t1=0;t1<childs1.length;t1++) if (childs1[t1].localName=='Capability') {
@@ -1435,8 +1435,11 @@ function gis_ia_setLayerURL(row) {
 					}
 					t=data.children.length;
 				}
-				if (opts.length>=1) {
-					url2.html('<option>'+opts.join('</option><option>')+'</option>');
+				if (opts.length>=1)
+					for (t=0;t<opts.length;t++) {
+						html+='<option'+(opts[t]==old_layer?' selected="selected">':'>')+opts[t]+'</option>';
+					}
+					url2.html(html);
 				} else {
 					url2.html('<option>Fout: URL lijkt geen kaart.</option>');
 				}
