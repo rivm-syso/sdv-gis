@@ -2969,7 +2969,13 @@ function GIS_paragraaf_start(map_id) {
 				}
 			});
 		},
+        focus: function (evt, ui) {
+		  evt.preventDefault();
+		  jQuery(this).val(ui.item.label);
+		  return false;
+        },
         select: function (evt, ui) {
+		  evt.preventDefault();
 		  var id=ui.item.value;
 		  jQuery(this).val(ui.item.label);
           jQuery.getJSON(position2_url_lookup + id, function (data) {
@@ -2979,6 +2985,7 @@ function GIS_paragraaf_start(map_id) {
             gis_ia_position2map = map_id;
             gis_ia_gotoPosition2({coords: {longitude: l[0], latitude: l[1]}});
           });
+		  return false;
         },
       }).on('keyup', function (e) {
         if (e.keyCode == 13) {
