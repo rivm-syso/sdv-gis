@@ -1113,7 +1113,7 @@ function gis_ia_row(no, values, aant_rows) {
   row += '<option' + (values[0] == 'URL' ? ' selected="selected"' : '') + ' value="URL">URL</option>';
   row += '</select></td>';
   if (values[0] == 'URL') {
-	var datarivmnl=url.val().match(/^(https:[\/\\][\/\\]|http:[\/\\][\/\\]|){1}(acceptatie\.data|data){1}\.rivm.nl[\/\\]geo[\/\\](.+)[\/\\](.+)$/);
+	var datarivmnl=values[1].val().match(/^(https:[\/\\][\/\\]|http:[\/\\][\/\\]|){1}(acceptatie\.data|data){1}\.rivm.nl[\/\\]geo[\/\\](.+)[\/\\](.+)$/);
 	// datarivmnl is null of bevat:
 	// [0] de gehele url
 	// [1] https://, http:// of niks
