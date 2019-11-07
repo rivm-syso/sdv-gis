@@ -1119,7 +1119,7 @@ function gis_ia_row(no, values, aant_rows) {
 	if (datarivmnl) {
 		dis=datarivmnl['href'];
 	}
-	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input url="url" onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><select onchange="gis_ia_setOneValue('+no+', 2, jQuery(this).val());" id="gis_ia_layer2_' + no + '"><option>'+values[2]+'</option></select><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" target="gisportal" style="padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
+	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input url="url" onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><select onchange="gis_ia_setOneValue('+no+', 2, jQuery(this).val());" id="gis_ia_layer2_' + no + '"><option>'+values[2]+'</option></select><span class="gis_ia_url_error"></span><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" target="gisportal" style="padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
@@ -1397,7 +1397,7 @@ function gis_ia_setLayer(row) {
 }
 // Deze functie wordt aangeroepen als de redacteur de url wijzigt
 function gis_ia_setLayerURL(row) {
-	var url=jQuery('#gis_ia_layer_'+row),url2=jQuery('#gis_ia_layer2_'+row),title=jQuery('#gis_ia_title_' + row), old_layer=url2.val();
+	var url=jQuery('#gis_ia_layer_'+row),url2=jQuery('#gis_ia_layer2_'+row),title=jQuery('#gis_ia_title_' + row), old_layer=url2.val(), urlerror=jQuery(jQuery(url2.parent()).find('.gis_ia_url_error'));
 	var datarivmnl=gis_ia_datarivmnl(url.val());
 	// datarivmnl is null of bevat:
 	// [0] de gehele url
@@ -1408,6 +1408,7 @@ function gis_ia_setLayerURL(row) {
     gis_ia_setOneValue(row, 1, url.val());
     gis_ia_setOneValue(row, 2, url2.val());
 	jQuery('#gis_ia_layer2a_' + row).hide();
+	urlerror.html('').removeClass('gis_ia_url_error2');
 	if (datarivmnl) {
 		jQuery('#gis_ia_layer2a_' + row).attr('href',datarivmnl['href']).show();
 	}
@@ -1441,12 +1442,15 @@ function gis_ia_setLayerURL(row) {
 					}
 					url2.html(html);
 				} else {
-					url2.html('<option>Fout: URL lijkt geen kaart.</option>');
+					url2.html('<option></option>');
+					urlerror.html('URL lijkt geen kaart.').addClass('gis_ia_url_error2');
+
 				}
 				gis_ia_setOneValue(row, 2, url2.val());
 			},
 			error: function(e) {
-				url2.html('<option>Fout: URL lijkt geen kaart.</option>');
+				url2.html('<option></option>');
+				urlerror.html('URL lijkt geen kaart.').addClass('gis_ia_url_error2');
 				gis_ia_setOneValue(row, 2, url2.val());
 			}          
 		});

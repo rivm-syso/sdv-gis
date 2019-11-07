@@ -54,7 +54,7 @@
 .gis_ia_arrow_down_has_x {right: 38px;}
 /* filter X buttons */
 .gis_ia_filters .gis_ia_f_f_xx {cursor: pointer;text-decoration: none; border: none;}
-.gis_ia_filters .gis_ia_f_f_xx:before {content: "✖"; display: inline-block; width: 32px; vertical-align: top;}
+.gis_ia_filters .gis_ia_f_f_xx:before {content: "✖"; display: inline-block; width: 29px; vertical-align: top; padding-left: 3px;}
 .gis_ia_filters .gis_ia_f_f_xx span {display: inline-block; max-width: calc(100% - 37px); word-break: break-all;}
 .gis_ia_filters .gis_ia_f_f_x_simple .gis_ia_f_f_xx:before {width: 16px !important;}
 .gis_ia_filters .gis_ia_f_f_x_simple {float: right; text-align: right;}
@@ -244,3 +244,5 @@
 .gis_ia_base button.playpauze {height: 33px; width: 33px; border-radius: 16px; background-position: center; background-repeat: no-repeat;}
 
 .gis_ia_base .wait-cursor {background-image: url(wait.gif); width: 32px; height: 32px;}
+
+.gis_ia_url_error2 {color: red; background-color: orange;}
