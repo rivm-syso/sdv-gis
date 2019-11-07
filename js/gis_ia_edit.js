@@ -1415,12 +1415,18 @@ function gis_ia_setLayerURL(row) {
 			url: url.val()+'?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities',
 			type: "GET",
 			success: function(data) {
-				var t, node, r;
-				
-				r='Succes: GetCapabilities geeft het volgende terug:';
-				for (t=0;t<data.childNodes.length;t++) {
-					node=data.childNodes[t];
-					r+='<br>'+(t+1)+': '+node['localName'];
+				var t, t1, childs1, t2, childs2;
+				for (t=0;t<data.children.length;t++) if (data.children[t].localName=='WMS_Capabilities') {
+					childs1=data.children[t].children;
+					for (t1=0;t1<childs1.length;t1++) if (childs1[t1].localName=='Capability') {
+						childs2=childs1[t1].children;
+						for (t2=0;t2<childs2.length;t2++) if (childs2[t2].localName=='Layer') {
+							childs3=childs2[t2].children;
+							t2=childs2.length;
+						}
+						t1=childs1.length;
+					}
+					t=data.children.length;
 				}
 				a=1;
 			},
