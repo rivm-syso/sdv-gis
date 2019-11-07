@@ -1396,10 +1396,10 @@ function gis_ia_setLayerURL(row) {
 	// [4] kaartnaam
     gis_ia_setOneValue(row, 1, url.val());
     gis_ia_setOneValue(row, 2, url2.val());
-	jQuery('gis_ia_layer2a_' + row).hide();
+	jQuery('#gis_ia_layer2a_' + row).hide();
 	if (datarivmnl) {
 		if (datarivmnl.length>=5) {
-			jQuery('gis_ia_layer2a_' + row).attr('href','https://'+datarivmnl[2]+'/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4]).show();
+			jQuery('#gis_ia_layer2a_' + row).attr('href','https://'+datarivmnl[2]+'/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4]).show();
 			if (url2.val()=='') {
 				var naam=datarivmnl[4];
 				url2.val(naam);
