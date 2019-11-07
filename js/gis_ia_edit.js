@@ -1375,7 +1375,7 @@ function gis_ia_setLayer(row) {
 // Deze functie wordt aangeroepen als de redacteur de url wijzigt
 function gis_ia_setLayerURL(row) {
 	var url=jQuery('#gis_ia_layer_'+row),url2=jQuery('#gis_ia_layer2_'+row),title=jQuery('#gis_ia_title_' + row);
-	var datarivmnl=url.val().match(^(https:[\/\\][\/\\]|http:[\/\\][\/\\]|){1}(acceptatie\.data|data){1}\.rivm.nl[\/\\]geo[\/\\](.+)[\/\\](.+)$);
+	var datarivmnl=url.val().match(/^(https:[\/\\][\/\\]|http:[\/\\][\/\\]|){1}(acceptatie\.data|data){1}\.rivm.nl[\/\\]geo[\/\\](.+)[\/\\](.+)$/);
     gis_ia_setOneValue(row, 1, url.val());
     gis_ia_setOneValue(row, 2, url2.val());
 	if (url2.val()=='') {
