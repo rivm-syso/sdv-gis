@@ -1519,7 +1519,7 @@ function gis_ia_delete(row) {
   gis_ia_redrawFilterDefsTable();
   gis_ia_show_hide();
   jQuery('[url=url]').each(function(t,el) {
-	  el.jQuery(el);
+	  el=jQuery(el);
 	  var id=el.prop('id'), no=id.substr(13);
 	  gis_ia_setLayerURL(parseInt(no,10));
   });
