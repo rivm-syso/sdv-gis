@@ -1434,7 +1434,11 @@ function gis_ia_setLayerURL(row) {
 					}
 					t=data.children.length;
 				}
-				url2.html('<option>URL lijkt kaart.</option>');
+				if (opts.length>=1) {
+					url2.html('<option>'+opts.join('</option><option>')+'</option>');
+				} else {
+					url2.html('<option>Fout: URL lijkt geen kaart.</option>');
+				}
 				gis_ia_setOneValue(row, 2, url2.val());
 			},
 			error: function(e) {
