@@ -1399,7 +1399,7 @@ function gis_ia_setLayerURL(row) {
 	jQuery('#gis_ia_layer2a_' + row).hide();
 	if (datarivmnl) {
 		if (datarivmnl.length>=5) {
-			jQuery('#gis_ia_layer2a_' + row).attr('href','https://'+datarivmnl[2]+'.rivm.nl/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4]).show();
+			jQuery('#gis_ia_layer2a_' + row).attr('href','https://'+datarivmnl[2]+'.rivm.nl/geo/portal/index.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4]).show();
 			if (url2.val()=='') {
 				var naam=datarivmnl[4];
 				url2.val(naam);
