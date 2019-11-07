@@ -1411,7 +1411,7 @@ function gis_ia_setLayerURL(row) {
 		jQuery('#gis_ia_layer2a_' + row).attr('href',datarivmnl['href']).show();
 	}
 	if (url.val()!='') {
-		$.ajax({
+		jQuery.ajax({
 			url: url.val()+'?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities',
 			type: "GET",
 			success: function(data) {
