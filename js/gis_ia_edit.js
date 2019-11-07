@@ -948,6 +948,7 @@ function gis_ia_init() {
   });
 
   gis_ia_setFieldsOnServer();
+  
 }
 
 //  Deze functie wordt door de dialoogboxen in gis_ia_modals aangeroepen, om te
@@ -1118,7 +1119,7 @@ function gis_ia_row(no, values, aant_rows) {
 	if (datarivmnl) {
 		dis=datarivmnl['href'];
 	}
-	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><select onchange="gis_ia_setLayerURL('+no+')" id="gis_ia_layer2_' + no + '"><option>' + values[2] + '</option></select><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" target="gisportal" style="'+(dis==''?'display: none;':'')+'padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
+	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input url="url" onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><select onchange="gis_ia_setLayerURL('+no+')" id="gis_ia_layer2_' + no + '"><option>' + values[2] + '</option></select><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" target="gisportal" style="'+(dis==''?'display: none;':'')+'padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
@@ -1517,4 +1518,9 @@ function gis_ia_delete(row) {
   gis_ia_init();
   gis_ia_redrawFilterDefsTable();
   gis_ia_show_hide();
+  jQuery('[url=url]').each(function(t,el) {
+	  el.jQuery(el);
+	  var id=el.prop('id'), no=id.substr(13);
+	  gis_ia_setLayerURL(parseInt(no,10));
+  });
 })(jQuery);
