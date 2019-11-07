@@ -1121,7 +1121,7 @@ function gis_ia_row(no, values, aant_rows) {
 	// [3] onderwerp
 	// [4] kaartnaam
 	dis='';
-	if (typeof(datarivmnl)=='object') {
+	if (typeof(datarivmnl)) {
 		if (datarivmnl.length>=5) {
 			dis='https://'+datarivmnl[2]+'/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4];
 		}
@@ -1397,7 +1397,7 @@ function gis_ia_setLayerURL(row) {
     gis_ia_setOneValue(row, 1, url.val());
     gis_ia_setOneValue(row, 2, url2.val());
 	jQuery('gis_ia_layer2a_' + row).hide();
-	if (typeof(datarivmnl)=='object') {
+	if (typeof(datarivmnl)) {
 		if (datarivmnl.length>=5) {
 			jQuery('gis_ia_layer2a_' + row).attr('href','https://'+datarivmnl[2]+'/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4]).show();
 			if (url2.val()=='') {
