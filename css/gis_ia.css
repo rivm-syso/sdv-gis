@@ -1,4 +1,7 @@
-﻿
+﻿/* TBV test */
+
+.field--name-field-bbb {float: right; margin: 0 0 20px 20px;}
+
 /* Laat in Drupal geen titels e.d. zien */
 .node--type-gis-ia-map header {display: none;}
 .node--type-gis-ia-map .card-content h2 {display: none;}
