@@ -1435,7 +1435,7 @@ function gis_ia_setLayerURL(row) {
 					}
 					t=data.children.length;
 				}
-				if (opts.length>=1)
+				if (opts.length>=1) {
 					for (t=0;t<opts.length;t++) {
 						html+='<option'+(opts[t]==old_layer?' selected="selected">':'>')+opts[t]+'</option>';
 					}
