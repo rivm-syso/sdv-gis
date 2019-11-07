@@ -13,3 +13,5 @@ td input[type=checkbox] {vertical-align: middle !important; margin-right: 20px;}
 .kolom_3 > div:first-child {display: inline-block; width: 300px; vertical-align: top;}
 .kolom_3 > div:not(:first-child) {display: inline-block; width: 400px; vertical-align: top;}
 .kolom_1 > div, .kolom_2 > div, .kolom_3 > div {margin-bottom: 4px; width: calc(100% - 30px);}
+
+.gis_ia_url_error2 {color: white; background-color: red; padding: 2px 12px;}

@@ -1408,6 +1408,7 @@ function gis_ia_setLayerURL(row) {
     gis_ia_setOneValue(row, 1, url.val());
     gis_ia_setOneValue(row, 2, url2.val());
 	jQuery('#gis_ia_layer2a_' + row).hide();
+	url2.show();
 	urlerror.html('').removeClass('gis_ia_url_error2');
 	if (datarivmnl) {
 		jQuery('#gis_ia_layer2a_' + row).attr('href',datarivmnl['href']).show();
@@ -1443,14 +1444,17 @@ function gis_ia_setLayerURL(row) {
 					url2.html(html);
 				} else {
 					url2.html('<option></option>');
+					url2.hide();
 					urlerror.html('URL lijkt geen kaart.').addClass('gis_ia_url_error2');
-
+					jQuery('#gis_ia_layer2a_' + row).hide();
 				}
 				gis_ia_setOneValue(row, 2, url2.val());
 			},
 			error: function(e) {
 				url2.html('<option></option>');
+				url2.hide();
 				urlerror.html('URL lijkt geen kaart.').addClass('gis_ia_url_error2');
+				jQuery('#gis_ia_layer2a_' + row).hide();
 				gis_ia_setOneValue(row, 2, url2.val());
 			}          
 		});

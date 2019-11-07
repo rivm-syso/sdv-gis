@@ -244,5 +244,3 @@
 .gis_ia_base button.playpauze {height: 33px; width: 33px; border-radius: 16px; background-position: center; background-repeat: no-repeat;}
 
 .gis_ia_base .wait-cursor {background-image: url(wait.gif); width: 32px; height: 32px;}
-
-.gis_ia_url_error2 {color: red; background-color: orange;}
