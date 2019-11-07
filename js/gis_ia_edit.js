@@ -1114,12 +1114,6 @@ function gis_ia_row(no, values, aant_rows) {
   row += '</select></td>';
   if (values[0] == 'URL') {
 	var datarivmnl=gis_ia_datarivmnl(values[1]);
-	// datarivmnl is null of bevat:
-	// [0] de gehele url
-	// [1] https://, http:// of niks
-	// [2] acceptatie.data of data
-	// [3] onderwerp
-	// [4] kaartnaam
 	dis='';
 	if (datarivmnl) {
 		dis=datarivmnl['href'];
@@ -1136,6 +1130,15 @@ function gis_ia_row(no, values, aant_rows) {
   row += '</tr>';
   return row;
 }
+
+// deze functie checkt of een url wijst naar ons eigen (acceptatie) portaal of niet.
+// return is null of bevat:
+// [0] de gehele url
+// [1] https://, http:// of niks
+// [2] acceptatie.data of data
+// [3] onderwerp
+// [4] kaartnaam
+// ['href'] href naar geo-package op portaal
 function gis_ia_datarivmnl(v) {
 	var r=v.match(/^(https:[\/\\][\/\\]|http:[\/\\][\/\\]|){1}(acceptatie\.data|data){1}\.rivm.nl[\/\\]geo[\/\\](.+)[\/\\](.+)$/);
 	if (r) {
@@ -1406,17 +1409,29 @@ function gis_ia_setLayerURL(row) {
 	jQuery('#gis_ia_layer2a_' + row).hide();
 	if (datarivmnl) {
 		jQuery('#gis_ia_layer2a_' + row).attr('href',datarivmnl['href']).show();
-		if (url2.val()=='') {
-			var naam=datarivmnl[4];
-			url2.val(naam);
-			gis_ia_setOneValue(row, 2, naam);
-			if (title.val()=='') {
-				gis_ia_setOneValue(row, 3, naam);
-				title.val(naam);
-			}
-		}
 	}
-    if (url2.val()!='') {title.removeAttr('disabled');}
+	if (url.val()!='') {
+		$.ajax({
+			url: url.val()+'?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities',
+			type: "GET",
+			success: function(data) {
+				var t, node, r;
+				
+				r='Succes: GetCapabilities geeft het volgende terug:';
+				for (t=0;t<data.childNodes.length;t++) {
+					node=data.childNodes[t];
+					r+='<br>'+(t+1)+': '+node['localName'];
+				}
+				a=1;
+			},
+			error: function(e) {
+				url2.val('');
+			}          
+		});
+		title.prop('disabled',false);
+	} else {
+		title.prop('disabled',true);
+	}
 }
 
 // Deze functie wordt aangeroepen als de redacteur op 'Nieuwe laag' klikt en
