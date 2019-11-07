@@ -1,6 +1,6 @@
 ﻿/* TBV test */
 
-.field--name-field-bbb {float: right; margin: 0 0 20px 20px;}
+.field--name-field-bbb {float: right; margin: 0 0 20px 40px !important; width: calc(50% - 40px);}
 
 /* Laat in Drupal geen titels e.d. zien */
 .node--type-gis-ia-map header {display: none;}
