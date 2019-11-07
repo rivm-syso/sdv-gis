@@ -701,7 +701,6 @@ function gis_ia_init() {
   jQuery('.form-item-gis-ia-params-0-value').hide();
   jQuery('.form-item-gis-ia-layers-0-value').hide();
 
-  console.log(drupalSettings.gis_ia.urls);
   // Maak dialog-box voor WMS
   var wms = drupalSettings.gis_ia.wms.split('|'), t1, s1;
   var wmsDom = '<div style="min-width: 600px;"><table style="width: initial;"><tr><td>Zoek:</td><td><input size="24" onkeyup="gis_ia_zoek(\'wms\');" id="gis_ia_zoek_wms"></td></tr><tr><td style="vertical-align: top;">Layer:</td><td><div style="max-height: 14em; overflow-y: scroll;"><table id="gis_ia_res_wms" style="min-width: 100%;">';
@@ -1114,7 +1113,7 @@ function gis_ia_row(no, values, aant_rows) {
   row += '<option' + (values[0] == 'URL' ? ' selected="selected"' : '') + ' value="URL">URL</option>';
   row += '</select></td>';
   if (values[0] == 'URL') {
-	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><input onchange="gis_ia_setLayerURL('+no+')" size="24" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"></td>';
+	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><input onchange="gis_ia_setLayerURL('+no+')" size="24" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"><a id="gis_ia_layer2a_' + no + '" class="button" href="" style="display: none; padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
@@ -1376,17 +1375,25 @@ function gis_ia_setLayer(row) {
 function gis_ia_setLayerURL(row) {
 	var url=jQuery('#gis_ia_layer_'+row),url2=jQuery('#gis_ia_layer2_'+row),title=jQuery('#gis_ia_title_' + row);
 	var datarivmnl=url.val().match(/^(https:[\/\\][\/\\]|http:[\/\\][\/\\]|){1}(acceptatie\.data|data){1}\.rivm.nl[\/\\]geo[\/\\](.+)[\/\\](.+)$/);
+	// datarivmnl is null of bevat:
+	// [0] de gehele url
+	// [1] https://, http:// of niks
+	// [2] acceptatie.data of data
+	// [3] onderwerp
+	// [4] kaartnaam
     gis_ia_setOneValue(row, 1, url.val());
     gis_ia_setOneValue(row, 2, url2.val());
-	if (url2.val()=='') {
-		var parts=url.val().split('?'),naam='';
-		parts=parts[0].replace(/\\/g, '/').split('/');
-		if (parts.length>=1) {if (parts[parts.length-1]!='') {naam=parts[parts.length-1];} else {if (parts.length>=2) {naam=parts[parts.length-2];}}}
-		url2.val(naam);
-		gis_ia_setOneValue(row, 2, naam);
-		if (title.val()=='') {
-			gis_ia_setOneValue(row, 3, naam);
-			title.val(naam);
+	jQuery('gis_ia_layer2a_' + row).hide();
+	if (url2.val()=='' && typeof(datarivmnl)=='object') {
+		if (datarivmnl.length>=5) {
+			jQuery('gis_ia_layer2a_' + row).attr('href','https://'+datarivmnl[2]+'/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4]).show();
+			var naam=datarivmnl[4];
+			url2.val(naam);
+			gis_ia_setOneValue(row, 2, naam);
+			if (title.val()=='') {
+				gis_ia_setOneValue(row, 3, naam);
+				title.val(naam);
+			}
 		}
 	}
     if (url2.val()!='') {title.removeAttr('disabled');}
