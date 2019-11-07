@@ -1119,7 +1119,7 @@ function gis_ia_row(no, values, aant_rows) {
 	if (datarivmnl) {
 		dis=datarivmnl['href'];
 	}
-	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input url="url" onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><select onchange="gis_ia_setLayerURL('+no+')" id="gis_ia_layer2_' + no + '"><option></option></select><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" target="gisportal" style="padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
+	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input url="url" onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><select id="gis_ia_layer2_' + no + '"><option></option></select><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" target="gisportal" style="padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
