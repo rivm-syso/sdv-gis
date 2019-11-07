@@ -1123,10 +1123,10 @@ function gis_ia_row(no, values, aant_rows) {
 	dis='';
 	if (datarivmnl) {
 		if (datarivmnl.length>=5) {
-			dis='https://'+datarivmnl[2]+'/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4];
+			dis='https://'+datarivmnl[2]+'.rivm.nl/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4];
 		}
 	}
-	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><input onchange="gis_ia_setLayerURL('+no+')" size="24" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" style="'+(dis==''?'display: none;':'')+'padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
+	row += '<td><span style="width: 50px; display: inline-block;">URL:</span><input onchange="gis_ia_setLayerURL('+no+')" size="48" value="' + values[1] + '" id="gis_ia_layer_' + no + '"><br><span style="width: 50px; display: inline-block;">Layer:</span><input onchange="gis_ia_setLayerURL('+no+')" size="24" value="' + values[2] + '" id="gis_ia_layer2_' + no + '"><a id="gis_ia_layer2a_' + no + '" class="button" href="'+dis+'" terget="gisportal" style="'+(dis==''?'display: none;':'')+'padding: 1px 12px; font-size: 13px; margin: 2px 0 0 40px;">Open in gisportal</a></td>';
   } else {
 	row += '<td><input type="button" class="button" onclick="gis_ia_setLayer(' + no + ');" value="' + (values[2] == '' ? 'Kies layer ...' : values[2]) + '" id="gis_ia_layer_' + no + '"></td>';
   }
@@ -1399,7 +1399,7 @@ function gis_ia_setLayerURL(row) {
 	jQuery('#gis_ia_layer2a_' + row).hide();
 	if (datarivmnl) {
 		if (datarivmnl.length>=5) {
-			jQuery('#gis_ia_layer2a_' + row).attr('href','https://'+datarivmnl[2]+'/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4]).show();
+			jQuery('#gis_ia_layer2a_' + row).attr('href','https://'+datarivmnl[2]+'.rivm.nl/geo/portal/find-geopackage.php?thema='+datarivmnl[3]+'&kaart='+datarivmnl[4]).show();
 			if (url2.val()=='') {
 				var naam=datarivmnl[4];
 				url2.val(naam);
