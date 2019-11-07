@@ -2971,7 +2971,7 @@ function GIS_paragraaf_start(map_id) {
 		},
         select: function (evt, ui) {
 		  var id=ui.item.value;
-console.log(ui.item);
+		  jQuery(this).val(ui.item.label);
           jQuery.getJSON(position2_url_lookup + id, function (data) {
             var l = data.response.docs[0].centroide_ll.split(' ');
             l[0] = parseFloat(l[0].substr(6));
