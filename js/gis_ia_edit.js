@@ -225,7 +225,7 @@ function gis_ia_getLayerDefs() {
   t = t.replace(/[\r\n]+/g, "\r");
   t = t.replace(/\n+/g, "\r");
   t = t.split("\r");
-  var tbl = '<div id="gis_ia_div"><table class="field-multiple-table responsive-enabled"><thead><tr><th>Pos.</th><th>Type</th><th>Layer</th><th>Layernaam (in Drupal)</th><th>Opacity</th><th>Vis<sup>*</sup></th><th>Features</th><th></th><th></th></tr></thead><tbody>',
+  var tbl = '<div id="gis_ia_div"><table class="field-multiple-table responsive-enabled"><thead><tr><th>Pos.</th><th>Type</th><th>Layer</th><th>Layernaam (in Drupal)</th><th>Opacity</th><th>Data<sup>*</sup></th><th>Vis<sup>**</sup></th><th>Features</th><th></th><th></th></tr></thead><tbody>',
       t1;
   for (t1 = 0; t1 < t.length; t1++) {
     if (t[t1] != '') {
@@ -1123,6 +1123,7 @@ function gis_ia_row(no, values, aant_rows) {
   }
   row += '<td><input onchange="gis_ia_setOneValue(' + no + ',3,this.value);" size="24" value="' + values[3] + '" id="gis_ia_title_' + no + '"' + (values[2] == '' ? ' disabled="disabled"' : '') + '></td>';
   row += '<td><input onchange="gis_ia_setOneValue(' + no + ',4,this.value);" size="3" value="' + values[4] + '" type="number" step="0.1" min="0" max="1"></td>';
+  row += '<td><input onchange="gis_ia_setOneValue(' + no + ',5,jQuery(this).prop(\'checked\')?1:0);" ' + (values[5] == 1 ? 'checked="checked"' : '') + ' type="checkbox"></td>';
   row += '<td><input onchange="gis_ia_setOneValue(' + no + ',7,jQuery(this).prop(\'checked\')?1:0);" ' + (values[7] == 1 ? 'checked="checked"' : '') + ' type="checkbox"></td>';
   row += '<td><input onclick="gis_ia_veld(' + no + ',false);" class="button" type="button" value="Velden"></td>';
   row += '<td><input onclick="gis_ia_delete(' + no + ');" class="button" type="button" value="Verwijder"></td>';
