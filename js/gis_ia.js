@@ -2885,54 +2885,62 @@ function GIS_paragraaf_start(map_id) {
       // verwacht
       GIS_ia_maps[map_id].layerDataToDo = 0;
       for (t = 0; t < GIS_ia_maps[map_id].layers_def.length; t++) {
-        GIS_ia_maps[map_id].layerData[t] = true;
-        GIS_ia_maps[map_id].layerDataToDo++;
+		d=GIS_ia_maps[map_id].layers_def[t].data;
+		if (d==2 || (d==1 && GIS_ia_maps[map_id].layers[t].getVisible())) {
+			GIS_ia_maps[map_id].layerData[t]=true;
+			GIS_ia_maps[map_id].layerDataToDo++;
+		} else {
+			GIS_ia_maps[map_id].layerData[t]=false;
+		}
       }
       for (var t = 0; t < GIS_ia_maps[map_id].layers_def.length; t++) {
-        switch (GIS_ia_maps[map_id].layers_def[t].type) {
-          case 'WMS':
-          case 'URL':
-            var view = evt.map.getView();
-            var viewResolution = view.getResolution();
-            var viewProjection = view.getProjection();
-            var url = GIS_ia_maps[map_id].layers[t].getSource().getGetFeatureInfoUrl(evt.coordinate, viewResolution, viewProjection, {
-              'kaartNo': t,
-              'FEATURE_COUNT': 100,
-              'INFO_FORMAT': 'application/json',
-              'QUERY_LAYERS': GIS_ia_maps[map_id].layers_def[t].layer
-            });
-            if (url) {
-              jQuery.ajax({
-                type: "GET",
-                url: url,
-                layer_t: t,
-                dataType: 'json'
-              }).done(function (data) {
-                if (data.features.length >= 1) {
-                  GIS_ia_maps[map_id].layerData[this.layer_t] = data.features;
-                }
-                GIS_ia_maps[map_id].layerDataToDo--;
-                setPopup(map_id, evt);
-              }).fail(function (jqXHR, textStatus, errorThrown) {
-                var msg = '';
-                if (jqXHR.responseText) {
-                  msg = jqXHR.responseText;
-                }
-                if (msg == '' && errorThrown) {
-                  if (errorThrown.message) {
-                    msg = errorThrown.message;
-                  }
-                }
-                if (msg == '') {
-                  msg = '(possible error) Cross-Origin Read Blocking (CORB) blocked cross-origin response';
-                }
-                console.log('Systeemfout: ' + msg);
-                GIS_ia_maps[map_id].layerDataToDo--;
-                setPopup(map_id, evt);
-              });
-            }
-            break;
-        }
+		d=GIS_ia_maps[map_id].layers_def[t].data;
+		if (d==2 || (d==1 && GIS_ia_maps[map_id].layers[t].getVisible())) {
+			switch (GIS_ia_maps[map_id].layers_def[t].type) {
+			  case 'WMS':
+			  case 'URL':
+				var view = evt.map.getView();
+				var viewResolution = view.getResolution();
+				var viewProjection = view.getProjection();
+				var url = GIS_ia_maps[map_id].layers[t].getSource().getGetFeatureInfoUrl(evt.coordinate, viewResolution, viewProjection, {
+				  'kaartNo': t,
+				  'FEATURE_COUNT': 100,
+				  'INFO_FORMAT': 'application/json',
+				  'QUERY_LAYERS': GIS_ia_maps[map_id].layers_def[t].layer
+				});
+				if (url) {
+				  jQuery.ajax({
+					type: "GET",
+					url: url,
+					layer_t: t,
+					dataType: 'json'
+				  }).done(function (data) {
+					if (data.features.length >= 1) {
+					  GIS_ia_maps[map_id].layerData[this.layer_t] = data.features;
+					}
+					GIS_ia_maps[map_id].layerDataToDo--;
+					setPopup(map_id, evt);
+				  }).fail(function (jqXHR, textStatus, errorThrown) {
+					var msg = '';
+					if (jqXHR.responseText) {
+					  msg = jqXHR.responseText;
+					}
+					if (msg == '' && errorThrown) {
+					  if (errorThrown.message) {
+						msg = errorThrown.message;
+					  }
+					}
+					if (msg == '') {
+					  msg = '(possible error) Cross-Origin Read Blocking (CORB) blocked cross-origin response';
+					}
+					console.log('Systeemfout: ' + msg);
+					GIS_ia_maps[map_id].layerDataToDo--;
+					setPopup(map_id, evt);
+				  });
+				}
+				break;
+			}
+		}
       }
       // Op dit punt heeft de gebruiker een verzoek aan de server gestart
       jQuery('#gis_ia_map_' + map_id).css('cursor', 'none');
