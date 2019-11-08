@@ -839,7 +839,7 @@ gis_ia_filter.prototype.cql_filter = function (changed_layer) {
                 r = this.f + '=\'' + el.val() + '\'';
                 break;
               case '1':
-                r = this.f + ' like \'%' + el.val() + '%\'';
+                r = 'lcase('+this.f + ') like \'%' + el.val().toLowerCase() + '%\'';
                 break;
             }
           }
