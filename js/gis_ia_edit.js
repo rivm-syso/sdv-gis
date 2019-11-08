@@ -875,9 +875,7 @@ function gis_ia_init() {
   d += '<div class="kolom_1"><div>Rechts boven</div>';
   d += '<div><input type="checkbox" id="gis_ia_z" gis_ia="z"><label for="gis_ia_z" class="option"> In- en uitzoomen</label></div>';
   d += '<div><input type="checkbox" id="gis_ia_e" gis_ia="e"><label for="gis_ia_e" class="option"> Zoom extend</label></div>';
-  // fullscreen optie uitgezet
-  //d+='<div><input type="checkbox" id="gis_ia_f" gis_ia="f"><label
-  // for="gis_ia_f" class="option"> Full screen</label></div>';
+  d+='<div><input type="checkbox" id="gis_ia_f" gis_ia="f"><label for="gis_ia_f" class="option"> Full screen</label></div>';
   d += '</div>';
   // Links onder
   d += '<div class="kolom_1"><div>Links onder</div>';
