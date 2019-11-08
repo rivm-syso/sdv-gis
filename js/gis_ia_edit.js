@@ -35,10 +35,10 @@ var gis_ia_default_row = [
   '',                      					// 2=laag
   '',                      					// 3=laagnaam
   '1',                    					// 4=opacity
-  '8',                    					// 5=toon features
+  '1',                    					// 5=toon features
   '',                      					// 6=veld-definities
 											// veld=Label^eenheid^align-right[,veld=^^^^...]
-  '1'
+  '1'										// 7=initial visibility
 ];
 
 /***************** Default parameters ******************************/
@@ -234,7 +234,7 @@ function gis_ia_getLayerDefs() {
       tbl += gis_ia_row(t1, t[t1].split('|'), t.length + (t[t.length - 1] == '' ? -1 : 0));
     }
   }
-  tbl += '</tbody></table>';
+  tbl += '</tbody></table><div><sup>*</sup> Toon features ook als laag uit staat.</div><div><sup>**</sup> Initial visibility</div>';
   tbl += '<input onclick="gis_ia_add();" type="button" value="Layer-definitie toevoegen" class="button js-form-submit form-submit" style="margin: 12px 0 20px 0;">';
   tbl += '</div>';
   return tbl;
