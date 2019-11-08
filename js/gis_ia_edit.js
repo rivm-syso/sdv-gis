@@ -35,7 +35,7 @@ var gis_ia_default_row = [
   '',                      					// 2=laag
   '',                      					// 3=laagnaam
   '1',                    					// 4=opacity
-  '1',                    					// 5=toon features
+  '1',                    					// 5=toon features (0=Nee, 1=Als laag aan staat, 2= Altijd)
   '',                      					// 6=veld-definities
 											// veld=Label^eenheid^align-right[,veld=^^^^...]
   '1'										// 7=initial visibility
@@ -234,7 +234,7 @@ function gis_ia_getLayerDefs() {
       tbl += gis_ia_row(t1, t[t1].split('|'), t.length + (t[t.length - 1] == '' ? -1 : 0));
     }
   }
-  tbl += '</tbody></table><div><sup>*</sup> Toon features ook als laag uit staat.</div><div><sup>**</sup> Initial visibility</div>';
+  tbl += '</tbody></table><div style="margin-top:12px;"><sup>*</sup> Toon features ook als laag uit staat.</div><div><sup>**</sup> Initial visibility</div>';
   tbl += '<input onclick="gis_ia_add();" type="button" value="Layer-definitie toevoegen" class="button js-form-submit form-submit" style="margin: 12px 0 20px 0;">';
   tbl += '</div>';
   return tbl;
@@ -1125,7 +1125,7 @@ function gis_ia_row(no, values, aant_rows) {
   }
   row += '<td><input onchange="gis_ia_setOneValue(' + no + ',3,this.value);" size="24" value="' + values[3] + '" id="gis_ia_title_' + no + '"' + (values[2] == '' ? ' disabled="disabled"' : '') + '></td>';
   row += '<td><input onchange="gis_ia_setOneValue(' + no + ',4,this.value);" size="3" value="' + values[4] + '" type="number" step="0.1" min="0" max="1"></td>';
-  row += '<td><input onchange="gis_ia_setOneValue(' + no + ',5,jQuery(this).prop(\'checked\')?1:0);" ' + (values[5] == 1 ? 'checked="checked"' : '') + ' type="checkbox"></td>';
+  row += '<td><select onchange="gis_ol_setOneValue('+no+',5,this.value);" ><option value="0"'+(values[5]=='0'?' selected="selected"':'')+'>Nee</option><option value="1"'+(values[5]=='1'?' selected="selected"':'')+'>Toon als laag aan staat</option><option value="2"'+(values[5]=='2'?' selected="selected"':'')+'>Altijd tonen</option></select></td>';
   row += '<td><input onchange="gis_ia_setOneValue(' + no + ',7,jQuery(this).prop(\'checked\')?1:0);" ' + (values[7] == 1 ? 'checked="checked"' : '') + ' type="checkbox"></td>';
   row += '<td><input onclick="gis_ia_veld(' + no + ',false);" class="button" type="button" value="Velden"></td>';
   row += '<td><input onclick="gis_ia_delete(' + no + ');" class="button" type="button" value="Verwijder"></td>';
