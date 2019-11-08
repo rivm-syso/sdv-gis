@@ -29,15 +29,17 @@
 */
 
 /******************** Layer-definitie **************************************/
-var gis_ia_default_row = ['WMS',                    // 0=type
+var gis_ia_default_row = [
+  'WMS',                    				// 0=type
   'https://geodata.rivm.nl/geoserver/wms',  // 1=server
-  '',                      // 2=laag
-  '',                      // 3=laagnaam
-  '1',                    // 4=opacity
-  '1',                    // 5=toon features
-  '',                      // 6=veld-definities
-                           // veld=Label^eenheid^align-right[,veld=^^^^...]
-  '1'];
+  '',                      					// 2=laag
+  '',                      					// 3=laagnaam
+  '1',                    					// 4=opacity
+  '8',                    					// 5=toon features
+  '',                      					// 6=veld-definities
+											// veld=Label^eenheid^align-right[,veld=^^^^...]
+  '1'
+];
 
 /***************** Default parameters ******************************/
 var gis_ia_default_parameters = {
