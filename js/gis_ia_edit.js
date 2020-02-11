@@ -699,9 +699,6 @@ function gis_ia_set_filterItem(e, i, parm) {
 // plaats daarvan een interactieve tabel en voert alle benodigde initialisatie
 // uit.
 function gis_ia_init() {
-  // Verbergen Drupal velden
-  jQuery('.form-item-gis-ia-params-0-value').hide();
-  jQuery('.form-item-gis-ia-layers-0-value').hide();
 
   // Maak dialog-box voor WMS
   var wms = drupalSettings.gis_ia.wms.split('|'), t1, s1;
@@ -948,7 +945,7 @@ function gis_ia_init() {
   });
 
   gis_ia_setFieldsOnServer();
-  
+
 }
 
 //  Deze functie wordt door de dialoogboxen in gis_ia_modals aangeroepen, om te
@@ -1457,7 +1454,7 @@ function gis_ia_setLayerURL(row) {
 				urlerror.html('URL lijkt geen kaart.').addClass('gis_ia_url_error2');
 				jQuery('#gis_ia_layer2a_' + row).hide();
 				gis_ia_setOneValue(row, 2, url2.val());
-			}          
+			}
 		});
 		title.prop('disabled',false);
 	} else {
