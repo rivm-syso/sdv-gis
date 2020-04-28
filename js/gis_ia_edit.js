@@ -30,15 +30,15 @@
 
 /******************** Layer-definitie **************************************/
 var gis_ia_default_row = [
-  'WMS',                    				// 0=type
-  'https://geodata.rivm.nl/geoserver/wms',  // 1=server
-  '',                      					// 2=laag
-  '',                      					// 3=laagnaam
+  'URL',                    				// 0=type
+  '',  								// 1=server
+  '',                      				// 2=laag
+  '',                      				// 3=laagnaam
   '1',                    					// 4=opacity
   '1',                    					// 5=toon features (0=Nee, 1=Als laag aan staat, 2= Altijd)
-  '',                      					// 6=veld-definities
-											// veld=Label^eenheid^align-right[,veld=^^^^...]
-  '1'										// 7=initial visibility
+  '',                      				// 6=veld-definities
+									// veld=Label^eenheid^align-right[,veld=^^^^...]
+  '1'									// 7=initial visibility
 ];
 
 /***************** Default parameters ******************************/
@@ -46,7 +46,6 @@ var gis_ia_default_parameters = {
   'dataversie': 0,   // dataversie (altijd integer) ophogen als deze niet meer
                      // compatible is met een vorige versie.
   // Formaat en uiterlijk
-  'u': 'hemelblauw',  // Uiterlijk CSS
   'fl': 0,      // Floating, 0=geen, 1=links, 2=rechts
   // Basiskaarten
   'b': '10000',     // basiskaarten: Openbasiskaart, Openbasiskaart grijs,
@@ -85,7 +84,7 @@ var gis_ia_default_parameters = {
   // Panel
   'pw': '14',      // positie 0: Sliding: 0=Binnen de kaart, 1=Links van de
                    // kaart
-  // positie 1: breedte 0=180px ... 6=300px
+  // positie 1: breedte 0=180px ... 6=300px    Let op, dit wordt ook gebruikt in gis_ia.js!!!
   // layer data
   'ld': '',      // Deze parameter wordt in gis_ia.module achter de 'echte'
                  // parameters geplakt en bevat alle layer-data!!!
@@ -355,7 +354,7 @@ function gis_ia_getFilterDefTableItem(f, i, opts) {
       s = '<tr><td style="white-space: nowrap; ' + inspringen + '">' + gis_ia_getSelect(opts, i, 'gis_ia_filter_volgorde(this,\'' + i + '\');') + '</td>';
   switch (f.t) {
     case 'a': // header
-      s += '<td>Tekst</td><td><input value="' + f.v + '" onchange="gis_ia_set_filterItem(this,\'' + i + '\',\'v\');"></td><td></td><td><input type="button" onclick="gis_ia_toggle_filters(this);" value=" &uarr; &darr; "></td><td></td><td><div class="gis_ia_hideable">' + gis_ia_getSelect(['t=Tekst', 'h2=Header 2', 'h3=Header 3'], f.s, 'gis_ia_set_filterItem(this,\'' + i + '\',\'s\');') + '</div></td><td><input onclick="gis_ia_del_filter(\'' + i + '\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
+      s += '<td>Tekst</td><td><input value="' + f.v + '" onchange="gis_ia_set_filterItem(this,\'' + i + '\',\'v\');"></td><td></td><td><input type="button" onclick="gis_ia_toggle_filters(this);" value=" &uarr; &darr; "></td><td></td><td><div class="gis_ia_hideable">' + gis_ia_getSelect(['t=Tekst', 'h2=Header 2', 'h3=Header 3', 'h4=Header 4'], f.s, 'gis_ia_set_filterItem(this,\'' + i + '\',\'s\');') + '</div></td><td><input onclick="gis_ia_del_filter(\'' + i + '\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
       break;
     case 'g': // groep
       s += '<td>Groep</td><td><input value="' + f.w + '" onchange="gis_ia_set_filterItem(this,\'' + i + '\',\'w\');"></td><td></td><td><input type="button" onclick="gis_ia_toggle_filters(this);" value=" &uarr; &darr; "></td><td><div class="gis_ia_hideable">Soort:&nbsp;&nbsp;&nbsp;&nbsp;' + gis_ia_getSelect(['of=Or', 'en=And'], f.s, 'gis_ia_set_filterItem(this,\'' + i + '\',\'s\');') + '</div></td><td><div class="gis_ia_hideable">' + gis_ia_getSelect(['0=In place', '1=As submenu'], f.b, 'gis_ia_set_filterItem(this,\'' + i + '\',\'b\');', (('' + i).indexOf('.') >= 1 ? 'style="display: none;"' : '')) + '</div></td><td><input onclick="gis_ia_del_filter(\'' + i + '\');" type="button" value="Verwijder" class="button js-form-submit form-submit"></td></tr>';
@@ -769,7 +768,7 @@ function gis_ia_init() {
     // voeg elke parameter uit gis_ia_default_parameters toe aan body als deze niet in
     // body bestaat, of verleng deze indien nodig
     for (key in gis_ia_default_parameters) {
-      if (key == 'u' || key == 'ld' || (key != 'tmp' && !gis_ia_default_parameters.hasOwnProperty(key))) {
+      if (key == 'ld' || (key != 'tmp' && !gis_ia_default_parameters.hasOwnProperty(key))) {
         continue;
       }
       for (t = 0, regel = -1; t < regels.length; t++) {
@@ -810,8 +809,6 @@ function gis_ia_init() {
   href = href.substr(0, href.indexOf('/structure/')) + '/help/sdv_gis?help';
   start_el.prepend('<div class="button" style="float: right;margin: 12px 60px 12px 20px;" onclick="window.open(\'' + href + '#all\',\'gis_ia_help\');">Help</div>');
 
-  kleuren = ['Automatisch', 'Bruin', 'Donkerblauw', 'Donkerbruin', 'Donkergeel', 'Donkergroen', 'Geel', 'Groen', 'Hemelblauw', 'Lichtblauw', 'Mintgroen', 'Mosgroen', 'Oranje', 'Paars', 'Robijnrood', 'Rood', 'Roze', 'Violet', 'Wit'];
-
   d += '<div class="form-item"><b>Formaat en uiterlijk</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\'' + href + '#form\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
   d += '<div class="form-item-start">';
   // Basiskaart
@@ -830,11 +827,6 @@ function gis_ia_init() {
   d += '</div>';
   // Overig
   d += '<div class="kolom_1"><div>Overig</div>';
-  d += '<div class="kolom_2"><span style="width: 100px;display: inline-block;">Kleurstelling:</span><select gis_ia="u">';
-  for (t1 = 0; t1 < kleuren.length; t1++) {
-    d += '<option value="' + kleuren[t1].toLowerCase() + '">' + kleuren[t1] + '</option>';
-  }
-  d += '</select></div>';
   d += '</div>';
   // einde
   d += '</div></div>';
@@ -845,6 +837,7 @@ function gis_ia_init() {
   // panel opties
   d += '<div class="kolom_1"><div>Panel opties</div>';
   d += '<div><input type="checkbox" id="gis_ia_pw-0" gis_ia="pw-0"><label for="gis_ia_pw-0" class="option"> Slide links van kaart</label></div>';
+  // Let op, de breedtes worden ook gebruikt in gis_ia.js!!!
   d += '<div><span style="width: 100px;display: inline-block;">Breedte:</span><select gis_ia="pw-1"><option value="0">180px</option><option value="1">200px</option><option value="2">220px</option><option value="3">240px</option><option value="4">260px</option><option value="5">280px</option><option value="6">300px</option></select></div>';
   d += '</div>';
   // Toon lagen in panel
@@ -931,14 +924,7 @@ function gis_ia_init() {
       el.prop('checked', v == '1');
     }
     else {
-      if (el.attr('gis_ia') == 'u') {
-        if (v != '1') {
-          el.val(v);
-        }
-      }
-      else {
-        el.val(v);
-      }
+      el.val(v);
     }
     // set de onchange, zodat alle parameters in gis_ia_params worden opgeslagen
     el.on('change', gis_ia_change);

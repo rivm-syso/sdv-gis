@@ -1,7 +1,3 @@
-﻿/* TBV test */
-
-.field--name-field-bbb {float: right; margin: 0 0 20px 40px !important; width: calc(50% - 40px);}
-
 /* Laat in Drupal geen titels e.d. zien */
 .node--type-gis-ia-map header {display: none;}
 .node--type-gis-ia-map .card-content h2 {display: none;}
@@ -17,11 +13,9 @@
 /* Filters naast of op de kaart */
 /* berekening max-width:	flex-breedte van .gis_ia_map_holder en .gis_ia_filters plus 1 (dus 700 + 300 + 1 = 1001) */
 .gis_ia_base {display: block; position: relative; min-width: 260px;}
-.gis_ia_filters {display: block; vertical-align: top; z-index: 20; position: absolute;}
+.gis_ia_filters {display: block; vertical-align: top; z-index: 20;}
+.gis_ia_filters.gis_ia_as_slider {position: absolute;}
 .gis_ia_map_holder {display: block; vertical-align: top; background-color: white;}
-.gis_ia_base.gis_ia_as_block {display: flex;}
-.gis_ia_base.gis_ia_as_block .gis_ia_filters {flex: 0 1 30%; position: initial;}
-.gis_ia_base.gis_ia_as_block .gis_ia_map_holder {flex: 1 0 70%;}
 
 .gis_ia_filters .f2 {padding: 8px 12px 8px 8px;}
 .gis_ia_filters.as-overlay .f2 {padding-left: 8px;}
@@ -33,11 +27,10 @@
 .gis_ia_filters_def {margin-top: -20px;}
 .gis_ia_f_def,.gis_ia_bl_def,.gis_ia_l_def {font-size: 1.1em; font-weight: bold;margin: 20px 0 8px 0;}
 .gis_ia_filters .gis_ia_filters_radio, .gis_ia_filters .gis_ia_filters_checkbox {padding-left: 32px;}
-.gis_ia_filters input.gis_ia_filters_checkbox, .gis_ia_filters input.gis_ia_filters_radio {position: absolute; width: 0; height: 0; margin: 0;}
+.gis_ia_filters input.gis_ia_filters_checkbox, .gis_ia_filters input.gis_ia_filters_radio {position: absolute; width: 0 !important; height: 0 !important; margin: 0; border: none !important;}
 .gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {content: "\2713"; font-size:15px; text-indent: 3px;}
-.gis_ia_filters input.gis_ia_filters_radio:checked ~ label.gis_ia_filters_radio:before {border-width: 6px; width: 7px; height: 7px;}
+.gis_ia_filters input.gis_ia_filters_radio:checked ~ label.gis_ia_filters_radio:before {border-width: 1px;width: 16px;height: 16px; background-color: black;}
 .gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {content: ""; position: absolute; width: 16px; height: 16px; display: inline-block; left: 0;}
-.gis_ia_filters label.gis_ia_filters_radio:before {border-radius: 9px;}
 
 
 /* */
@@ -54,7 +47,7 @@
 .gis_ia_arrow_down_has_x {right: 38px;}
 /* filter X buttons */
 .gis_ia_filters .gis_ia_f_f_xx {cursor: pointer;text-decoration: none; border: none;}
-.gis_ia_filters .gis_ia_f_f_xx:before {content: "✖"; display: inline-block; width: 29px; vertical-align: top; padding-left: 3px;}
+.gis_ia_filters .gis_ia_f_f_xx:before {content: "\00d7"; display: inline-block; width: 29px; vertical-align: top; padding-left: 3px;}
 .gis_ia_filters .gis_ia_f_f_xx span {display: inline-block; max-width: calc(100% - 37px); word-break: break-all;}
 .gis_ia_filters .gis_ia_f_f_x_simple .gis_ia_f_f_xx:before {width: 16px !important;}
 .gis_ia_filters .gis_ia_f_f_x_simple {float: right; text-align: right;}
@@ -67,7 +60,7 @@
 .gis_ia_filters .gis_ia_f_g {display: none; z-index: 1; position: absolute; margin-left: 229px; margin-top: -2em;}
 
 /* filters submenu */
-.gis_ia_filters_info_button {cursor: pointer; outline: none; display: inline-block; border-radius: 16px; margin: 0 0 0 12px; background-repeat: no-repeat; background-position: center; width: 33px; height: 33px; position: absolute !important;}
+.gis_ia_filters_info_button {cursor: pointer; outline: none; display: inline-block; margin: 0 0 0 12px; background-repeat: no-repeat; background-position: center; width: 33px; height: 33px; position: absolute !important;}
 .gis_ia_filters_extra_info {position: relative; width: calc(100% - 36px); min-height: 34px;}
 .gis_ia_filters_submenu_parent {position: absolute;width: 100%; text-align: right;}
 .gis_ia_filters_submenu {text-align: left;display: inline-block;z-index: 1;position: relative;margin: 30px -42px 0 0; border: 1px solid black; background-color: white; padding: 12px;}
@@ -76,8 +69,8 @@
 .gis_ia_filters_submenu>div:first-child {margin-top: 0;}
 .gis_ia_filters_submenu>div>div:first-child {font-weight: bold; margin-bottom: 4px;}
 .gis_ia_base .button-opa {display: inline-block;}
-.gis_ia_base .button-opa-min {width: 27px; min-width: 27px !important; border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; background-repeat: no-repeat; background-position: center;}
-.gis_ia_base .button-opa-max {width: 27px; min-width: 27px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; background-repeat: no-repeat; background-position: center;}
+.gis_ia_base .button-opa-min {width: 27px; min-width: 27px !important; background-repeat: no-repeat; background-position: center;}
+.gis_ia_base .button-opa-max {width: 27px; min-width: 27px !important; background-repeat: no-repeat; background-position: center;}
 .gis_ia_base .gis_ia_legenda .panel>div>div {white-space: nowrap;}
 .gis_ia_legenda .gis_ia_layer_legend {max-width: initial;}
 
@@ -89,12 +82,12 @@
 .gis_ia_base button {font-size: 1em !important; font-weight: normal !important;}
 
 /* Knoppen */
-.gis_ia_base button {cursor: pointer; outline: none; display: inline-block; background-position: center; min-width: 33px; height: 33px; border-radius: 16px; margin: 0;}
+.gis_ia_base button {cursor: pointer; outline: none; display: inline-block; background-position: center; min-width: 33px; height: 33px; margin: 0;}
 .gis_ia_base button:focus {outline: none; background-color: transparent;}
 .gis_ia_map_holder button {position: absolute;}
-.gis_ia_base .panel .button, .gis_ia_base .ol-popup-2 .button {cursor: pointer; border-radius: 0 !important; background-image: none !important;}
+.gis_ia_base .panel .button, .gis_ia_base .ol-popup-2 .button {cursor: pointer; background-image: none !important;}
 .gis_ia_filters_close button, .gis_ia_filters_toon button {position: initial !important;}
-.gis_ia_filters_button,gis_ia_filters_button {float: right; cursor: pointer; outline: none; display: inline-block; border-radius: 16px; margin: 0; padding: 4px 12px;}
+.gis_ia_filters_button,gis_ia_filters_button {float: right; cursor: pointer; outline: none; display: inline-block; margin: 0; padding: 4px 12px;}
 /* zorgen dat breedte popup gemaximaliseerd wordt */
 .ol-overlay-container.ol-selectable {width: 100%;}
 .ol-popup {max-width: calc(100% - 70px);}
@@ -159,7 +152,7 @@
 .gis_ia_base .ol-popup:before   {border-width: 11px; left: 48px; margin-left: -11px;}
 .gis_ia_base .ol-popup-2:before {border-width: 11px; left: 48px; margin-left: -11px; top:-22px;}
 .gis_ia_base .ol-popup-closer {cursor: pointer; text-decoration: none; position: absolute; top: 2px; right: 8px;}
-.gis_ia_base .ol-popup-closer:after { content: "✖";}
+.gis_ia_base .ol-popup-closer:after { content: "\00d7";}
 .gis_ia_base .ol-popup-closer, .gis_ia_base .ol-popup-closer:link, .gis_ia_base .ol-popup-closer:visited, .gis_ia_base .ol-popup-closer:hover {border-bottom: solid 0px transparent;color: black;}
 .gis_ia_base .ol-popup-table {border: 0;border-spacing: 0; margin: 10px 0 0 0;width: 100%;color: black;}
 .gis_ia_base .ol-popup-table tr {border-bottom: 1px solid transparent;padding: 0 10px 0 0;background: transparent;}
@@ -206,18 +199,17 @@
 .gis_ia_base .ol-control.gis_ia_layerSlider {right: 8px; bottom: 8px;}
 
 /* uiterlijk knoppen */
-.gis_ia_base .ol-control button.gis_ia_zoom-in {font-size: 0 !important; border-bottom-left-radius: 0; border-bottom-right-radius: 0; height: 27px; border-bottom-width: 0;background-repeat: no-repeat;}
-.gis_ia_base .ol-control button.gis_ia_zoom-out {font-size: 0 !important; border-top-left-radius: 0; border-top-right-radius: 0; height: 27px;background-repeat: no-repeat;}
+.gis_ia_base .ol-control button.gis_ia_zoom-in {font-size: 0 !important; height: 27px; border-bottom-width: 0;background-repeat: no-repeat;}
+.gis_ia_base .ol-control button.gis_ia_zoom-out {font-size: 0 !important; height: 27px;background-repeat: no-repeat;}
 .gis_ia_zoom_extent button {background-repeat: no-repeat;}
 .gis_ia_fullscreen button {background-repeat: no-repeat; font-size: 0;}
-.gis_ia_base .zoom-position {border-top-right-radius: 16px !important; border-bottom-right-radius: 16px !important;}
 .gis_ia_zoekveld {margin: 0; border-top-width: 0; border-left-width: 0; border-bottom-width: 0; width: calc(100% - 76px); height:33px; padding: 0 4px;}
-.gis_ia_zoekknop {border-width: 0 !important; border-radius: 0 !important; background-repeat: no-repeat;}
-.gis_ia_gotopos {border-width: 0 !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;background-repeat: no-repeat;}
+.gis_ia_zoekknop {border-width: 0 !important; background-repeat: no-repeat;}
+.gis_ia_gotopos {border-width: 0 !important; background-repeat: no-repeat;}
 .gis_ia_layerSlider input[type=range].play-left {width: calc(100% - 38px); margin: 0 4px 0 0 !important; float: left; height: 33px;}
 .gis_ia_base .opaMelder {position: absolute; z-index: 1000; padding: 0 3px; border: solid 1px black;}
-.gis_ia_filter_button {display: none; width: auto !important; white-space: nowrap; padding: 0 12px 0 4px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important;}
-.gis_ia_options_button {padding-left: 32px !important; background-repeat: no-repeat; background-position: 6px 6px !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; padding-right: 8px !important;}
+.gis_ia_filter_button {display: none; width: auto !important; white-space: nowrap; padding: 0 12px 0 4px !important; }
+.gis_ia_options_button {padding-left: 32px !important; background-repeat: no-repeat; background-position: 6px 6px !important; padding-right: 8px !important;}
 .gis_ia_base .ol-control.gis_ia_legenda button {position: absolute; bottom: 0;}
 
 /* alles voor input range, voor verschillende browsers */
@@ -238,9 +230,66 @@
 .gis_ia_base input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px;}
 .gis_ia_base input[type=range]::-moz-range-track {width: 100%; height: 4px;}
 .gis_ia_base input[type=range]::-ms-track { width: 100%; height: 4px;}
-.gis_ia_base .gis_ia_layerSlider input[type=range]::-webkit-slider-thumb {height: 35px; width: 45px; margin-top: -17px; border-radius: 17px; background-repeat: no-repeat;background-position: center;}
-.gis_ia_base .gis_ia_layerSlider input[type=range]::-moz-range-thumb {height: 31px; width: 41px; margin-top: -15px; border-radius: 16px; background-repeat: no-repeat;background-position: center;}
-.gis_ia_base .gis_ia_layerSlider input[type=range]::-ms-thumb { height: 31px; width: 41px; margin-top: 0px; border-radius: 16px; background-repeat: no-repeat;background-position: center;}
-.gis_ia_base button.playpauze {height: 33px; width: 33px; border-radius: 16px; background-position: center; background-repeat: no-repeat;}
+.gis_ia_base .gis_ia_layerSlider input[type=range]::-webkit-slider-thumb {height: 35px; width: 45px; margin-top: -17px; background-repeat: no-repeat;background-position: center;}
+.gis_ia_base .gis_ia_layerSlider input[type=range]::-moz-range-thumb {height: 31px; width: 41px; margin-top: -15px; background-repeat: no-repeat;background-position: center;}
+.gis_ia_base .gis_ia_layerSlider input[type=range]::-ms-thumb { height: 31px; width: 41px; margin-top: 0px; background-repeat: no-repeat;background-position: center;}
+.gis_ia_base button.playpauze {height: 33px; width: 33px; background-position: center; background-repeat: no-repeat;}
 
 .gis_ia_base .wait-cursor {background-image: url(wait.gif); width: 32px; height: 32px;}
+
+/* Kleuren */
+.gis_ia_base {background-color: #ffffff;}
+/* Knoppen */
+.gis_ia_base button {background-color: #ffffff !important; border: solid 1px #535353;}
+.gis_ia_base .panel .button, .gis_ia_base .ol-popup-2 .button {background-color: #ffffff !important; color: black !important; border: solid 1px #535353;}
+
+/* position2 CSS */
+.gis_ia_base .ui-autocomplete .ui-menu-item .ui-state-active {background: #ffffff; color: black;}
+
+/* Popup & Panel */
+.gis_ia_base .panel, .gis_ia_base .autocomplete-suggestions {border: solid 1px #535353 !important; background-color: #ffffff !important;}
+.gis_ia_base .ol-popup   {border: 1px solid #535353; background-color: #ffffff;}
+.gis_ia_base .ol-popup-2 {border: 1px solid #535353; background-color: #ffffff;}
+.gis_ia_base .ol-popup:after   {border-top-color: #535353;}
+.gis_ia_base .ol-popup-2:after {border-bottom-color: #535353;}
+.gis_ia_feature_header2 td {border-top: solid 2px #ffffff !important;}
+
+/* filter panel */
+.gis_ia_filters .f2 {background-color: #ffffff;}
+.gis_ia_options_button {background-color: #ffffff; color: black !important; border: solid 1px #535353;}
+.gis_ia_filters_info_button {background-color: #ffffff; color: black !important; border: solid 1px #535353;}
+.gis_ia_filters_button {background-color: #ffffff; color: black !important; border: solid 1px #535353;}
+/* tbv checkboxes en radio buttons */
+.gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {border: solid 1px black; background-color: #ffffff;}
+.gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {color: black; background-color: #ffffff;}
+
+/* uiterlijk knoppen */
+.gis_ia_base .ol-control button.gis_ia_zoom-in {display: block; color: black; background-image: url(gis-ol-plus.png);}
+.gis_ia_base .ol-control button.gis_ia_zoom-out {display: block; color: black; background-image: url(gis-ol-min.png);}
+.gis_ia_zoom_extent button {background-image: url(gis-ol-zoom-ext.png);}
+.gis_ia_fullscreen button {background-image: url(gis-ol-fullscreen.png);}
+.gis_ia_base .zoom-position {border: solid 1px #535353; background-color: #ffffff !important;}
+.gis_ia_zoekveld {color: black; background-color: #ffffff; border-right: solid 1px #ffffff ;}
+.gis_ia_zoekknop {border-right: solid 1px #ffffff  !important; background-image: url(gis-ol-zoek.png);}
+.gis_ia_gotopos {background-image: url(gis-ol-position2.png);}
+.gis_ia_legenda button {background-image: url(gis-ol-legenda.png);}
+.gis_ia_options_button {background-image: url(gis-ol-options.png);}
+.gis_ia_info_button {background-image: url(gis-ol-menu1.png); width: 29px; height:29px;}
+.gis_ia_base .button-opa-min {color: black; background-image: url(gis-ol-min.png);}
+.gis_ia_base .button-opa-max {color: black; background-image: url(gis-ol-plus.png);}
+
+/* DEFAULT: alles voor de thumb, voor verschillende browsers  */
+.gis_ia_base input[type=range]::-webkit-slider-thumb {background: #ffffff; border: solid 1px #535353;}
+.gis_ia_base input[type=range]::-moz-range-thumb {background: #ffffff; border: solid 1px #535353;}
+.gis_ia_base input[type=range]::-ms-thumb {background: #ffffff; border: solid 1px #535353;}
+/* alles voor de track, voor verschillende browsers  */
+.gis_ia_base input[type=range]::-webkit-slider-runnable-track {background: #ffffff; border: solid 1px #ffffff;}
+.gis_ia_base input[type=range]::-moz-range-track {background: #ffffff; border: solid 1px #ffffff;}
+.gis_ia_base input[type=range]::-ms-track {background: #ffffff;}
+
+/* TIMESLIDER: alles voor de thumb, voor verschillende browsers  */
+.gis_ia_layerSlider input[type=range]::-webkit-slider-thumb {background-image: url(gis-ol-timeslider.png); background-color: #ffffff;}
+.gis_ia_layerSlider input[type=range]::-moz-range-thumb {background-image: url(gis-ol-timeslider.png); background-color: #ffffff;}
+.gis_ia_layerSlider input[type=range]::-ms-thumb {background-image: url(gis-ol-timeslider.png); background-color: #ffffff;}
+.gis_ia_base .ol-control button.playpauze {background-image: url(gis-ol-play.png);}
+.gis_ia_base .ol-control button.playpauze.pauze {background-image: url(gis-ol-pauze.png);}
