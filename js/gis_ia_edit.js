@@ -806,7 +806,7 @@ function gis_ia_init() {
   // http://geodata2-sscc-geoweb-co.apps.ssc-campus.nl/drupal/admin/structure/sdv_gis_entity/8/edit?destination=/drupal/admin/structure/sdv_gis_entity
   // Vertaal deze naar:
   // http://geodata2-sscc-geoweb-co.apps.ssc-campus.nl/drupal/admin/help/sdv_gis?etc...
-  href = href.substr(0, href.indexOf('/structure/')) + '/help/sdv_gis?help';
+  href = drupalSettings.gis_ia.help_text;
   start_el.prepend('<div class="button" style="float: right;margin: 12px 60px 12px 20px;" onclick="window.open(\'' + href + '#all\',\'gis_ia_help\');">Help</div>');
 
   d += '<div class="form-item"><b>Formaat en uiterlijk</b><div class="links" style="float: right;cursor: pointer;"><a onclick="window.open(\'' + href + '#form\',\'gis_ia_help\');" class="module-link module-link-help" title="Help">Help</a></div>';
