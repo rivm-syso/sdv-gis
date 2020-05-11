@@ -904,6 +904,8 @@ gis_ia_filter.prototype.cql_filter = function (changed_layer) {
 var gis_ia_filters = {
   // deze functie return de HTML voor alle filter elementen
   html: function (map_id) {
+    var removeFiltersLabel = Drupal.t('Remove filters');
+    var filtersLabel = Drupal.t('Filters');
     var t, t1 = GIS_ia_maps[map_id].fs.length, r = '<div class="gis_ia_f_x">';
     if (t1 == 0) {
       return '';
@@ -915,7 +917,7 @@ var gis_ia_filters = {
     for (t = 0; t < t1; t++) {
       r += GIS_ia_maps[map_id].fs[t].html(0);
     }
-    r = '<div><div class="gis_ia_f_def">Filters</div><div class="gis_ia_no_filters" id="gis_ia_no_filters_' + map_id + '">0 Filters</div><button class="gis_ia_filters_button" onclick="gis_ia_filters.reset(' + map_id + ');">Verwijder filters</button></div>' + r;
+    r = '<div><div class="gis_ia_f_def">' + filtersLabel + '</div><div class="gis_ia_no_filters" id="gis_ia_no_filters_' + map_id + '">0 ' + filtersLabel + '</div><button class="gis_ia_filters_button" onclick="gis_ia_filters.reset(' + map_id + ');">' + removeFiltersLabel + '</button></div>' + r;
     return r;
   },
   // deze functie geeft change signaal aan het juiste element (zodat beeld kan
@@ -1090,16 +1092,16 @@ var gis_ia_filters = {
     var options = opt_options || {};
 
     var map_id = options.map_id ? options.map_id : -1;
-    var tipLabel = options.tipLabel ? options.tipLabel : 'Stel filtering in';
+    var tipLabel = options.tipLabel ? options.tipLabel : Drupal.t('Configure filtering');
     this.hiddenClassName = 'ol-unselectable ol-control' + (options.className ? ' ' + options.className : '');
     this.shownClassName = 'shown';
 
     var element = document.createElement('div');
     element.className = this.hiddenClassName;
     var button = document.createElement('button');
-    button.setAttribute('title', 'Filtering');
+    button.setAttribute('title', Drupal.t('Filtering'));
     button.setAttribute('id', 'gis_ia_options_button_' + map_id);
-    button.innerHTML = 'Opties'; // was ooit '0 Filters';
+    button.innerHTML = Drupal.t('Options'); // was ooit '0 Filters';
     button.className = 'gis_ia_options_button gis_ia_options_button';
     element.appendChild(button);
     button.onclick = function (e) {
@@ -1175,7 +1177,7 @@ var gis_ia_filters = {
     var options = opt_options || {};
 
     var map_id = options.map_id ? options.map_id : -1;
-    var tipLabel = options.tipLabel ? options.tipLabel : 'Schaal';
+    var tipLabel = options.tipLabel ? options.tipLabel : Drupal.t('Scale');
 
     var element = document.createElement('div');
     element.className = 'ol-unselectable ol-control' + (typeof (options['className']) == 'undefined' ? '' : ' ' + options['className']);
@@ -1262,7 +1264,7 @@ function ScaleBar2Set(map_id, old_scale) {
   ol.control.Legenda = function (opt_options) {
     var options = opt_options || {};
     var map_id = options.map_id ? options.map_id : -1;
-    var tipLabel = options.tipLabel ? options.tipLabel : 'Toon legenda';
+    var tipLabel = options.tipLabel ? options.tipLabel : Drupal.t('Show legend');
     this.hiddenClassName = 'ol-unselectable ol-control ' + options.className;
     this.shownClassName = 'shown';
     var element = document.createElement('div');
@@ -1481,7 +1483,7 @@ function gis_ia_filterwindowCheck(map_id) {
     var options = opt_options || {};
 
     var map_id = options.map_id ? options.map_id : -1;
-    var tipLabel = options.tipLabel ? options.tipLabel : 'Zoom in op mijn locatie';
+    var tipLabel = options.tipLabel ? options.tipLabel : Drupal.t('Zoom into my location');
     this.hiddenClassName = 'ol-unselectable ol-control zoom-position' + (typeof (options['className']) == 'undefined' ? '' : ' ' + options['className']);
     this.shownClassName = 'shown';
 
@@ -1489,12 +1491,12 @@ function gis_ia_filterwindowCheck(map_id) {
     element.className = this.hiddenClassName;
     var input = document.createElement('input');
     input.setAttribute('onfocus', 'gis_ia_hidePanels(' + map_id + ');');
-    input.setAttribute('title', 'Zoek locatie');
+    input.setAttribute('title', Drupal.t('Search location'),);
     input.className = 'gis_ia_zoekveld';
     input.setAttribute('id', 'gis_ia_z_' + map_id);
     element.appendChild(input);
     var button = document.createElement('button');
-    button.setAttribute('title', 'Start zoeken');
+    button.setAttribute('title', Drupal.t('Start searching'));
     button.className = 'gis_ia_zoekknop';
     element.appendChild(button);
     button.onclick = function (e) {
@@ -2044,7 +2046,9 @@ function GIS_paragraaf_start(map_id) {
       break;
   }
   if (filter_html != '') {
-    filter_html = '<div id="f2-' + map_id + '" onclick="gis_ia_filters_submenuClick(' + map_id + ',-1);" class="f2"><div id="f1b-' + map_id + '" class=""><div class="gis_ia_filters_close"><button onclick="gis_ia_filterwindowCheckHide(' + map_id + ');" class="gis_ia_filters_button">X sluiten</button></div></div>' + filter_html + '<div id="f3b-' + map_id + '"><div class="gis_ia_filters_toon"><button onclick="gis_ia_filterwindowCheckHide(' + map_id + ');" class="gis_ia_filters_button">Toon resultaten</button></div></div></div>';
+    var closeLabel = Drupal.t('close');
+    var showResultsLabel = Drupal.t('Show results');
+    filter_html = '<div id="f2-' + map_id + '" onclick="gis_ia_filters_submenuClick(' + map_id + ',-1);" class="f2"><div id="f1b-' + map_id + '" class=""><div class="gis_ia_filters_close"><button onclick="gis_ia_filterwindowCheckHide(' + map_id + ');" class="gis_ia_filters_button">X ' + closeLabel + '</button></div></div>' + filter_html + '<div id="f3b-' + map_id + '"><div class="gis_ia_filters_toon"><button onclick="gis_ia_filterwindowCheckHide(' + map_id + ');" class="gis_ia_filters_button">' + showResultsLabel + '</button></div></div></div>';
     GIS_ia_maps[map_id].hasFilter = true;
   }
   else {
@@ -2120,7 +2124,7 @@ function GIS_paragraaf_start(map_id) {
   if (GIS_ia_maps[map_id].z) {
     GIS_ia_maps[map_id].controls[GIS_ia_maps[map_id].controls.length] = new ol.control.Zoom({
       className: 'gis_ia_zoom',
-      tipLabel: 'In- en uitzooomen'
+      tipLabel: Drupal.t('Zooming in and out'),
     });
   }
   if (GIS_ia_maps[map_id].e) {
@@ -2129,7 +2133,7 @@ function GIS_paragraaf_start(map_id) {
       extent: GIS_ia_maps[map_id].extNL,
       className: cls,
       label: '',
-      tipLabel: 'Zoom uit naar kaart extentie'
+      tipLabel: Drupal.t('Zoom out to map extension'),
     });
   }
   if (GIS_ia_maps[map_id].f) {
@@ -2137,7 +2141,7 @@ function GIS_paragraaf_start(map_id) {
     GIS_ia_maps[map_id].controls[GIS_ia_maps[map_id].controls.length] = new ol.control.FullScreen({
       label: '',
       className: cls,
-      tipLabel: 'Toon kaart fullscreen',
+      tipLabel: Drupal.t('Show map fullscreen'),
       source: document.getElementById('gis_ia_base_' + map_id)
     });
   }
@@ -2371,7 +2375,7 @@ function GIS_paragraaf_start(map_id) {
         button = document.createElement('button');
         button.setAttribute('id', 'playpauze' + map_id);
         button.setAttribute('class', 'playpauze play');
-        button.setAttribute('title', 'Play slider');
+        button.setAttribute('title', Drupal.t('Play slider'));
         button.innerHTML = '&nbsp;';
         button.addEventListener('click', handleTimeSlider, false);
         button.addEventListener('touchstart', handleTimeSlider, false);
@@ -2383,7 +2387,7 @@ function GIS_paragraaf_start(map_id) {
       range.setAttribute("min", "0");
       range.setAttribute("max", GIS_ia_maps[map_id].layers.length - 1);
       range.setAttribute("type", "range");
-      range.setAttribute("title", "Slider");
+      range.setAttribute("title", Drupal.t('Slider'));
       if (GIS_ia_maps[map_id].ts == 2) {
         range.setAttribute('class', 'play-left');
       }
