@@ -1442,6 +1442,8 @@ function gis_ia_filterwindowCheck(map_id) {
       gis_ia_filterwindowCheckHide(map_id);
       jQuery('#gis_ia_map_' + map_id).parent().parent().css('width','100%');
       jQuery('#gis_ia_filters_' + map_id).addClass('gis_ia_as_slider').parent().css('width',0);
+      jQuery('#f1b-' + map_id).show();
+      jQuery('#f2-' + map_id).hide();
       base.removeClass('gis_ia_as_block').addClass('gis_ia_as_slider');
       // zet max-heigth van filterblok
       jQuery('#gis_ia_filters_' + map_id).css('max-height', jQuery('#gis_ia_map_' + map_id).css('max-height') + 'px');
