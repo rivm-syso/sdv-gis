@@ -1456,6 +1456,8 @@ function gis_ia_filterwindowCheck(map_id) {
         var mapholder = jQuery('#gis_ia_map_' + map_id).parent(), wpixels = mapholder.width(); // breedte vd kaart
         mapholder.css({'height': (wpixels * 1.2) + 'px'});
 //console.log('Slide blok, height='+(wpixels*1.2)+'px (is desktop)');
+        jQuery('#f1b-' + map_id).show();
+        jQuery('#f2-' + map_id).hide();
       }
     }
   }
