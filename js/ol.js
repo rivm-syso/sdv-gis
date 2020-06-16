@@ -1735,8 +1735,8 @@ d.className=b+" ol-unselectable ol-control";d.appendChild(c);b=a.render?a.render
         c = void 0 !== a.delta ? a.delta : 1,
         d = void 0 !== a.zoomInLabel ? a.zoomInLabel : "+",
         e = void 0 !== a.zoomOutLabel ? a.zoomOutLabel : "\u2212",
-        f = void 0 !== a.zoomInTipLabel ? a.zoomInTipLabel : "Zoom in",
-        g = void 0 !== a.zoomOutTipLabel ? a.zoomOutTipLabel : "Zoom out",
+        f = void 0 !== a.zoomInTipLabel ? a.zoomInTipLabel : Drupal.t("Zoom in"),
+        g = void 0 !== a.zoomOutTipLabel ? a.zoomOutTipLabel : Drupal.t("Zoom out"),
         h = document.createElement("button");
     h.className = b + "-in";
     h.setAttribute("type", "button");
@@ -5086,4 +5086,3 @@ go.prototype.dispatchEvent=go.prototype.b;go.prototype.getRevision=go.prototype.
 lo.prototype.changed=lo.prototype.u;lo.prototype.dispatchEvent=lo.prototype.b;lo.prototype.getRevision=lo.prototype.K;lo.prototype.on=lo.prototype.I;lo.prototype.once=lo.prototype.once;lo.prototype.un=lo.prototype.J;
   return OPENLAYERS.ol;
 }));
-
