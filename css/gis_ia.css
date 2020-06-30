@@ -26,7 +26,7 @@
 .gis_ia_filters_def {margin-top: -20px;}
 .gis_ia_f_def,.gis_ia_bl_def,.gis_ia_l_def {font-size: 1.1em; font-weight: bold;margin: 20px 0 8px 0;}
 .gis_ia_filters .gis_ia_filters_radio, .gis_ia_filters .gis_ia_filters_checkbox {padding-left: 32px;}
-.gis_ia_filters input.gis_ia_filters_checkbox, .gis_ia_filters input.gis_ia_filters_radio {position: absolute; width: 0 !important; height: 0 !important; margin: 0; border: none !important;}
+.gis_ia_filters input.gis_ia_filters_checkbox, .gis_ia_filters input.gis_ia_filters_radio {position: absolute; width: 0 !important; height: 0 !important; margin: 0; border: none !important; opacity: 0;}
 .gis_ia_filters input.gis_ia_filters_checkbox:checked ~ label.gis_ia_filters_checkbox:before {content: "\2713"; font-size:14px; line-height:15px; text-indent: 3px;}
 .gis_ia_filters input.gis_ia_filters_radio:checked ~ label.gis_ia_filters_radio:before {border-width: 1px;width: 16px;height: 16px; background-color: black;}
 .gis_ia_filters label.gis_ia_filters_radio:before, .gis_ia_filters label.gis_ia_filters_checkbox:before {content: ""; position: absolute; width: 16px; height: 16px; display: inline-block; left: 0; top: 3px;}
