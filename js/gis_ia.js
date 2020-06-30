@@ -1495,7 +1495,7 @@ function gis_ia_filterwindowCheck(map_id) {
     element.className = this.hiddenClassName;
     var input = document.createElement('input');
     input.setAttribute('onfocus', 'gis_ia_hidePanels(' + map_id + ');');
-    input.setAttribute('title', Drupal.t('Search location'),);
+    input.setAttribute('title', Drupal.t('Search location'));
     input.className = 'gis_ia_zoekveld';
     input.setAttribute('id', 'gis_ia_z_' + map_id);
     element.appendChild(input);
