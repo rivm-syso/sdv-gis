@@ -2770,6 +2770,7 @@ function GIS_paragraaf_start(map_id) {
         GIS_ia_maps[map_id].fullscreenPrevSize = [map.width(), map.height()];
         jQuery(el).on('click', function (e) {
           setTimeout('gis_ia_fullscreenChange(' + map_id + ');', 3000);
+          jQuery(el).find("button").toggleClass("fullscreen").attr("title", jQuery(el).find("button").hasClass("fullscreen") ? Drupal.t('Exit fullscreen') : Drupal.t('Show map fullscreen'));
         });
       });
     }
