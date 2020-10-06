@@ -56,7 +56,15 @@
 .gis_ia_filters .gis_ia_f_g_t {cursor: pointer;}
 .gis_ia_filters .gis_ia_f_g_t:after {content: ">"; float: right;}
 /* Groep elementen */
-.gis_ia_filters .gis_ia_f_g {display: none; z-index: 1; position: absolute; margin-left: 229px; margin-top: -2em; width: 100%; max-width: 240px;}
+.gis_ia_filters .gis_ia_f_g {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  margin-left: 229px;
+  margin-top: 2em;
+  width: 100%;
+  max-width: 240px;
+}
 
 /* filters submenu */
 .gis_ia_filters_info_button {cursor: pointer; outline: none; display: inline-block; margin: 0 0 0 12px; background-repeat: no-repeat; background-position: center; width: 33px; height: 33px; position: absolute !important;}
