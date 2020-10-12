@@ -3169,3 +3169,9 @@ if (typeof (Drupal) != 'undefined') {
     };
   })(jQuery, Drupal, drupalSettings);
 }
+
+jQuery(document).ready(function($) {
+  $(".gis_ia_f_g_t").on("click", function() {
+    $(this).toggleClass("active");
+  });
+});

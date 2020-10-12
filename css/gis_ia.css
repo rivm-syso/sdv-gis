@@ -54,7 +54,14 @@
 .gis_ia_filters select.gis_ia_input_has_x {width: calc(100% - 32px) !important;}
 /* Groep titels */
 .gis_ia_filters .gis_ia_f_g_t {cursor: pointer;}
-.gis_ia_filters .gis_ia_f_g_t:after {content: ">"; float: right;}
+.gis_ia_filters .gis_ia_f_g_t:after {
+  content: ">";
+  float: right;
+  transition: 0.2s all;
+}
+.gis_ia_filters .gis_ia_f_g_t.active:after {
+  transform: rotate(-90deg);
+}
 /* Groep elementen */
 .gis_ia_filters .gis_ia_f_g {
   display: none;
